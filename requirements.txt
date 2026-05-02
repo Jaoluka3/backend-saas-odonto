@@ -1,7 +1,7 @@
 fastapi
 uvicorn
 pydantic
-python-telegram-bot
+pyTelegramBotAPI
 supabase
 python-dotenv
 requests
