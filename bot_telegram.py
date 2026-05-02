@@ -24,7 +24,19 @@ _load_env()
 
 # --- CHAVES CONFIGURADAS VIA VARIÁVEIS DE AMBIENTE (SEM HARDCODE) ---
 TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "")
-OR_KEYS = [os.environ.get("OPENROUTER_API_KEY", "")]
+OR_KEYS = [
+    os.environ.get("OPENROUTER_KEY_1", ""),
+    os.environ.get("OPENROUTER_KEY_2", ""),
+    os.environ.get("OPENROUTER_KEY_3", ""),
+    os.environ.get("OPENROUTER_KEY_4", ""),
+    os.environ.get("OPENROUTER_KEY_5", ""),
+    os.environ.get("OPENROUTER_KEY_6", ""),
+    os.environ.get("OPENROUTER_KEY_7", ""),
+    os.environ.get("OPENROUTER_KEY_8", ""),
+    os.environ.get("OPENROUTER_KEY_9", ""),
+    os.environ.get("OPENROUTER_KEY_10", ""),
+]
+OR_KEYS = [k for k in OR_KEYS if k]
 GEMINI_KEY = os.environ.get("GEMINI_KEY", "")
 API_URL = os.environ.get("API_URL", "http://localhost:8000")
 
@@ -37,20 +49,41 @@ SYSTEM_PROMPT = """Você é a Alex, uma recepcionista e vendedora de elite de um
 Seu objetivo é ser educada, tirar dúvidas e converter leads em agendamentos reais.
 Caso o paciente demonstre interesse em agendar ou aceitar um horário, adicione a tag [AGENDAR] no final da sua resposta."""
 
+def gerar_resposta_ia(user_text, first_name):
+    payload = {
+        "model": "meta-llama/llama-3-8b-instruct:free",
+        "messages": [
+            {"role": "system", "content": SYSTEM_PROMPT},
+            {"role": "user", "content": f"Nome: {first_name}\nMensagem: {user_text}"}
+        ]
+    }
+    
+    for key in OR_KEYS:
+        headers = {
+            "Authorization": f"Bearer {key}",
+            "Content-Type": "application/json"
+        }
+        try:
+            resp = requests.post("https://openrouter.ai/api/v1/chat/completions", headers=headers, json=payload, timeout=10)
+            if resp.status_code == 200:
+                data = resp.json()
+                return data["choices"][0]["message"]["content"]
+            else:
+                # Caso a chave dê erro de crédito (402), Rate limit (429), etc, continua para a próxima.
+                continue
+        except Exception as e:
+            continue
+            
+    # Fallback se todas as chaves falharem
+    return f"Olá {first_name}! A Alex já vai lhe atender sobre '{user_text}'. 😊"
+
 @bot.message_handler(func=lambda message: True, content_types=["text"])
 def handle_text(message):
     chat_id = message.chat.id
     first_name = (message.from_user.first_name or "Nome do Paciente").strip()
     user_text = message.text
 
-    # Logica simulada de resposta IA usando OpenRouter (mantendo a lógica intacta)
-    headers = {
-        "Authorization": f"Bearer {OR_KEYS[0]}",
-        "Content-Type": "application/json"
-    }
-    
-    # Payload simulado para IA
-    ai_response = f"Olá {first_name}! A Alex já vai lhe atender sobre '{user_text}'. 😊"
+    ai_response = gerar_resposta_ia(user_text, first_name)
     
     # Lógica de agendamento [AGENDAR] intacta
     if "[AGENDAR]" in user_text.upper() or "agendar" in user_text.lower():
