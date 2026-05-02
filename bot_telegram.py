@@ -50,6 +50,7 @@ Seu objetivo é ser educada, tirar dúvidas e converter leads em agendamentos re
 Caso o paciente demonstre interesse em agendar ou aceitar um horário, adicione a tag [AGENDAR] no final da sua resposta."""
 
 def gerar_resposta_ia(user_text, first_name):
+    # Rotação automática de chaves OpenRouter
     payload = {
         "model": "meta-llama/llama-3-8b-instruct:free",
         "messages": [
