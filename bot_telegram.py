@@ -50,33 +50,25 @@ Seu objetivo é ser educada, tirar dúvidas e converter leads em agendamentos re
 Caso o paciente demonstre interesse em agendar ou aceitar um horário, adicione a tag [AGENDAR] no final da sua resposta."""
 
 def gerar_resposta_ia(user_text, first_name):
-    # Rotação automática de chaves OpenRouter
+    GEMINI_KEY = os.environ.get("GEMINI_KEY", "")
+    if not GEMINI_KEY:
+        return f"Olá {first_name}! Sou a Alex. Como posso ajudar?"
+
+    url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={GEMINI_KEY}"
+
     payload = {
-        "model": "meta-llama/llama-3-8b-instruct:free",
-        "messages": [
-            {"role": "system", "content": SYSTEM_PROMPT},
-            {"role": "user", "content": f"Nome: {first_name}\nMensagem: {user_text}"}
-        ]
+        "system_instruction": {"parts": [{"text": SYSTEM_PROMPT}]},
+        "contents": [{"parts": [{"text": f"Nome: {first_name}\nMensagem: {user_text}"}]}]
     }
-    
-    for key in OR_KEYS:
-        headers = {
-            "Authorization": f"Bearer {key}",
-            "Content-Type": "application/json"
-        }
-        try:
-            resp = requests.post("https://openrouter.ai/api/v1/chat/completions", headers=headers, json=payload, timeout=10)
-            if resp.status_code == 200:
-                data = resp.json()
-                return data["choices"][0]["message"]["content"]
-            else:
-                # Caso a chave dê erro de crédito (402), Rate limit (429), etc, continua para a próxima.
-                continue
-        except Exception as e:
-            continue
-            
-    # Fallback se todas as chaves falharem
-    return f"Olá {first_name}! A Alex já vai lhe atender sobre '{user_text}'. 😊"
+
+    try:
+        resp = requests.post(url, json=payload, timeout=15)
+        if resp.status_code == 200:
+            return resp.json()["candidates"][0]["content"]["parts"][0]["text"]
+    except:
+        pass
+
+    return f"Olá {first_name}! Sou a Alex. Como posso ajudar?"
 
 @bot.message_handler(func=lambda message: True, content_types=["text"])
 def handle_text(message):
