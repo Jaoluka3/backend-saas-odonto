@@ -24,23 +24,7 @@ _load_env()
 
 # --- CHAVES CONFIGURADAS VIA VARIÁVEIS DE AMBIENTE (SEM HARDCODE) ---
 TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "")
-OR_KEYS = [
-    os.environ.get("OPENROUTER_KEY_1", ""),
-    os.environ.get("OPENROUTER_KEY_2", ""),
-    os.environ.get("OPENROUTER_KEY_3", ""),
-    os.environ.get("OPENROUTER_KEY_4", ""),
-    os.environ.get("OPENROUTER_KEY_5", ""),
-    os.environ.get("OPENROUTER_KEY_6", ""),
-    os.environ.get("OPENROUTER_KEY_7", ""),
-    os.environ.get("OPENROUTER_KEY_8", ""),
-    os.environ.get("OPENROUTER_KEY_9", ""),
-    os.environ.get("OPENROUTER_KEY_10", "")
-]
-OR_KEYS = [k for k in OR_KEYS if k]
-GEMINI_KEY = os.environ.get("GEMINI_KEY", "")
 NVIDIA_KEY = os.environ.get("NVIDIA_KEY", "")
-NVIDIA_URL = "https://integrate.api.nvidia.com/v1/chat/completions"
-NVIDIA_MODEL = "meta/llama-3.1-8b-instruct"
 API_URL = os.environ.get("API_URL", "http://localhost:8000")
 
 if not TOKEN:
@@ -53,88 +37,34 @@ Seu objetivo é ser educada, tirar dúvidas e converter leads em agendamentos re
 Caso o paciente demonstre interesse em agendar ou aceitar um horário, adicione a tag [AGENDAR] no final da sua resposta."""
 
 def gerar_resposta_ia(user_text, first_name):
-    """
-    Gera resposta usando múltiplas IAs com fallback:
-    1. Gemini (principal)
-    2. NVIDIA (fallback 1)
-    3. OpenRouter keys (fallback 2 - rotação)
-    4. Mensagem padrão (último recurso)
-    """
-    # Tentativa 1: Gemini (Principal)
-    gemini_key = os.environ.get("GEMINI_KEY", "")
-    if gemini_key:
-        try:
-            url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={gemini_key}"
-            payload = {
-                "system_instruction": {"parts": [{"text": SYSTEM_PROMPT}]},
-                "contents": [{"parts": [{"text": f"Nome: {first_name}\nMensagem: {user_text}"}]}]
-            }
-            resp = requests.post(url, json=payload, timeout=15)
-            if resp.status_code == 200:
-                return resp.json()["candidates"][0]["content"]["parts"][0]["text"]
-        except Exception as e:
-            print(f"Gemini falhou: {e}")
-
-    # Tentativa 2: NVIDIA (Fallback 1)
     nvidia_key = os.environ.get("NVIDIA_KEY", "")
-    if nvidia_key:
-        try:
-            url = "https://integrate.api.nvidia.com/v1/chat/completions"
-            headers = {
-                "Authorization": f"Bearer {nvidia_key}",
-                "Content-Type": "application/json"
-            }
-            payload = {
-                "model": "meta/llama-3.1-8b-instruct",
-                "messages": [
-                    {"role": "system", "content": SYSTEM_PROMPT},
-                    {"role": "user", "content": f"Nome: {first_name}\nMensagem: {user_text}"}
-                ],
-                "max_tokens": 500,
-                "temperature": 0.7
-            }
-            resp = requests.post(url, json=payload, headers=headers, timeout=10)
-            if resp.status_code == 200:
-                return resp.json()["choices"][0]["message"]["content"]
-        except Exception as e:
-            print(f"NVIDIA falhou: {e}")
-
-    # Tentativa 3: OpenRouter keys (Fallback 2 - rotação)
-    or_keys = [k for k in [
-        os.environ.get("OPENROUTER_KEY_1", ""),
-        os.environ.get("OPENROUTER_KEY_2", ""),
-        os.environ.get("OPENROUTER_KEY_3", ""),
-        os.environ.get("OPENROUTER_KEY_4", ""),
-        os.environ.get("OPENROUTER_KEY_5", ""),
-        os.environ.get("OPENROUTER_KEY_6", ""),
-        os.environ.get("OPENROUTER_KEY_7", ""),
-        os.environ.get("OPENROUTER_KEY_8", ""),
-        os.environ.get("OPENROUTER_KEY_9", ""),
-        os.environ.get("OPENROUTER_KEY_10", "")
-    ] if k]
-
-    for or_key in or_keys:
-        try:
-            url = "https://openrouter.ai/api/v1/chat/completions"
-            headers = {
-                "Authorization": f"Bearer {or_key}",
-                "Content-Type": "application/json"
-            }
-            payload = {
-                "model": "google/gemini-2.0-flash",
-                "messages": [
-                    {"role": "system", "content": SYSTEM_PROMPT},
-                    {"role": "user", "content": f"Nome: {first_name}\nMensagem: {user_text}"}
-                ]
-            }
-            resp = requests.post(url, json=payload, headers=headers, timeout=10)
-            if resp.status_code == 200:
-                return resp.json()["choices"][0]["message"]["content"]
-        except Exception as e:
-            print(f"OpenRouter key falhou: {e}")
-            continue
-
-    # Último recurso: Mensagem padrão
+    if not nvidia_key:
+        return f"Olá {first_name}! Sou a Alex. Como posso ajudar?"
+    
+    try:
+        url = "https://integrate.api.nvidia.com/v1/chat/completions"
+        headers = {
+            "Authorization": f"Bearer {nvidia_key}",
+            "Content-Type": "application/json"
+        }
+        payload = {
+            "model": "meta/llama-3.1-8b-instruct",
+            "messages": [
+                {"role": "system", "content": SYSTEM_PROMPT},
+                {"role": "user", "content": f"Nome: {first_name}\nMensagem: {user_text}"}
+            ],
+            "max_tokens": 500,
+            "temperature": 0.7
+        }
+        resp = requests.post(url, json=payload, headers=headers, timeout=15)
+        
+        if resp.status_code == 200:
+            return resp.json()["choices"][0]["message"]["content"]
+        else:
+            print(f"NVIDIA erro {resp.status_code}: {resp.text[:200]}")
+    except Exception as e:
+        print(f"NVIDIA falhou: {e}")
+    
     return f"Olá {first_name}! Sou a Alex. Como posso ajudar?"
 
 @bot.message_handler(func=lambda message: True, content_types=["text"])
@@ -142,7 +72,7 @@ def handle_text(message):
     chat_id = message.chat.id
     first_name = (message.from_user.first_name or "Nome do Paciente").strip()
     user_text = message.text
-
+    
     ai_response = gerar_resposta_ia(user_text, first_name)
     
     # Lógica de agendamento [AGENDAR] intacta
@@ -159,7 +89,7 @@ def handle_text(message):
             "status": "agendado"
         }
         try:
-            requests.post(f"{API_URL}/lead", json=payload, timeout=5)
+            requests.post(f"{API_URL}/lead", json=payload, timeout=30)
         except Exception as exc:
             print(f"Falha ao enviar agendamento para API: {exc}")
     else:
@@ -171,7 +101,7 @@ def handle_text(message):
             "status": "novo"
         }
         try:
-            requests.post(f"{API_URL}/lead", json=payload, timeout=5)
+            requests.post(f"{API_URL}/lead", json=payload, timeout=30)
         except Exception as exc:
             print(f"Falha ao enviar lead para API: {exc}")
 
