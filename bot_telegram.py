@@ -34,7 +34,7 @@ OR_KEYS = [
     os.environ.get("OPENROUTER_KEY_7", ""),
     os.environ.get("OPENROUTER_KEY_8", ""),
     os.environ.get("OPENROUTER_KEY_9", ""),
-    os.environ.get("OPENROUTER_KEY_10", ""),
+    os.environ.get("OPENROUTER_KEY_10", "")
 ]
 OR_KEYS = [k for k in OR_KEYS if k]
 GEMINI_KEY = os.environ.get("GEMINI_KEY", "")
@@ -137,22 +137,6 @@ def gerar_resposta_ia(user_text, first_name):
     # Último recurso: Mensagem padrão
     return f"Olá {first_name}! Sou a Alex. Como posso ajudar?"
 
-    url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={GEMINI_KEY}"
-
-    payload = {
-        "system_instruction": {"parts": [{"text": SYSTEM_PROMPT}]},
-        "contents": [{"parts": [{"text": f"Nome: {first_name}\nMensagem: {user_text}"}]}]
-    }
-
-    try:
-        resp = requests.post(url, json=payload, timeout=15)
-        if resp.status_code == 200:
-            return resp.json()["candidates"][0]["content"]["parts"][0]["text"]
-    except:
-        pass
-
-    return f"Olá {first_name}! Sou a Alex. Como posso ajudar?"
-
 @bot.message_handler(func=lambda message: True, content_types=["text"])
 def handle_text(message):
     chat_id = message.chat.id
@@ -164,7 +148,7 @@ def handle_text(message):
     # Lógica de agendamento [AGENDAR] intacta
     if "[AGENDAR]" in user_text.upper() or "agendar" in user_text.lower():
         ai_response += " [AGENDAR]"
-
+    
     if "[AGENDAR]" in ai_response:
         ai_response = ai_response.replace("[AGENDAR]", "").strip()
         bot.reply_to(message, ai_response + "\n\nÓtimo! Vou registrar o seu agendamento no sistema.")
@@ -193,6 +177,4 @@ def handle_text(message):
 
 if __name__ == "__main__":
     print("Iniciando Robô do Telegram (Polling mode)...")
-    bot.polling(none_stop=True)# test
-# another test
-# third test
+    bot.polling(none_stop=True)
