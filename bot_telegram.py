@@ -25,7 +25,7 @@ _load_env()
 # --- CHAVES CONFIGURADAS VIA VARIÁVEIS DE AMBIENTE (SEM HARDCODE) ---
 TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "")
 NVIDIA_KEY = os.environ.get("NVIDIA_KEY", "")
-API_URL = os.environ.get("API_URL", "http://localhost:8000")
+API_URL = os.environ.get("API_URL", "https://backend-saas-odonto.onrender.com")
 
 if not TOKEN:
     raise SystemExit("Erro: TELEGRAM_BOT_TOKEN não definido nas variáveis de ambiente.")
@@ -48,7 +48,7 @@ def gerar_resposta_ia(user_text, first_name):
             "Content-Type": "application/json"
         }
         payload = {
-            "model": "meta/llama-3.1-8b-instruct",
+            "model": "nvidia/nemotron-3-nano-30b-a3b",
             "messages": [
                 {"role": "system", "content": SYSTEM_PROMPT},
                 {"role": "user", "content": f"Nome: {first_name}\nMensagem: {user_text}"}
