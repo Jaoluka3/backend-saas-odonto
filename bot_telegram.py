@@ -48,7 +48,7 @@ def gerar_resposta_ia(user_text, first_name):
             "Content-Type": "application/json"
         }
         payload = {
-            "model": "nvidia/nemotron-3-nano-30b-a3b",
+            "model": "nvidia/llama-3.1-nemotron-ultra-253b-v1",
             "messages": [
                 {"role": "system", "content": SYSTEM_PROMPT},
                 {"role": "user", "content": f"Nome: {first_name}\nMensagem: {user_text}"}
