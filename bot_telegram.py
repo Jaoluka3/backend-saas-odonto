@@ -1,26 +1,20 @@
+import logging
 import os
 import requests
 import telebot
 
-def _load_env(path: str = ".env") -> None:
-    """Best-effort .env loader sem dependências extras."""
-    full = os.path.abspath(path)
-    if not os.path.isfile(full):
-        return
-    with open(full, "r", encoding="utf-8") as f:
-        for line in f:
-            line = line.strip()
-            if not line or line.startswith("#"):
-                continue
-            if "=" not in line:
-                continue
-            key, value = line.split("=", 1)
-            key = key.strip()
-            value = value.strip().strip('"').strip("'")
-            if key and key not in os.environ:
-                os.environ[key] = value
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(message)s",
+)
+logger = logging.getLogger(__name__)
 
-_load_env()
+try:
+    from dotenv import load_dotenv
+
+    load_dotenv()
+except ImportError:
+    pass
 
 # --- CHAVES CONFIGURADAS VIA VARIÁVEIS DE AMBIENTE (SEM HARDCODE) ---
 TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "")
@@ -28,7 +22,7 @@ NVIDIA_KEY = os.environ.get("NVIDIA_KEY", "")
 API_URL = os.environ.get("API_URL", "https://backend-saas-odonto.onrender.com")
 
 if not TOKEN:
-    raise SystemExit("Erro: TELEGRAM_BOT_TOKEN não definido nas variáveis de ambiente.")
+    raise SystemExit("Erro: TELEGRAM_BOT_TOKEN nao definido nas variaveis de ambiente.")
 
 bot = telebot.TeleBot(TOKEN)
 
@@ -39,6 +33,7 @@ Caso o paciente demonstre interesse em agendar ou aceitar um horário, adicione 
 def gerar_resposta_ia(user_text, first_name):
     nvidia_key = os.environ.get("NVIDIA_KEY", "")
     if not nvidia_key:
+        logger.info("NVIDIA_KEY nao definida, usando fallback")
         return f"Olá {first_name}! Sou a Alex. Como posso ajudar?"
     
     try:
@@ -61,50 +56,63 @@ def gerar_resposta_ia(user_text, first_name):
         if resp.status_code == 200:
             return resp.json()["choices"][0]["message"]["content"]
         else:
-            print(f"NVIDIA erro {resp.status_code}: {resp.text[:200]}")
+            logger.error("NVIDIA erro %s: %s", resp.status_code, resp.text[:200])
     except Exception as e:
-        print(f"NVIDIA falhou: {e}")
+        logger.error("NVIDIA falhou: %s", e)
     
     return f"Olá {first_name}! Sou a Alex. Como posso ajudar?"
 
-@bot.message_handler(func=lambda message: True, content_types=["text"])
+
+def _extrair_telefone(message):
+    if message.contact and message.contact.phone_number:
+        return message.contact.phone_number
+    return str(message.chat.id)
+
+
+def _enviar_lead(api_url, nome, telefone, status):
+    payload = {"nome": nome, "telefone": telefone, "status": status}
+    url = f"{api_url}/lead"
+    for tentativa in range(1, 4):
+        try:
+            resp = requests.post(url, json=payload, timeout=30)
+            logger.info("Lead %s enviado (tentativa %d): HTTP %s", status, tentativa, resp.status_code)
+            return
+        except requests.exceptions.RequestException as e:
+            logger.warning("Lead %s falhou (tentativa %d/3): %s", status, tentativa, e)
+    logger.error("Lead %s perdido apos 3 tentativas", status)
+
+
+@bot.message_handler(func=lambda message: True, content_types=["text", "contact"])
 def handle_text(message):
     chat_id = message.chat.id
     first_name = (message.from_user.first_name or "Nome do Paciente").strip()
-    user_text = message.text
-    
+    user_text = message.text or ""
+
     ai_response = gerar_resposta_ia(user_text, first_name)
-    
-    # Lógica de agendamento [AGENDAR] intacta
+
     if "[AGENDAR]" in user_text.upper() or "agendar" in user_text.lower():
         ai_response += " [AGENDAR]"
-    
+
     if "[AGENDAR]" in ai_response:
         ai_response = ai_response.replace("[AGENDAR]", "").strip()
-        bot.reply_to(message, ai_response + "\n\nÓtimo! Vou registrar o seu agendamento no sistema.")
-        
-        payload = {
-            "nome": first_name,
-            "telefone": str(chat_id),
-            "status": "agendado"
-        }
-        try:
-            requests.post(f"{API_URL}/lead", json=payload, timeout=30)
-        except Exception as exc:
-            print(f"Falha ao enviar agendamento para API: {exc}")
+        bot.reply_to(message, ai_response + "\n\nOtimo! Por favor, compartilhe seu numero de telefone usando o botao de contato para confirmar o agendamento.")
+        logger.info("Agendamento solicitado por %s (chat %s)", first_name, chat_id)
     else:
         bot.reply_to(message, ai_response)
-        
-        payload = {
-            "nome": first_name,
-            "telefone": str(chat_id),
-            "status": "novo"
-        }
-        try:
-            requests.post(f"{API_URL}/lead", json=payload, timeout=30)
-        except Exception as exc:
-            print(f"Falha ao enviar lead para API: {exc}")
+        telefone = _extrair_telefone(message)
+        _enviar_lead(API_URL, first_name, telefone, "novo")
+
+
+@bot.message_handler(content_types=["contact"])
+def handle_contact(message):
+    chat_id = message.chat.id
+    first_name = (message.from_user.first_name or "Nome do Paciente").strip()
+    telefone = message.contact.phone_number
+
+    _enviar_lead(API_URL, first_name, telefone, "agendado")
+    bot.reply_to(message, "Obrigado! Seu agendamento foi registrado com sucesso. Entraremos em contato em breve!")
+    logger.info("Contato recebido de %s: %s", first_name, telefone)
 
 if __name__ == "__main__":
-    print("Iniciando Robô do Telegram (Polling mode)...")
+    logger.info("Iniciando Robo do Telegram (Polling mode)...")
     bot.polling(none_stop=True)
