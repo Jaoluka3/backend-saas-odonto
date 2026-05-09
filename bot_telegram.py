@@ -18,7 +18,7 @@ except ImportError:
 
 # --- CHAVES CONFIGURADAS VIA VARIÁVEIS DE AMBIENTE (SEM HARDCODE) ---
 TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "")
-NVIDIA_KEY = os.environ.get("NVIDIA_KEY", "")
+NVIDIA_API_KEY = os.environ.get("NVIDIA_API_KEY", "")
 API_URL = os.environ.get("API_URL", "https://backend-saas-odonto.onrender.com")
 
 if not TOKEN:
@@ -26,12 +26,10 @@ if not TOKEN:
 
 bot = telebot.TeleBot(TOKEN)
 
-SYSTEM_PROMPT = """Você é a Alex, uma recepcionista e vendedora de elite de uma clínica odontológica.
-Seu objetivo é ser educada, tirar dúvidas e converter leads em agendamentos reais.
-Caso o paciente demonstre interesse em agendar ou aceitar um horário, adicione a tag [AGENDAR] no final da sua resposta."""
+SYSTEM_PROMPT = """Você é a Alex, recepcionista da Clínica Sorriso. Responda APENAS perguntas sobre a clínica: horários, procedimentos, agendamentos e dúvidas de atendimento. Horários: segunda a sexta 8h-18h, sábado 8h-12h. Seja curta, simpática e direta. Se perguntarem algo fora do assunto da clínica, diga que só pode ajudar com assuntos da clínica. Se o paciente quiser agendar, adicione [AGENDAR] no final da resposta."""
 
 def gerar_resposta_ia(user_text, first_name):
-    nvidia_key = os.environ.get("NVIDIA_KEY", "")
+    nvidia_key = os.environ.get("NVIDIA_API_KEY", "")
     if not nvidia_key:
         logger.info("NVIDIA_KEY nao definida, usando fallback")
         return f"Olá {first_name}! Sou a Alex. Como posso ajudar?"
@@ -43,7 +41,7 @@ def gerar_resposta_ia(user_text, first_name):
             "Content-Type": "application/json"
         }
         payload = {
-            "model": "nvidia/llama-3.1-nemotron-ultra-253b-v1",
+            "model": "nvidia/llama-3.1-8b-instruct",
             "messages": [
                 {"role": "system", "content": SYSTEM_PROMPT},
                 {"role": "user", "content": f"Nome: {first_name}\nMensagem: {user_text}"}
