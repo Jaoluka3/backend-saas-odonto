@@ -80,7 +80,7 @@ def _enviar_lead(api_url, nome, telefone, status):
     logger.error("Lead %s perdido apos 3 tentativas", status)
 
 
-@bot.message_handler(func=lambda message: True, content_types=["text", "contact"])
+@bot.message_handler(func=lambda message: True, content_types=["text"])
 def handle_text(message):
     chat_id = message.chat.id
     first_name = (message.from_user.first_name or "Nome do Paciente").strip()
@@ -97,8 +97,6 @@ def handle_text(message):
         logger.info("Agendamento solicitado por %s (chat %s)", first_name, chat_id)
     else:
         bot.reply_to(message, ai_response)
-        telefone = _extrair_telefone(message)
-        _enviar_lead(API_URL, first_name, telefone, "novo")
 
 
 @bot.message_handler(content_types=["contact"])
