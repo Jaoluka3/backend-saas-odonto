@@ -41,7 +41,7 @@ def gerar_resposta_ia(user_text, first_name):
             "Content-Type": "application/json"
         }
         payload = {
-            "model": "nvidia/llama-3.1-8b-instruct",
+            "model": "meta/llama-3.1-8b-instruct",
             "messages": [
                 {"role": "system", "content": SYSTEM_PROMPT},
                 {"role": "user", "content": f"Nome: {first_name}\nMensagem: {user_text}"}
