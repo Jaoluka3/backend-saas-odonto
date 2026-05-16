@@ -55,6 +55,52 @@ def create_lead(lead: Lead):
         logger.error("Erro ao criar lead: %s", e)
         return {"success": False, "error": str(e)}
 
+@app.get("/clinicas")
+def listar_clinicas():
+    if not supabase:
+        return {"success": False, "error": "Banco de dados nao configurado"}
+    try:
+        data = supabase.table("clinicas").select("*").order("score", desc=True).execute()
+        return {"success": True, "data": data.data}
+    except Exception as e:
+        return {"success": False, "error": str(e)}
+
+@app.get("/funil")
+def funil_status():
+    if not supabase:
+        return {"success": False, "error": "Banco de dados nao configurado"}
+    try:
+        result = supabase.table("clinicas").select("status").execute()
+        contagem = {"novo": 0, "qualificado": 0, "descartado": 0, "contactado": 0, "inativo": 0, "cliente": 0}
+        for r in result.data:
+            s = r.get("status", "novo")
+            if s in contagem:
+                contagem[s] += 1
+        return {"success": True, "data": contagem}
+    except Exception as e:
+        return {"success": False, "error": str(e)}
+
+@app.post("/agentes/rodar")
+def rodar_agentes():
+    try:
+        from agente_orquestrador import rodar_pipeline
+        resultado = rodar_pipeline()
+        return {"success": True, "data": resultado}
+    except Exception as e:
+        return {"success": False, "error": str(e)}
+
+@app.get("/agentes/status")
+def status_agentes():
+    from agente_orquestrador import ultima_execucao, proxima_execucao, ultimo_resultado
+    return {
+        "success": True,
+        "data": {
+            "ultima_execucao": ultima_execucao,
+            "proxima_execucao": proxima_execucao,
+            "ultimo_resultado": ultimo_resultado,
+        }
+    }
+
 if __name__ == "__main__":
     import uvicorn
     # app rodando na porta $PORT via variável de ambiente
