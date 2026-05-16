@@ -1,0 +1,3334 @@
+{
+  "nodes": [
+    {
+      "id": "bot_telegram.py",
+      "type": "module",
+      "label": "bot_telegram.py",
+      "file_path": "bot_telegram.py"
+    },
+    {
+      "id": "logging",
+      "type": "module",
+      "label": "logging",
+      "file_path": "logging"
+    },
+    {
+      "id": "os",
+      "type": "module",
+      "label": "os",
+      "file_path": "os"
+    },
+    {
+      "id": "requests",
+      "type": "module",
+      "label": "requests",
+      "file_path": "requests"
+    },
+    {
+      "id": "telebot",
+      "type": "module",
+      "label": "telebot",
+      "file_path": "telebot"
+    },
+    {
+      "id": "bot_telegram.py:gerar_resposta_ia",
+      "type": "function",
+      "label": "gerar_resposta_ia",
+      "file_path": "bot_telegram.py"
+    },
+    {
+      "id": "bot_telegram.py:_extrair_telefone",
+      "type": "function",
+      "label": "_extrair_telefone",
+      "file_path": "bot_telegram.py"
+    },
+    {
+      "id": "bot_telegram.py:_enviar_lead",
+      "type": "function",
+      "label": "_enviar_lead",
+      "file_path": "bot_telegram.py"
+    },
+    {
+      "id": "bot_telegram.py:handle_text",
+      "type": "function",
+      "label": "handle_text",
+      "file_path": "bot_telegram.py"
+    },
+    {
+      "id": "bot_telegram.py:handle_contact",
+      "type": "function",
+      "label": "handle_contact",
+      "file_path": "bot_telegram.py"
+    },
+    {
+      "id": "dotenv",
+      "type": "module",
+      "label": "dotenv",
+      "file_path": "dotenv"
+    },
+    {
+      "id": "main.py",
+      "type": "module",
+      "label": "main.py",
+      "file_path": "main.py"
+    },
+    {
+      "id": "fastapi",
+      "type": "module",
+      "label": "fastapi",
+      "file_path": "fastapi"
+    },
+    {
+      "id": "pydantic",
+      "type": "module",
+      "label": "pydantic",
+      "file_path": "pydantic"
+    },
+    {
+      "id": "supabase",
+      "type": "module",
+      "label": "supabase",
+      "file_path": "supabase"
+    },
+    {
+      "id": "main.py:Lead",
+      "type": "class",
+      "label": "Lead",
+      "file_path": "main.py"
+    },
+    {
+      "id": "main.py:health_check",
+      "type": "function",
+      "label": "health_check",
+      "file_path": "main.py"
+    },
+    {
+      "id": "main.py:create_lead",
+      "type": "function",
+      "label": "create_lead",
+      "file_path": "main.py"
+    },
+    {
+      "id": "main.py:listar_clinicas",
+      "type": "function",
+      "label": "listar_clinicas",
+      "file_path": "main.py"
+    },
+    {
+      "id": "main.py:funil_status",
+      "type": "function",
+      "label": "funil_status",
+      "file_path": "main.py"
+    },
+    {
+      "id": "main.py:rodar_agentes",
+      "type": "function",
+      "label": "rodar_agentes",
+      "file_path": "main.py"
+    },
+    {
+      "id": "main.py:status_agentes",
+      "type": "function",
+      "label": "status_agentes",
+      "file_path": "main.py"
+    },
+    {
+      "id": "agente_orquestrador",
+      "type": "module",
+      "label": "agente_orquestrador",
+      "file_path": "agente_orquestrador"
+    },
+    {
+      "id": "uvicorn",
+      "type": "module",
+      "label": "uvicorn",
+      "file_path": "uvicorn"
+    },
+    {
+      "id": "export_obsidian.py",
+      "type": "module",
+      "label": "export_obsidian.py",
+      "file_path": "export_obsidian.py"
+    },
+    {
+      "id": "json",
+      "type": "module",
+      "label": "json",
+      "file_path": "json"
+    },
+    {
+      "id": "re",
+      "type": "module",
+      "label": "re",
+      "file_path": "re"
+    },
+    {
+      "id": "pathlib",
+      "type": "module",
+      "label": "pathlib",
+      "file_path": "pathlib"
+    },
+    {
+      "id": "datetime",
+      "type": "module",
+      "label": "datetime",
+      "file_path": "datetime"
+    },
+    {
+      "id": "graphify.build",
+      "type": "module",
+      "label": "graphify.build",
+      "file_path": "graphify.build"
+    },
+    {
+      "id": "graphify.cluster",
+      "type": "module",
+      "label": "graphify.cluster",
+      "file_path": "graphify.cluster"
+    },
+    {
+      "id": "graphify.export",
+      "type": "module",
+      "label": "graphify.export",
+      "file_path": "graphify.export"
+    },
+    {
+      "id": "export_obsidian.py:safe_name",
+      "type": "function",
+      "label": "safe_name",
+      "file_path": "export_obsidian.py"
+    },
+    {
+      "id": "export_obsidian.py:enrich_frontmatter",
+      "type": "function",
+      "label": "enrich_frontmatter",
+      "file_path": "export_obsidian.py"
+    },
+    {
+      "id": "export_obsidian.py:export",
+      "type": "function",
+      "label": "export",
+      "file_path": "export_obsidian.py"
+    },
+    {
+      "id": "generate_graph.py",
+      "type": "module",
+      "label": "generate_graph.py",
+      "file_path": "generate_graph.py"
+    },
+    {
+      "id": "ast",
+      "type": "module",
+      "label": "ast",
+      "file_path": "ast"
+    },
+    {
+      "id": "networkx",
+      "type": "module",
+      "label": "networkx",
+      "file_path": "networkx"
+    },
+    {
+      "id": "generate_graph.py:CallVisitor",
+      "type": "class",
+      "label": "CallVisitor",
+      "file_path": "generate_graph.py"
+    },
+    {
+      "id": "generate_graph.py:CallVisitor.__init__",
+      "type": "method",
+      "label": "__init__",
+      "file_path": "generate_graph.py"
+    },
+    {
+      "id": "generate_graph.py:CallVisitor.visit_Call",
+      "type": "method",
+      "label": "visit_Call",
+      "file_path": "generate_graph.py"
+    },
+    {
+      "id": "generate_graph.py:generate_graph",
+      "type": "function",
+      "label": "generate_graph",
+      "file_path": "generate_graph.py"
+    },
+    {
+      "id": "generate_graph.py:__init__",
+      "type": "function",
+      "label": "__init__",
+      "file_path": "generate_graph.py"
+    },
+    {
+      "id": "generate_graph.py:visit_Call",
+      "type": "function",
+      "label": "visit_Call",
+      "file_path": "generate_graph.py"
+    },
+    {
+      "id": "generate_graph.py:add_node",
+      "type": "function",
+      "label": "add_node",
+      "file_path": "generate_graph.py"
+    },
+    {
+      "id": "generate_graph.py:add_edge",
+      "type": "function",
+      "label": "add_edge",
+      "file_path": "generate_graph.py"
+    },
+    {
+      "id": "watch_sync.py",
+      "type": "module",
+      "label": "watch_sync.py",
+      "file_path": "watch_sync.py"
+    },
+    {
+      "id": "time",
+      "type": "module",
+      "label": "time",
+      "file_path": "time"
+    },
+    {
+      "id": "subprocess",
+      "type": "module",
+      "label": "subprocess",
+      "file_path": "subprocess"
+    },
+    {
+      "id": "threading",
+      "type": "module",
+      "label": "threading",
+      "file_path": "threading"
+    },
+    {
+      "id": "watchdog.observers",
+      "type": "module",
+      "label": "watchdog.observers",
+      "file_path": "watchdog.observers"
+    },
+    {
+      "id": "watchdog.events",
+      "type": "module",
+      "label": "watchdog.events",
+      "file_path": "watchdog.events"
+    },
+    {
+      "id": "watch_sync.py:log_event",
+      "type": "function",
+      "label": "log_event",
+      "file_path": "watch_sync.py"
+    },
+    {
+      "id": "watch_sync.py:DebouncedSyncHandler",
+      "type": "class",
+      "label": "DebouncedSyncHandler",
+      "file_path": "watch_sync.py"
+    },
+    {
+      "id": "watch_sync.py:DebouncedSyncHandler.__init__",
+      "type": "method",
+      "label": "__init__",
+      "file_path": "watch_sync.py"
+    },
+    {
+      "id": "watch_sync.py:DebouncedSyncHandler.trigger_sync",
+      "type": "method",
+      "label": "trigger_sync",
+      "file_path": "watch_sync.py"
+    },
+    {
+      "id": "watch_sync.py:DebouncedSyncHandler.on_modified",
+      "type": "method",
+      "label": "on_modified",
+      "file_path": "watch_sync.py"
+    },
+    {
+      "id": "watch_sync.py:DebouncedSyncHandler.on_created",
+      "type": "method",
+      "label": "on_created",
+      "file_path": "watch_sync.py"
+    },
+    {
+      "id": "watch_sync.py:DebouncedSyncHandler.on_deleted",
+      "type": "method",
+      "label": "on_deleted",
+      "file_path": "watch_sync.py"
+    },
+    {
+      "id": "watch_sync.py:DebouncedSyncHandler.on_moved",
+      "type": "method",
+      "label": "on_moved",
+      "file_path": "watch_sync.py"
+    },
+    {
+      "id": "watch_sync.py:DebouncedSyncHandler._handle_event",
+      "type": "method",
+      "label": "_handle_event",
+      "file_path": "watch_sync.py"
+    },
+    {
+      "id": "watch_sync.py:main",
+      "type": "function",
+      "label": "main",
+      "file_path": "watch_sync.py"
+    },
+    {
+      "id": "watch_sync.py:__init__",
+      "type": "function",
+      "label": "__init__",
+      "file_path": "watch_sync.py"
+    },
+    {
+      "id": "watch_sync.py:trigger_sync",
+      "type": "function",
+      "label": "trigger_sync",
+      "file_path": "watch_sync.py"
+    },
+    {
+      "id": "watch_sync.py:on_modified",
+      "type": "function",
+      "label": "on_modified",
+      "file_path": "watch_sync.py"
+    },
+    {
+      "id": "watch_sync.py:on_created",
+      "type": "function",
+      "label": "on_created",
+      "file_path": "watch_sync.py"
+    },
+    {
+      "id": "watch_sync.py:on_deleted",
+      "type": "function",
+      "label": "on_deleted",
+      "file_path": "watch_sync.py"
+    },
+    {
+      "id": "watch_sync.py:on_moved",
+      "type": "function",
+      "label": "on_moved",
+      "file_path": "watch_sync.py"
+    },
+    {
+      "id": "watch_sync.py:_handle_event",
+      "type": "function",
+      "label": "_handle_event",
+      "file_path": "watch_sync.py"
+    },
+    {
+      "id": "log_session.py",
+      "type": "module",
+      "label": "log_session.py",
+      "file_path": "log_session.py"
+    },
+    {
+      "id": "sys",
+      "type": "module",
+      "label": "sys",
+      "file_path": "sys"
+    },
+    {
+      "id": "log_session.py:get_git_diff_summary",
+      "type": "function",
+      "label": "get_git_diff_summary",
+      "file_path": "log_session.py"
+    },
+    {
+      "id": "log_session.py:get_git_status",
+      "type": "function",
+      "label": "get_git_status",
+      "file_path": "log_session.py"
+    },
+    {
+      "id": "log_session.py:log_session",
+      "type": "function",
+      "label": "log_session",
+      "file_path": "log_session.py"
+    },
+    {
+      "id": "agente_buscador.py",
+      "type": "module",
+      "label": "agente_buscador.py",
+      "file_path": "agente_buscador.py"
+    },
+    {
+      "id": "agente_buscador.py:rodar",
+      "type": "function",
+      "label": "rodar",
+      "file_path": "agente_buscador.py"
+    },
+    {
+      "id": "agente_contato.py",
+      "type": "module",
+      "label": "agente_contato.py",
+      "file_path": "agente_contato.py"
+    },
+    {
+      "id": "agente_contato.py:gerar_mensagem",
+      "type": "function",
+      "label": "gerar_mensagem",
+      "file_path": "agente_contato.py"
+    },
+    {
+      "id": "agente_contato.py:rodar",
+      "type": "function",
+      "label": "rodar",
+      "file_path": "agente_contato.py"
+    },
+    {
+      "id": "agente_followup.py",
+      "type": "module",
+      "label": "agente_followup.py",
+      "file_path": "agente_followup.py"
+    },
+    {
+      "id": "agente_followup.py:gerar_followup",
+      "type": "function",
+      "label": "gerar_followup",
+      "file_path": "agente_followup.py"
+    },
+    {
+      "id": "agente_followup.py:rodar",
+      "type": "function",
+      "label": "rodar",
+      "file_path": "agente_followup.py"
+    },
+    {
+      "id": "agente_orquestrador.py",
+      "type": "module",
+      "label": "agente_orquestrador.py",
+      "file_path": "agente_orquestrador.py"
+    },
+    {
+      "id": "schedule",
+      "type": "module",
+      "label": "schedule",
+      "file_path": "schedule"
+    },
+    {
+      "id": "agente_buscador",
+      "type": "module",
+      "label": "agente_buscador",
+      "file_path": "agente_buscador"
+    },
+    {
+      "id": "agente_qualificador",
+      "type": "module",
+      "label": "agente_qualificador",
+      "file_path": "agente_qualificador"
+    },
+    {
+      "id": "agente_contato",
+      "type": "module",
+      "label": "agente_contato",
+      "file_path": "agente_contato"
+    },
+    {
+      "id": "agente_followup",
+      "type": "module",
+      "label": "agente_followup",
+      "file_path": "agente_followup"
+    },
+    {
+      "id": "agente_orquestrador.py:rodar_pipeline",
+      "type": "function",
+      "label": "rodar_pipeline",
+      "file_path": "agente_orquestrador.py"
+    },
+    {
+      "id": "agente_orquestrador.py:iniciar_agendador",
+      "type": "function",
+      "label": "iniciar_agendador",
+      "file_path": "agente_orquestrador.py"
+    },
+    {
+      "id": "agente_qualificador.py",
+      "type": "module",
+      "label": "agente_qualificador.py",
+      "file_path": "agente_qualificador.py"
+    },
+    {
+      "id": "agente_qualificador.py:rodar",
+      "type": "function",
+      "label": "rodar",
+      "file_path": "agente_qualificador.py"
+    },
+    {
+      "id": "teste_buscador.py",
+      "type": "module",
+      "label": "teste_buscador.py",
+      "file_path": "teste_buscador.py"
+    },
+    {
+      "id": "teste_qualificador.py",
+      "type": "module",
+      "label": "teste_qualificador.py",
+      "file_path": "teste_qualificador.py"
+    },
+    {
+      "id": "teste_contato.py",
+      "type": "module",
+      "label": "teste_contato.py",
+      "file_path": "teste_contato.py"
+    },
+    {
+      "id": "teste_followup.py",
+      "type": "module",
+      "label": "teste_followup.py",
+      "file_path": "teste_followup.py"
+    },
+    {
+      "id": "teste_main.py",
+      "type": "module",
+      "label": "teste_main.py",
+      "file_path": "teste_main.py"
+    }
+  ],
+  "edges": [
+    {
+      "source": "bot_telegram.py",
+      "target": "logging",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "bot_telegram.py",
+      "target": "os",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "bot_telegram.py",
+      "target": "requests",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "bot_telegram.py",
+      "target": "telebot",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "bot_telegram.py",
+      "target": "bot_telegram.py:gerar_resposta_ia",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "bot_telegram.py:gerar_resposta_ia",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "bot_telegram.py:gerar_resposta_ia",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "bot_telegram.py:gerar_resposta_ia",
+      "target": "post",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "bot_telegram.py:gerar_resposta_ia",
+      "target": "json",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "bot_telegram.py:gerar_resposta_ia",
+      "target": "error",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "bot_telegram.py:gerar_resposta_ia",
+      "target": "error",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "bot_telegram.py",
+      "target": "bot_telegram.py:_extrair_telefone",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "bot_telegram.py:_extrair_telefone",
+      "target": "str",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "bot_telegram.py",
+      "target": "bot_telegram.py:_enviar_lead",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "bot_telegram.py:_enviar_lead",
+      "target": "range",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "bot_telegram.py:_enviar_lead",
+      "target": "post",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "bot_telegram.py:_enviar_lead",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "bot_telegram.py:_enviar_lead",
+      "target": "warning",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "bot_telegram.py:_enviar_lead",
+      "target": "error",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "bot_telegram.py",
+      "target": "bot_telegram.py:handle_text",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "bot_telegram.py:handle_text",
+      "target": "strip",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "bot_telegram.py:handle_text",
+      "target": "gerar_resposta_ia",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "bot_telegram.py:handle_text",
+      "target": "upper",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "bot_telegram.py:handle_text",
+      "target": "lower",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "bot_telegram.py:handle_text",
+      "target": "strip",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "bot_telegram.py:handle_text",
+      "target": "replace",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "bot_telegram.py:handle_text",
+      "target": "reply_to",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "bot_telegram.py:handle_text",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "bot_telegram.py:handle_text",
+      "target": "reply_to",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "bot_telegram.py:handle_text",
+      "target": "message_handler",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "bot_telegram.py",
+      "target": "bot_telegram.py:handle_contact",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "bot_telegram.py:handle_contact",
+      "target": "strip",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "bot_telegram.py:handle_contact",
+      "target": "_enviar_lead",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "bot_telegram.py:handle_contact",
+      "target": "reply_to",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "bot_telegram.py:handle_contact",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "bot_telegram.py:handle_contact",
+      "target": "message_handler",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "bot_telegram.py",
+      "target": "dotenv",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "main.py",
+      "target": "logging",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "main.py",
+      "target": "os",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "main.py",
+      "target": "fastapi",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "main.py",
+      "target": "pydantic",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "main.py",
+      "target": "supabase",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "main.py",
+      "target": "dotenv",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "main.py",
+      "target": "main.py:Lead",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "main.py",
+      "target": "main.py:health_check",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "main.py:health_check",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "main.py",
+      "target": "main.py:create_lead",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "main.py:create_lead",
+      "target": "execute",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "main.py:create_lead",
+      "target": "insert",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "main.py:create_lead",
+      "target": "table",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "main.py:create_lead",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "main.py:create_lead",
+      "target": "error",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "main.py:create_lead",
+      "target": "error",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "main.py:create_lead",
+      "target": "str",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "main.py:create_lead",
+      "target": "post",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "main.py",
+      "target": "main.py:listar_clinicas",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "main.py:listar_clinicas",
+      "target": "execute",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "main.py:listar_clinicas",
+      "target": "order",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "main.py:listar_clinicas",
+      "target": "select",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "main.py:listar_clinicas",
+      "target": "table",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "main.py:listar_clinicas",
+      "target": "str",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "main.py:listar_clinicas",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "main.py",
+      "target": "main.py:funil_status",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "main.py:funil_status",
+      "target": "execute",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "main.py:funil_status",
+      "target": "select",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "main.py:funil_status",
+      "target": "table",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "main.py:funil_status",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "main.py:funil_status",
+      "target": "str",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "main.py:funil_status",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "main.py",
+      "target": "main.py:rodar_agentes",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "main.py:rodar_agentes",
+      "target": "rodar_pipeline",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "main.py:rodar_agentes",
+      "target": "str",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "main.py:rodar_agentes",
+      "target": "post",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "main.py",
+      "target": "main.py:status_agentes",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "main.py:status_agentes",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "main.py",
+      "target": "agente_orquestrador",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "main.py",
+      "target": "uvicorn",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "main.py",
+      "target": "agente_orquestrador",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "export_obsidian.py",
+      "target": "json",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "export_obsidian.py",
+      "target": "re",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "export_obsidian.py",
+      "target": "pathlib",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "export_obsidian.py",
+      "target": "datetime",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "export_obsidian.py",
+      "target": "graphify.build",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "export_obsidian.py",
+      "target": "graphify.cluster",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "export_obsidian.py",
+      "target": "graphify.export",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "export_obsidian.py",
+      "target": "export_obsidian.py:safe_name",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "export_obsidian.py:safe_name",
+      "target": "strip",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "export_obsidian.py:safe_name",
+      "target": "sub",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "export_obsidian.py:safe_name",
+      "target": "replace",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "export_obsidian.py:safe_name",
+      "target": "replace",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "export_obsidian.py:safe_name",
+      "target": "replace",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "export_obsidian.py:safe_name",
+      "target": "sub",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "export_obsidian.py",
+      "target": "export_obsidian.py:enrich_frontmatter",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "export_obsidian.py:enrich_frontmatter",
+      "target": "isoformat",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "export_obsidian.py:enrich_frontmatter",
+      "target": "now",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "export_obsidian.py:enrich_frontmatter",
+      "target": "Path",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "export_obsidian.py:enrich_frontmatter",
+      "target": "nodes",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "export_obsidian.py:enrich_frontmatter",
+      "target": "safe_name",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "export_obsidian.py:enrich_frontmatter",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "export_obsidian.py:enrich_frontmatter",
+      "target": "nodes",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "export_obsidian.py:enrich_frontmatter",
+      "target": "exists",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "export_obsidian.py:enrich_frontmatter",
+      "target": "read_text",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "export_obsidian.py:enrich_frontmatter",
+      "target": "split",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "export_obsidian.py:enrich_frontmatter",
+      "target": "len",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "export_obsidian.py:enrich_frontmatter",
+      "target": "join",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "export_obsidian.py:enrich_frontmatter",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "export_obsidian.py:enrich_frontmatter",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "export_obsidian.py:enrich_frontmatter",
+      "target": "degree",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "export_obsidian.py:enrich_frontmatter",
+      "target": "write_text",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "export_obsidian.py",
+      "target": "export_obsidian.py:export",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "export_obsidian.py:export",
+      "target": "Path",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "export_obsidian.py:export",
+      "target": "exists",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "export_obsidian.py:export",
+      "target": "print",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "export_obsidian.py:export",
+      "target": "loads",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "export_obsidian.py:export",
+      "target": "read_text",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "export_obsidian.py:export",
+      "target": "build_from_json",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "export_obsidian.py:export",
+      "target": "cluster",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "export_obsidian.py:export",
+      "target": "to_obsidian",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "export_obsidian.py:export",
+      "target": "enrich_frontmatter",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "export_obsidian.py:export",
+      "target": "print",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "generate_graph.py",
+      "target": "ast",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "generate_graph.py",
+      "target": "json",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "generate_graph.py",
+      "target": "os",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "generate_graph.py",
+      "target": "pathlib",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "generate_graph.py",
+      "target": "networkx",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "generate_graph.py",
+      "target": "datetime",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "generate_graph.py",
+      "target": "generate_graph.py:CallVisitor",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "generate_graph.py:CallVisitor",
+      "target": "generate_graph.py:CallVisitor.__init__",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "generate_graph.py:CallVisitor",
+      "target": "generate_graph.py:CallVisitor.visit_Call",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "generate_graph.py:CallVisitor.visit_Call",
+      "target": "isinstance",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "generate_graph.py:CallVisitor.visit_Call",
+      "target": "append",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "generate_graph.py:CallVisitor.visit_Call",
+      "target": "isinstance",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "generate_graph.py:CallVisitor.visit_Call",
+      "target": "append",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "generate_graph.py:CallVisitor.visit_Call",
+      "target": "generic_visit",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "generate_graph.py",
+      "target": "generate_graph.py:generate_graph",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "generate_graph.py:generate_graph",
+      "target": "DiGraph",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "generate_graph.py:generate_graph",
+      "target": "resolve",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "generate_graph.py:generate_graph",
+      "target": "Path",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "generate_graph.py:generate_graph",
+      "target": "add_node",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "generate_graph.py:generate_graph",
+      "target": "append",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "generate_graph.py:generate_graph",
+      "target": "add_edge",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "generate_graph.py:generate_graph",
+      "target": "walk",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "generate_graph.py:generate_graph",
+      "target": "endswith",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "generate_graph.py:generate_graph",
+      "target": "Path",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "generate_graph.py:generate_graph",
+      "target": "as_posix",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "generate_graph.py:generate_graph",
+      "target": "relative_to",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "generate_graph.py:generate_graph",
+      "target": "read_text",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "generate_graph.py:generate_graph",
+      "target": "parse",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "generate_graph.py:generate_graph",
+      "target": "print",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "generate_graph.py:generate_graph",
+      "target": "add_node",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "generate_graph.py:generate_graph",
+      "target": "walk",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "generate_graph.py:generate_graph",
+      "target": "isinstance",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "generate_graph.py:generate_graph",
+      "target": "add_node",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "generate_graph.py:generate_graph",
+      "target": "add_edge",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "generate_graph.py:generate_graph",
+      "target": "CallVisitor",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "generate_graph.py:generate_graph",
+      "target": "visit",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "generate_graph.py:generate_graph",
+      "target": "add_edge",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "generate_graph.py:generate_graph",
+      "target": "isinstance",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "generate_graph.py:generate_graph",
+      "target": "add_node",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "generate_graph.py:generate_graph",
+      "target": "add_edge",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "generate_graph.py:generate_graph",
+      "target": "isinstance",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "generate_graph.py:generate_graph",
+      "target": "add_node",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "generate_graph.py:generate_graph",
+      "target": "add_edge",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "generate_graph.py:generate_graph",
+      "target": "CallVisitor",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "generate_graph.py:generate_graph",
+      "target": "visit",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "generate_graph.py:generate_graph",
+      "target": "add_edge",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "generate_graph.py:generate_graph",
+      "target": "isinstance",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "generate_graph.py:generate_graph",
+      "target": "add_node",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "generate_graph.py:generate_graph",
+      "target": "add_edge",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "generate_graph.py:generate_graph",
+      "target": "isinstance",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "generate_graph.py:generate_graph",
+      "target": "add_node",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "generate_graph.py:generate_graph",
+      "target": "add_edge",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "generate_graph.py:generate_graph",
+      "target": "list",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "generate_graph.py:generate_graph",
+      "target": "values",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "generate_graph.py:generate_graph",
+      "target": "isoformat",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "generate_graph.py:generate_graph",
+      "target": "now",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "generate_graph.py:generate_graph",
+      "target": "str",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "generate_graph.py:generate_graph",
+      "target": "open",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "generate_graph.py:generate_graph",
+      "target": "dump",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "generate_graph.py:generate_graph",
+      "target": "print",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "generate_graph.py:generate_graph",
+      "target": "len",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "generate_graph.py:generate_graph",
+      "target": "len",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "generate_graph.py",
+      "target": "generate_graph.py:__init__",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "generate_graph.py",
+      "target": "generate_graph.py:visit_Call",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "generate_graph.py:visit_Call",
+      "target": "isinstance",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "generate_graph.py:visit_Call",
+      "target": "append",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "generate_graph.py:visit_Call",
+      "target": "isinstance",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "generate_graph.py:visit_Call",
+      "target": "append",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "generate_graph.py:visit_Call",
+      "target": "generic_visit",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "generate_graph.py",
+      "target": "generate_graph.py:add_node",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "generate_graph.py:add_node",
+      "target": "add_node",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "generate_graph.py",
+      "target": "generate_graph.py:add_edge",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "generate_graph.py:add_edge",
+      "target": "append",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "generate_graph.py:add_edge",
+      "target": "add_edge",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "watch_sync.py",
+      "target": "time",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "watch_sync.py",
+      "target": "subprocess",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "watch_sync.py",
+      "target": "threading",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "watch_sync.py",
+      "target": "pathlib",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "watch_sync.py",
+      "target": "watchdog.observers",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "watch_sync.py",
+      "target": "watchdog.events",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "watch_sync.py",
+      "target": "os",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "watch_sync.py",
+      "target": "watch_sync.py:log_event",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "watch_sync.py:log_event",
+      "target": "strftime",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "watch_sync.py:log_event",
+      "target": "open",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "watch_sync.py:log_event",
+      "target": "write",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "watch_sync.py:log_event",
+      "target": "print",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "watch_sync.py",
+      "target": "watch_sync.py:DebouncedSyncHandler",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "watch_sync.py:DebouncedSyncHandler",
+      "target": "watch_sync.py:DebouncedSyncHandler.__init__",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "watch_sync.py:DebouncedSyncHandler.__init__",
+      "target": "__init__",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "watch_sync.py:DebouncedSyncHandler.__init__",
+      "target": "super",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "watch_sync.py:DebouncedSyncHandler",
+      "target": "watch_sync.py:DebouncedSyncHandler.trigger_sync",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "watch_sync.py:DebouncedSyncHandler.trigger_sync",
+      "target": "log_event",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "watch_sync.py:DebouncedSyncHandler.trigger_sync",
+      "target": "run",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "watch_sync.py:DebouncedSyncHandler.trigger_sync",
+      "target": "log_event",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "watch_sync.py:DebouncedSyncHandler.trigger_sync",
+      "target": "log_event",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "watch_sync.py:DebouncedSyncHandler",
+      "target": "watch_sync.py:DebouncedSyncHandler.on_modified",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "watch_sync.py:DebouncedSyncHandler.on_modified",
+      "target": "_handle_event",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "watch_sync.py:DebouncedSyncHandler",
+      "target": "watch_sync.py:DebouncedSyncHandler.on_created",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "watch_sync.py:DebouncedSyncHandler.on_created",
+      "target": "_handle_event",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "watch_sync.py:DebouncedSyncHandler",
+      "target": "watch_sync.py:DebouncedSyncHandler.on_deleted",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "watch_sync.py:DebouncedSyncHandler.on_deleted",
+      "target": "_handle_event",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "watch_sync.py:DebouncedSyncHandler",
+      "target": "watch_sync.py:DebouncedSyncHandler.on_moved",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "watch_sync.py:DebouncedSyncHandler.on_moved",
+      "target": "_handle_event",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "watch_sync.py:DebouncedSyncHandler",
+      "target": "watch_sync.py:DebouncedSyncHandler._handle_event",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "watch_sync.py:DebouncedSyncHandler._handle_event",
+      "target": "endswith",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "watch_sync.py:DebouncedSyncHandler._handle_event",
+      "target": "log_event",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "watch_sync.py:DebouncedSyncHandler._handle_event",
+      "target": "cancel",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "watch_sync.py:DebouncedSyncHandler._handle_event",
+      "target": "Timer",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "watch_sync.py:DebouncedSyncHandler._handle_event",
+      "target": "start",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "watch_sync.py",
+      "target": "watch_sync.py:main",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "watch_sync.py:main",
+      "target": "log_event",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "watch_sync.py:main",
+      "target": "log_event",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "watch_sync.py:main",
+      "target": "run",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "watch_sync.py:main",
+      "target": "DebouncedSyncHandler",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "watch_sync.py:main",
+      "target": "Observer",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "watch_sync.py:main",
+      "target": "schedule",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "watch_sync.py:main",
+      "target": "start",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "watch_sync.py:main",
+      "target": "sleep",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "watch_sync.py:main",
+      "target": "stop",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "watch_sync.py:main",
+      "target": "log_event",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "watch_sync.py:main",
+      "target": "join",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "watch_sync.py",
+      "target": "watch_sync.py:__init__",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "watch_sync.py:__init__",
+      "target": "__init__",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "watch_sync.py:__init__",
+      "target": "super",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "watch_sync.py",
+      "target": "watch_sync.py:trigger_sync",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "watch_sync.py:trigger_sync",
+      "target": "log_event",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "watch_sync.py:trigger_sync",
+      "target": "run",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "watch_sync.py:trigger_sync",
+      "target": "log_event",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "watch_sync.py:trigger_sync",
+      "target": "log_event",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "watch_sync.py",
+      "target": "watch_sync.py:on_modified",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "watch_sync.py:on_modified",
+      "target": "_handle_event",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "watch_sync.py",
+      "target": "watch_sync.py:on_created",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "watch_sync.py:on_created",
+      "target": "_handle_event",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "watch_sync.py",
+      "target": "watch_sync.py:on_deleted",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "watch_sync.py:on_deleted",
+      "target": "_handle_event",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "watch_sync.py",
+      "target": "watch_sync.py:on_moved",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "watch_sync.py:on_moved",
+      "target": "_handle_event",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "watch_sync.py",
+      "target": "watch_sync.py:_handle_event",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "watch_sync.py:_handle_event",
+      "target": "endswith",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "watch_sync.py:_handle_event",
+      "target": "log_event",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "watch_sync.py:_handle_event",
+      "target": "cancel",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "watch_sync.py:_handle_event",
+      "target": "Timer",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "watch_sync.py:_handle_event",
+      "target": "start",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "log_session.py",
+      "target": "os",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "log_session.py",
+      "target": "sys",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "log_session.py",
+      "target": "datetime",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "log_session.py",
+      "target": "log_session.py:get_git_diff_summary",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "log_session.py:get_git_diff_summary",
+      "target": "run",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "log_session.py:get_git_diff_summary",
+      "target": "expanduser",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "log_session.py:get_git_diff_summary",
+      "target": "strip",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "log_session.py",
+      "target": "log_session.py:get_git_status",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "log_session.py:get_git_status",
+      "target": "run",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "log_session.py:get_git_status",
+      "target": "expanduser",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "log_session.py:get_git_status",
+      "target": "strip",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "log_session.py",
+      "target": "log_session.py:log_session",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "log_session.py:log_session",
+      "target": "makedirs",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "log_session.py:log_session",
+      "target": "strftime",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "log_session.py:log_session",
+      "target": "now",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "log_session.py:log_session",
+      "target": "join",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "log_session.py:log_session",
+      "target": "strftime",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "log_session.py:log_session",
+      "target": "now",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "log_session.py:log_session",
+      "target": "get_git_status",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "log_session.py:log_session",
+      "target": "get_git_diff_summary",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "log_session.py:log_session",
+      "target": "exists",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "log_session.py:log_session",
+      "target": "open",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "log_session.py:log_session",
+      "target": "read",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "log_session.py:log_session",
+      "target": "startswith",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "log_session.py:log_session",
+      "target": "split",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "log_session.py:log_session",
+      "target": "enumerate",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "log_session.py:log_session",
+      "target": "startswith",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "log_session.py:log_session",
+      "target": "join",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "log_session.py:log_session",
+      "target": "open",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "log_session.py:log_session",
+      "target": "write",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "log_session.py:log_session",
+      "target": "print",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "log_session.py",
+      "target": "subprocess",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "log_session.py",
+      "target": "subprocess",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "agente_buscador.py",
+      "target": "os",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "agente_buscador.py",
+      "target": "requests",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "agente_buscador.py",
+      "target": "supabase",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "agente_buscador.py",
+      "target": "dotenv",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "agente_buscador.py",
+      "target": "agente_buscador.py:rodar",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "agente_buscador.py:rodar",
+      "target": "print",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_buscador.py:rodar",
+      "target": "print",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_buscador.py:rodar",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_buscador.py:rodar",
+      "target": "json",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_buscador.py:rodar",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_buscador.py:rodar",
+      "target": "strip",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_buscador.py:rodar",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_buscador.py:rodar",
+      "target": "strip",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_buscador.py:rodar",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_buscador.py:rodar",
+      "target": "execute",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_buscador.py:rodar",
+      "target": "eq",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_buscador.py:rodar",
+      "target": "select",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_buscador.py:rodar",
+      "target": "table",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_buscador.py:rodar",
+      "target": "len",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_buscador.py:rodar",
+      "target": "execute",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_buscador.py:rodar",
+      "target": "insert",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_buscador.py:rodar",
+      "target": "table",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_buscador.py:rodar",
+      "target": "strip",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_buscador.py:rodar",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_buscador.py:rodar",
+      "target": "strip",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_buscador.py:rodar",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_buscador.py:rodar",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_buscador.py:rodar",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_buscador.py:rodar",
+      "target": "print",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_buscador.py:rodar",
+      "target": "print",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_buscador.py:rodar",
+      "target": "print",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_contato.py",
+      "target": "os",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "agente_contato.py",
+      "target": "datetime",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "agente_contato.py",
+      "target": "requests",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "agente_contato.py",
+      "target": "supabase",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "agente_contato.py",
+      "target": "dotenv",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "agente_contato.py",
+      "target": "agente_contato.py:gerar_mensagem",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "agente_contato.py:gerar_mensagem",
+      "target": "post",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_contato.py:gerar_mensagem",
+      "target": "json",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_contato.py:gerar_mensagem",
+      "target": "print",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_contato.py",
+      "target": "agente_contato.py:rodar",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "agente_contato.py:rodar",
+      "target": "print",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_contato.py:rodar",
+      "target": "execute",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_contato.py:rodar",
+      "target": "eq",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_contato.py:rodar",
+      "target": "select",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_contato.py:rodar",
+      "target": "table",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_contato.py:rodar",
+      "target": "print",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_contato.py:rodar",
+      "target": "gerar_mensagem",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_contato.py:rodar",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_contato.py:rodar",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_contato.py:rodar",
+      "target": "execute",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_contato.py:rodar",
+      "target": "eq",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_contato.py:rodar",
+      "target": "update",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_contato.py:rodar",
+      "target": "table",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_contato.py:rodar",
+      "target": "isoformat",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_contato.py:rodar",
+      "target": "now",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_contato.py:rodar",
+      "target": "print",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_contato.py:rodar",
+      "target": "print",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_contato.py:rodar",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_contato.py:rodar",
+      "target": "print",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_followup.py",
+      "target": "os",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "agente_followup.py",
+      "target": "datetime",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "agente_followup.py",
+      "target": "requests",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "agente_followup.py",
+      "target": "supabase",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "agente_followup.py",
+      "target": "dotenv",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "agente_followup.py",
+      "target": "agente_followup.py:gerar_followup",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "agente_followup.py:gerar_followup",
+      "target": "post",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_followup.py:gerar_followup",
+      "target": "json",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_followup.py:gerar_followup",
+      "target": "print",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_followup.py",
+      "target": "agente_followup.py:rodar",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "agente_followup.py:rodar",
+      "target": "print",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_followup.py:rodar",
+      "target": "execute",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_followup.py:rodar",
+      "target": "eq",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_followup.py:rodar",
+      "target": "select",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_followup.py:rodar",
+      "target": "table",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_followup.py:rodar",
+      "target": "print",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_followup.py:rodar",
+      "target": "now",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_followup.py:rodar",
+      "target": "fromisoformat",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_followup.py:rodar",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_followup.py:rodar",
+      "target": "execute",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_followup.py:rodar",
+      "target": "eq",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_followup.py:rodar",
+      "target": "update",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_followup.py:rodar",
+      "target": "table",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_followup.py:rodar",
+      "target": "print",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_followup.py:rodar",
+      "target": "gerar_followup",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_followup.py:rodar",
+      "target": "execute",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_followup.py:rodar",
+      "target": "eq",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_followup.py:rodar",
+      "target": "update",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_followup.py:rodar",
+      "target": "table",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_followup.py:rodar",
+      "target": "print",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_followup.py:rodar",
+      "target": "gerar_followup",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_followup.py:rodar",
+      "target": "execute",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_followup.py:rodar",
+      "target": "eq",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_followup.py:rodar",
+      "target": "update",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_followup.py:rodar",
+      "target": "table",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_followup.py:rodar",
+      "target": "print",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_followup.py:rodar",
+      "target": "print",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_followup.py:rodar",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_followup.py:rodar",
+      "target": "print",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py",
+      "target": "time",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "agente_orquestrador.py",
+      "target": "threading",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "agente_orquestrador.py",
+      "target": "datetime",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "agente_orquestrador.py",
+      "target": "schedule",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "agente_orquestrador.py",
+      "target": "agente_buscador",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "agente_orquestrador.py",
+      "target": "agente_qualificador",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "agente_orquestrador.py",
+      "target": "agente_contato",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "agente_orquestrador.py",
+      "target": "agente_followup",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "agente_orquestrador.py",
+      "target": "agente_orquestrador.py:rodar_pipeline",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "agente_orquestrador.py:rodar_pipeline",
+      "target": "now",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:rodar_pipeline",
+      "target": "print",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:rodar_pipeline",
+      "target": "isoformat",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:rodar_pipeline",
+      "target": "rodar",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:rodar_pipeline",
+      "target": "rodar",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:rodar_pipeline",
+      "target": "rodar",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:rodar_pipeline",
+      "target": "rodar",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:rodar_pipeline",
+      "target": "isoformat",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:rodar_pipeline",
+      "target": "print",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:rodar_pipeline",
+      "target": "print",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:rodar_pipeline",
+      "target": "print",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:rodar_pipeline",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:rodar_pipeline",
+      "target": "print",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:rodar_pipeline",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:rodar_pipeline",
+      "target": "print",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:rodar_pipeline",
+      "target": "print",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:rodar_pipeline",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:rodar_pipeline",
+      "target": "print",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:rodar_pipeline",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:rodar_pipeline",
+      "target": "print",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:rodar_pipeline",
+      "target": "now",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:rodar_pipeline",
+      "target": "isoformat",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:rodar_pipeline",
+      "target": "print",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:rodar_pipeline",
+      "target": "str",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py",
+      "target": "agente_orquestrador.py:iniciar_agendador",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "agente_orquestrador.py:iniciar_agendador",
+      "target": "print",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:iniciar_agendador",
+      "target": "run_pending",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:iniciar_agendador",
+      "target": "sleep",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_qualificador.py",
+      "target": "os",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "agente_qualificador.py",
+      "target": "supabase",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "agente_qualificador.py",
+      "target": "dotenv",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "agente_qualificador.py",
+      "target": "agente_qualificador.py:rodar",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "agente_qualificador.py:rodar",
+      "target": "print",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_qualificador.py:rodar",
+      "target": "execute",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_qualificador.py:rodar",
+      "target": "eq",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_qualificador.py:rodar",
+      "target": "select",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_qualificador.py:rodar",
+      "target": "table",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_qualificador.py:rodar",
+      "target": "print",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_qualificador.py:rodar",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_qualificador.py:rodar",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_qualificador.py:rodar",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_qualificador.py:rodar",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_qualificador.py:rodar",
+      "target": "execute",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_qualificador.py:rodar",
+      "target": "eq",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_qualificador.py:rodar",
+      "target": "update",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_qualificador.py:rodar",
+      "target": "table",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_qualificador.py:rodar",
+      "target": "print",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_qualificador.py:rodar",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_qualificador.py:rodar",
+      "target": "print",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "teste_buscador.py",
+      "target": "os",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "teste_qualificador.py",
+      "target": "os",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "teste_contato.py",
+      "target": "os",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "teste_followup.py",
+      "target": "datetime",
+      "type": "imports",
+      "relation": "imports"
+    }
+  ],
+  "metadata": {
+    "timestamp": "2026-05-16T15:28:23.274824",
+    "repo": "/root/meu-backend"
+  }
+}

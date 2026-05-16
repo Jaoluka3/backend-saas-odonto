@@ -1,0 +1,13 @@
+{
+  "plugin": [
+    ".opencode/plugins/graphify.js"
+  ],
+  "permission": {
+    "read": {
+      "/root/meu-backend/.opencode/get-shit-done/*": "allow"
+    },
+    "external_directory": {
+      "/root/meu-backend/.opencode/get-shit-done/*": "allow"
+    }
+  }
+}

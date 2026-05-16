@@ -1,0 +1,8 @@
+# Crontab - Dental SaaS Automation
+# Edit with: crontab -e
+
+# A cada hora: sync completo com vault
+0 * * * * cd ${HOME}/meu-backend && bash ${HOME}/meu-backend/sync_to_obsidian.sh >> ${HOME}/.termux/daemon.log 2>&1
+
+# Todos os dias as 23:00: log automatico diario
+0 23 * * * cd ${HOME}/meu-backend && python3 ${HOME}/meu-backend/log_session.py "Auto daily log" >> ${HOME}/.termux/daemon.log 2>&1

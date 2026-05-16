@@ -1,0 +1,26 @@
+{
+  "/root/meu-backend/bot_telegram.py": {
+    "mtime": 1777749953.8277798,
+    "hash": "9bbfee827d6b50af116c8fe5591cc1f4"
+  },
+  "/root/meu-backend/main.py": {
+    "mtime": 1777674064.3049915,
+    "hash": "562d760139c55787b1a16f423f94f653"
+  },
+  "/root/meu-backend/requirements.txt": {
+    "mtime": 1777686096.0588284,
+    "hash": "dc45f640ddee82ac4df7491e9f9a709e"
+  },
+  "/root/meu-backend/render.yaml": {
+    "mtime": 1777685051.942829,
+    "hash": "1e056a11e8f9d8ea1fcb7e1e83d64e38"
+  },
+  "/root/meu-backend/runtime.txt": {
+    "mtime": 1777686281.8188283,
+    "hash": "505a0f5993a6cbc03318b4dc0f422203"
+  },
+  "/root/meu-backend/AGENTS.md": {
+    "mtime": 1777762805.0116975,
+    "hash": "8ee39dcfe68a23b3797b02648930d699"
+  }
+}

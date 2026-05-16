@@ -1,0 +1,191 @@
+{
+  "directed": false,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "label": "bot_telegram.py",
+      "file_type": "code",
+      "source_file": "bot_telegram.py",
+      "source_location": "L1",
+      "id": "bot_telegram_py",
+      "community": 1,
+      "norm_label": "bot_telegram.py"
+    },
+    {
+      "label": "_load_env()",
+      "file_type": "code",
+      "source_file": "bot_telegram.py",
+      "source_location": "L5",
+      "id": "meu_backend_bot_telegram_load_env",
+      "community": 2,
+      "norm_label": "_load_env()"
+    },
+    {
+      "label": "gerar_resposta_ia()",
+      "file_type": "code",
+      "source_file": "bot_telegram.py",
+      "source_location": "L52",
+      "id": "meu_backend_bot_telegram_gerar_resposta_ia",
+      "community": 1,
+      "norm_label": "gerar_resposta_ia()"
+    },
+    {
+      "label": "handle_text()",
+      "file_type": "code",
+      "source_file": "bot_telegram.py",
+      "source_location": "L82",
+      "id": "meu_backend_bot_telegram_handle_text",
+      "community": 1,
+      "norm_label": "handle_text()"
+    },
+    {
+      "label": "Best-effort .env loader sem depend\u00eancias extras.",
+      "file_type": "rationale",
+      "source_file": "bot_telegram.py",
+      "source_location": "L6",
+      "id": "meu_backend_bot_telegram_rationale_6",
+      "community": 2,
+      "norm_label": "best-effort .env loader sem dependencias extras."
+    },
+    {
+      "label": "main.py",
+      "file_type": "code",
+      "source_file": "main.py",
+      "source_location": "L1",
+      "id": "main_py",
+      "community": 0,
+      "norm_label": "main.py"
+    },
+    {
+      "label": "Lead",
+      "file_type": "code",
+      "source_file": "main.py",
+      "source_location": "L21",
+      "id": "meu_backend_main_lead",
+      "community": 0,
+      "norm_label": "lead"
+    },
+    {
+      "label": "BaseModel",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "id": "basemodel",
+      "community": 0,
+      "norm_label": "basemodel"
+    },
+    {
+      "label": "health_check()",
+      "file_type": "code",
+      "source_file": "main.py",
+      "source_location": "L27",
+      "id": "meu_backend_main_health_check",
+      "community": 0,
+      "norm_label": "health_check()"
+    },
+    {
+      "label": "create_lead()",
+      "file_type": "code",
+      "source_file": "main.py",
+      "source_location": "L31",
+      "id": "meu_backend_main_create_lead",
+      "community": 0,
+      "norm_label": "create_lead()"
+    }
+  ],
+  "links": [
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "bot_telegram.py",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "bot_telegram_py",
+      "target": "meu_backend_bot_telegram_load_env",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "bot_telegram.py",
+      "source_location": "L52",
+      "weight": 1.0,
+      "source": "bot_telegram_py",
+      "target": "meu_backend_bot_telegram_gerar_resposta_ia",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "bot_telegram.py",
+      "source_location": "L82",
+      "weight": 1.0,
+      "source": "bot_telegram_py",
+      "target": "meu_backend_bot_telegram_handle_text",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "bot_telegram.py",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "meu_backend_bot_telegram_rationale_6",
+      "target": "meu_backend_bot_telegram_load_env",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "bot_telegram.py",
+      "source_location": "L87",
+      "weight": 1.0,
+      "source": "meu_backend_bot_telegram_handle_text",
+      "target": "meu_backend_bot_telegram_gerar_resposta_ia",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "main.py",
+      "source_location": "L21",
+      "weight": 1.0,
+      "source": "main_py",
+      "target": "meu_backend_main_lead",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "main.py",
+      "source_location": "L27",
+      "weight": 1.0,
+      "source": "main_py",
+      "target": "meu_backend_main_health_check",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "main.py",
+      "source_location": "L31",
+      "weight": 1.0,
+      "source": "main_py",
+      "target": "meu_backend_main_create_lead",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "main.py",
+      "source_location": "L21",
+      "weight": 1.0,
+      "source": "meu_backend_main_lead",
+      "target": "basemodel",
+      "confidence_score": 1.0
+    }
+  ],
+  "hyperedges": []
+}
