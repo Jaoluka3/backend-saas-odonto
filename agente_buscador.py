@@ -112,16 +112,20 @@ def rodar() -> int:
         logger.info("Nenhuma clinica encontrada")
         return 0
 
-    try:
-        supabase.table("clinicas").upsert(
-            todas_clinicas, on_conflict="telefone"
-        ).execute()
-        logger.info("Batch insert: %d clinicas processadas", len(todas_clinicas))
-    except Exception as e:
-        logger.error("Erro no batch insert: %s", e)
-        return 0
-
-    return len(todas_clinicas)
+    inseridas = 0
+    for c in todas_clinicas:
+        try:
+            supabase.table("clinicas").upsert(
+                c, on_conflict="telefone"
+            ).execute()
+            inseridas += 1
+        except Exception as e:
+            logger.error(
+                "Erro ao inserir %s (%s): %s",
+                c["nome"], c["telefone"], e,
+            )
+    logger.info("Inseridas %d/%d clinicas", inseridas, len(todas_clinicas))
+    return inseridas
 
 
 if __name__ == "__main__":
