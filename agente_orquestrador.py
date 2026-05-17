@@ -17,12 +17,14 @@ proxima_execucao = "09:00 (diario)"
 ultimo_resultado = {}
 _scheduler_thread: threading.Thread | None = None
 _scheduler_stop = threading.Event()
+_pipeline_lock = threading.Lock()
 
 
-def rodar_pipeline() -> dict:
+def rodar_pipeline(run_id: str | None = None) -> dict:
     """Executa a pipeline completa de aquisicao de clientes."""
     global ultima_execucao, ultimo_resultado
-    run_id = str(uuid.uuid4())[:8]
+    if run_id is None:
+        run_id = str(uuid.uuid4())[:8]
     inicio = datetime.now()
     logger.info("=== PIPELINE [%s] INICIADA %s ===", run_id, inicio.isoformat())
 
@@ -61,10 +63,25 @@ def rodar_pipeline() -> dict:
 
 
 def rodar_pipeline_async() -> dict:
-    """Dispara a pipeline em thread separada e retorna imediatamente."""
-    t = threading.Thread(target=rodar_pipeline, daemon=True)
-    t.start()
+    """Dispara a pipeline em thread separada e retorna imediatamente.
+    Usa Lock para impedir execucoes concorrentes."""
+    if not _pipeline_lock.acquire(blocking=False):
+        logger.warning("Pipeline ja esta em execucao, requisicao ignorada")
+        return {
+            "status": "ocupado",
+            "mensagem": "Pipeline ja esta em execucao. Aguarde e tente novamente.",
+        }
+
     run_id = str(uuid.uuid4())[:8]
+
+    def _executar_com_lock():
+        try:
+            rodar_pipeline(run_id)
+        finally:
+            _pipeline_lock.release()
+
+    t = threading.Thread(target=_executar_com_lock, daemon=True)
+    t.start()
     logger.info("Pipeline [%s] disparada em background", run_id)
     return {
         "run_id": run_id,

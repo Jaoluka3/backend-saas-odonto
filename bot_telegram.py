@@ -2,6 +2,7 @@ import logging
 import os
 import requests
 import telebot
+from supabase_client import supabase
 
 logging.basicConfig(
     level=logging.INFO,
@@ -19,7 +20,6 @@ except ImportError:
 # --- CHAVES CONFIGURADAS VIA VARIÁVEIS DE AMBIENTE (SEM HARDCODE) ---
 TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "")
 NVIDIA_API_KEY = os.environ.get("NVIDIA_API_KEY", "")
-API_URL = os.environ.get("API_URL", "https://backend-saas-odonto.onrender.com")
 
 if not TOKEN:
     raise SystemExit("Erro: TELEGRAM_BOT_TOKEN nao definido nas variaveis de ambiente.")
@@ -67,17 +67,21 @@ def _extrair_telefone(message):
     return str(message.chat.id)
 
 
-def _enviar_lead(api_url, nome, telefone, status):
-    payload = {"nome": nome, "telefone": telefone, "status": status}
-    url = f"{api_url}/lead"
+def _enviar_lead(nome: str, telefone: str, status: str):
+    """Salva lead diretamente no Supabase (sem HTTP)."""
+    if not supabase:
+        logger.error("Supabase nao configurado, lead perdido: %s", nome)
+        return
     for tentativa in range(1, 4):
         try:
-            resp = requests.post(url, json=payload, timeout=30)
-            logger.info("Lead %s enviado (tentativa %d): HTTP %s", status, tentativa, resp.status_code)
+            supabase.table("clinicas").insert({
+                "nome": nome, "telefone": telefone, "status": status
+            }).execute()
+            logger.info("Lead %s salvo no banco: %s (%s)", status, nome, telefone)
             return
-        except requests.exceptions.RequestException as e:
+        except Exception as e:
             logger.warning("Lead %s falhou (tentativa %d/3): %s", status, tentativa, e)
-    logger.error("Lead %s perdido apos 3 tentativas", status)
+    logger.error("Lead %s perdido apos 3 tentativas: %s", status, nome)
 
 
 @bot.message_handler(func=lambda message: True, content_types=["text"])
@@ -105,7 +109,7 @@ def handle_contact(message):
     first_name = (message.from_user.first_name or "Nome do Paciente").strip()
     telefone = message.contact.phone_number
 
-    _enviar_lead(API_URL, first_name, telefone, "agendado")
+    _enviar_lead(first_name, telefone, "agendado")
     bot.reply_to(message, "Obrigado! Seu agendamento foi registrado com sucesso. Entraremos em contato em breve!")
     logger.info("Contato recebido de %s: %s", first_name, telefone)
 

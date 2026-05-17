@@ -41,9 +41,10 @@ def extrair_cidade(busca: str) -> str:
 
 def _buscar_com_retry(busca: str, tentativas: int = 3) -> list:
     """Busca na SerpApi com retry exponencial e paginacao."""
-    resultados = []
+    resultados: list = []  # fallback se todas as tentativas falharem
     for tentativa in range(1, tentativas + 1):
         try:
+            resultados = []
             start = 0
             while True:
                 params = {

@@ -1,6 +1,6 @@
 import time
 import logging
-from datetime import datetime
+from datetime import datetime, timezone
 import requests
 from dotenv import load_dotenv
 from supabase_client import supabase
@@ -97,7 +97,7 @@ def rodar() -> int:
             supabase.table("clinicas").update({
                 "mensagem_enviada": mensagem,
                 "status": "contactado",
-                "data_contato": datetime.now().isoformat(),
+                "data_contato": datetime.now(timezone.utc).isoformat(),
             }).eq("id", c["id"]).execute()
             contactadas += 1
             logger.info(

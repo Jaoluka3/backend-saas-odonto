@@ -2,6 +2,7 @@ import logging
 import os
 from contextlib import asynccontextmanager
 from fastapi import FastAPI, Query
+from pydantic import BaseModel
 from supabase_client import supabase
 from agente_orquestrador import (
     rodar_pipeline_async,
@@ -17,6 +18,13 @@ logging.basicConfig(
     format="%(asctime)s [%(levelname)s] %(message)s",
 )
 logger = logging.getLogger(__name__)
+
+
+class LeadPayload(BaseModel):
+    """Modelo do lead recebido via JSON do bot_telegram."""
+    nome: str
+    telefone: str
+    status: str = "novo"
 
 
 @asynccontextmanager
@@ -38,18 +46,18 @@ def health_check():
 
 
 @app.post("/lead")
-def create_lead(nome: str, telefone: str):
-    """Cria um lead manualmente na tabela clinicas."""
+def create_lead(lead: LeadPayload):
+    """Cria um lead na tabela clinicas a partir de JSON body."""
     if not supabase:
         return {"success": False, "error": "Banco de dados nao configurado"}
     try:
         data = (
             supabase.table("clinicas")
-            .insert({"nome": nome, "telefone": telefone, "status": "novo"})
+            .insert(lead.model_dump())
             .execute()
         )
         if data.data:
-            logger.info("Lead criado: %s (%s)", nome, telefone)
+            logger.info("Lead criado: %s (%s)", lead.nome, lead.telefone)
             return {"success": True, "data": data.data}
         return {"success": False, "error": "Falha ao inserir lead"}
     except Exception as e:

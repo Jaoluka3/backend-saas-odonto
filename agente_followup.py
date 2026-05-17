@@ -1,6 +1,6 @@
 import time
 import logging
-from datetime import datetime
+from datetime import datetime, timezone
 import os
 import requests
 from dotenv import load_dotenv
@@ -81,7 +81,7 @@ def rodar() -> dict:
         logger.info("Nenhuma clinica contactada para followup")
         return {"followups_enviados": 0, "inativados": 0}
 
-    hoje = datetime.now()
+    hoje = datetime.now(timezone.utc)
     followups = 0
     inativados = 0
 
