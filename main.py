@@ -102,9 +102,11 @@ def funil_status():
         return {"success": False, "error": str(e)}
 
 
+@app.get("/agentes/rodar")
 @app.post("/agentes/rodar")
 def rodar_agentes():
-    """Dispara a pipeline em background e retorna imediatamente."""
+    """Dispara a pipeline em background e retorna imediatamente.
+    Aceita GET (navegador) e POST (curl/programatico)."""
     try:
         resultado = rodar_pipeline_async()
         return {"success": True, "data": resultado}
