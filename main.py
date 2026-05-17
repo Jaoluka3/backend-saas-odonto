@@ -2,6 +2,7 @@ import logging
 import os
 from contextlib import asynccontextmanager
 from fastapi import FastAPI, Query
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 from supabase_client import supabase
 from agente_orquestrador import (
@@ -38,6 +39,7 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(lifespan=lifespan)
+app.mount("/painel", StaticFiles(directory="static", html=True), name="static")
 
 
 @app.get("/health")
