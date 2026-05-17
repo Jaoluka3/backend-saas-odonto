@@ -1,8 +1,10 @@
 import os
+import logging
 from supabase import create_client, Client
 from dotenv import load_dotenv
 
 load_dotenv()
+logger = logging.getLogger(__name__)
 
 SUPABASE_URL = os.environ.get("SUPABASE_URL")
 SUPABASE_KEY = os.environ.get("SUPABASE_KEY")
@@ -13,15 +15,20 @@ if SUPABASE_URL and SUPABASE_KEY:
 
 
 def rodar() -> dict:
+    """Pontua clinicas novas e classifica como qualificado ou descartado."""
     if not supabase:
-        print("Erro: Supabase nao configurado")
+        logger.error("Supabase nao configurado")
         return {"qualificadas": 0, "descartadas": 0}
 
     try:
         result = supabase.table("clinicas").select("*").eq("status", "novo").execute()
         clinicas = result.data
     except Exception as e:
-        print(f"Erro ao ler clinicas: {e}")
+        logger.error("Erro ao ler clinicas: %s", e)
+        return {"qualificadas": 0, "descartadas": 0}
+
+    if not clinicas:
+        logger.info("Nenhuma clinica nova para qualificar")
         return {"qualificadas": 0, "descartadas": 0}
 
     qualificadas = 0
@@ -52,11 +59,12 @@ def rodar() -> dict:
                 descartadas += 1
 
         except Exception as e:
-            print(f"Erro ao qualificar clinica {c.get('id')}: {e}")
+            logger.error("Erro ao qualificar clinica %s: %s", c.get("id"), e)
 
-    print(f"Qualificador: {qualificadas} qualificadas, {descartadas} descartadas")
+    logger.info("Qualificador: %d qualificadas, %d descartadas", qualificadas, descartadas)
     return {"qualificadas": qualificadas, "descartadas": descartadas}
 
 
 if __name__ == "__main__":
+    logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
     rodar()

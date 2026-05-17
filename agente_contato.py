@@ -1,10 +1,13 @@
 import os
+import time
+import logging
 from datetime import datetime
 import requests
 from supabase import create_client, Client
 from dotenv import load_dotenv
 
 load_dotenv()
+logger = logging.getLogger(__name__)
 
 SUPABASE_URL = os.environ.get("SUPABASE_URL")
 SUPABASE_KEY = os.environ.get("SUPABASE_KEY")
@@ -23,7 +26,9 @@ SYSTEM_PROMPT = (
 
 
 def gerar_mensagem(nome: str, cidade: str, avaliacao) -> str:
+    """Gera mensagem personalizada via NVIDIA API com fallback."""
     if not NVIDIA_KEY:
+        logger.warning("NVIDIA_KEY nao configurada, usando fallback")
         return f"Ola! Oferecemos um bot de atendimento para {nome}. Interessado?"
 
     try:
@@ -46,22 +51,28 @@ def gerar_mensagem(nome: str, cidade: str, avaliacao) -> str:
         )
         if resp.status_code == 200:
             return resp.json()["choices"][0]["message"]["content"]
+        logger.warning("NVIDIA retornou status %d para %s", resp.status_code, nome)
     except Exception as e:
-        print(f"NVIDIA falhou para {nome}: {e}")
+        logger.error("NVIDIA falhou para %s: %s", nome, e)
 
     return f"Ola! Oferecemos um bot de atendimento para {nome}. Interessado?"
 
 
 def rodar() -> int:
+    """Contacta clinicas qualificadas com rate limiting."""
     if not supabase:
-        print("Erro: Supabase nao configurado")
+        logger.error("Supabase nao configurado")
         return 0
 
     try:
         result = supabase.table("clinicas").select("*").eq("status", "qualificado").execute()
         clinicas = result.data
     except Exception as e:
-        print(f"Erro ao ler clinicas qualificadas: {e}")
+        logger.error("Erro ao ler clinicas qualificadas: %s", e)
+        return 0
+
+    if not clinicas:
+        logger.info("Nenhuma clinica qualificada para contactar")
         return 0
 
     contactadas = 0
@@ -74,13 +85,18 @@ def rodar() -> int:
                 "data_contato": datetime.now().isoformat(),
             }).eq("id", c["id"]).execute()
             contactadas += 1
-            print(f"Mensagem para {c['nome']}:\n{mensagem}\n")
-        except Exception as e:
-            print(f"Erro ao contactar clinica {c.get('id')}: {e}")
+            logger.info("Mensagem enviada para %s: %s", c["nome"], mensagem[:50])
 
-    print(f"Contato: {contactadas} clinicas contactadas")
+            # Rate limiting: espera 1s entre chamadas para evitar bloqueio
+            time.sleep(1)
+
+        except Exception as e:
+            logger.error("Erro ao contactar clinica %s: %s", c.get("id"), e)
+
+    logger.info("Contato: %d clinicas contactadas", contactadas)
     return contactadas
 
 
 if __name__ == "__main__":
+    logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
     rodar()

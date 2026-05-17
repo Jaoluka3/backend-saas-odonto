@@ -1,10 +1,13 @@
 import os
+import time
+import logging
 from datetime import datetime
 import requests
 from supabase import create_client, Client
 from dotenv import load_dotenv
 
 load_dotenv()
+logger = logging.getLogger(__name__)
 
 SUPABASE_URL = os.environ.get("SUPABASE_URL")
 SUPABASE_KEY = os.environ.get("SUPABASE_KEY")
@@ -16,6 +19,7 @@ if SUPABASE_URL and SUPABASE_KEY:
 
 
 def gerar_followup(nome: str, tentativa: int) -> str:
+    """Gera mensagem de follow-up via NVIDIA API."""
     if tentativa == 1:
         prompt = "Ainda temos interesse em ajudar a clinica a automatizar o atendimento. Seja educado e reforce os beneficios."
     else:
@@ -45,21 +49,26 @@ def gerar_followup(nome: str, tentativa: int) -> str:
         if resp.status_code == 200:
             return resp.json()["choices"][0]["message"]["content"]
     except Exception as e:
-        print(f"NVIDIA falhou no followup de {nome}: {e}")
+        logger.error("NVIDIA falhou no followup de %s: %s", nome, e)
 
     return f"Follow-up {tentativa}: Ola {nome}, ainda temos interesse em ajudar!"
 
 
 def rodar() -> dict:
+    """Gerencia follow-ups automaticos baseado no tempo desde contato."""
     if not supabase:
-        print("Erro: Supabase nao configurado")
+        logger.error("Supabase nao configurado")
         return {"followups_enviados": 0, "inativados": 0}
 
     try:
         result = supabase.table("clinicas").select("*").eq("status", "contactado").execute()
         clinicas = result.data
     except Exception as e:
-        print(f"Erro ao ler clinicas contactadas: {e}")
+        logger.error("Erro ao ler clinicas contactadas: %s", e)
+        return {"followups_enviados": 0, "inativados": 0}
+
+    if not clinicas:
+        logger.info("Nenhuma clinica contactada para followup")
         return {"followups_enviados": 0, "inativados": 0}
 
     hoje = datetime.now()
@@ -77,7 +86,7 @@ def rodar() -> dict:
                     "status": "inativo",
                 }).eq("id", c["id"]).execute()
                 inativados += 1
-                print(f"Inativado: {c['nome']} ({dias} dias sem resposta)")
+                logger.info("Inativado: %s (%d dias sem resposta)", c["nome"], dias)
             elif dias >= 7 and nf == 1:
                 msg = gerar_followup(c["nome"], 2)
                 supabase.table("clinicas").update({
@@ -85,7 +94,8 @@ def rodar() -> dict:
                     "mensagem_enviada": msg,
                 }).eq("id", c["id"]).execute()
                 followups += 1
-                print(f"Followup 2 para {c['nome']}:\n{msg}\n")
+                logger.info("Followup 2 para %s", c["nome"])
+                time.sleep(1)  # rate limiting
             elif dias >= 3 and nf == 0:
                 msg = gerar_followup(c["nome"], 1)
                 supabase.table("clinicas").update({
@@ -93,13 +103,16 @@ def rodar() -> dict:
                     "mensagem_enviada": msg,
                 }).eq("id", c["id"]).execute()
                 followups += 1
-                print(f"Followup 1 para {c['nome']}:\n{msg}\n")
-        except Exception as e:
-            print(f"Erro no followup de {c.get('id')}: {e}")
+                logger.info("Followup 1 para %s", c["nome"])
+                time.sleep(1)  # rate limiting
 
-    print(f"Followup: {followups} enviados, {inativados} inativados")
+        except Exception as e:
+            logger.error("Erro no followup de %s: %s", c.get("id"), e)
+
+    logger.info("Followup: %d enviados, %d inativados", followups, inativados)
     return {"followups_enviados": followups, "inativados": inativados}
 
 
 if __name__ == "__main__":
+    logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
     rodar()

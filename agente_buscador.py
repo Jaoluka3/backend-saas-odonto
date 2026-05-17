@@ -1,75 +1,104 @@
 import os
+import time
+import logging
 import requests
 from supabase import create_client, Client
 from dotenv import load_dotenv
 
 load_dotenv()
+logger = logging.getLogger(__name__)
 
 SUPABASE_URL = os.environ.get("SUPABASE_URL")
 SUPABASE_KEY = os.environ.get("SUPABASE_KEY")
 SERPAPI_KEY = os.environ.get("SERPAPI_KEY")
 
-CIDADES = ["São Paulo", "Rio de Janeiro", "Belo Horizonte", "Curitiba", "Brasília"]
+# Buscas mais especificas para maximizar resultados (cidade + bairros)
+BUSCAS = [
+    "clinica odontologica Sao Paulo",
+    "clinica odontologica Rio de Janeiro",
+    "clinica odontologica Belo Horizonte",
+    "clinica odontologica Curitiba",
+    "clinica odontologica Brasilia",
+    "dentista Sao Paulo",
+    "dentista Rio de Janeiro",
+    "odontologia Belo Horizonte",
+]
 
 supabase: Client | None = None
 if SUPABASE_URL and SUPABASE_KEY:
     supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
 
 
-def rodar() -> int:
-    if not supabase:
-        print("Erro: Supabase não configurado")
-        return 0
-    if not SERPAPI_KEY:
-        print("Erro: SERPAPI_KEY não configurada")
-        return 0
-
-    inseridas = 0
-    for cidade in CIDADES:
+def _buscar_com_retry(busca: str, tentativas: int = 3) -> list:
+    """Busca na SerpApi com retry exponencial em caso de falha."""
+    for tentativa in range(1, tentativas + 1):
         try:
             params = {
                 "engine": "google_maps",
-                "q": f"clinica odontologica {cidade}",
+                "q": busca,
                 "api_key": SERPAPI_KEY,
             }
             resp = requests.get("https://serpapi.com/search", params=params, timeout=30)
+            resp.raise_for_status()
             data = resp.json()
-
-            results = data.get("local_results", [])
-            for r in results:
-                try:
-                    telefone = (r.get("phone") or "").strip()
-                    if not telefone:
-                        continue
-
-                    nome = (r.get("title") or "").strip()
-                    if not nome:
-                        continue
-
-                    existing = supabase.table("clinicas").select("id").eq("telefone", telefone).execute()
-                    if existing.data and len(existing.data) > 0:
-                        continue
-
-                    supabase.table("clinicas").insert({
-                        "nome": nome,
-                        "telefone": telefone,
-                        "endereco": (r.get("address") or "").strip(),
-                        "website": (r.get("website") or "").strip(),
-                        "avaliacao_google": r.get("rating"),
-                        "num_avaliacoes": r.get("reviews"),
-                        "cidade": cidade,
-                        "status": "novo",
-                    }).execute()
-                    inseridas += 1
-                except Exception as e:
-                    print(f"Erro ao processar clinica em {cidade}: {e}")
-
+            return data.get("local_results", [])
         except Exception as e:
-            print(f"Erro ao buscar {cidade}: {e}")
+            logger.warning("Tentativa %d falhou para '%s': %s", tentativa, busca, e)
+            if tentativa < tentativas:
+                time.sleep(2 ** tentativa)  # backoff exponencial
+    return []
 
-    print(f"Buscador: {inseridas} clinicas inseridas")
-    return inseridas
+
+def rodar() -> int:
+    """Busca clinicas e faz batch insert com upsert para evitar duplicatas."""
+    if not supabase:
+        logger.error("Supabase nao configurado")
+        return 0
+    if not SERPAPI_KEY:
+        logger.error("SERPAPI_KEY nao configurada")
+        return 0
+
+    todas_clinicas = []
+    for busca in BUSCAS:
+        logger.info("Buscando: %s", busca)
+        resultados = _buscar_com_retry(busca)
+        logger.info("Encontrados %d resultados para '%s'", len(resultados), busca)
+
+        for r in resultados:
+            telefone = (r.get("phone") or "").strip()
+            nome = (r.get("title") or "").strip()
+            if not telefone or not nome:
+                continue
+
+            todas_clinicas.append({
+                "nome": nome,
+                "telefone": telefone,
+                "endereco": (r.get("address") or "").strip(),
+                "website": (r.get("website") or "").strip(),
+                "avaliacao_google": r.get("rating"),
+                "num_avaliacoes": r.get("reviews"),
+                "cidade": busca.split()[-1],  # ultima palavra da busca
+                "status": "novo",
+            })
+
+    if not todas_clinicas:
+        logger.info("Nenhuma clinica encontrada")
+        return 0
+
+    # Batch insert com upsert (on_conflict no telefone)
+    try:
+        supabase.table("clinicas").upsert(
+            todas_clinicas,
+            on_conflict="telefone",
+        ).execute()
+        logger.info("Batch insert: %d clinicas processadas", len(todas_clinicas))
+    except Exception as e:
+        logger.error("Erro no batch insert: %s", e)
+        return 0
+
+    return len(todas_clinicas)
 
 
 if __name__ == "__main__":
+    logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
     rodar()
