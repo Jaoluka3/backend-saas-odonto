@@ -3,5 +3,6 @@ pydantic==2.13.3
 pyTelegramBotAPI==4.33.0
 python-dotenv==1.2.2
 requests==2.33.1
+schedule==1.2.2
 supabase==2.29.0
 uvicorn==0.46.0

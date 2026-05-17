@@ -2,17 +2,22 @@ import os
 import time
 import logging
 import requests
-from supabase import create_client, Client
 from dotenv import load_dotenv
+from supabase_client import supabase
 
 load_dotenv()
+
+SERPAPI_KEY = os.environ.get("SERPAPI_KEY")
 logger = logging.getLogger(__name__)
 
-SUPABASE_URL = os.environ.get("SUPABASE_URL")
-SUPABASE_KEY = os.environ.get("SUPABASE_KEY")
-SERPAPI_KEY = os.environ.get("SERPAPI_KEY")
+# Mapping explicito de cidades para evitar "Janeiro" em vez de "Rio de Janeiro"
+CIDADES_CONHECIDAS = [
+    "Sao Paulo", "Rio de Janeiro", "Belo Horizonte",
+    "Curitiba", "Brasilia", "Salvador", "Fortaleza",
+    "Manaus", "Recife", "Porto Alegre", "Campinas",
+    "Santos", "Niteroi", "Goiania", "Guarulhos",
+]
 
-# Buscas mais especificas para maximizar resultados (cidade + bairros)
 BUSCAS = [
     "clinica odontologica Sao Paulo",
     "clinica odontologica Rio de Janeiro",
@@ -24,33 +29,54 @@ BUSCAS = [
     "odontologia Belo Horizonte",
 ]
 
-supabase: Client | None = None
-if SUPABASE_URL and SUPABASE_KEY:
-    supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
+
+def extrair_cidade(busca: str) -> str:
+    """Extrai o nome correto da cidade a partir da string de busca."""
+    for cidade in CIDADES_CONHECIDAS:
+        if cidade.lower() in busca.lower():
+            return cidade
+    # fallback: ultimo termo (evita substrings parciais)
+    return busca.split()[-1]
 
 
 def _buscar_com_retry(busca: str, tentativas: int = 3) -> list:
-    """Busca na SerpApi com retry exponencial em caso de falha."""
+    """Busca na SerpApi com retry exponencial e paginacao."""
+    resultados = []
     for tentativa in range(1, tentativas + 1):
         try:
-            params = {
-                "engine": "google_maps",
-                "q": busca,
-                "api_key": SERPAPI_KEY,
-            }
-            resp = requests.get("https://serpapi.com/search", params=params, timeout=30)
-            resp.raise_for_status()
-            data = resp.json()
-            return data.get("local_results", [])
+            start = 0
+            while True:
+                params = {
+                    "engine": "google_maps",
+                    "q": busca,
+                    "api_key": SERPAPI_KEY,
+                    "start": start,
+                }
+                resp = requests.get(
+                    "https://serpapi.com/search",
+                    params=params,
+                    timeout=30,
+                )
+                resp.raise_for_status()
+                data = resp.json()
+                pagina = data.get("local_results", [])
+                resultados.extend(pagina)
+
+                # Parar se nao houver mais paginas
+                if len(pagina) < 20:
+                    break
+                start += 20
         except Exception as e:
-            logger.warning("Tentativa %d falhou para '%s': %s", tentativa, busca, e)
+            logger.warning(
+                "Tentativa %d falhou para '%s': %s", tentativa, busca, e
+            )
             if tentativa < tentativas:
-                time.sleep(2 ** tentativa)  # backoff exponencial
-    return []
+                time.sleep(2**tentativa)
+    return resultados
 
 
 def rodar() -> int:
-    """Busca clinicas e faz batch insert com upsert para evitar duplicatas."""
+    """Busca clinicas e faz batch upsert para evitar duplicatas."""
     if not supabase:
         logger.error("Supabase nao configurado")
         return 0
@@ -64,6 +90,7 @@ def rodar() -> int:
         resultados = _buscar_com_retry(busca)
         logger.info("Encontrados %d resultados para '%s'", len(resultados), busca)
 
+        cidade = extrair_cidade(busca)
         for r in resultados:
             telefone = (r.get("phone") or "").strip()
             nome = (r.get("title") or "").strip()
@@ -77,7 +104,7 @@ def rodar() -> int:
                 "website": (r.get("website") or "").strip(),
                 "avaliacao_google": r.get("rating"),
                 "num_avaliacoes": r.get("reviews"),
-                "cidade": busca.split()[-1],  # ultima palavra da busca
+                "cidade": cidade,
                 "status": "novo",
             })
 
@@ -85,11 +112,9 @@ def rodar() -> int:
         logger.info("Nenhuma clinica encontrada")
         return 0
 
-    # Batch insert com upsert (on_conflict no telefone)
     try:
         supabase.table("clinicas").upsert(
-            todas_clinicas,
-            on_conflict="telefone",
+            todas_clinicas, on_conflict="telefone"
         ).execute()
         logger.info("Batch insert: %d clinicas processadas", len(todas_clinicas))
     except Exception as e:
@@ -100,5 +125,7 @@ def rodar() -> int:
 
 
 if __name__ == "__main__":
-    logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+    logging.basicConfig(
+        level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s"
+    )
     rodar()
