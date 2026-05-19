@@ -1,8 +1,5 @@
 import logging
-from dotenv import load_dotenv
 from supabase_client import supabase
-
-load_dotenv()
 logger = logging.getLogger(__name__)
 
 

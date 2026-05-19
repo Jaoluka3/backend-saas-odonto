@@ -2,10 +2,7 @@ import os
 import time
 import logging
 import requests
-from dotenv import load_dotenv
 from supabase_client import supabase
-
-load_dotenv()
 
 SERPAPI_KEY = os.environ.get("SERPAPI_KEY")
 if not SERPAPI_KEY:

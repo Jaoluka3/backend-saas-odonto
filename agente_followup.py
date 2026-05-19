@@ -3,10 +3,8 @@ import logging
 from datetime import datetime, timezone
 import os
 import requests
-from dotenv import load_dotenv
 from supabase_client import supabase
 
-load_dotenv()
 logger = logging.getLogger(__name__)
 
 NVIDIA_KEY = os.environ.get("NVIDIA_KEY")
