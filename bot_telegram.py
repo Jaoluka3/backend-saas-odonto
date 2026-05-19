@@ -21,7 +21,7 @@ logger = logging.getLogger(__name__)
 def _load_env(path=".env"):
     if not os.path.exists(path):
         return
-    with open(path, "r") as f:
+    with open(path, "r", encoding="utf-8") as f:
         for line in f:
             line = line.strip()
             if not line or line.startswith("#"):
@@ -29,7 +29,7 @@ def _load_env(path=".env"):
             if "=" in line:
                 key, value = line.split("=", 1)
                 key = key.strip()
-                value = value.strip()
+                value = value.strip().strip("\"'")
                 if key and key not in os.environ:
                     os.environ[key] = value
 
@@ -42,9 +42,6 @@ _load_env()
 # ─────────────────────────────────────────────
 TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "")
 NVIDIA_KEY = os.environ.get("NVIDIA_KEY", "")
-API_URL = os.environ.get(
-    "API_URL", "https://backend-saas-odonto.onrender.com"
-)
 
 if not TOKEN:
     raise SystemExit(
@@ -202,7 +199,6 @@ def handle_text(message):
         salvar_lead(first_name, str(chat_id), "agendado")
     else:
         bot.reply_to(message, ai_response)
-        salvar_lead(first_name, str(chat_id), "novo")
 
 
 # ─────────────────────────────────────────────

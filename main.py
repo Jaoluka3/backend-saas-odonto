@@ -69,12 +69,12 @@ def health_check():
 
 @app.post("/lead")
 def create_lead(lead: LeadPayload):
-    """Cria um lead na tabela clinicas a partir de JSON body."""
+    """Cria um lead na tabela leads a partir de JSON body."""
     if not supabase:
         return {"success": False, "error": "Banco de dados nao configurado"}
     try:
         data = (
-            supabase.table("clinicas")
+            supabase.table("leads")
             .insert(lead.model_dump())
             .execute()
         )
