@@ -12,6 +12,15 @@ logger = logging.getLogger(__name__)
 NVIDIA_KEY = os.environ.get("NVIDIA_KEY")
 
 
+def _to_utc(dt_str: str) -> datetime:
+    """Normaliza string ISO para datetime com timezone UTC."""
+    dt_str = dt_str.replace("Z", "+00:00")
+    dt = datetime.fromisoformat(dt_str)
+    if dt.tzinfo is None:
+        dt = dt.replace(tzinfo=timezone.utc)
+    return dt
+
+
 def gerar_followup(nome: str, tentativa: int) -> str:
     """Gera mensagem de follow-up via NVIDIA API com fallback."""
     if tentativa == 1:
@@ -95,7 +104,7 @@ def rodar() -> dict:
                 )
                 continue
 
-            data_contato = datetime.fromisoformat(data_contato_str)
+            data_contato = _to_utc(data_contato_str)
             dias = (hoje - data_contato).days
             nf = c.get("numero_followups", 0) or 0
 
