@@ -1,5 +1,27 @@
-import logging
 import os
+import sys
+
+REQUIRED_ENV_VARS = {
+    "TELEGRAM_BOT_TOKEN": "Token do Bot Telegram",
+    "SUPABASE_URL": "URL do Supabase",
+    "SUPABASE_KEY": "Chave da API Supabase",
+    "SERPAPI_KEY": "Chave da API SerpAPI",
+    "NVIDIA_API_KEY": "Chave da API NVIDIA LLM",
+}
+
+missing = [k for k in REQUIRED_ENV_VARS if not os.environ.get(k)]
+if missing:
+    print("\n🚨 ERRO CRÍTICO: VARIÁVEIS DE AMBIENTE FALTANDO")
+    print("=" * 50)
+    for var in missing:
+        print(f"  ❌ {var} - {REQUIRED_ENV_VARS[var]}")
+    print("=" * 50)
+    print("Defina as variáveis acima antes de iniciar o sistema.\n")
+    sys.exit(1)
+
+print("✅ Todas as variáveis de ambiente validadas com sucesso\n")
+
+import logging
 from contextlib import asynccontextmanager
 from fastapi import FastAPI, Query
 from fastapi.staticfiles import StaticFiles

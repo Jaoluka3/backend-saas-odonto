@@ -8,6 +8,9 @@ from supabase_client import supabase
 load_dotenv()
 
 SERPAPI_KEY = os.environ.get("SERPAPI_KEY")
+if not SERPAPI_KEY:
+    raise SystemExit("Erro: SERPAPI_KEY nao definida nas variaveis de ambiente. O agente buscador nao pode funcionar sem ela.")
+
 logger = logging.getLogger(__name__)
 
 # Mapping explicito de cidades para evitar "Janeiro" em vez de "Rio de Janeiro"

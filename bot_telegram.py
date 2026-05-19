@@ -17,12 +17,25 @@ try:
 except ImportError:
     pass
 
+# ================================================
+# MOTOR DE IA: NVIDIA LLaMA 3.1
+# ================================================
+# Decisão: 19/05/2026 (migrado de Gemini 2.0 Flash)
+# Motivo: [DOCUMENTAR - custo menor? latência? rate limits?]
+# Latência: ~2s por request
+# Rate limit: 1000 req/dia (plano atual)
+# Fallback: Resposta genérica se API cair
+# Documentação: DECISIONS.md
+# ================================================
+
 # --- CHAVES CONFIGURADAS VIA VARIÁVEIS DE AMBIENTE (SEM HARDCODE) ---
 TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "")
 NVIDIA_API_KEY = os.environ.get("NVIDIA_API_KEY", "")
 
 if not TOKEN:
     raise SystemExit("Erro: TELEGRAM_BOT_TOKEN nao definido nas variaveis de ambiente.")
+if not NVIDIA_API_KEY:
+    raise SystemExit("Erro: NVIDIA_API_KEY nao definida nas variaveis de ambiente.")
 
 bot = telebot.TeleBot(TOKEN)
 
@@ -62,9 +75,18 @@ def gerar_resposta_ia(user_text, first_name):
 
 
 def _extrair_telefone(message):
-    if message.contact and message.contact.phone_number:
-        return message.contact.phone_number
-    return str(message.chat.id)
+    """Retorna telefone validado ou None (força compartilhamento)."""
+    if not message.contact or not message.contact.phone_number:
+        logger.warning("Usuário %s: contato não compartilhado", message.chat.id)
+        return None
+
+    telefone = message.contact.phone_number
+    if not isinstance(telefone, str) or len(telefone) < 8:
+        logger.warning("Telefone inválido recebido: %s", telefone)
+        return None
+
+    logger.info("Telefone válido extraído: %s", telefone)
+    return telefone
 
 
 def _enviar_lead(nome: str, telefone: str, status: str):
@@ -89,6 +111,21 @@ def handle_text(message):
     chat_id = message.chat.id
     first_name = (message.from_user.first_name or "Nome do Paciente").strip()
     user_text = message.text or ""
+
+    telefone = _extrair_telefone(message)
+
+    if not telefone and ("[AGENDAR]" in user_text.upper() or "agendar" in user_text.lower()):
+        bot.send_message(
+            chat_id,
+            "📱 Para agendar, preciso do seu contato!\n"
+            "Por favor, compartilhe seu telefone usando o botão de contato abaixo.",
+            reply_markup=telebot.types.ReplyKeyboardMarkup(
+                one_time_keyboard=True, resize_keyboard=True
+            ).add(telebot.types.KeyboardButton(
+                "📞 Compartilhar Contato", request_contact=True
+            ))
+        )
+        return
 
     ai_response = gerar_resposta_ia(user_text, first_name)
 

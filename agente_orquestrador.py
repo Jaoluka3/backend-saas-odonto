@@ -63,10 +63,16 @@ def rodar_pipeline(run_id: str | None = None) -> dict:
 
 
 def rodar_pipeline_async() -> dict:
-    """Dispara a pipeline em thread separada e retorna imediatamente.
-    Usa Lock para impedir execucoes concorrentes."""
-    if not _pipeline_lock.acquire(blocking=False):
-        logger.warning("Pipeline ja esta em execucao, requisicao ignorada")
+    """Dispara a pipeline em thread separada com timeout de 5s no lock.
+    Evita deadlock permanente em caso de crash na thread."""
+    try:
+        acquired = _pipeline_lock.acquire(timeout=5.0)
+    except Exception as e:
+        logger.error("Erro ao adquirir lock: %s", e)
+        return {"status": "erro", "mensagem": "Erro interno ao adquirir lock."}
+
+    if not acquired:
+        logger.warning("Pipeline ja esta em execucao (timeout 5s)")
         return {
             "status": "ocupado",
             "mensagem": "Pipeline ja esta em execucao. Aguarde e tente novamente.",
@@ -76,13 +82,25 @@ def rodar_pipeline_async() -> dict:
 
     def _executar_com_lock():
         try:
+            logger.info(">>> Pipeline [%s] iniciada com lock", run_id)
             rodar_pipeline(run_id)
+            logger.info("<<< Pipeline [%s] finalizada com sucesso", run_id)
+        except Exception as e:
+            logger.error("❌ Pipeline [%s] falhou: %s", run_id, e)
         finally:
-            _pipeline_lock.release()
+            try:
+                _pipeline_lock.release()
+                logger.info("🔓 Lock liberado apos pipeline [%s]", run_id)
+            except Exception as e:
+                logger.error("❌ Erro ao liberar lock: %s", e)
 
-    t = threading.Thread(target=_executar_com_lock, daemon=True)
+    t = threading.Thread(
+        target=_executar_com_lock,
+        daemon=True,
+        name=f"Pipeline-{run_id}"
+    )
     t.start()
-    logger.info("Pipeline [%s] disparada em background", run_id)
+    logger.info("Pipeline [%s] disparada em background com lock timeout=5.0s", run_id)
     return {
         "run_id": run_id,
         "status": "iniciado",
