@@ -113,23 +113,20 @@ def gerar_resposta_ia(user_text: str, first_name: str) -> str:
 # ─────────────────────────────────────────────
 # SALVAR LEAD NO SUPABASE
 # ─────────────────────────────────────────────
-def salvar_lead(nome: str, telefone, status: str) -> None:
+def salvar_lead(nome, telefone, status):
     for tentativa in range(3):
         try:
-            supabase.table("leads").upsert(
-                {
-                    "nome": nome,
-                    "telefone": str(telefone),
-                    "telegram_id": str(telefone),
-                    "status": status,
-                },
-                on_conflict="telefone",
-            ).execute()
+            supabase.table("leads").upsert({
+                "nome": nome,
+                "telefone": str(telefone),
+                "status": status,
+            }, on_conflict="telefone").execute()
             logger.info(f"Lead salvo: {nome} - {status}")
             return
         except Exception as e:
             logger.error(
-                f"Erro ao salvar lead (tentativa {tentativa + 1}/3): {e}"
+                f"Erro ao salvar lead "
+                f"(tentativa {tentativa+1}/3): {e}"
             )
             if tentativa < 2:
                 time.sleep(2)
