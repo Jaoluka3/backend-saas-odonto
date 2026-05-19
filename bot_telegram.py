@@ -114,14 +114,51 @@ def gerar_resposta_ia(user_text: str, first_name: str) -> str:
 # SALVAR LEAD NO SUPABASE
 # ─────────────────────────────────────────────
 def salvar_lead(nome: str, telefone, status: str) -> None:
-    try:
-        supabase.table("leads").upsert(
-            {"nome": nome, "telefone": str(telefone), "status": status},
-            on_conflict="telefone",
-        ).execute()
-        logger.info(f"Lead salvo: {nome} - {status}")
-    except Exception as e:
-        logger.error(f"Erro ao salvar lead: {e}")
+    for tentativa in range(3):
+        try:
+            supabase.table("leads").upsert(
+                {
+                    "nome": nome,
+                    "telefone": str(telefone),
+                    "telegram_id": str(telefone),
+                    "status": status,
+                },
+                on_conflict="telefone",
+            ).execute()
+            logger.info(f"Lead salvo: {nome} - {status}")
+            return
+        except Exception as e:
+            logger.error(
+                f"Erro ao salvar lead (tentativa {tentativa + 1}/3): {e}"
+            )
+            if tentativa < 2:
+                time.sleep(2)
+    logger.error(f"Falha total ao salvar lead: {nome}")
+
+
+# ─────────────────────────────────────────────
+# HANDLER DE CONTATO (COMPARTILHAR TELEFONE)
+# ─────────────────────────────────────────────
+@bot.message_handler(content_types=["contact"])
+def handle_contact(message):
+    chat_id = message.chat.id
+    first_name = (
+        message.from_user.first_name or "Paciente"
+    ).strip()
+
+    if message.contact and message.contact.phone_number:
+        telefone_real = message.contact.phone_number
+        salvar_lead(first_name, telefone_real, "agendado")
+        bot.reply_to(
+            message,
+            f"Obrigada {first_name}! "
+            f"Seu contato foi registrado. "
+            f"Entraremos em breve para confirmar!"
+        )
+        logger.info(
+            f"Contato real recebido: {first_name} "
+            f"- {telefone_real}"
+        )
 
 
 # ─────────────────────────────────────────────
@@ -141,10 +178,10 @@ def handle_text(message):
         ai_response = ai_response.replace("[AGENDAR]", "").strip()
         mensagem_final = ai_response + "\n\nÓtimo! Vou registrar seu agendamento!"
         bot.reply_to(message, mensagem_final)
-        salvar_lead(first_name, chat_id, "agendado")
+        salvar_lead(first_name, str(chat_id), "agendado")
     else:
         bot.reply_to(message, ai_response)
-        salvar_lead(first_name, chat_id, "novo")
+        salvar_lead(first_name, str(chat_id), "novo")
 
 
 # ─────────────────────────────────────────────
