@@ -52,6 +52,13 @@ if not TOKEN:
         "Defina-a no arquivo .env ou nas variáveis de ambiente."
     )
 
+if not NVIDIA_KEY:
+    logger.warning(
+        "ATENÇÃO: NVIDIA_KEY não configurada! "
+        "Bot responderá apenas com mensagem padrão. "
+        "Configure NVIDIA_KEY no Render."
+    )
+
 
 # ─────────────────────────────────────────────
 # INICIALIZAR BOT
@@ -113,6 +120,10 @@ def gerar_resposta_ia(user_text: str, first_name: str) -> str:
 # ─────────────────────────────────────────────
 # SALVAR LEAD NO SUPABASE
 # ─────────────────────────────────────────────
+# TABELA leads: pacientes do bot Telegram
+# TABELA clinicas: clínicas prospectadas pelos agentes (buscador, contato, followup, qualificador)
+# NÃO misturar — propósitos diferentes.
+# ─────────────────────────────────────────────
 def salvar_lead(nome, telefone, status):
     for tentativa in range(3):
         try:
@@ -145,16 +156,29 @@ def handle_contact(message):
 
     if message.contact and message.contact.phone_number:
         telefone_real = message.contact.phone_number
-        salvar_lead(first_name, telefone_real, "agendado")
+        try:
+            supabase.table("leads").upsert({
+                "nome": first_name,
+                "telefone": telefone_real,
+                "status": "agendado"
+            }, on_conflict="telefone").execute()
+
+            supabase.table("leads").delete().eq(
+                "telefone", str(chat_id)
+            ).execute()
+
+            logger.info(
+                f"Contato real recebido: "
+                f"{first_name} - {telefone_real}"
+            )
+        except Exception as e:
+            logger.error(f"Erro ao salvar contato: {e}")
+
         bot.reply_to(
             message,
             f"Obrigada {first_name}! "
-            f"Seu contato foi registrado. "
-            f"Entraremos em breve para confirmar!"
-        )
-        logger.info(
-            f"Contato real recebido: {first_name} "
-            f"- {telefone_real}"
+            f"Seu contato foi registrado com sucesso! "
+            f"Em breve entraremos em contato."
         )
 
 

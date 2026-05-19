@@ -6,7 +6,7 @@ REQUIRED_ENV_VARS = {
     "SUPABASE_URL": "URL do Supabase",
     "SUPABASE_KEY": "Chave da API Supabase",
     "SERPAPI_KEY": "Chave da API SerpAPI",
-    "NVIDIA_API_KEY": "Chave da API NVIDIA LLM",
+    "NVIDIA_KEY": "Chave da API NVIDIA LLM",
 }
 
 missing = [k for k in REQUIRED_ENV_VARS if not os.environ.get(k)]
@@ -31,9 +31,7 @@ from agente_orquestrador import (
     rodar_pipeline_async,
     iniciar_agendador,
     parar_agendador,
-    ultima_execucao,
-    proxima_execucao,
-    ultimo_resultado,
+    status as pipeline_status,
 )
 
 logging.basicConfig(
@@ -148,15 +146,8 @@ def rodar_agentes():
 
 @app.get("/agentes/status")
 def status_agentes():
-    """Status da ultima/proxima execucao dos agentes."""
-    return {
-        "success": True,
-        "data": {
-            "ultima_execucao": ultima_execucao,
-            "proxima_execucao": proxima_execucao,
-            "ultimo_resultado": ultimo_resultado,
-        },
-    }
+    """Status da pipeline com lock atual, ultima execucao e agendamento."""
+    return {"success": True, "data": pipeline_status()}
 
 
 if __name__ == "__main__":
