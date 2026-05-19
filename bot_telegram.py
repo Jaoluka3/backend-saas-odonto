@@ -151,5 +151,24 @@ def handle_contact(message):
     logger.info("Contato recebido de %s: %s", first_name, telefone)
 
 if __name__ == "__main__":
+    import sys
+    import time as time_module
+
+    print("Bot iniciando apenas no Render...")
+    print("Se estiver rodando localmente, use Ctrl+C para parar.")
     logger.info("Iniciando Robo do Telegram (Polling mode)...")
-    bot.polling(none_stop=True)
+
+    while True:
+        try:
+            logger.info("Iniciando polling...")
+            bot.polling(none_stop=True, timeout=30)
+        except Exception as e:
+            erro = str(e)
+            if "409" in erro:
+                logger.warning("Conflito 409 detectado. Aguardando 30s...")
+                time_module.sleep(30)
+                continue
+            else:
+                logger.error(f"Erro inesperado: {e}")
+                time_module.sleep(10)
+                continue
