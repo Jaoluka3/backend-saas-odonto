@@ -13,122 +13,140 @@ if not SERPAPI_KEY:
 
 logger = logging.getLogger(__name__)
 
-# Mapping explicito de cidades para evitar "Janeiro" em vez de "Rio de Janeiro"
-CIDADES_CONHECIDAS = [
-    "Sao Paulo", "Rio de Janeiro", "Belo Horizonte",
-    "Curitiba", "Brasilia", "Salvador", "Fortaleza",
-    "Manaus", "Recife", "Porto Alegre", "Campinas",
-    "Santos", "Niteroi", "Goiania", "Guarulhos",
-]
-
-BUSCAS = [
-    "clinica odontologica Sao Paulo",
-    "clinica odontologica Rio de Janeiro",
-    "clinica odontologica Belo Horizonte",
-    "clinica odontologica Curitiba",
-    "clinica odontologica Brasilia",
-    "dentista Sao Paulo",
-    "dentista Rio de Janeiro",
-    "odontologia Belo Horizonte",
-]
+# --- Parametros hiperlocal fixos (Betim/MG, CEP 32673-306) ---
+QUERY_FIXA = "clinica odontologica Betim MG CEP 32673306"
+LL_PARAM = "@-19.9703184,-44.2064950,14z"
+HL_PARAM = "pt-BR"
+GL_PARAM = "br"
+MAX_LEADS = 10
 
 
-def extrair_cidade(busca: str) -> str:
-    """Extrai o nome correto da cidade a partir da string de busca."""
-    for cidade in CIDADES_CONHECIDAS:
-        if cidade.lower() in busca.lower():
-            return cidade
-    # fallback: ultimo termo (evita substrings parciais)
-    return busca.split()[-1]
+def _buscar_hiperlocal() -> list:
+    """Faz uma unica requisicao a SerpAPI Google Maps com escopo hiperlocal.
 
+    Regras:
+      - Nenhuma iteracao sobre cidades.
+      - Nenhuma paginacao recursiva (apenas start=0).
+      - time.sleep(10) antes da requisicao para respeitar free tier.
+      - Se HTTP 429, loga e retorna lista vazia sem derrubar a aplicacao.
+      - Retorna no maximo MAX_LEADS (10) resultados.
+    """
+    time.sleep(10)  # Rate limiter: respeita free tier (~100 req/mes)
 
-def _buscar_com_retry(busca: str, tentativas: int = 3) -> list:
-    """Busca na SerpApi com retry exponencial e paginacao."""
-    resultados: list = []  # fallback se todas as tentativas falharem
-    for tentativa in range(1, tentativas + 1):
-        try:
-            resultados = []
-            start = 0
-            while True:
-                params = {
-                    "engine": "google_maps",
-                    "q": busca,
-                    "api_key": SERPAPI_KEY,
-                    "start": start,
-                }
-                resp = requests.get(
-                    "https://serpapi.com/search",
-                    params=params,
-                    timeout=30,
-                )
-                resp.raise_for_status()
-                data = resp.json()
-                pagina = data.get("local_results", [])
-                resultados.extend(pagina)
+    params = {
+        "engine": "google_maps",
+        "type": "search",
+        "q": QUERY_FIXA,
+        "ll": LL_PARAM,
+        "hl": HL_PARAM,
+        "gl": GL_PARAM,
+        "start": 0,
+        "api_key": SERPAPI_KEY,
+    }
 
-                # Parar se nao houver mais paginas
-                if len(pagina) < 20:
-                    break
-                start += 20
-        except Exception as e:
-            logger.warning(
-                "Tentativa %d falhou para '%s': %s", tentativa, busca, e
+    try:
+        resp = requests.get(
+            "https://serpapi.com/search",
+            params=params,
+            timeout=30,
+        )
+
+        if resp.status_code == 429:
+            logger.error(
+                "ERRO 429: Limite da SerpAPI excedido. "
+                "Retornando lista vazia."
             )
-            if tentativa < tentativas:
-                time.sleep(2**tentativa)
+            return []
+
+        resp.raise_for_status()
+        dados = resp.json()
+
+    except requests.exceptions.HTTPError as e:
+        status = e.response.status_code if e.response is not None else "?"
+        logger.error(
+            "ERRO HTTP %s na requisicao SerpAPI: %s. "
+            "Retornando lista vazia.",
+            status, e,
+        )
+        return []
+    except requests.exceptions.ConnectionError as e:
+        logger.error(
+            "ERRO de conexao SerpAPI: %s. Retornando lista vazia.", e
+        )
+        return []
+    except requests.exceptions.Timeout as e:
+        logger.error(
+            "TIMEOUT na requisicao SerpAPI: %s. Retornando lista vazia.", e
+        )
+        return []
+    except Exception as e:
+        logger.error(
+            "ERRO inesperado na requisicao SerpAPI: %s. Retornando lista vazia.", e
+        )
+        return []
+
+    resultados = dados.get("local_results", [])[:MAX_LEADS]
+    logger.info(
+        "SerpAPI retornou %d resultados (limitado a %d)",
+        len(resultados), MAX_LEADS,
+    )
     return resultados
 
 
 def rodar() -> int:
-    """Busca clinicas e faz batch upsert para evitar duplicatas."""
+    """Busca clinicas odontologicas em Betim/MG e faz batch upsert no Supabase."""
     if not supabase:
         logger.error("Supabase nao configurado")
         return 0
-    if not SERPAPI_KEY:
-        logger.error("SERPAPI_KEY nao configurada")
+    logger.info("Buscando clinicas em Betim/MG (CEP 32673-306)...")
+    resultados = _buscar_hiperlocal()
+    logger.info("Encontrados %d resultados", len(resultados))
+
+    leads = []
+    for r in resultados:
+        telefone = (r.get("phone") or "").strip()
+        nome = (r.get("title") or "").strip()
+        if not telefone or not nome:
+            continue
+
+        leads.append({
+            "nome": nome,
+            "telefone": telefone,
+            "endereco": (r.get("address") or "").strip(),
+            "website": (r.get("website") or "").strip(),
+            "avaliacao_google": r.get("rating"),
+            "num_avaliacoes": r.get("reviews"),
+            "cidade": "Betim",
+            "status": "novo",
+        })
+
+    if not leads:
+        logger.info("Nenhum lead valido encontrado")
         return 0
 
-    todas_clinicas = []
-    for busca in BUSCAS:
-        logger.info("Buscando: %s", busca)
-        resultados = _buscar_com_retry(busca)
-        logger.info("Encontrados %d resultados para '%s'", len(resultados), busca)
+    # Batch upsert: unica chamada ao Supabase em vez de row-by-row
+    try:
+        resp = supabase.table("clinicas").upsert(
+            leads, on_conflict="telefone"
+        ).execute()
+        inseridas = len(leads)
+        logger.info("Batch upsert concluido: %d clinicas inseridas/atualizadas", inseridas)
+    except Exception as e:
+        logger.error("Erro no batch upsert: %s. Tentando fallback row-by-row...", e)
+        inseridas = 0
+        for lead in leads:
+            try:
+                supabase.table("clinicas").upsert(
+                    lead, on_conflict="telefone"
+                ).execute()
+                inseridas += 1
+            except Exception as e2:
+                logger.error(
+                    "Erro ao inserir %s (%s): %s",
+                    lead["nome"], lead["telefone"], e2,
+                )
+        logger.info("Fallback concluido: inseridas %d/%d", inseridas, len(leads))
 
-        cidade = extrair_cidade(busca)
-        for r in resultados:
-            telefone = (r.get("phone") or "").strip()
-            nome = (r.get("title") or "").strip()
-            if not telefone or not nome:
-                continue
-
-            todas_clinicas.append({
-                "nome": nome,
-                "telefone": telefone,
-                "endereco": (r.get("address") or "").strip(),
-                "website": (r.get("website") or "").strip(),
-                "avaliacao_google": r.get("rating"),
-                "num_avaliacoes": r.get("reviews"),
-                "cidade": cidade,
-                "status": "novo",
-            })
-
-    if not todas_clinicas:
-        logger.info("Nenhuma clinica encontrada")
-        return 0
-
-    inseridas = 0
-    for c in todas_clinicas:
-        try:
-            supabase.table("clinicas").upsert(
-                c, on_conflict="telefone"
-            ).execute()
-            inseridas += 1
-        except Exception as e:
-            logger.error(
-                "Erro ao inserir %s (%s): %s",
-                c["nome"], c["telefone"], e,
-            )
-    logger.info("Inseridas %d/%d clinicas", inseridas, len(todas_clinicas))
     return inseridas
 
 

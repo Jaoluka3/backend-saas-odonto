@@ -106,7 +106,7 @@ def rodar() -> dict:
 
             data_contato = _to_utc(data_contato_str)
             dias = (hoje - data_contato).days
-            nf = c.get("numero_followups", 0) or 0
+            nf = c.get("numero_followups") or 0
 
             if dias >= 14 and nf >= 2:
                 supabase.table("clinicas").update({

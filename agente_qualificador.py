@@ -11,11 +11,11 @@ def _calcular_score(c: dict) -> int:
     score = 0
     if c.get("website"):
         score += 25
-    if c.get("avaliacao_google") is not None and c["avaliacao_google"] >= 4.0:
+    if c.get("avaliacao_google") is not None and float(c["avaliacao_google"]) >= 4.0:
         score += 25
     if c.get("telefone"):
         score += 25
-    if c.get("num_avaliacoes") is not None and c["num_avaliacoes"] >= 30:
+    if c.get("num_avaliacoes") is not None and int(c["num_avaliacoes"]) >= 30:
         score += 25
     return score
 

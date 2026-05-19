@@ -1,3 +1,4 @@
+import os
 import time
 import logging
 from datetime import datetime, timezone
@@ -8,7 +9,6 @@ from supabase_client import supabase
 load_dotenv()
 logger = logging.getLogger(__name__)
 
-import os
 NVIDIA_KEY = os.environ.get("NVIDIA_KEY")
 
 SYSTEM_PROMPT = (
