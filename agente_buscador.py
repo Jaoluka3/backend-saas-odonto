@@ -126,7 +126,7 @@ def rodar() -> int:
 
     # Batch upsert: unica chamada ao Supabase em vez de row-by-row
     try:
-        resp = supabase.table("clinicas").upsert(
+        supabase.table("clinicas").upsert(
             leads, on_conflict="telefone"
         ).execute()
         inseridas = len(leads)

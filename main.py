@@ -23,7 +23,9 @@ print("✅ Todas as variáveis de ambiente validadas com sucesso\n")
 
 import logging
 from contextlib import asynccontextmanager
-from fastapi import FastAPI, Query
+from typing import Optional
+from fastapi import FastAPI, Query, HTTPException, Security, Depends
+from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 from supabase_client import supabase
@@ -39,6 +41,23 @@ logging.basicConfig(
     format="%(asctime)s [%(levelname)s] %(message)s",
 )
 logger = logging.getLogger(__name__)
+
+API_TOKEN = os.environ.get("API_TOKEN", "")
+security_scheme = HTTPBearer(auto_error=False)
+
+
+def _validar_token(
+    credentials: Optional[HTTPAuthorizationCredentials] = Security(security_scheme),
+) -> None:
+    """Valida token de acesso se API_TOKEN estiver configurado.
+    Se API_TOKEN nao definido, permite acesso irrestrito (dev mode).
+    """
+    if not API_TOKEN:
+        return
+    if credentials is None:
+        raise HTTPException(status_code=401, detail="Token de acesso necessario")
+    if credentials.credentials != API_TOKEN:
+        raise HTTPException(status_code=403, detail="Token de acesso invalido")
 
 
 class LeadPayload(BaseModel):
@@ -67,7 +86,7 @@ def health_check():
     return {"status": "Cerebro IA Online e Conectado"}
 
 
-@app.post("/lead")
+@app.post("/lead", dependencies=[Depends(_validar_token)])
 def create_lead(lead: LeadPayload):
     """Cria um lead na tabela leads a partir de JSON body."""
     if not supabase:
@@ -132,8 +151,8 @@ def funil_status():
         return {"success": False, "error": str(e)}
 
 
-@app.get("/agentes/rodar")
-@app.post("/agentes/rodar")
+@app.get("/agentes/rodar", dependencies=[Depends(_validar_token)])
+@app.post("/agentes/rodar", dependencies=[Depends(_validar_token)])
 def rodar_agentes():
     """Dispara a pipeline em background e retorna imediatamente.
     Aceita GET (navegador) e POST (curl/programatico)."""
@@ -144,7 +163,7 @@ def rodar_agentes():
         return {"success": False, "error": str(e)}
 
 
-@app.get("/agentes/status")
+@app.get("/agentes/status", dependencies=[Depends(_validar_token)])
 def status_agentes():
     """Status da pipeline com lock atual, ultima execucao e agendamento."""
     return {"success": True, "data": status()}
