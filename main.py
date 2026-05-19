@@ -31,7 +31,7 @@ from agente_orquestrador import (
     rodar_pipeline_async,
     iniciar_agendador,
     parar_agendador,
-    status as pipeline_status,
+    status,
 )
 
 logging.basicConfig(
@@ -147,7 +147,7 @@ def rodar_agentes():
 @app.get("/agentes/status")
 def status_agentes():
     """Status da pipeline com lock atual, ultima execucao e agendamento."""
-    return {"success": True, "data": pipeline_status()}
+    return {"success": True, "data": status()}
 
 
 if __name__ == "__main__":

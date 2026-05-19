@@ -3,6 +3,7 @@ import uuid
 import logging
 import threading
 from datetime import datetime
+from typing import Optional
 import schedule
 
 import agente_buscador
@@ -15,13 +16,17 @@ logger = logging.getLogger(__name__)
 ultima_execucao = None
 proxima_execucao = "09:00 (diario)"
 ultimo_resultado = {}
-_scheduler_thread: threading.Thread | None = None
+_scheduler_thread: Optional[threading.Thread] = None
 _scheduler_stop = threading.Event()
 _pipeline_lock = threading.Lock()
 
 
-def rodar_pipeline(run_id: str | None = None) -> dict:
-    """Executa a pipeline completa de aquisicao de clientes."""
+_TIMEOUT_PIPELINE = 900  # 15 minutos
+
+
+def rodar_pipeline(run_id: Optional[str] = None) -> dict:
+    """Executa a pipeline completa de aquisicao de clientes.
+    Timeout global de 15 minutos para evitar lock preso."""
     global ultima_execucao, ultimo_resultado
     if run_id is None:
         run_id = str(uuid.uuid4())[:8]
@@ -29,14 +34,29 @@ def rodar_pipeline(run_id: str | None = None) -> dict:
     logger.info("=== PIPELINE [%s] INICIADA %s ===", run_id, inicio.isoformat())
 
     try:
+        def _verificar_timeout():
+            if int((datetime.now() - inicio).total_seconds()) > _TIMEOUT_PIPELINE:
+                raise TimeoutError(
+                    f"Pipeline [{run_id}] excedeu {_TIMEOUT_PIPELINE}s"
+                )
+
+        _verificar_timeout()
         r_busca = agente_buscador.rodar()
+
+        _verificar_timeout()
         r_qualif = agente_qualificador.rodar()
+
+        _verificar_timeout()
         r_contato = agente_contato.rodar()
+
+        _verificar_timeout()
         r_follow = agente_followup.rodar()
 
+        duracao = int((datetime.now() - inicio).total_seconds())
         resultado = {
             "run_id": run_id,
             "timestamp": inicio.isoformat(),
+            "duracao_segundos": duracao,
             "buscador": {"inseridas": r_busca},
             "qualificador": r_qualif,
             "contato": {"contactadas": r_contato},
@@ -50,15 +70,17 @@ def rodar_pipeline(run_id: str | None = None) -> dict:
         logger.info("Contactadas: %d", r_contato)
         logger.info("Followups: %d", r_follow.get("followups_enviados", 0))
         logger.info("Inativados: %d", r_follow.get("inativados", 0))
-
-        duracao = (datetime.now() - inicio).seconds
-        logger.info("=== PIPELINE [%s] FINALIZADA em %ds ===", run_id, duracao)
+        logger.info("Duracao: %ds", duracao)
+        logger.info("=== PIPELINE [%s] FINALIZADA ===", run_id)
 
         ultima_execucao = inicio.isoformat()
         ultimo_resultado = resultado
         return resultado
+    except TimeoutError:
+        logger.error("Pipeline [%s] excedeu timeout de %ds", run_id, _TIMEOUT_PIPELINE)
+        return {"run_id": run_id, "error": "timeout", "timestamp": inicio.isoformat()}
     except Exception as e:
-        logger.error("Erro na pipeline [%s]: %s", run_id, e)
+        logger.error("Erro na pipeline [%s]: %s", run_id, e, exc_info=True)
         return {"run_id": run_id, "error": str(e)}
 
 
@@ -108,6 +130,15 @@ def rodar_pipeline_async() -> dict:
     }
 
 
+def _rodar_pipeline_agendada():
+    """Wrapper para o scheduler usar rodar_pipeline_async (que tem lock).
+    Previne execucao concorrente com chamadas manuais via API."""
+    logger.info("Disparo agendado das 09:00 — usando rodar_pipeline_async")
+    resultado = rodar_pipeline_async()
+    if resultado.get("status") != "iniciado":
+        logger.error("Pipeline agendada falhou: %s", resultado)
+
+
 def _loop_agendador():
     """Loop do scheduler que roda em thread separada."""
     logger.info("Agendador iniciado. Proxima execucao: %s", proxima_execucao)
@@ -125,7 +156,7 @@ def iniciar_agendador():
         return
     # Garante que o job seja registrado apenas uma vez
     schedule.clear()
-    schedule.every().day.at("09:00").do(rodar_pipeline)
+    schedule.every().day.at("09:00").do(_rodar_pipeline_agendada)
     _scheduler_thread = threading.Thread(target=_loop_agendador, daemon=True)
     _scheduler_thread.start()
     logger.info("Agendador iniciado em thread separada")
@@ -137,6 +168,17 @@ def parar_agendador():
     if _scheduler_thread:
         _scheduler_thread.join(timeout=5)
         logger.info("Agendador parado")
+
+
+def status() -> dict:
+    """Retorna status atual da pipeline."""
+    em_execucao = _pipeline_lock.locked()
+    return {
+        "ultima_execucao": ultima_execucao,
+        "proximo_agendamento": proxima_execucao,
+        "em_execucao": em_execucao,
+        "ultimo_resultado": ultimo_resultado,
+    }
 
 
 if __name__ == "__main__":
