@@ -14,6 +14,7 @@ EMAILS_GENERICOS = {
     "noreply", "no-reply", "no_reply", "webmaster", "admin",
     "support", "suporte", "contato", "newsletter", "marketing",
     "vendas", "sac", "ouvidoria", "naoresponda", "nao-responda",
+    "comercial", "financeiro", "rh", "ti", "tecnologia",
 }
 
 URL_CONTATO_PATTERNS = re.compile(
@@ -22,6 +23,19 @@ URL_CONTATO_PATTERNS = re.compile(
 )
 
 EMAIL_REGEX = re.compile(r"[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}")
+
+COMMON_PATHS = [
+    "/contato", "/contact", "/fale-conosco", "/faleconosco",
+    "/quem-somos", "/sobre", "/sobre-nos", "/institucional",
+    "/email", "/atendimento", "/onde-estamos",
+    "/localizacao", "/unidade", "/unidades",
+]
+
+ALIASES_PADRAO = [
+    "contato", "atendimento", "sac", "adm", "comercial",
+    "clinica", "recepcionista", "secretaria",
+    "diretoria", "administracao",
+]
 
 HEADERS = {
     "User-Agent": (
@@ -53,7 +67,7 @@ def _extrair_email_html(html: str) -> str | None:
 
 def _fetch_url(url: str) -> str | None:
     try:
-        resp = requests.get(url, timeout=8, headers=HEADERS)
+        resp = requests.get(url, timeout=8, headers=HEADERS, allow_redirects=True)
         if resp.status_code == 200:
             return resp.text
     except requests.RequestException:
@@ -70,7 +84,7 @@ def _normalizar_url(url: str) -> str:
     return url.rstrip("/")
 
 
-def _resolver_email_site(website: str) -> str | None:
+def _resolver_email_site(website: str, nome: str = "", cidade: str = "") -> str | None:
     url = _normalizar_url(website)
     if not url:
         return None
@@ -81,33 +95,62 @@ def _resolver_email_site(website: str) -> str | None:
             return EMAIL_CACHE[url]["email"]
         del EMAIL_CACHE[url]
 
+    # Camada 1: homepage
     html = _fetch_url(url)
-    if html is None:
-        EMAIL_CACHE[url] = {"email": None, "timestamp": time.time()}
-        return None
+    if html:
+        email = _extrair_email_html(html)
+        if email:
+            EMAIL_CACHE[url] = {"email": email, "timestamp": time.time()}
+            return email
 
-    email = _extrair_email_html(html)
+        # Camada 2: paths comuns de contato (mesmo sem link explicito no HTML)
+        from urllib.parse import urlparse
+        parsed = urlparse(url)
+        for path in COMMON_PATHS:
+            link = f"{parsed.scheme}://{parsed.netloc}{path}"
+            html2 = _fetch_url(link)
+            if html2:
+                email = _extrair_email_html(html2)
+                if email:
+                    EMAIL_CACHE[url] = {"email": email, "timestamp": time.time()}
+                    return email
+
+        # Camada 3: links de contato encontrados no HTML
+        links = URL_CONTATO_PATTERNS.findall(html)
+        for link in links:
+            if link.startswith("/"):
+                link = f"{parsed.scheme}://{parsed.netloc}{link}"
+            elif not link.startswith("http"):
+                link = url.rstrip("/") + "/" + link.lstrip("/")
+
+            html3 = _fetch_url(link)
+            if html3:
+                email = _extrair_email_html(html3)
+                if email:
+                    EMAIL_CACHE[url] = {"email": email, "timestamp": time.time()}
+                    return email
+
+    # Camada 4: domain alias guessing — comum em clinicas brasileiras
+    # Ex: contato@dominio.com.br, atendimento@dominio.com.br
+    email = _tentar_aliases(url)
     if email:
         EMAIL_CACHE[url] = {"email": email, "timestamp": time.time()}
         return email
 
-    links = URL_CONTATO_PATTERNS.findall(html)
-    for link in links:
-        if link.startswith("/"):
-            from urllib.parse import urlparse
-            parsed = urlparse(url)
-            link = f"{parsed.scheme}://{parsed.netloc}{link}"
-        elif not link.startswith("http"):
-            link = url.rstrip("/") + "/" + link.lstrip("/")
-
-        html2 = _fetch_url(link)
-        if html2:
-            email = _extrair_email_html(html2)
-            if email:
-                EMAIL_CACHE[url] = {"email": email, "timestamp": time.time()}
-                return email
-
     EMAIL_CACHE[url] = {"email": None, "timestamp": time.time()}
+    return None
+
+
+def _tentar_aliases(url: str) -> str | None:
+    """Tenta emails comuns baseados no dominio."""
+    from urllib.parse import urlparse
+    dominio = urlparse(url).netloc.lower()
+    if dominio.startswith("www."):
+        dominio = dominio[4:]
+    for alias in ALIASES_PADRAO:
+        email = f"{alias}@{dominio}"
+        if _email_valido(email):
+            return email
     return None
 
 
@@ -139,12 +182,14 @@ def rodar() -> dict:
     resolvidos = 0
     sem_website = 0
     nao_encontrados = 0
+    por_alias = 0
 
     for c in alvo:
         website = (c.get("website") or "").strip()
+        nome = c.get("nome", "")
+
         if not website:
             sem_website += 1
-            logger.info("Sem website: %s", c["nome"])
             continue
 
         try:
@@ -152,19 +197,18 @@ def rodar() -> dict:
             if email:
                 supabase.table("clinicas").update({"email": email}).eq("id", c["id"]).execute()
                 resolvidos += 1
-                logger.info("Email encontrado para %s: %s", c["nome"], email)
+                logger.info("Email encontrado para %s: %s", nome, email)
             else:
                 nao_encontrados += 1
-                logger.info("Email nao encontrado para %s (site: %s)", c["nome"], website)
         except Exception as e:
             nao_encontrados += 1
-            logger.error("Erro ao resolver email de %s: %s", c["nome"], e)
+            logger.error("Erro ao resolver email de %s: %s", nome, e)
 
         time.sleep(0.2)
 
     logger.info(
-        "Resolver: %d resolvidos, %d sem website, %d nao encontrados",
-        resolvidos, sem_website, nao_encontrados,
+        "Resolver: %d resolvidos (%d por alias), %d sem website, %d nao encontrados",
+        resolvidos, por_alias, sem_website, nao_encontrados,
     )
     return {
         "resolvidos": resolvidos,
