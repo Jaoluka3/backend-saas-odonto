@@ -309,7 +309,16 @@ def listar_coordenadas():
 
 @app.get("/agentes/geocodificar")
 @app.post("/agentes/geocodificar")
-async def geocodificar():
+async def geocodificar(teste: str = ""):
+    if teste:
+        try:
+            from geocoder import geocodificar_endereco, supabase
+            r = supabase.table("clinicas").select("id,nome,endereco,cidade").limit(1).execute()
+            c = r.data[0] if r.data else {}
+            coords = geocodificar_endereco(c.get("endereco",""), c.get("cidade",""))
+            return {"success": True, "teste": {"clinica": c, "coords": coords}}
+        except Exception as e:
+            return {"success": False, "error": str(e)}
     try:
         result = geocoder_rodar()
         return {"success": True, "data": result}

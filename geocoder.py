@@ -36,14 +36,17 @@ def obter_coordenadas() -> dict:
 
 def geocodificar_endereco(endereco: str, cidade: str = "") -> tuple[float, float] | None:
     query = f"{endereco}, {cidade}, Brasil" if cidade else f"{endereco}, Brasil"
+    query = query.replace("\uFFFD", "")  # remove replacement chars
 
     try:
+        logger.info("Nominatim GET q=%s ...", query[:80])
         resp = requests.get(
             NOMINATIM_URL,
             params={"q": query, "format": "json", "limit": 1},
             headers=HEADERS,
             timeout=15,
         )
+        logger.info("Nominatim resp status=%d len=%d", resp.status_code, len(resp.text))
         if resp.status_code == 200:
             dados = resp.json()
             if dados:
