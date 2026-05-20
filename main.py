@@ -312,11 +312,28 @@ def listar_coordenadas():
 async def geocodificar(teste: str = ""):
     if teste:
         try:
+            import socket as _sock, requests as _reqs
             from geocoder import geocodificar_endereco, supabase
+
+            dns = {}
+            for h in ["nominatim.openstreetmap.org", "google.com"]:
+                try:
+                    dns[h] = _sock.gethostbyname(h)
+                except Exception as e:
+                    dns[h] = str(e)
+
+            nom = None
+            try:
+                r = _reqs.get("https://nominatim.openstreetmap.org/search", params={"q": "test", "format": "json", "limit": 1}, headers={"User-Agent": "ATLAS/2.0"}, timeout=5)
+                nom = {"status": r.status_code, "len": len(r.text)}
+            except Exception as e:
+                nom = str(e)
+
             r = supabase.table("clinicas").select("id,nome,endereco,cidade").limit(1).execute()
             c = r.data[0] if r.data else {}
             coords = geocodificar_endereco(c.get("endereco",""), c.get("cidade",""))
-            return {"success": True, "teste": {"clinica": c, "coords": coords}}
+
+            return {"success": True, "teste": {"clinica": c, "coords": coords, "dns": dns, "nominatim_connect": nom}}
         except Exception as e:
             return {"success": False, "error": str(e)}
     try:

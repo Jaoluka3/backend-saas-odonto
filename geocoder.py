@@ -35,33 +35,29 @@ def obter_coordenadas() -> dict:
 
 
 def geocodificar_endereco(endereco: str, cidade: str = "") -> tuple[float, float] | None:
-    query = f"{endereco}, {cidade}, Brasil" if cidade else f"{endereco}, Brasil"
-    query = query.replace("\uFFFD", "")  # remove replacement chars
+    import re
+    cidade_nome = cidade.split("/")[0].strip() or "Sao Paulo"
+    end_clean = re.sub(r",\s*\d{5}-?\d{3}.*", "", endereco)
+    end_clean = re.sub(r"\s*-\s*(SP|RJ|MG|BA|RS|PR|SC|PE|CE|GO|DF|AM|PA|MA|ES|RN|PB|AL|SE|MT|MS|RO|TO|AC|AP|RR).*", "", end_clean, flags=re.IGNORECASE)
+    end_clean = end_clean.strip(" ,-")
+    query = f"{end_clean}, {cidade_nome}, Brasil"
 
-    try:
-        logger.info("Nominatim GET q=%s ...", query[:80])
-        resp = requests.get(
-            NOMINATIM_URL,
-            params={"q": query, "format": "json", "limit": 1},
-            headers=HEADERS,
-            timeout=15,
-        )
-        logger.info("Nominatim resp status=%d len=%d", resp.status_code, len(resp.text))
-        if resp.status_code == 200:
-            dados = resp.json()
-            if dados:
-                lat = float(dados[0]["lat"])
-                lon = float(dados[0]["lon"])
-                return lat, lon
-            else:
-                logger.warning("Nominatim sem resultados: %s", query[:80])
-        else:
-            logger.warning("Nominatim status %s: %s", resp.status_code, query[:80])
-    except requests.exceptions.Timeout:
-        logger.error("Timeout Nominatim: %s", query[:80])
-    except Exception as e:
-        logger.error("Erro Nominatim para %s: %s", query[:60], e)
-
+    for tentativa in [query, f"{end_clean}, Brasil", cidade_nome + ", Brasil"]:
+        try:
+            resp = requests.get(
+                NOMINATIM_URL,
+                params={"q": tentativa, "format": "json", "limit": 1},
+                headers=HEADERS,
+                timeout=15,
+            )
+            if resp.status_code == 200:
+                dados = resp.json()
+                if dados:
+                    return float(dados[0]["lat"]), float(dados[0]["lon"])
+        except requests.exceptions.Timeout:
+            logger.error("Timeout: %s", tentativa[:60])
+        except Exception as e:
+            logger.error("Erro %s: %s", tentativa[:60], e)
     return None
 
 
