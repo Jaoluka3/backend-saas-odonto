@@ -204,31 +204,3 @@ def handle_text(message):
         bot.reply_to(message, ai_response)
 
 
-# ─────────────────────────────────────────────
-# MAIN — POLLING COM TRATAMENTO DE ERROS
-# ─────────────────────────────────────────────
-if __name__ == "__main__":
-    logger.info("Bot Alex iniciando no Render...")
-    logger.info(f"Token configurado: {bool(TOKEN)}")
-    logger.info(f"NVIDIA configurada: {bool(NVIDIA_KEY)}")
-
-    while True:
-        try:
-            logger.info("Iniciando polling...")
-            bot.polling(none_stop=True, timeout=30, long_polling_timeout=30)
-        except Exception as e:
-            erro = str(e)
-            if "409" in erro:
-                logger.warning(
-                    "Conflito 409: outra instância rodando. Aguardando 30 segundos..."
-                )
-                time.sleep(30)
-                continue
-            elif "401" in erro:
-                logger.error("Token inválido! Verifique TELEGRAM_BOT_TOKEN")
-                time.sleep(60)
-                continue
-            else:
-                logger.error(f"Erro inesperado: {e}")
-                time.sleep(10)
-                continue

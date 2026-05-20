@@ -33,10 +33,12 @@ if missing_optional:
 
 import logging
 from contextlib import asynccontextmanager
-from fastapi import FastAPI, Query
+from fastapi import FastAPI, Query, Request
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 from supabase_client import supabase
+from bot_telegram import bot
+import telebot
 from agente_orquestrador import (
     rodar_pipeline_async,
     iniciar_agendador,
@@ -60,12 +62,31 @@ class LeadPayload(BaseModel):
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    """Gerencia o ciclo de vida do scheduler com startup/shutdown."""
+    """Gerencia o ciclo de vida do scheduler e webhook com startup/shutdown."""
     logger.info("Iniciando scheduler...")
     iniciar_agendador()
+
+    webhook_base = os.environ.get("RENDER_EXTERNAL_URL", "")
+    if webhook_base:
+        webhook_url = f"{webhook_base}/webhook"
+        try:
+            bot.remove_webhook()
+            bot.set_webhook(url=webhook_url)
+            logger.info(f"Webhook configurado: {webhook_url}")
+        except Exception as e:
+            logger.error(f"Falha ao configurar webhook: {e}")
+    else:
+        logger.info("RENDER_EXTERNAL_URL ausente — webhook nao configurado (dev local)")
+
     yield
+
     logger.info("Parando scheduler...")
     parar_agendador()
+    try:
+        bot.remove_webhook()
+        logger.info("Webhook removido")
+    except Exception as e:
+        logger.error(f"Falha ao remover webhook: {e}")
 
 
 app = FastAPI(lifespan=lifespan)
@@ -75,6 +96,19 @@ app.mount("/painel", StaticFiles(directory="static", html=True), name="static")
 @app.get("/health")
 def health_check():
     return {"status": "Cerebro IA Online e Conectado"}
+
+
+@app.post("/webhook")
+async def telegram_webhook(request: Request):
+    """Recebe updates do Telegram via webhook."""
+    try:
+        body = await request.json()
+        update = telebot.types.Update.de_json(body)
+        bot.process_new_updates([update])
+        return {"ok": True}
+    except Exception as e:
+        logger.error(f"Erro ao processar webhook: {e}")
+        return {"ok": False, "error": str(e)}
 
 
 @app.post("/lead")
