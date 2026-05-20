@@ -632,7 +632,13 @@ async function loadDashboard() {
   const [clinicas, funil] = await Promise.all([fetchData('/clinicas'), fetchData('/funil')]);
   const clin = clinicas?.data||[];
   const fun = funil?.data||funil||{};
-  state.clinicas = clin;
+  const coordsResp = await fetchData("/coordenadas");
+  const coordsMap = coordsResp?.data || {};
+  const clinComCoords = clin.map(c => {
+    const geo = coordsMap[c.id];
+    return geo ? { ...c, latitude: geo.lat, longitude: geo.lng } : c;
+  });
+  state.clinicas = clinComCoords;
 
   const total = fun.total_ativos || (Array.isArray(clin) ? clin.length : 0);
   const contactadas = fun.contactado||fun.contactadas||fun.contacted||0;

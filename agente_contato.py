@@ -75,22 +75,28 @@ def enviar_email_smtp(destinatario: str, assunto: str, corpo_html: str, corpo_tx
     msg.attach(MIMEText(corpo_txt, "plain", "utf-8"))
     msg.attach(MIMEText(corpo_html, "html", "utf-8"))
 
-    try:
-        with smtplib.SMTP("smtp.gmail.com", 587) as server:
-            server.starttls()
-            server.login(GMAIL_EMAIL, GMAIL_APP_PASSWORD)
-            server.send_message(msg)
-        logger.info("Email enviado para %s", destinatario)
-        return True
-    except smtplib.SMTPAuthenticationError:
-        logger.error("Falha de autenticacao SMTP para %s. Verifique GMAIL_APP_PASSWORD.", destinatario)
-        return False
-    except smtplib.SMTPException as e:
-        logger.error("Erro SMTP ao enviar para %s: %s", destinatario, e)
-        return False
-    except Exception as e:
-        logger.error("Erro inesperado ao enviar email para %s: %s", destinatario, e)
-        return False
+    for porta, usar_ssl in [(465, True), (587, False)]:
+        try:
+            if usar_ssl:
+                server_ctx = smtplib.SMTP_SSL("smtp.gmail.com", 465)
+            else:
+                server_ctx = smtplib.SMTP("smtp.gmail.com", 587)
+            with server_ctx as server:
+                if not usar_ssl:
+                    server.starttls()
+                server.login(GMAIL_EMAIL, GMAIL_APP_PASSWORD)
+                server.send_message(msg)
+            logger.info("Email enviado para %s via porta %d", destinatario, porta)
+            return True
+        except smtplib.SMTPAuthenticationError:
+            logger.error("Falha de autenticacao SMTP (porta %d): verifique GMAIL_APP_PASSWORD.", porta)
+            return False
+        except smtplib.SMTPException as e:
+            logger.warning("SMTP porta %d falhou: %s — tentando proxima...", porta, e)
+        except Exception as e:
+            logger.warning("Erro porta %d: %s — tentando proxima...", porta, e)
+    logger.error("Todas as portas SMTP falharam para %s", destinatario)
+    return False
 
 
 def _formatar_avaliacao(valor) -> str:
