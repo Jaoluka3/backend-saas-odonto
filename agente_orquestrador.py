@@ -85,11 +85,17 @@ def rodar_pipeline(run_id: Optional[str] = None) -> dict:
         ultimo_resultado = resultado
         return resultado
     except TimeoutError:
+        erro = {"run_id": run_id, "error": "timeout", "timestamp": inicio.isoformat()}
+        ultima_execucao = inicio.isoformat()
+        ultimo_resultado = erro
         logger.error("Pipeline [%s] excedeu timeout de %ds", run_id, _TIMEOUT_PIPELINE)
-        return {"run_id": run_id, "error": "timeout", "timestamp": inicio.isoformat()}
+        return erro
     except Exception as e:
+        erro = {"run_id": run_id, "error": str(e), "timestamp": inicio.isoformat()}
+        ultima_execucao = inicio.isoformat()
+        ultimo_resultado = erro
         logger.error("Erro na pipeline [%s]: %s", run_id, e, exc_info=True)
-        return {"run_id": run_id, "error": str(e)}
+        return erro
 
 
 def rodar_pipeline_async() -> dict:
