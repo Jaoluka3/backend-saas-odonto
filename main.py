@@ -237,6 +237,38 @@ def rodar_agentes():
         return {"success": False, "error": str(e)}
 
 
+@app.post("/agentes/reset")
+@app.get("/agentes/reset")
+def resetar_agentes():
+    """Reseta clinicas com website para qualificado para re-processamento."""
+    if not supabase:
+        return {"success": False, "error": "Banco de dados nao configurado"}
+    try:
+        result = (
+            supabase.table("clinicas")
+            .select("id,website,status")
+            .in_("status", ["contactado", "descartado"])
+            .neq("website", "")
+            .not_.is_("website", "null")
+            .execute()
+        )
+        clinicas = result.data or []
+        if not clinicas:
+            return {"success": True, "data": {"resetadas": 0}}
+
+        ids = [c["id"] for c in clinicas]
+        supabase.table("clinicas").update({
+            "status": "qualificado",
+            "email": None,
+        }).in_("id", ids).execute()
+
+        logger.info("Resetadas %d clinicas para qualificado", len(ids))
+        return {"success": True, "data": {"resetadas": len(ids)}}
+    except Exception as e:
+        logger.error("Erro ao resetar clinicas: %s", e)
+        return {"success": False, "error": str(e)}
+
+
 @app.get("/agentes/status")
 def status_agentes():
     """Status da pipeline com lock atual, ultima execucao e agendamento."""
