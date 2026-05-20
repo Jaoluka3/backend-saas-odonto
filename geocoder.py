@@ -73,30 +73,37 @@ def geocodificar_endereco(endereco: str, cidade: str = "") -> tuple[float, float
     query = f"{end_clean}, {cidade_nome}, Brasil"
 
     for tentativa in [query, f"{end_clean}, Brasil", cidade_nome + ", Brasil"]:
-        try:
-            resp = requests.get(
-                NOMINATIM_URL,
-                params={"q": tentativa, "format": "json", "limit": 1},
-                headers=HEADERS,
-                timeout=15,
-            )
-            if resp.status_code == 200:
-                dados = resp.json()
-                if dados:
-                    return float(dados[0]["lat"]), float(dados[0]["lon"])
-        except requests.exceptions.Timeout:
-            logger.error("Timeout: %s", tentativa[:60])
-        except Exception as e:
-            logger.error("Erro %s: %s", tentativa[:60], e)
+        for tent in range(3):
+            try:
+                resp = requests.get(
+                    NOMINATIM_URL,
+                    params={"q": tentativa, "format": "json", "limit": 1},
+                    headers=HEADERS,
+                    timeout=15,
+                )
+                if resp.status_code == 200:
+                    dados = resp.json()
+                    if dados:
+                        return float(dados[0]["lat"]), float(dados[0]["lon"])
+                    break
+                if resp.status_code == 429:
+                    logger.warning("429 rate limit (%d/3), esperando...", tent + 1)
+                    time.sleep(5 + tent * 3)
+                    continue
+                break
+            except requests.exceptions.Timeout:
+                logger.error("Timeout: %s", tentativa[:60])
+                break
+            except Exception as e:
+                logger.error("Erro %s: %s", tentativa[:60], e)
+                break
     return None
 
 
-def rodar(max_por_execucao: int = 30) -> dict:
+def rodar(max_por_execucao: int = 15) -> dict:
     if not supabase:
         logger.warning("supabase nao inicializado")
         return {"geocodificadas": 0, "sem_endereco": 0, "falhas": 0}
-
-    _add_colunas_se_necessario()
 
     try:
         result = (
@@ -150,7 +157,7 @@ def rodar(max_por_execucao: int = 30) -> dict:
             falhas += 1
             logger.error("Erro ao geocodificar %s: %s", c["nome"], e)
 
-        time.sleep(1.1)
+        time.sleep(2)
 
     _salvar_coordenadas(ja_feitas)
 
