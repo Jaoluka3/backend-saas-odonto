@@ -195,6 +195,7 @@ def listar_clinicas(
         data = (
             supabase.table("clinicas")
             .select("*")
+            .neq("status", "inativo")
             .order("score", desc=True, nullsfirst=False)
             .range(offset, offset + limit - 1)
             .execute()
@@ -241,6 +242,10 @@ def funil_status():
             s = r.get("status", "novo")
             if s in contagem:
                 contagem[s] += 1
+        inativos = contagem.pop("inativo", 0)
+        total_ativos = sum(contagem.values())
+        contagem["inativo"] = inativos
+        contagem["total_ativos"] = total_ativos
         return {"success": True, "data": contagem}
     except Exception as e:
         return {"success": False, "error": str(e)}

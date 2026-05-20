@@ -620,8 +620,8 @@ async function loadDashboard() {
   const fun = funil?.data||funil||{};
   state.clinicas = clin;
 
-  const total = Array.isArray(clin) ? clin.length : (clin.total||0);
-  const contactadas = fun.contactado||fun.contactadas||fun.contacted||Math.floor(total*0.62);
+  const total = fun.total_ativos || (Array.isArray(clin) ? clin.length : 0);
+  const contactadas = fun.contactado||fun.contactadas||fun.contacted||0;
   const scoreArr = Array.isArray(clin) ? clin.map(c=>c.score??c.rating??0).filter(Boolean) : [];
   const scoreMedio = scoreArr.length ? Math.round(scoreArr.reduce((a,b)=>a+b,0)/scoreArr.length) : (fun.score_medio||0);
   const agendados = fun.agendado||fun.agendados||fun.agenda||Math.floor(total*0.14);

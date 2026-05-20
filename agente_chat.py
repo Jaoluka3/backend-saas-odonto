@@ -34,6 +34,9 @@ def buscar_clinicas(forcar: bool = False) -> list:
         result = (
             supabase.table("clinicas")
             .select("*")
+            .neq("status", "inativo")
+            .order("score", desc=True, nullsfirst=False)
+            .limit(50)
             .execute()
         )
         clinicas_raw = result.data or []
