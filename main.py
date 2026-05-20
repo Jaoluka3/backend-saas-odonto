@@ -204,6 +204,24 @@ def listar_clinicas(
         return {"success": False, "error": str(e)}
 
 
+@app.get("/emails")
+def listar_emails(limit: int = Query(50, ge=1, le=200)):
+    """Lista emails enviados com status."""
+    if not supabase:
+        return {"success": False, "error": "Banco de dados nao configurado"}
+    try:
+        data = (
+            supabase.table("emails")
+            .select("*")
+            .order("criado_em", desc=True, nullsfirst=False)
+            .limit(limit)
+            .execute()
+        )
+        return {"success": True, "data": data.data or []}
+    except Exception as e:
+        return {"success": False, "error": str(e)}
+
+
 @app.get("/funil")
 def funil_status():
     """Contagem de clinicas por status (funil de vendas)."""
@@ -268,6 +286,19 @@ def reset_agentes():
         return {"success": True, "data": {"resetadas": len(alvo)}}
     except Exception as e:
         logger.error("Erro reset: %s", e)
+        return {"success": False, "error": str(e)}
+
+
+@app.get("/agentes/geocodificar")
+@app.post("/agentes/geocodificar")
+def geocodificar_agentes():
+    """Geocodifica clinicas sem coordenadas via Nominatim (OSM)."""
+    import importlib
+    gc = importlib.import_module("geocoder")
+    try:
+        r = gc.rodar()
+        return {"success": True, "data": r}
+    except Exception as e:
         return {"success": False, "error": str(e)}
 
 

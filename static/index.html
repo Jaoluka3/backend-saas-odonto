@@ -9,6 +9,13 @@
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <style>
+  @font-face {
+    font-family: 'CreatoDisplay';
+    src: url('./CreatoDisplay-Black.otf') format('opentype');
+    font-weight: 900;
+    font-display: swap;
+  }
+
   :root {
     --bg: #080a0f;
     --surface: #0d1117;
@@ -31,7 +38,8 @@
   body {
     background: var(--bg);
     color: var(--text);
-    font-family: 'Figtree', sans-serif;
+    font-family: 'CreatoDisplay', 'Figtree', sans-serif;
+    font-weight: 400;
     min-height: 100vh;
     overflow-x: hidden;
   }
@@ -358,6 +366,9 @@
       <div class="nav-item" onclick="switchTab('analytics',this)" data-tab="analytics">
         <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>Analytics
       </div>
+      <div class="nav-item" onclick="switchTab('emails',this)" data-tab="emails">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Emails
+      </div>
     </nav>
     <div class="sidebar-footer">
       <div class="system-status"><div class="status-dot"></div><span class="status-label">Sistema ativo</span></div>
@@ -428,6 +439,23 @@
         </div>
       </div>
 
+      <div class="tab-pane" id="tab-emails">
+        <div class="section-hdr" style="margin-bottom:18px;">
+          <span class="section-title">Monitoramento de Emails</span>
+          <span class="badge badge-green" id="emailsCount">0 registros</span>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Clinica</th><th>Email Destino</th><th>Assunto</th><th>Status</th><th>Data</th></tr>
+            </thead>
+            <tbody id="emailsBody">
+              <tr><td colspan="5" class="empty-state">Carregando emails enviados...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
       <div class="tab-pane" id="tab-analytics">
         <div class="section-hdr" style="margin-bottom:18px;"><span class="section-title">Analytics & Conversão</span><span class="badge badge-amber">live data</span></div>
         <div class="analytics-grid">
@@ -436,7 +464,15 @@
         </div>
         <div class="chart-card-full"><div class="chart-title">Clínicas por Status</div><div class="bar-chart" id="barChart"><div class="empty-state">Carregando...</div></div></div>
         <div class="chart-card-full">
-          <div class="chart-title">Mapa de Clínicas em Betim/MG</div>
+          <div class="chart-title">
+            Mapa de Clínicas
+            <span style="float:right;">
+              <button class="btn-primary" onclick="geocodificarMapa()" style="font-size:10px;padding:4px 10px;">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                Geocodificar
+              </button>
+            </span>
+          </div>
           <div id="map"></div>
           <div class="map-info" style="margin-top:8px;display:flex;gap:12px;font-size:11px;color:var(--muted);font-family:'JetBrains Mono',monospace;">
             <span id="map-clinicas">Clínicas: 0</span>
@@ -462,7 +498,7 @@ function updateClock() {
 setInterval(updateClock,1000);
 updateClock();
 
-const TAB_TITLES = { dashboard:'Dashboard', agentes:'Agentes', clinicas:'Clínicas', chat:'Chat ATLAS', analytics:'Analytics' };
+const TAB_TITLES = { dashboard:'Dashboard', agentes:'Agentes', clinicas:'Clínicas', chat:'Chat ATLAS', analytics:'Analytics', emails:'Emails' };
 function switchTab(tab,el) {
   document.querySelectorAll('.tab-pane').forEach(p=>p.classList.remove('active'));
   document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
@@ -706,6 +742,15 @@ async function sendMessage() {
 function handleEnter(e) { if (e.key==='Enter'&&!e.shiftKey) { e.preventDefault(); sendMessage(); } }
 function autoResize(el) { el.style.height='auto'; el.style.height=Math.min(el.scrollHeight,100)+'px'; }
 
+async function geocodificarMapa() {
+  showToast('Geocodificando clinicas...', '🗺');
+  try {
+    const res = await fetch('/agentes/geocodificar', { method:'POST' });
+    if (res.ok) { showToast('Geocodificacao concluida!', '✓'); setTimeout(()=>{ loadDashboard(); }, 2000); }
+    else showToast('Erro '+res.status, '⚠');
+  } catch(e) { showToast('Falha de conexao', '✗'); }
+}
+
 async function executarPipeline() {
   showToast('Pipeline iniciado...', '▶');
   try {
@@ -713,6 +758,23 @@ async function executarPipeline() {
     if (res.ok) { showToast('Pipeline executado!', '✓'); setTimeout(loadDashboard,2000); }
     else showToast('Erro '+res.status, '⚠');
   } catch(e) { showToast('Conexão falhou', '✗'); }
+}
+
+async function loadEmails() {
+  const data = await fetchData('/emails');
+  const emails = data?.data || [];
+  const tbody = document.getElementById('emailsBody');
+  document.getElementById('emailsCount').textContent = `${emails.length} registros`;
+  if (!emails.length) {
+    tbody.innerHTML = '<tr><td colspan="5" class="empty-state">Nenhum email enviado ate o momento</td></tr>';
+    return;
+  }
+  tbody.innerHTML = emails.map(e => {
+    const dataStr = e.criado_em ? new Date(e.criado_em).toLocaleString('pt-BR') : '---';
+    const status = e.status || 'enviado';
+    const statusClass = status === 'falhou' ? 'pill-amber' : status === 'respondido' ? 'pill-green' : 'pill-blue';
+    return `<tr><td><strong>${e.clinica_nome || '---'}</strong></td><td class="td-muted">${e.email_destino || '---'}</td><td class="td-muted">${e.assunto || 'Prospeccao Odontologica'}</td><td><span class="status-pill ${statusClass}">● ${status}</span></td><td class="td-muted" style="font-size:11px;">${dataStr}</td></tr>`;
+  }).join('');
 }
 
 function getLocation() {
@@ -730,7 +792,8 @@ function getLocation() {
 }
 
 loadDashboard();
-setInterval(loadDashboard, 60000);
+loadEmails();
+setInterval(() => { loadDashboard(); loadEmails(); }, 15000);
 getLocation();
 </script>
 </body>
