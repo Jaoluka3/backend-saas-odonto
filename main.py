@@ -66,7 +66,11 @@ async def lifespan(app: FastAPI):
     logger.info("Iniciando scheduler...")
     iniciar_agendador()
 
-    webhook_base = os.environ.get("RENDER_EXTERNAL_URL", "")
+    webhook_base = (
+        os.environ.get("RENDER_EXTERNAL_URL")
+        or os.environ.get("WEBHOOK_URL")
+        or ""
+    )
     if webhook_base:
         webhook_url = f"{webhook_base}/webhook"
         try:
