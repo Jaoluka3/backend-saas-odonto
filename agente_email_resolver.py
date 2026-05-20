@@ -53,7 +53,7 @@ def _extrair_email_html(html: str) -> str | None:
 
 def _fetch_url(url: str) -> str | None:
     try:
-        resp = requests.get(url, timeout=15, headers=HEADERS)
+        resp = requests.get(url, timeout=8, headers=HEADERS)
         if resp.status_code == 200:
             return resp.text
     except requests.RequestException:
@@ -133,7 +133,9 @@ def rodar() -> dict:
         logger.info("Nenhuma clinica qualificada sem email para resolver")
         return {"resolvidos": 0, "sem_website": 0, "nao_encontrados": 0}
 
-    logger.info("Resolvendo emails para %d clinicas...", len(alvo))
+    MAX_POR_EXECUCAO = 50
+    alvo = alvo[:MAX_POR_EXECUCAO]
+    logger.info("Resolvendo emails para %d clinicas (max %d)...", len(alvo), MAX_POR_EXECUCAO)
     resolvidos = 0
     sem_website = 0
     nao_encontrados = 0
@@ -158,7 +160,7 @@ def rodar() -> dict:
             nao_encontrados += 1
             logger.error("Erro ao resolver email de %s: %s", c["nome"], e)
 
-        time.sleep(0.5)
+        time.sleep(0.2)
 
     logger.info(
         "Resolver: %d resolvidos, %d sem website, %d nao encontrados",

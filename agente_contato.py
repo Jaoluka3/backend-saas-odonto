@@ -198,6 +198,9 @@ def rodar() -> int:
         logger.info("Nenhuma clinica qualificada com email para contactar")
         return 0
 
+    MAX_ENVIO = 10
+    clinicas = clinicas[:MAX_ENVIO]
+    logger.info("Enviando emails para %d clinicas (max %d)", len(clinicas), MAX_ENVIO)
     contactadas = 0
     for c in clinicas:
         try:
@@ -225,7 +228,7 @@ def rodar() -> int:
             contactadas += 1
             logger.info("Email processado para %s (%s): %s", nome, email, assunto)
 
-            time.sleep(20)
+            time.sleep(5)
         except Exception as e:
             logger.error("Erro ao contactar clinica %s: %s", c.get("id"), e)
 
