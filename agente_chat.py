@@ -172,8 +172,8 @@ def processar_chat(mensagem: str, agente: str = "ATLAS") -> dict:
 
     if supabase and clinicas:
         try:
-            for c in clinicas:
-                supabase.table("clinicas").upsert({
+            rows = [
+                {
                     "nome": c["nome"],
                     "telefone": c["telefone"],
                     "endereco": c.get("endereco"),
@@ -185,9 +185,17 @@ def processar_chat(mensagem: str, agente: str = "ATLAS") -> dict:
                     "cidade": "Betim",
                     "status": "novo",
                     "score": c.get("score", 50),
-                }, on_conflict="telefone").execute()
+                }
+                for c in clinicas
+                if c.get("telefone")
+            ]
+            if rows:
+                supabase.table("clinicas").upsert(
+                    rows, on_conflict="telefone"
+                ).execute()
+                logger.info("Batch upsert %d clinicas", len(rows))
         except Exception as e:
-            logger.error(f"Erro ao salvar clinicas: {e}")
+            logger.error("Erro batch upsert clinicas: %s", e)
 
     if supabase:
         try:

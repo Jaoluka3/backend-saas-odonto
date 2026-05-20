@@ -1,21 +1,28 @@
 import os
-import logging
 import pickle
-from typing import Optional
-from google.auth.transport.requests import Request
-from google.oauth2.credentials import Credentials
-from google_auth_oauthlib.flow import InstalledAppFlow
-from googleapiclient.discovery import build
-from googleapiclient.errors import HttpError
+import logging
 
 logger = logging.getLogger(__name__)
+
+try:
+    from google.auth.transport.requests import Request
+    from google.oauth2.credentials import Credentials
+    from google_auth_oauthlib.flow import InstalledAppFlow
+    from googleapiclient.discovery import build
+    from googleapiclient.errors import HttpError
+    GOOGLE_AVAILABLE = True
+except ImportError:
+    GOOGLE_AVAILABLE = False
+    logger.warning("Google API libraries nao instaladas - Gmail desabilitado")
 
 SCOPES = ["https://www.googleapis.com/auth/gmail.readonly"]
 TOKEN_FILE = "gmail_token.pickle"
 CREDENTIALS_FILE = os.environ.get("GMAIL_CREDENTIALS", "credentials.json")
 
 
-def _autenticar() -> Optional[Credentials]:
+def _autenticar():
+    if not GOOGLE_AVAILABLE:
+        return None
     creds = None
     if os.path.exists(TOKEN_FILE):
         try:
@@ -46,6 +53,8 @@ def _autenticar() -> Optional[Credentials]:
 
 
 def _get_service():
+    if not GOOGLE_AVAILABLE:
+        return None
     creds = _autenticar()
     if not creds:
         return None
@@ -53,6 +62,8 @@ def _get_service():
 
 
 def buscar_emails(query: str = "", max_results: int = 10) -> list:
+    if not GOOGLE_AVAILABLE:
+        return []
     service = _get_service()
     if not service:
         logger.warning("Gmail nao autenticado")
@@ -83,13 +94,13 @@ def buscar_emails(query: str = "", max_results: int = 10) -> list:
                 "data": headers.get("Date", ""),
             })
         return emails
-    except HttpError as e:
+    except Exception as e:
         logger.error(f"Erro Gmail API: {e}")
         return []
 
 
 def verificar_respostas(clinica_nome: str = "") -> list:
-    query = f"subject:clinica OR subject:odontologica OR subject:dentista"
+    query = "subject:clinica OR subject:odontologica OR subject:dentista"
     if clinica_nome:
         query += f" {clinica_nome}"
     return buscar_emails(query=query, max_results=20)
