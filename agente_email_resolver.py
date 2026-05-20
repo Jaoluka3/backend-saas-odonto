@@ -133,7 +133,7 @@ def rodar() -> dict:
         logger.info("Nenhuma clinica qualificada sem email para resolver")
         return {"resolvidos": 0, "sem_website": 0, "nao_encontrados": 0}
 
-    MAX_POR_EXECUCAO = 50
+    MAX_POR_EXECUCAO = 30
     alvo = alvo[:MAX_POR_EXECUCAO]
     logger.info("Resolvendo emails para %d clinicas (max %d)...", len(alvo), MAX_POR_EXECUCAO)
     resolvidos = 0

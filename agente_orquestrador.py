@@ -22,7 +22,7 @@ _scheduler_stop = threading.Event()
 _pipeline_lock = threading.Lock()
 
 
-_TIMEOUT_PIPELINE = 900  # 15 minutos
+_TIMEOUT_PIPELINE = 1800  # 30 minutos
 
 
 def rodar_pipeline(run_id: Optional[str] = None) -> dict:
