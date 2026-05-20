@@ -48,6 +48,7 @@ from agente_orquestrador import (
     status,
 )
 from agente_chat import processar_chat, obter_historico
+from geocoder import rodar as geocoder_rodar
 from gmail_client import verificar_respostas, contar_respostas
 
 logging.basicConfig(
@@ -296,14 +297,12 @@ def reset_agentes():
 
 @app.get("/agentes/geocodificar")
 @app.post("/agentes/geocodificar")
-def geocodificar_agentes():
-    """Geocodifica clinicas sem coordenadas via Nominatim (OSM)."""
-    import importlib
-    gc = importlib.import_module("geocoder")
+async def geocodificar():
     try:
-        r = gc.rodar()
-        return {"success": True, "data": r}
+        result = geocoder_rodar()
+        return {"success": True, "data": result}
     except Exception as e:
+        logger.error("Erro geocodificar: %s", e)
         return {"success": False, "error": str(e)}
 
 

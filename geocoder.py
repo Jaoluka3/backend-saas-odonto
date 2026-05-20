@@ -36,26 +36,30 @@ def geocodificar_endereco(endereco: str, cidade: str = "") -> tuple[float, float
 
 def rodar(max_por_execucao: int = 30) -> dict:
     if not supabase:
+        logger.warning("supabase nao inicializado")
         return {"geocodificadas": 0, "sem_endereco": 0, "falhas": 0}
 
     try:
         result = (
             supabase.table("clinicas")
             .select("id,nome,endereco,cidade,latitude,longitude")
-            .neq("status", "inativo")
-            .limit(200)
             .execute()
         )
         clinicas_raw = result.data or []
     except Exception as e:
         logger.error("Erro ao ler clinicas: %s", e)
-        return {"geocodificadas": 0, "sem_endereco": 0, "falhas": 0}
+        return {"geocodificadas": 0, "sem_endereco": 0, "falhas": 0, "erro": str(e)}
 
     logger.info("Geocoder: %d clinicas lidas do banco", len(clinicas_raw))
     sem_end = [c for c in clinicas_raw if not c.get("endereco")]
     com_lat = [c for c in clinicas_raw if c.get("latitude")]
+    com_status = [c.get("status") for c in clinicas_raw[:5]]
     alvo = [c for c in clinicas_raw if not c.get("latitude") and c.get("endereco")]
-    logger.info("Geocoder: %d sem endereco, %d ja com lat, %d alvo", len(sem_end), len(com_lat), len(alvo))
+    sem_campo = [c for c in clinicas_raw if "latitude" not in c or "endereco" not in c]
+    logger.info(
+        "Geocoder debug: total=%d, sem_end=%d, com_lat=%d, alvo=%d, sem_campo=%d, status_amostra=%s",
+        len(clinicas_raw), len(sem_end), len(com_lat), len(alvo), len(sem_campo), str(com_status),
+    )
     if not alvo:
         logger.info("Nenhuma clinica sem coordenadas encontrada.")
         return {"geocodificadas": 0, "sem_endereco": 0, "falhas": 0}
