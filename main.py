@@ -34,8 +34,7 @@ if missing_optional:
 import logging
 from contextlib import asynccontextmanager
 from typing import Optional
-from fastapi import FastAPI, Query, HTTPException, Security, Depends
-from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
+from fastapi import FastAPI, Query, HTTPException, Depends, Header
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 from supabase_client import supabase
@@ -53,20 +52,20 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 API_TOKEN = os.environ.get("API_TOKEN", "")
-security_scheme = HTTPBearer(auto_error=False)
 
 
 def _validar_token(
-    credentials: Optional[HTTPAuthorizationCredentials] = Security(security_scheme),
+    authorization: Optional[str] = Header(None, alias="Authorization"),
 ) -> None:
     """Valida token de acesso se API_TOKEN estiver configurado.
     Se API_TOKEN nao definido, permite acesso irrestrito (dev mode).
     """
     if not API_TOKEN:
         return
-    if credentials is None:
+    if not authorization:
         raise HTTPException(status_code=401, detail="Token de acesso necessario")
-    if credentials.credentials != API_TOKEN:
+    token = authorization.replace("Bearer ", "", 1).strip()
+    if token != API_TOKEN:
         raise HTTPException(status_code=403, detail="Token de acesso invalido")
 
 
