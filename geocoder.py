@@ -70,12 +70,22 @@ def rodar(max_por_execucao: int = 30) -> dict:
         result = (
             supabase.table("clinicas")
             .select("id,nome,endereco,cidade")
+            .neq("status", "inativo")
             .execute()
         )
         clinicas_raw = result.data or []
     except Exception as e:
-        logger.error("Erro ao ler clinicas: %s", e)
-        return {"geocodificadas": 0, "sem_endereco": 0, "falhas": 0, "erro": str(e)}
+        logger.warning("Falha com neq, tentando sem filtro: %s", e)
+        try:
+            result = (
+                supabase.table("clinicas")
+                .select("id,nome,endereco,cidade")
+                .execute()
+            )
+            clinicas_raw = result.data or []
+        except Exception as e2:
+            logger.error("Erro ao ler clinicas: %s", e2)
+            return {"geocodificadas": 0, "sem_endereco": 0, "falhas": 0, "erro": str(e2)}
 
     logger.info("Geocoder: %d clinicas lidas do banco", len(clinicas_raw))
 
