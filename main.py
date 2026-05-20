@@ -231,17 +231,15 @@ def rodar_agentes():
     """Reseta clinicas com website e dispara a pipeline em background."""
     try:
         if supabase:
-            result = (
-                supabase.table("clinicas")
-                .select("id")
-                .in_("status", ["contactado", "descartado"])
-                .neq("website", "")
-                .not_.is_("website", "null")
-                .execute()
-            )
-            clinicas = result.data or []
-            if clinicas:
-                ids = [c["id"] for c in clinicas]
+            result = supabase.table("clinicas").select("id,website,status").execute()
+            todas = result.data or []
+            alvo = [
+                c for c in todas
+                if c.get("status") in ("contactado", "descartado")
+                and c.get("website")
+            ]
+            if alvo:
+                ids = [c["id"] for c in alvo]
                 supabase.table("clinicas").update({
                     "status": "qualificado",
                     "email": None,

@@ -184,11 +184,12 @@ def rodar() -> int:
             supabase.table("clinicas")
             .select("*")
             .eq("status", "qualificado")
-            .neq("email", "")
-            .not_.is_("email", "null")
             .execute()
         )
-        clinicas = result.data or []
+        clinicas = [
+            c for c in (result.data or [])
+            if c.get("email")
+        ]
     except Exception as e:
         logger.error("Erro ao ler clinicas qualificadas com email: %s", e)
         return 0
