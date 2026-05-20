@@ -228,24 +228,8 @@ def funil_status():
 @app.get("/agentes/rodar")
 @app.post("/agentes/rodar")
 def rodar_agentes():
-    """Reseta clinicas com website e dispara a pipeline em background."""
+    """Dispara a pipeline em background e retorna imediatamente."""
     try:
-        if supabase:
-            result = supabase.table("clinicas").select("id,website,status").execute()
-            todas = result.data or []
-            alvo = [
-                c for c in todas
-                if c.get("status") in ("contactado", "descartado")
-                and c.get("website")
-            ]
-            if alvo:
-                ids = [c["id"] for c in alvo]
-                supabase.table("clinicas").update({
-                    "status": "qualificado",
-                    "email": None,
-                }).in_("id", ids).execute()
-                logger.info("Reset: %d clinicas para qualificado", len(ids))
-
         resultado = rodar_pipeline_async()
         return {"success": True, "data": resultado}
     except Exception as e:
