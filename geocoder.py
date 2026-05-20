@@ -42,6 +42,8 @@ def rodar(max_por_execucao: int = 30) -> dict:
         result = (
             supabase.table("clinicas")
             .select("id,nome,endereco,cidade,latitude,longitude")
+            .neq("status", "inativo")
+            .limit(200)
             .execute()
         )
         clinicas_raw = result.data or []
@@ -49,7 +51,11 @@ def rodar(max_por_execucao: int = 30) -> dict:
         logger.error("Erro ao ler clinicas: %s", e)
         return {"geocodificadas": 0, "sem_endereco": 0, "falhas": 0}
 
+    logger.info("Geocoder: %d clinicas lidas do banco", len(clinicas_raw))
+    sem_end = [c for c in clinicas_raw if not c.get("endereco")]
+    com_lat = [c for c in clinicas_raw if c.get("latitude")]
     alvo = [c for c in clinicas_raw if not c.get("latitude") and c.get("endereco")]
+    logger.info("Geocoder: %d sem endereco, %d ja com lat, %d alvo", len(sem_end), len(com_lat), len(alvo))
     if not alvo:
         logger.info("Nenhuma clinica sem coordenadas encontrada.")
         return {"geocodificadas": 0, "sem_endereco": 0, "falhas": 0}
