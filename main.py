@@ -228,44 +228,29 @@ def funil_status():
 @app.get("/agentes/rodar")
 @app.post("/agentes/rodar")
 def rodar_agentes():
-    """Dispara a pipeline em background e retorna imediatamente.
-    Aceita GET (navegador) e POST (curl/programatico)."""
+    """Reseta clinicas com website e dispara a pipeline em background."""
     try:
+        if supabase:
+            result = (
+                supabase.table("clinicas")
+                .select("id")
+                .in_("status", ["contactado", "descartado"])
+                .neq("website", "")
+                .not_.is_("website", "null")
+                .execute()
+            )
+            clinicas = result.data or []
+            if clinicas:
+                ids = [c["id"] for c in clinicas]
+                supabase.table("clinicas").update({
+                    "status": "qualificado",
+                    "email": None,
+                }).in_("id", ids).execute()
+                logger.info("Reset: %d clinicas para qualificado", len(ids))
+
         resultado = rodar_pipeline_async()
         return {"success": True, "data": resultado}
     except Exception as e:
-        return {"success": False, "error": str(e)}
-
-
-@app.post("/agentes/reset")
-@app.get("/agentes/reset")
-def resetar_agentes():
-    """Reseta clinicas com website para qualificado para re-processamento."""
-    if not supabase:
-        return {"success": False, "error": "Banco de dados nao configurado"}
-    try:
-        result = (
-            supabase.table("clinicas")
-            .select("id,website,status")
-            .in_("status", ["contactado", "descartado"])
-            .neq("website", "")
-            .not_.is_("website", "null")
-            .execute()
-        )
-        clinicas = result.data or []
-        if not clinicas:
-            return {"success": True, "data": {"resetadas": 0}}
-
-        ids = [c["id"] for c in clinicas]
-        supabase.table("clinicas").update({
-            "status": "qualificado",
-            "email": None,
-        }).in_("id", ids).execute()
-
-        logger.info("Resetadas %d clinicas para qualificado", len(ids))
-        return {"success": True, "data": {"resetadas": len(ids)}}
-    except Exception as e:
-        logger.error("Erro ao resetar clinicas: %s", e)
         return {"success": False, "error": str(e)}
 
 
