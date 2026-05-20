@@ -303,6 +303,29 @@ def reset_agentes():
         return {"success": False, "error": str(e)}
 
 
+@app.get("/agentes/sql")
+@app.post("/agentes/sql")
+async def executar_sql():
+    """Tenta executar ALTER TABLE para adicionar coluna instagram."""
+    sql = "ALTER TABLE clinicas ADD COLUMN IF NOT EXISTS instagram text;"
+    db_url = os.environ.get("DATABASE_URL") or ""
+    if db_url:
+        try:
+            import psycopg2
+            conn = psycopg2.connect(db_url)
+            cur = conn.cursor()
+            cur.execute(sql)
+            conn.commit()
+            cur.close()
+            conn.close()
+            return {"success": True, "message": "Coluna instagram adicionada via psycopg2"}
+        except ImportError:
+            return {"success": False, "error": "psycopg2 nao instalado"}
+        except Exception as e:
+            return {"success": False, "error": str(e), "sql": sql, "hint": "Rode manualmente no Supabase SQL Editor"}
+    else:
+        return {"success": False, "error": "DATABASE_URL nao configurado", "sql": sql, "hint": "Rode manualmente no Supabase SQL Editor:\n" + sql}
+
 @app.get("/coordenadas")
 def listar_coordenadas():
     return {"success": True, "data": obter_coordenadas()}
