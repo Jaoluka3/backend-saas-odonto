@@ -294,35 +294,6 @@ def reset_agentes():
         return {"success": False, "error": str(e)}
 
 
-@app.get("/agentes/limitar")
-@app.post("/agentes/limitar")
-def limitar_clinicas():
-    """Mantem apenas as 50 melhores clinicas ativas, inativa resto."""
-    if not supabase:
-        return {"success": False, "error": "Sem Supabase"}
-    try:
-        result = supabase.table("clinicas").select("id,nome,status,score").execute()
-        todas = result.data or []
-        if len(todas) <= 50:
-            return {"success": True, "data": {"ativas": len(todas), "inativadas": 0}}
-
-        ordenadas = sorted(todas, key=lambda c: c.get("score") or 0, reverse=True)
-        inativar_ids = [c["id"] for c in ordenadas[50:]]
-
-        for cid in inativar_ids:
-            supabase.table("clinicas").update({"status": "inativo"}).eq("id", cid).execute()
-
-        for c in ordenadas[:50]:
-            if c["status"] not in ("qualificado", "novo"):
-                supabase.table("clinicas").update({"status": "qualificado"}).eq("id", c["id"]).execute()
-
-        logger.info("Limitar: %d ativas, %d inativadas", 50, len(inativar_ids))
-        return {"success": True, "data": {"ativas": 50, "inativadas": len(inativar_ids)}}
-    except Exception as e:
-        logger.error("Erro limitar: %s", e)
-        return {"success": False, "error": str(e)}
-
-
 @app.get("/agentes/geocodificar")
 @app.post("/agentes/geocodificar")
 def geocodificar_agentes():
