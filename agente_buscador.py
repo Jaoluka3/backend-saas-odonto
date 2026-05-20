@@ -5,8 +5,6 @@ import requests
 from supabase_client import supabase
 
 SERPAPI_KEY = os.environ.get("SERPAPI_KEY")
-if not SERPAPI_KEY:
-    raise SystemExit("Erro: SERPAPI_KEY nao definida nas variaveis de ambiente. O agente buscador nao pode funcionar sem ela.")
 
 logger = logging.getLogger(__name__)
 

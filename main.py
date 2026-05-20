@@ -2,16 +2,19 @@ import os
 import sys
 
 REQUIRED_ENV_VARS = {
-    "TELEGRAM_BOT_TOKEN": "Token do Bot Telegram",
-    "SUPABASE_URL": "URL do Supabase",
-    "SUPABASE_KEY": "Chave da API Supabase",
-    "SERPAPI_KEY": "Chave da API SerpAPI",
-    "NVIDIA_KEY": "Chave da API NVIDIA LLM",
+    "TELEGRAM_BOT_TOKEN": "Token do Bot Telegram (obrigatorio)",
+    "SUPABASE_URL": "URL do Supabase (obrigatorio)",
+    "SUPABASE_KEY": "Chave da API Supabase (obrigatorio)",
+}
+
+OPTIONAL_ENV_VARS = {
+    "SERPAPI_KEY": "Chave da API SerpAPI (opcional - necessario apenas para busca de clinicas)",
+    "NVIDIA_KEY": "Chave da API NVIDIA LLM (opcional - necessario apenas para geracao de mensagens IA)",
 }
 
 missing = [k for k in REQUIRED_ENV_VARS if not os.environ.get(k)]
 if missing:
-    print("\n🚨 ERRO CRÍTICO: VARIÁVEIS DE AMBIENTE FALTANDO")
+    print("\n🚨 ERRO CRÍTICO: VARIÁVEIS DE AMBIENTE OBRIGATÓRIAS FALTANDO")
     print("=" * 50)
     for var in missing:
         print(f"  ❌ {var} - {REQUIRED_ENV_VARS[var]}")
@@ -19,7 +22,14 @@ if missing:
     print("Defina as variáveis acima antes de iniciar o sistema.\n")
     sys.exit(1)
 
-print("✅ Todas as variáveis de ambiente validadas com sucesso\n")
+print("✅ Todas as variáveis de ambiente obrigatórias validadas com sucesso\n")
+
+missing_optional = [k for k in OPTIONAL_ENV_VARS if not os.environ.get(k)]
+if missing_optional:
+    print("⚠️  AVISO: Variáveis opcionais não configuradas - funcionalidades limitadas")
+    for var in missing_optional:
+        print(f"  ⚠️  {var} - {OPTIONAL_ENV_VARS[var]}")
+    print()
 
 import logging
 from contextlib import asynccontextmanager
