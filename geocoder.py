@@ -61,7 +61,7 @@ def geocodificar_endereco(endereco: str, cidade: str = "") -> tuple[float, float
     return None
 
 
-def rodar(max_por_execucao: int = 5) -> dict:
+def rodar(max_por_execucao: int = 30) -> dict:
     if not supabase:
         logger.warning("supabase nao inicializado")
         return {"geocodificadas": 0, "sem_endereco": 0, "falhas": 0}
