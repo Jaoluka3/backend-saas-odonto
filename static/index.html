@@ -400,7 +400,7 @@
           <div class="metric-card"><div class="metric-label">Receita Proj.</div><div class="metric-value" id="m-receita">—</div><div class="metric-delta" id="m-receita-d">carregando...</div></div>
         </div>
         <div class="section-hdr"><span class="section-title">Clínicas Recentes</span><span class="badge badge-blue" id="totalCount">0 registros</span></div>
-        <div class="table-wrap"><table><thead><tr><th>Nome</th><th>Bairro</th><th>Telefone</th><th>Score</th><th>Status</th><th>Avaliação</th></tr></thead><tbody id="tableBody"><tr><td colspan="6" class="empty-state">Carregando dados...</td></tr></tbody></table></div>
+        <div class="table-wrap"><table><thead><tr><th>Nome</th><th>Bairro</th><th>Telefone</th><th>WhatsApp</th><th>Score</th><th>Status</th><th>Avaliação</th></tr></thead><tbody id="tableBody"><tr><td colspan="7" class="empty-state">Carregando dados...</td></tr></tbody></table></div>
       </div>
 
       <div class="tab-pane" id="tab-agentes">
@@ -415,7 +415,7 @@
 
       <div class="tab-pane" id="tab-clinicas">
         <div class="section-hdr" style="margin-bottom:18px;"><span class="section-title">Banco de Clínicas</span><span class="badge badge-blue" id="clinCount">0 registros</span></div>
-        <div class="table-wrap"><table><thead><tr><th>Nome</th><th>Bairro</th><th>Telefone</th><th>Score</th><th>Status</th><th>Avaliação</th></tr></thead><tbody id="clinicasBody"><tr><td colspan="6" class="empty-state">Carregando...</td></tr></tbody></table></div>
+        <div class="table-wrap"><table><thead><tr><th>Nome</th><th>Bairro</th><th>Telefone</th><th>WhatsApp</th><th>Score</th><th>Status</th><th>Avaliação</th></tr></thead><tbody id="clinicasBody"><tr><td colspan="7" class="empty-state">Carregando...</td></tr></tbody></table></div>
       </div>
 
       <div class="tab-pane" id="tab-chat">
@@ -540,11 +540,18 @@ function statusPill(status) {
   const [cls,label] = m[status?.toLowerCase()]||['pill-gray',status||'—'];
   return `<span class="status-pill ${cls}">● ${label}</span>`;
 }
+function limparTel(t) {
+  return (t||'').replace(/\D/g,'');
+}
+
 function buildTableRows(arr) {
-  if (!arr||!arr.length) return '<tr><td colspan="6" class="empty-state">Nenhuma clínica encontrada</td></tr>';
+  if (!arr||!arr.length) return '<tr><td colspan="7" class="empty-state">Nenhuma clínica encontrada</td></tr>';
   return arr.map(c=>{
     const s = c.score??c.rating??0;
-    return `<tr><td><strong>${c.nome||c.name||'—'}</strong></td><td class="td-muted">${c.bairro||c.neighborhood||'—'}</td><td class="td-muted" style="font-family:var(--font-mono);font-size:11.5px;">${c.telefone||c.phone||'—'}</td><td><div class="score-bar"><div class="score-track"><div class="score-fill" style="width:${Math.min(100,s)}%"></div></div><span style="font-size:11px;color:var(--muted);font-family:'JetBrains Mono',monospace;">${s}</span></div></td><td>${statusPill(c.status)}</td><td><span class="stars">${scoreToStars(s)}</span></td></tr>`;
+    const tel = c.telefone||c.phone||'—';
+    const wpp = c.whatsapp||c.telefone||'—';
+    const wppLink = wpp !== '—' ? `<a href="https://wa.me/55${limparTel(wpp)}" target="_blank" style="color:var(--green);text-decoration:none;font-weight:600;">Abrir</a>` : '—';
+    return `<tr><td><strong>${c.nome||c.name||'—'}</strong></td><td class="td-muted">${c.bairro||c.neighborhood||'—'}</td><td class="td-muted" style="font-family:var(--font-mono);font-size:11.5px;">${tel}</td><td style="font-size:12px;">${wppLink}</td><td><div class="score-bar"><div class="score-track"><div class="score-fill" style="width:${Math.min(100,s)}%"></div></div><span style="font-size:11px;color:var(--muted);font-family:'JetBrains Mono',monospace;">${s}</span></div></td><td>${statusPill(c.status)}</td><td><span class="stars">${scoreToStars(s)}</span></td></tr>`;
   }).join('');
 }
 
@@ -559,6 +566,12 @@ function initMap() {
   const container = document.getElementById('map');
   if (!container || !state.clinicas.length) return;
   if (state.map) { state.map.invalidateSize(); return; }
+
+  const temCoordenadas = state.clinicas.some(c => c.latitude && c.longitude);
+  if (!temCoordenadas) {
+    document.getElementById('nearbyClinics').innerHTML = '<div class="empty-state">Clique em "Geocodificar" para gerar coordenadas das clinicas no mapa.</div>';
+    return;
+  }
 
   const center = state.userLat ? [state.userLat, state.userLng] : [-19.9703, -44.2065];
   state.map = L.map('map').setView(center, 13);
@@ -616,7 +629,7 @@ function initMap() {
 
 async function loadDashboard() {
   const [clinicas, funil] = await Promise.all([fetchData('/clinicas'), fetchData('/funil')]);
-  const clin = clinicas||[];
+  const clin = clinicas?.data||[];
   const fun = funil?.data||funil||{};
   state.clinicas = clin;
 

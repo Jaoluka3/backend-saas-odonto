@@ -107,6 +107,7 @@ def rodar() -> int:
         leads.append({
             "nome": nome,
             "telefone": telefone,
+            "whatsapp": telefone,
             "email": "",
             "endereco": (r.get("address") or "").strip(),
             "website": (r.get("website") or "").strip(),
