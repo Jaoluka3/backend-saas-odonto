@@ -11,6 +11,7 @@ import agente_qualificador
 import agente_email_resolver
 import agente_contato
 import agente_followup
+import geocoder
 
 logger = logging.getLogger(__name__)
 
@@ -43,6 +44,13 @@ def rodar_pipeline(run_id: Optional[str] = None) -> dict:
 
         _verificar_timeout()
         r_busca = agente_buscador.rodar()
+
+        _verificar_timeout()
+        try:
+            r_geo = geocoder.rodar()
+            logger.info("Geocoder: %d geocodificadas, %d falhas", r_geo.get("geocodificadas", 0), r_geo.get("falhas", 0))
+        except Exception as e:
+            logger.error("Erro no geocoder: %s", e)
 
         _verificar_timeout()
         r_qualif = agente_qualificador.rodar()

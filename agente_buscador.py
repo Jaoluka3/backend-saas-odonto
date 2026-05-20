@@ -104,16 +104,23 @@ def rodar() -> int:
         if not telefone or not nome:
             continue
 
+        endereco_str = (r.get("address") or "").strip()
+        cidade_str = "Betim"
+        if "Betim" not in endereco_str and "Betim" not in cidade_str:
+            logger.info("Ignorando clinica fora de Betim: %s — %s", nome, endereco_str)
+            continue
+
         leads.append({
             "nome": nome,
             "telefone": telefone,
             "whatsapp": telefone,
             "email": "",
-            "endereco": (r.get("address") or "").strip(),
+            "instagram": None,
+            "endereco": endereco_str,
             "website": (r.get("website") or "").strip(),
             "avaliacao_google": r.get("rating"),
             "num_avaliacoes": r.get("reviews"),
-            "cidade": "Betim",
+            "cidade": cidade_str,
             "status": "novo",
         })
 

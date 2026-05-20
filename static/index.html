@@ -551,7 +551,8 @@ function buildTableRows(arr) {
     const tel = c.telefone||c.phone||'—';
     const wpp = c.whatsapp||c.telefone||'—';
     const wppLink = wpp !== '—' ? `<a href="https://wa.me/55${limparTel(wpp)}" target="_blank" style="color:var(--green);text-decoration:none;font-weight:600;">Abrir</a>` : '—';
-    return `<tr><td><strong>${c.nome||c.name||'—'}</strong></td><td class="td-muted">${c.bairro||c.neighborhood||'—'}</td><td class="td-muted" style="font-family:var(--font-mono);font-size:11.5px;">${tel}</td><td style="font-size:12px;">${wppLink}</td><td><div class="score-bar"><div class="score-track"><div class="score-fill" style="width:${Math.min(100,s)}%"></div></div><span style="font-size:11px;color:var(--muted);font-family:'JetBrains Mono',monospace;">${s}</span></div></td><td>${statusPill(c.status)}</td><td><span class="stars">${scoreToStars(s)}</span></td></tr>`;
+    const nomeHtml = `<strong style="cursor:pointer;color:var(--accent)" onclick='abrirModal("${encodeURIComponent(JSON.stringify(c))}")'>${c.nome||c.name||'—'}</strong>`;
+    return `<tr><td>${nomeHtml}</td><td class="td-muted">${c.bairro||c.neighborhood||'—'}</td><td class="td-muted" style="font-family:var(--font-mono);font-size:11.5px;">${tel}</td><td style="font-size:12px;">${wppLink}</td><td><div class="score-bar"><div class="score-track"><div class="score-fill" style="width:${Math.min(100,s)}%"></div></div><span style="font-size:11px;color:var(--muted);font-family:'JetBrains Mono',monospace;">${s}</span></div></td><td>${statusPill(c.status)}</td><td><span class="stars">${scoreToStars(s)}</span></td></tr>`;
   }).join('');
 }
 
@@ -804,10 +805,44 @@ function getLocation() {
   }
 }
 
+function abrirModal(jsonEncoded) {
+  const c = JSON.parse(decodeURIComponent(jsonEncoded));
+  const tel = (c.telefone||'').replace(/\D/g,'');
+  const wpp = (c.whatsapp||c.telefone||'').replace(/\D/g,'');
+  const insta = c.instagram || '';
+  document.getElementById('modalContent').innerHTML = `
+    <h3 style="margin-bottom:12px;font-size:16px">${c.nome||c.name||'—'}</h3>
+    <div style="display:flex;flex-direction:column;gap:8px;font-size:13px">
+      <div><span style="color:var(--muted)">Endereço:</span> ${c.endereco||'—'}</div>
+      <div><span style="color:var(--muted)">Telefone:</span> ${c.telefone||'—'}</div>
+      <div><span style="color:var(--muted)">Avaliação:</span> ${c.avaliacao_google||'—'} ⭐</div>
+      <div><span style="color:var(--muted)">Status:</span> ${c.status||'—'}</div>
+      <div><span style="color:var(--muted)">Score:</span> ${c.score||'—'}</div>
+      <div><span style="color:var(--muted)">Instagram:</span> ${insta ? `<a href="https://instagram.com/${insta.replace('@','')}" target="_blank" style="color:#E1306C;font-weight:600">@${insta.replace('@','')}</a>` : 'Buscar manualmente'}</div>
+      <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap">
+        ${tel ? `<a href="https://wa.me/55${wpp}" target="_blank" style="background:#25D366;color:#fff;padding:8px 14px;border-radius:6px;text-decoration:none;font-size:12px">📱 WhatsApp</a>` : ''}
+        ${insta ? `<a href="https://instagram.com/${insta.replace('@','')}" target="_blank" style="background:#E1306C;color:#fff;padding:8px 14px;border-radius:6px;text-decoration:none;font-size:12px">📸 Instagram</a>` : ''}
+        ${c.website ? `<a href="${c.website}" target="_blank" style="background:var(--accent);color:#fff;padding:8px 14px;border-radius:6px;text-decoration:none;font-size:12px">🌐 Site</a>` : ''}
+      </div>
+    </div>
+  `;
+  document.getElementById('modal').style.display = 'flex';
+}
+function fecharModal() {
+  document.getElementById('modal').style.display = 'none';
+}
+
 loadDashboard();
 loadEmails();
 setInterval(() => { loadDashboard(); loadEmails(); }, 15000);
 getLocation();
 </script>
+
+<div id="modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:999;align-items:center;justify-content:center">
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px;max-width:500px;width:90%;position:relative">
+    <button onclick="fecharModal()" style="position:absolute;top:12px;right:12px;background:none;border:none;color:var(--muted);cursor:pointer;font-size:18px">✕</button>
+    <div id="modalContent"></div>
+  </div>
+</div>
 </body>
 </html>

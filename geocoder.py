@@ -14,6 +14,36 @@ HEADERS = {
 ARQUIVO_COORDENADAS = "/tmp/coordenadas.json"
 
 
+def _add_colunas_se_necessario():
+    """Tenta adicionar colunas que podem estar faltando (instagram etc).
+    Usa psycopg2 se DATABASE_URL estiver configurado, ou tenta via RPC."""
+    colunas_faltando = []
+    try:
+        result = supabase.table("clinicas").select("instagram").limit(1).execute()
+    except Exception:
+        colunas_faltando.append("instagram")
+    if not colunas_faltando:
+        return
+    db_url = os.environ.get("DATABASE_URL") or ""
+    if db_url:
+        try:
+            import psycopg2
+            conn = psycopg2.connect(db_url)
+            cur = conn.cursor()
+            cur.execute("ALTER TABLE clinicas ADD COLUMN IF NOT EXISTS instagram text;")
+            conn.commit()
+            cur.close()
+            conn.close()
+            logger.info("Colunas adicionadas: %s", colunas_faltando)
+        except Exception as e:
+            logger.warning("Nao foi possivel adicionar colunas via psycopg2: %s", e)
+    else:
+        logger.info(
+            "DATABASE_URL nao configurado — rode no SQL Editor do Supabase:\n"
+            "ALTER TABLE clinicas ADD COLUMN IF NOT EXISTS instagram text;"
+        )
+
+
 def _carregar_coordenadas() -> dict:
     if not os.path.exists(ARQUIVO_COORDENADAS):
         return {}
@@ -65,6 +95,8 @@ def rodar(max_por_execucao: int = 30) -> dict:
     if not supabase:
         logger.warning("supabase nao inicializado")
         return {"geocodificadas": 0, "sem_endereco": 0, "falhas": 0}
+
+    _add_colunas_se_necessario()
 
     try:
         result = (
