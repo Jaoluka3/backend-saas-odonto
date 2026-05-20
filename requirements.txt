@@ -6,4 +6,6 @@ requests==2.33.1
 schedule==1.2.2
 supabase==2.29.0
 uvicorn==0.46.0
-# google-generativeai>=0.8.0  # Comentado: usando NVIDIA LLaMA 3.1 em vez de Gemini
+google-api-python-client==2.165.0
+google-auth-httplib2==0.2.0
+google-auth-oauthlib==1.2.1

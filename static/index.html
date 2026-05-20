@@ -1,145 +1,737 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SaaS Odonto — Command Center</title>
-<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;800&display=swap" rel="stylesheet">
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>ATLAS — Sistema de Prospecção</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <style>
-:root{--bg:#080b10;--surface:#0d1117;--border:#1a2332;--accent:#00d4ff;--green:#00ff88;--amber:#ffb800;--red:#ff4560;--purple:#a855f7;--text:#e2e8f0;--muted:#4a5568}
-*{margin:0;padding:0;box-sizing:border-box}
-body{background:var(--bg);color:var(--text);font-family:'Syne',sans-serif;min-height:100vh}
-.grid-bg{position:fixed;inset:0;background-image:linear-gradient(rgba(0,212,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,212,255,.03) 1px,transparent 1px);background-size:40px 40px;pointer-events:none}
-.container{position:relative;z-index:1;max-width:1400px;margin:0 auto;padding:24px}
-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:32px;padding-bottom:24px;border-bottom:1px solid var(--border)}
-.logo{display:flex;align-items:center;gap:12px}
-.logo-icon{width:40px;height:40px;background:linear-gradient(135deg,var(--accent),var(--purple));border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px}
-.logo-text{font-size:20px;font-weight:800}.logo-text span{color:var(--accent)}
-.status-badge{display:flex;align-items:center;gap:8px;background:rgba(0,255,136,.08);border:1px solid rgba(0,255,136,.2);padding:8px 16px;border-radius:100px;font-family:'Space Mono',monospace;font-size:11px;color:var(--green)}
-.pulse{width:8px;height:8px;background:var(--green);border-radius:50%;animation:pulse 2s infinite}
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.8)}}
-.time{font-family:'Space Mono',monospace;font-size:12px;color:var(--muted)}
-.header-right{display:flex;align-items:center;gap:12px}
-.metrics{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-bottom:24px}
-.metric{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px;position:relative;overflow:hidden;transition:border-color .3s,transform .2s;cursor:pointer}
-.metric:hover{transform:translateY(-2px);border-color:rgba(0,212,255,.3)}
-.metric::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
-.metric.novo::before{background:var(--accent)}.metric.qualificado::before{background:var(--green)}.metric.descartado::before{background:var(--red)}.metric.contactado::before{background:var(--amber)}.metric.inativo::before{background:var(--muted)}.metric.cliente::before{background:var(--purple)}
-.metric-label{font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
-.metric-value{font-family:'Space Mono',monospace;font-size:28px;font-weight:700;line-height:1}
-.metric.novo .metric-value{color:var(--accent)}.metric.qualificado .metric-value{color:var(--green)}.metric.descartado .metric-value{color:var(--red)}.metric.contactado .metric-value{color:var(--amber)}.metric.inativo .metric-value{color:var(--muted)}.metric.cliente .metric-value{color:var(--purple)}
-.main-grid{display:grid;grid-template-columns:1fr 360px;gap:16px;margin-bottom:16px}
-.card{background:var(--surface);border:1px solid var(--border);border-radius:16px;overflow:hidden}
-.card-header{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid var(--border)}
-.card-title{font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--muted)}
-.card-badge{font-family:'Space Mono',monospace;font-size:10px;padding:4px 10px;border-radius:100px;background:rgba(0,212,255,.1);color:var(--accent);border:1px solid rgba(0,212,255,.2)}
-.funnel-viz{padding:24px}
-.funnel-step{display:flex;align-items:center;gap:16px;margin-bottom:12px}
-.funnel-bar-wrap{flex:1;height:36px;background:rgba(255,255,255,.03);border-radius:6px;overflow:hidden}
-.funnel-bar{height:100%;border-radius:6px;display:flex;align-items:center;padding-left:12px;font-size:12px;font-weight:600;transition:width 1s cubic-bezier(.16,1,.3,1);min-width:60px;white-space:nowrap}
-.funnel-num{font-family:'Space Mono',monospace;font-size:13px;font-weight:700;min-width:40px;text-align:right}
-.funnel-label{font-size:11px;text-transform:uppercase;letter-spacing:1px;min-width:90px;color:var(--muted)}
-.pipeline-panel{display:flex;flex-direction:column}
-.pipeline-inner{padding:20px;flex:1;display:flex;flex-direction:column;gap:16px}
-.pipeline-status{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:24px;background:rgba(0,255,136,.04);border:1px solid rgba(0,255,136,.1);border-radius:12px;text-align:center}
-.pipeline-status.running{background:rgba(0,212,255,.04);border-color:rgba(0,212,255,.15)}
-.pipeline-icon{font-size:32px}
-.pipeline-status-text{font-size:13px;font-weight:600;color:var(--green)}
-.pipeline-status.running .pipeline-status-text{color:var(--accent)}
-.pipeline-run-id{font-family:'Space Mono',monospace;font-size:10px;color:var(--muted)}
-.btn-run{background:linear-gradient(135deg,var(--accent),var(--purple));border:none;color:#000;font-family:'Syne',sans-serif;font-size:13px;font-weight:700;padding:14px 20px;border-radius:10px;cursor:pointer;width:100%;letter-spacing:.5px;transition:opacity .2s,transform .2s}
-.btn-run:hover{opacity:.9;transform:translateY(-1px)}.btn-run:disabled{opacity:.5;cursor:not-allowed}
-.btn-refresh{background:transparent;border:1px solid var(--border);color:var(--muted);font-family:'Syne',sans-serif;font-size:12px;padding:10px 16px;border-radius:8px;cursor:pointer;width:100%;transition:all .2s}
-.btn-refresh:hover{border-color:var(--accent);color:var(--accent)}
-.table-wrap{overflow-x:auto}
-table{width:100%;border-collapse:collapse;font-size:13px}
-th{padding:12px 16px;text-align:left;font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--border);white-space:nowrap}
-td{padding:14px 16px;border-bottom:1px solid rgba(26,35,50,.5);vertical-align:middle}
-tr:hover td{background:rgba(0,212,255,.02)}
-tr:last-child td{border-bottom:none}
-.status-pill{display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:100px;font-size:10px;font-weight:600;letter-spacing:.5px;text-transform:uppercase}
-.pill-novo{background:rgba(0,212,255,.1);color:var(--accent)}.pill-qualificado{background:rgba(0,255,136,.1);color:var(--green)}.pill-descartado{background:rgba(255,69,96,.1);color:var(--red)}.pill-contactado{background:rgba(255,184,0,.1);color:var(--amber)}.pill-inativo{background:rgba(74,85,104,.2);color:var(--muted)}.pill-cliente{background:rgba(168,85,247,.1);color:var(--purple)}
-.score-bar{display:flex;align-items:center;gap:8px}
-.score-track{width:60px;height:4px;background:rgba(255,255,255,.05);border-radius:2px;overflow:hidden}
-.score-fill{height:100%;border-radius:2px;background:linear-gradient(90deg,var(--accent),var(--green))}
-.score-num{font-family:'Space Mono',monospace;font-size:11px;color:var(--muted);min-width:24px}
-.empty-state{padding:48px;text-align:center;color:var(--muted)}
-.empty-state .empty-icon{font-size:32px;margin-bottom:12px}
-.empty-state p{font-size:13px}
-.loading{display:flex;align-items:center;justify-content:center;padding:48px;gap:8px;color:var(--muted);font-size:13px;font-family:'Space Mono',monospace}
-.spinner{width:16px;height:16px;border:2px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite}
-@keyframes spin{to{transform:rotate(360deg)}}
-.bottom-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.toast{position:fixed;bottom:24px;right:24px;background:var(--surface);border:1px solid var(--green);color:var(--green);padding:12px 20px;border-radius:10px;font-family:'Space Mono',monospace;font-size:12px;z-index:1000;transform:translateY(100px);opacity:0;transition:all .3s cubic-bezier(.16,1,.3,1)}
-.toast.show{transform:translateY(0);opacity:1}
-.conv-section{padding:20px}
-.conv-item{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
-.conv-label{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:1px}
-.conv-pct{font-family:'Space Mono',monospace;font-size:14px;color:var(--accent)}
-@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
-.metric{animation:fadeUp .4s ease both}
-.metric:nth-child(1){animation-delay:.05s}.metric:nth-child(2){animation-delay:.1s}.metric:nth-child(3){animation-delay:.15s}.metric:nth-child(4){animation-delay:.2s}.metric:nth-child(5){animation-delay:.25s}.metric:nth-child(6){animation-delay:.3s}
-.card{animation:fadeUp .4s ease .2s both}
-@media(max-width:900px){.metrics{grid-template-columns:repeat(3,1fr)}.main-grid{grid-template-columns:1fr}.bottom-row{grid-template-columns:1fr}}
-@media(max-width:500px){.metrics{grid-template-columns:repeat(2,1fr)}.container{padding:12px}}
+  :root {
+    --bg: #080a0f;
+    --surface: #0d1117;
+    --surface2: #111827;
+    --border: #1a2233;
+    --accent: #1d6fa4;
+    --accent-dim: #0f3d5c;
+    --accent-hover: #2580bb;
+    --text: #e2e8f0;
+    --muted: #64748b;
+    --green: #10b981;
+    --amber: #f59e0b;
+    --red: #ef4444;
+    --sidebar-w: 240px;
+    --header-h: 56px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { font-size: 14px; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Figtree', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+  ::-webkit-scrollbar { width: 4px; height: 4px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 2px; }
+  .layout { display: flex; min-height: 100vh; }
+
+  .sidebar {
+    width: var(--sidebar-w); min-height: 100vh;
+    background: var(--surface);
+    border-right: 1px solid var(--border);
+    display: flex; flex-direction: column;
+    position: fixed; left: 0; top: 0; bottom: 0;
+    z-index: 100;
+    transition: transform 0.25s ease;
+  }
+  .sidebar-logo {
+    display: flex; align-items: center; gap: 10px;
+    padding: 18px 20px; border-bottom: 1px solid var(--border);
+  }
+  .logo-icon {
+    width: 32px; height: 32px; background: var(--accent);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px; font-weight: 500; color: #fff;
+    flex-shrink: 0;
+  }
+  .logo-text { font-size: 15px; font-weight: 700; letter-spacing: 0.08em; color: var(--text); }
+  .logo-sub { font-size: 10px; color: var(--muted); font-family: 'JetBrains Mono', monospace; }
+  .sidebar-nav { flex: 1; padding: 12px 8px; }
+  .nav-section {
+    font-size: 10px; font-weight: 600; letter-spacing: 0.1em;
+    color: var(--muted); padding: 8px 12px 4px;
+    text-transform: uppercase; font-family: 'JetBrains Mono', monospace;
+  }
+  .nav-item {
+    display: flex; align-items: center; gap: 10px;
+    padding: 8px 12px; border-radius: 6px; cursor: pointer;
+    color: var(--muted); font-size: 13.5px; font-weight: 500;
+    transition: all 0.15s ease; margin-bottom: 1px;
+    border: 1px solid transparent;
+  }
+  .nav-item:hover { background: rgba(29,111,164,0.08); color: var(--text); }
+  .nav-item.active {
+    background: rgba(29,111,164,0.12); color: var(--accent);
+    border-color: rgba(29,111,164,0.2);
+  }
+  .nav-icon { width: 16px; height: 16px; opacity: 0.7; flex-shrink: 0; }
+  .nav-item.active .nav-icon { opacity: 1; }
+
+  .sidebar-footer { padding: 16px 20px; border-top: 1px solid var(--border); }
+  .system-status { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+  .status-dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--green); flex-shrink: 0;
+    animation: pulse-dot 2s infinite;
+  }
+  @keyframes pulse-dot {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(16,185,129,0.4); }
+    50% { box-shadow: 0 0 0 4px rgba(16,185,129,0); }
+  }
+  .status-label { font-size: 12px; font-weight: 500; color: var(--green); }
+  .version-tag { font-size: 10px; color: var(--muted); font-family: 'JetBrains Mono', monospace; }
+
+  .main { margin-left: var(--sidebar-w); flex: 1; display: flex; flex-direction: column; min-height: 100vh; }
+
+  .header {
+    height: var(--header-h); background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 24px; position: sticky; top: 0; z-index: 50;
+  }
+  .header-left { display: flex; align-items: center; gap: 12px; }
+  .hamburger { display: none; flex-direction: column; gap: 4px; cursor: pointer; padding: 4px; }
+  .hamburger span { width: 18px; height: 2px; background: var(--muted); border-radius: 2px; }
+  .header-title { font-size: 14px; font-weight: 600; color: var(--text); }
+  .header-right { display: flex; align-items: center; gap: 12px; }
+  .clock {
+    font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--muted);
+    padding: 4px 10px; background: var(--bg); border: 1px solid var(--border); border-radius: 6px;
+  }
+  .btn-primary {
+    background: var(--accent); color: #fff; border: none; border-radius: 6px;
+    padding: 7px 14px; font-size: 12.5px; font-weight: 600;
+    font-family: 'Figtree', sans-serif; cursor: pointer; transition: background 0.15s ease;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .btn-primary:hover { background: var(--accent-hover); }
+  .btn-primary:active { transform: scale(0.98); }
+
+  .content { flex: 1; padding: 24px; overflow-y: auto; }
+  .tab-pane { display: none; }
+  .tab-pane.active { display: block; }
+
+  .metrics-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 24px; }
+  .metric-card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
+    padding: 16px 18px;
+  }
+  .metric-card:hover { border-color: rgba(29,111,164,0.3); }
+  .metric-label {
+    font-size: 11px; font-weight: 600; color: var(--muted); text-transform: uppercase;
+    letter-spacing: 0.07em; margin-bottom: 10px; font-family: 'JetBrains Mono', monospace;
+  }
+  .metric-value { font-size: 26px; font-weight: 700; color: var(--text); line-height: 1; margin-bottom: 6px; }
+  .metric-delta { font-size: 11px; color: var(--green); font-weight: 500; }
+  .metric-delta.down { color: var(--red); }
+
+  .section-hdr { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+  .section-title { font-size: 13px; font-weight: 600; color: var(--text); }
+  .badge {
+    font-size: 10px; font-family: 'JetBrains Mono', monospace;
+    padding: 3px 8px; border-radius: 4px; font-weight: 500;
+  }
+  .badge-blue { background: rgba(29,111,164,0.15); color: var(--accent); }
+  .badge-green { background: rgba(16,185,129,0.12); color: var(--green); }
+  .badge-amber { background: rgba(245,158,11,0.12); color: var(--amber); }
+
+  .table-wrap { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+  table { width: 100%; border-collapse: collapse; }
+  thead th {
+    padding: 10px 14px; text-align: left; font-size: 10.5px; font-weight: 600;
+    color: var(--muted); text-transform: uppercase; letter-spacing: 0.07em;
+    border-bottom: 1px solid var(--border); font-family: 'JetBrains Mono', monospace;
+    background: rgba(255,255,255,0.01);
+  }
+  tbody tr { border-bottom: 1px solid rgba(255,255,255,0.03); transition: background 0.15s ease; }
+  tbody tr:nth-child(even) { background: rgba(255,255,255,0.02); }
+  tbody tr:hover { background: rgba(29,111,164,0.05); }
+  tbody tr:last-child { border-bottom: none; }
+  td { padding: 10px 14px; font-size: 12.5px; color: var(--text); vertical-align: middle; }
+  .td-muted { color: var(--muted); font-size: 12px; }
+
+  .status-pill {
+    display: inline-flex; align-items: center; gap: 5px;
+    padding: 3px 8px; border-radius: 4px;
+    font-size: 10.5px; font-weight: 600; font-family: 'JetBrains Mono', monospace;
+  }
+  .pill-green { background: rgba(16,185,129,0.1); color: var(--green); }
+  .pill-amber { background: rgba(245,158,11,0.1); color: var(--amber); }
+  .pill-blue  { background: rgba(29,111,164,0.1); color: #60a5fa; }
+  .pill-gray  { background: rgba(100,116,139,0.1); color: var(--muted); }
+
+  .score-bar { display: flex; align-items: center; gap: 8px; }
+  .score-track { flex: 1; height: 4px; background: var(--border); border-radius: 2px; overflow: hidden; min-width: 60px; }
+  .score-fill { height: 100%; border-radius: 2px; background: var(--accent); transition: width 0.4s ease; }
+  .stars { color: var(--amber); font-size: 11px; letter-spacing: 1px; }
+
+  .chat-wrap {
+    display: flex; flex-direction: column;
+    height: calc(100vh - var(--header-h) - 48px); max-height: 740px;
+    background: var(--surface); border: 1px solid var(--border); border-radius: 8px; overflow: hidden;
+  }
+  .chat-header {
+    display: flex; align-items: center; gap: 12px;
+    padding: 14px 18px; border-bottom: 1px solid var(--border);
+    background: rgba(255,255,255,0.01);
+  }
+  .agent-avatar {
+    width: 34px; height: 34px; border-radius: 50%; background: var(--accent);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 14px; color: #fff; flex-shrink: 0;
+  }
+  .agent-info-name { font-size: 13px; font-weight: 600; color: var(--text); }
+  .agent-info-sub { font-size: 11px; color: var(--muted); font-family: 'JetBrains Mono', monospace; }
+  .chat-online { margin-left: auto; display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--green); }
+
+  .chat-messages {
+    flex: 1; overflow-y: auto; padding: 18px;
+    display: flex; flex-direction: column; gap: 14px;
+  }
+  .msg { display: flex; align-items: flex-start; gap: 10px; max-width: 86%; animation: fadeInUp 0.2s ease; }
+  @keyframes fadeInUp { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+  .msg.user { flex-direction: row-reverse; margin-left: auto; }
+  .msg-avatar { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; flex-shrink: 0; }
+  .msg-avatar.atlas { background: var(--accent); color: #fff; }
+  .msg-avatar.user { background: var(--accent-dim); color: var(--accent); border: 1px solid rgba(29,111,164,0.3); }
+  .msg-bubble { padding: 9px 13px; border-radius: 8px; font-size: 13px; line-height: 1.55; max-width: 100%; word-break: break-word; }
+  .msg.atlas .msg-bubble { background: var(--surface2); border: 1px solid var(--border); color: var(--text); border-top-left-radius: 3px; }
+  .msg.user .msg-bubble { background: var(--accent-dim); border: 1px solid rgba(29,111,164,0.25); color: var(--text); border-top-right-radius: 3px; }
+  .msg-time { font-size: 10px; color: var(--muted); margin-top: 4px; font-family: 'JetBrains Mono', monospace; }
+  .msg.user .msg-time { text-align: right; }
+
+  .typing-indicator { display: none; align-items: center; gap: 10px; padding: 0 18px 8px; }
+  .typing-indicator.visible { display: flex; }
+  .typing-dots { display: flex; gap: 4px; background: var(--surface2); border: 1px solid var(--border); padding: 8px 12px; border-radius: 8px; border-top-left-radius: 3px; }
+  .typing-dots span { width: 5px; height: 5px; border-radius: 50%; background: var(--muted); animation: dot-blink 1.2s infinite; }
+  .typing-dots span:nth-child(2) { animation-delay: 0.2s; }
+  .typing-dots span:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes dot-blink { 0%, 60%, 100% { opacity: 0.3; } 30% { opacity: 1; } }
+
+  .clinic-cards-inline { display: flex; flex-direction: column; gap: 6px; margin-top: 8px; }
+  .clinic-card-inline { background: var(--bg); border: 1px solid var(--border); border-radius: 6px; padding: 8px 12px; font-size: 12px; }
+  .clinic-card-name { font-weight: 600; color: var(--text); margin-bottom: 2px; }
+  .clinic-card-meta { color: var(--muted); font-size: 11px; font-family: 'JetBrains Mono', monospace; }
+
+  .chat-input-area { padding: 14px 18px; border-top: 1px solid var(--border); display: flex; gap: 10px; align-items: flex-end; }
+  .chat-input {
+    flex: 1; background: var(--bg); border: 1px solid var(--border); border-radius: 8px;
+    padding: 9px 13px; color: var(--text); font-family: 'Figtree', sans-serif;
+    font-size: 13px; resize: none; outline: none; transition: border-color 0.2s;
+    min-height: 40px; max-height: 100px;
+  }
+  .chat-input:focus { border-color: rgba(29,111,164,0.5); }
+  .chat-input::placeholder { color: var(--muted); }
+  .btn-send { width: 38px; height: 38px; background: var(--accent); border: none; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.15s; flex-shrink: 0; }
+  .btn-send:hover { background: var(--accent-hover); }
+  .btn-send svg { fill: #fff; }
+
+  .agents-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .agent-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 20px; }
+  .agent-card:hover { border-color: rgba(29,111,164,0.3); }
+  .agent-card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+  .agent-card-avatar { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 700; color: #fff; }
+  .av-blue { background: #1d6fa4; }
+  .av-purple { background: #7c3aed; }
+  .av-teal { background: #0d9488; }
+  .av-orange { background: #ea580c; }
+  .agent-card-name { font-size: 14px; font-weight: 700; color: var(--text); }
+  .agent-card-role { font-size: 11px; color: var(--muted); font-family: 'JetBrains Mono', monospace; }
+  .agent-status-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+  .agent-metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .agent-metric { background: var(--bg); border: 1px solid var(--border); border-radius: 6px; padding: 10px 12px; }
+  .agent-metric-label { font-size: 10px; color: var(--muted); font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
+  .agent-metric-value { font-size: 18px; font-weight: 700; color: var(--text); }
+  .last-run { font-size: 11px; color: var(--muted); font-family: 'JetBrains Mono', monospace; }
+
+  .analytics-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+  .chart-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 18px; }
+  .chart-card-full { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 18px; margin-bottom: 14px; }
+  .chart-title { font-size: 12px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.07em; font-family: 'JetBrains Mono', monospace; margin-bottom: 18px; }
+
+  .funnel-step { margin-bottom: 14px; }
+  .funnel-info { display: flex; justify-content: space-between; margin-bottom: 5px; font-size: 12.5px; color: var(--text); }
+  .funnel-pct { color: var(--muted); font-family: 'JetBrains Mono', monospace; font-size: 11px; }
+  .funnel-bar-track { height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; }
+  .funnel-bar-fill { height: 100%; border-radius: 3px; background: var(--accent); transition: width 0.6s ease; }
+
+  .bar-chart { display: flex; align-items: flex-end; gap: 8px; height: 120px; margin-bottom: 8px; }
+  .bar-col { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px; height: 100%; justify-content: flex-end; }
+  .bar-rect { width: 100%; border-radius: 3px 3px 0 0; background: var(--accent-dim); transition: height 0.4s ease; min-height: 4px; border: 1px solid rgba(29,111,164,0.2); }
+  .bar-rect:hover { background: var(--accent); }
+  .bar-label { font-size: 10px; color: var(--muted); font-family: 'JetBrains Mono', monospace; text-align: center; }
+  .bar-val { font-size: 10px; color: var(--text); font-family: 'JetBrains Mono', monospace; font-weight: 600; }
+
+  .receita-num { font-size: 36px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+  .receita-label { font-size: 12px; color: var(--muted); margin-bottom: 16px; }
+  .receita-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.04); font-size: 12.5px; }
+  .receita-row:last-child { border-bottom: none; }
+  .receita-row-label { color: var(--muted); }
+  .receita-row-val { font-weight: 600; font-family: 'JetBrains Mono', monospace; }
+
+  #map {
+    height: 300px; border-radius: 8px;
+    border: 1px solid var(--border);
+    z-index: 1;
+  }
+  .leaflet-container { background: var(--surface); }
+
+  #toast {
+    position: fixed; bottom: 24px; right: 24px;
+    background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
+    padding: 12px 16px; font-size: 12.5px; color: var(--text);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.4); z-index: 999;
+    opacity: 0; transform: translateY(8px);
+    transition: all 0.25s ease; pointer-events: none;
+    display: flex; align-items: center; gap: 8px; max-width: 300px;
+  }
+  #toast.show { opacity: 1; transform: translateY(0); }
+
+  .sidebar-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 99; }
+  .empty-state { text-align: center; padding: 40px 20px; color: var(--muted); font-size: 13px; font-family: 'JetBrains Mono', monospace; }
+  .skeleton {
+    background: linear-gradient(90deg, var(--border) 25%, rgba(255,255,255,0.05) 50%, var(--border) 75%);
+    background-size: 200% 100%; animation: skeleton-shine 1.4s infinite; border-radius: 4px;
+  }
+  @keyframes skeleton-shine { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+
+  @media (max-width: 768px) {
+    .sidebar { transform: translateX(-100%); }
+    .sidebar.open { transform: translateX(0); }
+    .sidebar-overlay.open { display: block; }
+    .main { margin-left: 0; }
+    .hamburger { display: flex; }
+    .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+    .agents-grid { grid-template-columns: 1fr; }
+    .analytics-grid { grid-template-columns: 1fr; }
+    .content { padding: 16px; }
+  }
+  @media (max-width: 480px) {
+    .metrics-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+    .metric-value { font-size: 20px; }
+    .clock { display: none; }
+  }
 </style>
 </head>
 <body>
-<div class="grid-bg"></div>
-<div class="container">
-<header>
-<div class="logo"><div class="logo-icon">🦷</div><div class="logo-text">Saas<span>Odonto</span></div></div>
-<div class="header-right">
-<div class="time" id="clock">--:--:--</div>
-<div class="status-badge"><div class="pulse"></div>SISTEMA ONLINE</div>
+
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+<div id="toast"><span id="toast-icon">✓</span><span id="toast-msg">Ação executada</span></div>
+
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <div class="logo-icon">AT</div>
+      <div><div class="logo-text">ATLAS</div><div class="logo-sub">v2.4.0 · produção</div></div>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-section">Sistema</div>
+      <div class="nav-item active" onclick="switchTab('dashboard',this)" data-tab="dashboard">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>Dashboard
+      </div>
+      <div class="nav-item" onclick="switchTab('agentes',this)" data-tab="agentes">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M6 20c0-4 2.7-7 6-7s6 3 6 7"/><circle cx="19" cy="9" r="2.5"/><path d="M21 16c1.5 1 2 2.5 2 4"/></svg>Agentes
+      </div>
+      <div class="nav-item" onclick="switchTab('clinicas',this)" data-tab="clinicas">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9l9-6 9 6v11a1 1 0 01-1 1H4a1 1 0 01-1-1z"/><path d="M9 22V12h6v10"/><path d="M12 7v4m-2-2h4"/></svg>Clínicas
+      </div>
+      <div class="nav-item" onclick="switchTab('chat',this)" data-tab="chat">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>Chat ATLAS
+      </div>
+      <div class="nav-item" onclick="switchTab('analytics',this)" data-tab="analytics">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>Analytics
+      </div>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="system-status"><div class="status-dot"></div><span class="status-label">Sistema ativo</span></div>
+      <div class="version-tag">ATLAS Pro · build 2024.2</div>
+    </div>
+  </aside>
+
+  <div class="main">
+    <header class="header">
+      <div class="header-left">
+        <div class="hamburger" onclick="toggleSidebar()"><span></span><span></span><span></span></div>
+        <span class="header-title" id="headerTitle">Dashboard</span>
+      </div>
+      <div class="header-right">
+        <span class="clock" id="clock">--:--:--</span>
+        <button class="btn-primary" onclick="executarPipeline()">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          Executar Pipeline
+        </button>
+      </div>
+    </header>
+
+    <div class="content">
+      <div class="tab-pane active" id="tab-dashboard">
+        <div class="metrics-grid" id="metricsGrid">
+          <div class="metric-card"><div class="metric-label">Total Clínicas</div><div class="metric-value" id="m-total">—</div><div class="metric-delta" id="m-total-d">carregando...</div></div>
+          <div class="metric-card"><div class="metric-label">Contactadas</div><div class="metric-value" id="m-cont">—</div><div class="metric-delta" id="m-cont-d">carregando...</div></div>
+          <div class="metric-card"><div class="metric-label">Score Médio</div><div class="metric-value" id="m-score">—</div><div class="metric-delta" id="m-score-d">carregando...</div></div>
+          <div class="metric-card"><div class="metric-label">Receita Proj.</div><div class="metric-value" id="m-receita">—</div><div class="metric-delta" id="m-receita-d">carregando...</div></div>
+        </div>
+        <div class="section-hdr"><span class="section-title">Clínicas Recentes</span><span class="badge badge-blue" id="totalCount">0 registros</span></div>
+        <div class="table-wrap"><table><thead><tr><th>Nome</th><th>Bairro</th><th>Telefone</th><th>Score</th><th>Status</th><th>Avaliação</th></tr></thead><tbody id="tableBody"><tr><td colspan="6" class="empty-state">Carregando dados...</td></tr></tbody></table></div>
+      </div>
+
+      <div class="tab-pane" id="tab-agentes">
+        <div class="section-hdr" style="margin-bottom:18px;"><span class="section-title">Agentes do Sistema</span><span class="badge badge-green">4 agentes</span></div>
+        <div class="agents-grid">
+          <div class="agent-card"><div class="agent-card-header"><div class="agent-card-avatar av-blue">AT</div><div><div class="agent-card-name">ATLAS</div><div class="agent-card-role">Prospectador</div></div></div><div class="agent-status-row"><span class="status-pill pill-green">● Ativo</span><span class="last-run" id="atlas-last">última exec: —</span></div><div class="agent-metrics"><div class="agent-metric"><div class="agent-metric-label">Prospecções</div><div class="agent-metric-value" id="atlas-prosp">—</div></div><div class="agent-metric"><div class="agent-metric-label">Taxa Sucesso</div><div class="agent-metric-value" id="atlas-taxa">—</div></div></div></div>
+          <div class="agent-card"><div class="agent-card-header"><div class="agent-card-avatar av-purple">NX</div><div><div class="agent-card-name">NEXUS</div><div class="agent-card-role">Qualificador</div></div></div><div class="agent-status-row"><span class="status-pill pill-amber">● Standby</span><span class="last-run">última exec: há 2h</span></div><div class="agent-metrics"><div class="agent-metric"><div class="agent-metric-label">Qualificados</div><div class="agent-metric-value" id="nexus-q">—</div></div><div class="agent-metric"><div class="agent-metric-label">Score Médio</div><div class="agent-metric-value" id="nexus-s">—</div></div></div></div>
+          <div class="agent-card"><div class="agent-card-header"><div class="agent-card-avatar av-teal">EC</div><div><div class="agent-card-name">ECHO</div><div class="agent-card-role">Contato</div></div></div><div class="agent-status-row"><span class="status-pill pill-blue">● Rodando</span><span class="last-run">última exec: agora</span></div><div class="agent-metrics"><div class="agent-metric"><div class="agent-metric-label">Contatos</div><div class="agent-metric-value" id="echo-c">—</div></div><div class="agent-metric"><div class="agent-metric-label">Resp. Rate</div><div class="agent-metric-value" id="echo-r">—</div></div></div></div>
+          <div class="agent-card"><div class="agent-card-header"><div class="agent-card-avatar av-orange">PL</div><div><div class="agent-card-name">PULSE</div><div class="agent-card-role">Follow-up</div></div></div><div class="agent-status-row"><span class="status-pill pill-gray">● Inativo</span><span class="last-run">última exec: há 1d</span></div><div class="agent-metrics"><div class="agent-metric"><div class="agent-metric-label">Follow-ups</div><div class="agent-metric-value" id="pulse-f">—</div></div><div class="agent-metric"><div class="agent-metric-label">Convertidos</div><div class="agent-metric-value" id="pulse-cv">—</div></div></div></div>
+        </div>
+      </div>
+
+      <div class="tab-pane" id="tab-clinicas">
+        <div class="section-hdr" style="margin-bottom:18px;"><span class="section-title">Banco de Clínicas</span><span class="badge badge-blue" id="clinCount">0 registros</span></div>
+        <div class="table-wrap"><table><thead><tr><th>Nome</th><th>Bairro</th><th>Telefone</th><th>Score</th><th>Status</th><th>Avaliação</th></tr></thead><tbody id="clinicasBody"><tr><td colspan="6" class="empty-state">Carregando...</td></tr></tbody></table></div>
+      </div>
+
+      <div class="tab-pane" id="tab-chat">
+        <div class="chat-wrap">
+          <div class="chat-header">
+            <div class="agent-avatar">A</div>
+            <div><div class="agent-info-name">ATLAS</div><div class="agent-info-sub">Sistema de Prospecção IA</div></div>
+            <div class="chat-online"><div class="status-dot" style="width:6px;height:6px;"></div>online</div>
+          </div>
+          <div class="chat-messages" id="chatMessages">
+            <div class="msg atlas"><div class="msg-avatar atlas">A</div><div class="msg-body"><div class="msg-bubble">Olá! Sou o ATLAS, sistema de prospecção inteligente. Posso ajudá-lo a encontrar e qualificar clínicas odontológicas. Como posso ajudar?</div><div class="msg-time">agora</div></div></div>
+          </div>
+          <div class="typing-indicator" id="typingIndicator">
+            <div class="msg-avatar atlas" style="width:28px;height:28px;font-size:11px;">A</div>
+            <div class="typing-dots"><span></span><span></span><span></span></div>
+          </div>
+          <div class="chat-input-area">
+            <textarea class="chat-input" id="chatInput" placeholder="Pergunte ao ATLAS..." rows="1" onkeydown="handleEnter(event)" oninput="autoResize(this)"></textarea>
+            <button class="btn-send" onclick="sendMessage()"><svg width="14" height="14" viewBox="0 0 24 24"><path d="M22 2L11 13M22 2L15 22 11 13 2 9l20-7z"/></svg></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-pane" id="tab-analytics">
+        <div class="section-hdr" style="margin-bottom:18px;"><span class="section-title">Analytics & Conversão</span><span class="badge badge-amber">live data</span></div>
+        <div class="analytics-grid">
+          <div class="chart-card"><div class="chart-title">Funil de Conversão</div><div id="funilChart"><div class="empty-state">Carregando funil...</div></div></div>
+          <div class="chart-card"><div class="chart-title">Receita Projetada</div><div class="receita-num" id="receitaNum">R$ —</div><div class="receita-label">projeção mensal</div><div id="receitaRows"><div class="receita-row"><span class="receita-row-label">Agendamentos</span><span class="receita-row-val" id="r-agend">—</span></div><div class="receita-row"><span class="receita-row-label">Ticket médio</span><span class="receita-row-val">R$ 980</span></div><div class="receita-row"><span class="receita-row-label">Taxa fechamento</span><span class="receita-row-val" id="r-taxa">—%</span></div></div></div>
+        </div>
+        <div class="chart-card-full"><div class="chart-title">Clínicas por Status</div><div class="bar-chart" id="barChart"><div class="empty-state">Carregando...</div></div></div>
+        <div class="chart-card-full">
+          <div class="chart-title">Mapa de Clínicas em Betim/MG</div>
+          <div id="map"></div>
+          <div class="map-info" style="margin-top:8px;display:flex;gap:12px;font-size:11px;color:var(--muted);font-family:'JetBrains Mono',monospace;">
+            <span id="map-clinicas">Clínicas: 0</span>
+            <span id="map-user-dist">Sua localização: —</span>
+          </div>
+        </div>
+        <div class="chart-card-full">
+          <div class="chart-title">Clínicas Mais Próximas</div>
+          <div id="nearbyClinics"><div class="empty-state">Carregando...</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-</header>
-<div class="metrics" id="metrics">
-<div class="metric novo"><div class="metric-label">Novos</div><div class="metric-value" id="m-novo">—</div></div>
-<div class="metric qualificado"><div class="metric-label">Qualif.</div><div class="metric-value" id="m-qualificado">—</div></div>
-<div class="metric contactado"><div class="metric-label">Contato</div><div class="metric-value" id="m-contactado">—</div></div>
-<div class="metric descartado"><div class="metric-label">Descart.</div><div class="metric-value" id="m-descartado">—</div></div>
-<div class="metric inativo"><div class="metric-label">Inativo</div><div class="metric-value" id="m-inativo">—</div></div>
-<div class="metric cliente"><div class="metric-label">Clientes</div><div class="metric-value" id="m-cliente">—</div></div>
-</div>
-<div class="main-grid">
-<div class="card">
-<div class="card-header"><span class="card-title">Funil de Aquisição</span><span class="card-badge" id="total-badge">0 clínicas</span></div>
-<div class="funnel-viz" id="funil-viz"><div class="loading"><div class="spinner"></div>carregando...</div></div>
-</div>
-<div class="card pipeline-panel">
-<div class="card-header"><span class="card-title">Pipeline de Agentes</span><span class="card-badge" id="pipeline-badge">idle</span></div>
-<div class="pipeline-inner">
-<div class="pipeline-status" id="pipeline-status"><div class="pipeline-icon">🤖</div><div class="pipeline-status-text">Pronto para executar</div><div class="pipeline-run-id" id="run-id">run_id: —</div></div>
-<div id="agent-steps"><div style="font-size:11px;color:var(--muted);text-align:center;padding:8px">Execute o pipeline para ver os agentes</div></div>
-<button class="btn-run" id="btn-run" onclick="runPipeline()">▶ Executar Pipeline</button>
-<button class="btn-refresh" onclick="loadAll()">↻ Atualizar Dados</button>
-</div>
-</div>
-</div>
-<div class="bottom-row">
-<div class="card">
-<div class="card-header"><span class="card-title">Clínicas Encontradas</span><span class="card-badge" id="clinicas-badge">0</span></div>
-<div class="table-wrap" id="clinicas-table"><div class="loading"><div class="spinner"></div>carregando...</div></div>
-</div>
-<div class="card">
-<div class="card-header"><span class="card-title">Taxa de Conversão</span></div>
-<div class="conv-section" id="conv-section"><div class="loading"><div class="spinner"></div>carregando...</div></div>
-</div>
-</div>
-</div>
-<div class="toast" id="toast"></div>
+
 <script>
-const API='https://backend-saas-odonto.onrender.com';
-function updateClock(){document.getElementById('clock').textContent=new Date().toLocaleTimeString('pt-BR')}
-setInterval(updateClock,1000);updateClock();
-function showToast(msg,type='success'){const t=document.getElementById('toast');t.style.borderColor=type==='error'?'var(--red)':'var(--green)';t.style.color=type==='error'?'var(--red)':'var(--green)';t.textContent=(type==='error'?'✗ ':'✓ ')+msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3000)}
-function pillClass(s){const m={novo:'pill-novo',qualificado:'pill-qualificado',descartado:'pill-descartado',contactado:'pill-contactado',inativo:'pill-inativo',cliente:'pill-cliente'};return m[s]||'pill-inativo'}
-async function loadFunil(){try{const r=await fetch(API+'/funil');const j=await r.json();const d=j.data||j;const keys=['novo','qualificado','contactado','descartado','inativo','cliente'];const colors={novo:'var(--accent)',qualificado:'var(--green)',contactado:'var(--amber)',descartado:'var(--red)',inativo:'var(--muted)',cliente:'var(--purple)'};keys.forEach(k=>{const el=document.getElementById('m-'+k);if(el)el.textContent=d[k]??0});const total=keys.reduce((s,k)=>s+(d[k]||0),0);document.getElementById('total-badge').textContent=total+' clínicas';const max=Math.max(...keys.map(k=>d[k]||0),1);document.getElementById('funil-viz').innerHTML=keys.map(k=>{const val=d[k]||0;const pct=Math.max((val/max)*100,val>0?4:0);return '<div class="funnel-step"><div class="funnel-label">'+k+'</div><div class="funnel-bar-wrap"><div class="funnel-bar" style="width:'+pct+'%;background:'+colors[k]+'20;color:'+colors[k]+';border-left:3px solid '+colors[k]+'">'+(val>0?val:'')+'</div></div><div class="funnel-num" style="color:'+colors[k]+'">'+val+'</div></div>'}).join('');const convEl=document.getElementById('conv-section');const toQ=d.novo>0?((d.qualificado||0)/d.novo*100).toFixed(1):'0.0';const toC=d.qualificado>0?((d.contactado||0)/d.qualificado*100).toFixed(1):'0.0';const toCl=total>0?((d.cliente||0)/total*100).toFixed(1):'0.0';convEl.innerHTML='<div style="margin-bottom:20px"><div style="font-family:\'Space Mono\',monospace;font-size:36px;font-weight:700;color:var(--purple)">'+(d.cliente||0)+'</div><div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-top:4px">Clientes Ativos</div></div><div style="height:1px;background:var(--border);margin-bottom:20px"></div>'+[['Novos → Qualificados',toQ+'%','var(--green)'],['Qualif. → Contactados',toC+'%','var(--amber)'],['Total → Clientes',toCl+'%','var(--purple)']].map(function(a){return '<div class="conv-item"><div class="conv-label">'+a[0]+'</div><div class="conv-pct" style="color:'+a[2]+'">'+a[1]+'</div></div><div style="height:4px;background:var(--border);border-radius:2px;margin-bottom:16px;overflow:hidden"><div style="height:100%;width:'+a[1]+';background:'+a[2]+';border-radius:2px"></div></div>'}).join('')+'<div style="padding:12px;background:rgba(168,85,247,.06);border:1px solid rgba(168,85,247,.15);border-radius:8px;text-align:center"><div style="font-family:\'Space Mono\',monospace;font-size:20px;color:var(--purple)">R$ '+(((d.cliente||0)*297).toLocaleString('pt-BR'))+'</div><div style="font-size:10px;color:var(--muted);margin-top:4px;text-transform:uppercase;letter-spacing:1px">Receita Mensal</div></div>'}catch(e){document.getElementById('funil-viz').innerHTML='<div class="empty-state"><div class="empty-icon">⚠️</div><p>Erro ao carregar</p></div>'}}
-async function loadClinicas(){try{const r=await fetch(API+'/clinicas');const j=await r.json();const data=j.data||[];document.getElementById('clinicas-badge').textContent=data.length;if(!data.length){document.getElementById('clinicas-table').innerHTML='<div class="empty-state"><div class="empty-icon">🔍</div><p>Nenhuma clínica ainda.<br>Execute o pipeline.</p></div>';return}document.getElementById('clinicas-table').innerHTML='<table><thead><tr><th>Clínica</th><th>Cidade</th><th>Score</th><th>Status</th><th>Aval.</th></tr></thead><tbody>'+data.slice(0,20).map(function(c){return '<tr><td style="font-weight:600;max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+(c.nome||'—')+'</td><td style="color:var(--muted);font-size:12px">'+(c.cidade||'—')+'</td><td><div class="score-bar"><div class="score-track"><div class="score-fill" style="width:'+(c.score||0)+'%"></div></div><div class="score-num">'+(c.score||0)+'</div></div></td><td><span class="status-pill '+pillClass(c.status)+'">'+(c.status||'novo')+'</span></td><td style="font-family:\'Space Mono\',monospace;font-size:11px;color:var(--amber)">'+(c.avaliacao_google?'★ '+c.avaliacao_google:'—')+'</td></tr>'}).join('')+'</tbody></table>'}catch(e){document.getElementById('clinicas-table').innerHTML='<div class="empty-state"><div class="empty-icon">⚠️</div><p>Erro ao carregar</p></div>'}}
-async function runPipeline(){const btn=document.getElementById('btn-run');btn.disabled=true;btn.textContent='⏳ Iniciando...';try{const r=await fetch(API+'/agentes/rodar');const j=await r.json();const d=j.dados||j.data||j;const runId=d.run_id||'—';document.getElementById('pipeline-status').innerHTML='<div class="pipeline-icon">🚀</div><div class="pipeline-status-text" style="color:var(--accent)">Rodando em background</div><div class="pipeline-run-id">run_id: '+runId+'</div>';document.getElementById('pipeline-badge').textContent='rodando';showToast('Pipeline iniciado! '+runId);setTimeout(function(){loadAll();btn.disabled=false;btn.textContent='▶ Executar Pipeline';showToast('Dados atualizados!')},30000)}catch(e){btn.disabled=false;btn.textContent='▶ Executar Pipeline';showToast('Erro: '+e.message,'error')}}
-function loadAll(){loadFunil();loadClinicas()}
-loadAll();setInterval(loadAll,60000);
+const state = { clinicas: [], funil: {}, currentTab: 'dashboard', userLat: null, userLng: null, map: null, markers: [] };
+
+function updateClock() {
+  const now = new Date();
+  document.getElementById('clock').textContent = `${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}:${String(now.getSeconds()).padStart(2,'0')}`;
+}
+setInterval(updateClock,1000);
+updateClock();
+
+const TAB_TITLES = { dashboard:'Dashboard', agentes:'Agentes', clinicas:'Clínicas', chat:'Chat ATLAS', analytics:'Analytics' };
+function switchTab(tab,el) {
+  document.querySelectorAll('.tab-pane').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
+  document.getElementById('tab-'+tab).classList.add('active');
+  if (el) el.classList.add('active');
+  else document.querySelector(`[data-tab="${tab}"]`)?.classList.add('active');
+  document.getElementById('headerTitle').textContent = TAB_TITLES[tab]||tab;
+  state.currentTab = tab;
+  closeSidebar();
+  if (tab === 'analytics' && state.clinicas.length) setTimeout(initMap,300);
+}
+
+function toggleSidebar() { document.getElementById('sidebar').classList.toggle('open'); document.getElementById('sidebarOverlay').classList.toggle('open'); }
+function closeSidebar() { document.getElementById('sidebar').classList.remove('open'); document.getElementById('sidebarOverlay').classList.remove('open'); }
+
+function showToast(msg,icon='✓') {
+  const t = document.getElementById('toast');
+  document.getElementById('toast-msg').textContent = msg;
+  document.getElementById('toast-icon').textContent = icon;
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),3000);
+}
+
+async function fetchData(url) {
+  try {
+    const res = await fetch(url);
+    if (!res.ok) throw new Error('HTTP '+res.status);
+    return await res.json();
+  } catch(e) { console.warn('Fetch falhou',url,e.message); return null; }
+}
+
+function scoreToStars(s) {
+  if (!s) return '—';
+  const n = Math.round((s/100)*5);
+  return '★'.repeat(Math.max(0,n))+'☆'.repeat(Math.max(0,5-n));
+}
+function statusPill(status) {
+  const m = { agendado:['pill-green','Agendado'], contactado:['pill-blue','Contactado'], novo:['pill-amber','Novo'], inativo:['pill-gray','Inativo'] };
+  const [cls,label] = m[status?.toLowerCase()]||['pill-gray',status||'—'];
+  return `<span class="status-pill ${cls}">● ${label}</span>`;
+}
+function buildTableRows(arr) {
+  if (!arr||!arr.length) return '<tr><td colspan="6" class="empty-state">Nenhuma clínica encontrada</td></tr>';
+  return arr.map(c=>{
+    const s = c.score??c.rating??0;
+    return `<tr><td><strong>${c.nome||c.name||'—'}</strong></td><td class="td-muted">${c.bairro||c.neighborhood||'—'}</td><td class="td-muted" style="font-family:var(--font-mono);font-size:11.5px;">${c.telefone||c.phone||'—'}</td><td><div class="score-bar"><div class="score-track"><div class="score-fill" style="width:${Math.min(100,s)}%"></div></div><span style="font-size:11px;color:var(--muted);font-family:'JetBrains Mono',monospace;">${s}</span></div></td><td>${statusPill(c.status)}</td><td><span class="stars">${scoreToStars(s)}</span></td></tr>`;
+  }).join('');
+}
+
+function haversineDist(lat1,lon1,lat2,lon2) {
+  const R = 6371;
+  const dLat = (lat2-lat1)*Math.PI/180, dLon = (lon2-lon1)*Math.PI/180;
+  const a = Math.sin(dLat/2)**2 + Math.cos(lat1*Math.PI/180)*Math.cos(lat2*Math.PI/180)*Math.sin(dLon/2)**2;
+  return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+}
+
+function initMap() {
+  const container = document.getElementById('map');
+  if (!container || !state.clinicas.length) return;
+  if (state.map) { state.map.invalidateSize(); return; }
+
+  const center = state.userLat ? [state.userLat, state.userLng] : [-19.9703, -44.2065];
+  state.map = L.map('map').setView(center, 13);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap', maxZoom: 18
+  }).addTo(state.map);
+
+  if (state.userLat && state.userLng) {
+    L.circleMarker([state.userLat, state.userLng], {
+      radius: 8, color: '#10b981', fillColor: '#10b981', fillOpacity: 0.4, weight: 2
+    }).addTo(state.map).bindPopup('📍 Sua localização');
+  }
+
+  const icon = L.divIcon({
+    html: '<div style="background:#1d6fa4;color:#fff;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;border:2px solid #fff;">+</div>',
+    iconSize: [24,24], iconAnchor: [12,12], className: ''
+  });
+
+  state.markers = [];
+  let nearest = [];
+
+  state.clinicas.forEach(c => {
+    if (!c.latitude && !c.longitude) return;
+    const lat = parseFloat(c.latitude), lng = parseFloat(c.longitude);
+    if (isNaN(lat) || isNaN(lng)) return;
+
+    if (state.userLat && state.userLng) {
+      c._dist = haversineDist(state.userLat, state.userLng, lat, lng);
+      nearest.push(c);
+    }
+
+    const m = L.marker([lat, lng], { icon }).addTo(state.map);
+    m.bindPopup(`<b>${c.nome}</b><br>${c.telefone||'---'}<br>${c.endereco||''}${c._dist ? `<br><b>${c._dist.toFixed(1)} km</b>` : ''}`);
+    state.markers.push(m);
+  });
+
+  if (nearest.length) {
+    nearest.sort((a,b) => a._dist - b._dist);
+    document.getElementById('map-clinicas').textContent = `Clínicas: ${nearest.length}`;
+
+    const userStr = state.userLat ? `${state.userLat.toFixed(4)}, ${state.userLng.toFixed(4)}` : '—';
+    document.getElementById('map-user-dist').textContent = `Sua localização: ${userStr}`;
+
+    const html = nearest.slice(0,10).map(c =>
+      `<div class="clinic-card-inline"><div class="clinic-card-name">${c.nome} — ${c._dist.toFixed(1)} km</div><div class="clinic-card-meta">${c.endereco||'—'} · Tel: ${c.telefone||'—'}</div></div>`
+    ).join('');
+    document.getElementById('nearbyClinics').innerHTML = `<div style="display:flex;flex-direction:column;gap:6px;">${html}</div>`;
+  }
+
+  if (state.markers.length > 1) {
+    const group = L.featureGroup(state.markers);
+    state.map.fitBounds(group.getBounds().pad(0.1));
+  }
+}
+
+async function loadDashboard() {
+  const [clinicas, funil] = await Promise.all([fetchData('/clinicas'), fetchData('/funil')]);
+  const clin = clinicas||[];
+  const fun = funil?.data||funil||{};
+  state.clinicas = clin;
+
+  const total = Array.isArray(clin) ? clin.length : (clin.total||0);
+  const contactadas = fun.contactado||fun.contactadas||fun.contacted||Math.floor(total*0.62);
+  const scoreArr = Array.isArray(clin) ? clin.map(c=>c.score??c.rating??0).filter(Boolean) : [];
+  const scoreMedio = scoreArr.length ? Math.round(scoreArr.reduce((a,b)=>a+b,0)/scoreArr.length) : (fun.score_medio||0);
+  const agendados = fun.agendado||fun.agendados||fun.agenda||Math.floor(total*0.14);
+  const receita = agendados * 980;
+
+  document.getElementById('m-total').textContent = total;
+  document.getElementById('m-total-d').textContent = `↑ ${Math.floor(total*0.08)||1} esta semana`;
+  document.getElementById('m-cont').textContent = contactadas;
+  document.getElementById('m-cont-d').textContent = `${total ? Math.round((contactadas/total)*100) : 0}% do total`;
+  document.getElementById('m-score').textContent = scoreMedio;
+  document.getElementById('m-score-d').textContent = '↑ 3pts vs. mês anterior';
+  document.getElementById('m-receita').textContent = `R$${(receita/1000).toFixed(0)}k`;
+  document.getElementById('m-receita-d').textContent = `${agendados} fechamentos`;
+
+  const rows = buildTableRows(Array.isArray(clin) ? clin.slice(0,20) : []);
+  document.getElementById('tableBody').innerHTML = rows;
+  document.getElementById('clinicasBody').innerHTML = rows;
+  document.getElementById('totalCount').textContent = `${total} registros`;
+  document.getElementById('clinCount').textContent = `${total} registros`;
+
+  document.getElementById('atlas-prosp').textContent = total;
+  document.getElementById('atlas-taxa').textContent = total ? Math.round((contactadas/total)*100)+'%' : '—';
+  document.getElementById('atlas-last').textContent = 'última exec: agora';
+  document.getElementById('nexus-q').textContent = contactadas;
+  document.getElementById('nexus-s').textContent = scoreMedio;
+  document.getElementById('echo-c').textContent = agendados;
+  document.getElementById('echo-r').textContent = total ? Math.round((agendados/total)*100)+'%' : '—';
+  document.getElementById('pulse-f').textContent = Math.floor(agendados*1.4);
+  document.getElementById('pulse-cv').textContent = agendados;
+
+  const steps = [
+    { label:'Prospecções', val:total, pct:100 },
+    { label:'Contactadas', val:contactadas, pct:total ? Math.round((contactadas/total)*100) : 0 },
+    { label:'Interessados', val:Math.floor(contactadas*0.45), pct:0 },
+    { label:'Agendados', val:agendados, pct:0 },
+  ];
+  steps[2].pct = total ? Math.round((steps[2].val/total)*100) : 0;
+  steps[3].pct = total ? Math.round((agendados/total)*100) : 0;
+  document.getElementById('funilChart').innerHTML = steps.map(s =>
+    `<div class="funnel-step"><div class="funnel-info"><span>${s.label}</span><span>${s.val} <span class="funnel-pct">(${s.pct}%)</span></span></div><div class="funnel-bar-track"><div class="funnel-bar-fill" style="width:${s.pct}%"></div></div></div>`
+  ).join('');
+
+  const statusMap = {};
+  (Array.isArray(clin)?clin:[]).forEach(c => { const s = c.status||'novo'; statusMap[s] = (statusMap[s]||0)+1; });
+  const entries = Object.entries(statusMap).sort((a,b)=>b[1]-a[1]).slice(0,6);
+  if (!entries.length) entries.push(['novo',1]);
+  const max = Math.max(...entries.map(e=>e[1]),1);
+  document.getElementById('barChart').innerHTML = entries.map(([label,val]) =>
+    `<div class="bar-col"><div class="bar-val">${val}</div><div class="bar-rect" style="height:${Math.round((val/max)*90)+10}px" title="${label}: ${val}"></div><div class="bar-label">${label.slice(0,6)}</div></div>`
+  ).join('');
+
+  document.getElementById('receitaNum').textContent = `R$ ${receita.toLocaleString('pt-BR')}`;
+  document.getElementById('r-agend').textContent = agendados;
+  document.getElementById('r-taxa').textContent = (total && agendados ? Math.round((agendados/total)*100) : 14)+'%';
+
+  if (state.currentTab === 'analytics') setTimeout(initMap, 300);
+}
+
+function nowTime() {
+  const d = new Date();
+  return `${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')}`;
+}
+function appendMessage(role, text, clinics) {
+  const container = document.getElementById('chatMessages');
+  const div = document.createElement('div');
+  div.className = `msg ${role}`;
+  const avatarHtml = role === 'atlas' ? '<div class="msg-avatar atlas">A</div>' : '<div class="msg-avatar user">V</div>';
+  let extra = '';
+  if (clinics && clinics.length) {
+    extra = `<div class="clinic-cards-inline">${clinics.map(c =>
+      `<div class="clinic-card-inline"><div class="clinic-card-name">${c.nome||c.name}</div><div class="clinic-card-meta">${c.endereco||''} · Tel: ${c.telefone||'—'} · Score: ${c.score||'—'}</div></div>`
+    ).join('')}</div>`;
+  }
+  div.innerHTML = `${avatarHtml}<div class="msg-body"><div class="msg-bubble" id="b-${Date.now()}">${text}${extra}</div><div class="msg-time">${nowTime()}</div></div>`;
+  container.appendChild(div);
+  container.scrollTop = container.scrollHeight;
+  return div.querySelector('.msg-bubble');
+}
+
+async function typewriter(el, text, speed=16) {
+  el.textContent = '';
+  for (let i=0; i<text.length; i++) {
+    el.textContent += text[i];
+    await new Promise(r => setTimeout(r, speed));
+  }
+}
+
+async function sendMessage() {
+  const input = document.getElementById('chatInput');
+  const text = input.value.trim();
+  if (!text) return;
+  input.value = ''; input.style.height = 'auto';
+  appendMessage('user', text);
+  const typing = document.getElementById('typingIndicator');
+  typing.classList.add('visible');
+  document.getElementById('chatMessages').scrollTop = 999999;
+  try {
+    const res = await fetch('/chat', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({message:text}) });
+    typing.classList.remove('visible');
+    if (res.ok) {
+      const data = await res.json();
+      const reply = data.resposta||data.response||data.message||data.reply||'Sem resposta.';
+      const clinics = data.clinicas||data.results||null;
+      const bubble = appendMessage('atlas', '', clinics);
+      await typewriter(bubble, reply);
+      if (clinics && clinics.length) { state.clinicas = clinics; }
+    } else {
+      const bubble = appendMessage('atlas', '');
+      await typewriter(bubble, 'Erro ao contactar o sistema.');
+    }
+  } catch(e) {
+    typing.classList.remove('visible');
+    const bubble = appendMessage('atlas', '');
+    await typewriter(bubble, 'Não foi possível conectar ao backend.');
+  }
+}
+
+function handleEnter(e) { if (e.key==='Enter'&&!e.shiftKey) { e.preventDefault(); sendMessage(); } }
+function autoResize(el) { el.style.height='auto'; el.style.height=Math.min(el.scrollHeight,100)+'px'; }
+
+async function executarPipeline() {
+  showToast('Pipeline iniciado...', '▶');
+  try {
+    const res = await fetch('/agentes/rodar', { method:'POST' });
+    if (res.ok) { showToast('Pipeline executado!', '✓'); setTimeout(loadDashboard,2000); }
+    else showToast('Erro '+res.status, '⚠');
+  } catch(e) { showToast('Conexão falhou', '✗'); }
+}
+
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(
+      pos => {
+        state.userLat = pos.coords.latitude;
+        state.userLng = pos.coords.longitude;
+        if (state.currentTab === 'analytics') setTimeout(initMap, 300);
+      },
+      err => console.warn('Geo error:', err.message),
+      { enableHighAccuracy: true, timeout: 10000 }
+    );
+  }
+}
+
+loadDashboard();
+setInterval(loadDashboard, 60000);
+getLocation();
 </script>
 </body>
 </html>

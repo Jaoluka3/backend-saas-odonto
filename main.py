@@ -45,6 +45,8 @@ from agente_orquestrador import (
     parar_agendador,
     status,
 )
+from agente_chat import processar_chat, obter_historico
+from gmail_client import verificar_respostas, contar_respostas
 
 logging.basicConfig(
     level=logging.INFO,
@@ -58,6 +60,13 @@ class LeadPayload(BaseModel):
     nome: str
     telefone: str
     status: str = "novo"
+
+
+class ChatPayload(BaseModel):
+    """Modelo da mensagem do chat ATLAS."""
+    message: str = ""
+    mensagem: str = ""
+    agente: str = "ATLAS"
 
 
 @asynccontextmanager
@@ -113,6 +122,42 @@ async def telegram_webhook(request: Request):
     except Exception as e:
         logger.error(f"Erro ao processar webhook: {e}")
         return {"ok": False, "error": str(e)}
+
+
+@app.post("/chat")
+def chat_handler(payload: ChatPayload):
+    """Endpoint do chat ATLAS. Aceita message ou mensagem no body."""
+    texto = payload.message or payload.mensagem
+    if not texto:
+        return {"success": False, "error": "Mensagem vazia"}
+    try:
+        resultado = processar_chat(mensagem=texto, agente=payload.agente)
+        return {"success": True, **resultado}
+    except Exception as e:
+        logger.error(f"Erro no chat: {e}")
+        return {"success": False, "error": str(e)}
+
+
+@app.get("/chat/historico")
+def chat_historico(limite: int = Query(20, ge=1, le=100)):
+    """Retorna ultimas mensagens do chat ATLAS."""
+    try:
+        historico = obter_historico(limite=limite)
+        return {"success": True, "data": historico}
+    except Exception as e:
+        logger.error(f"Erro ao obter historico: {e}")
+        return {"success": False, "error": str(e)}
+
+
+@app.get("/gmail/verificar")
+def gmail_verificar():
+    """Verifica emails do Gmail relacionados a clinicas."""
+    try:
+        resultado = contar_respostas()
+        return {"success": True, "data": resultado}
+    except Exception as e:
+        logger.error(f"Erro Gmail: {e}")
+        return {"success": False, "error": str(e)}
 
 
 @app.post("/lead")
