@@ -11,6 +11,35 @@ HEADERS = {
     "User-Agent": "ATLAS-Prospeccao/2.0 (blecksonbra@gmail.com)"
 }
 
+COLUNAS_GEO = ["latitude", "longitude"]
+
+def _add_colunas_geo():
+    """Tenta adicionar colunas latitude/longitude na tabela clinicas."""
+    try:
+        import psycopg2
+        db_url = os.environ.get("DATABASE_URL") or os.environ.get("SUPABASE_DB_URL") or ""
+        if not db_url:
+            logger.warning("DATABASE_URL nao configurado - nao e possivel adicionar colunas")
+            return False
+        conn = psycopg2.connect(db_url)
+        cur = conn.cursor()
+        for col in ["latitude double precision", "longitude double precision"]:
+            try:
+                cur.execute(f"ALTER TABLE clinicas ADD COLUMN IF NOT EXISTS {col}")
+            except Exception:
+                pass
+        conn.commit()
+        cur.close()
+        conn.close()
+        logger.info("Colunas latitude/longitude adicionadas com sucesso")
+        return True
+    except ImportError:
+        logger.warning("psycopg2 nao instalado - nao e possivel adicionar colunas")
+        return False
+    except Exception as e:
+        logger.warning("Falha ao adicionar colunas: %s", e)
+        return False
+
 
 def geocodificar_endereco(endereco: str, cidade: str = "") -> tuple[float, float] | None:
     query = f"{endereco}, {cidade}, Brasil" if cidade else f"{endereco}, Brasil"
@@ -40,12 +69,22 @@ def rodar(max_por_execucao: int = 30) -> dict:
         return {"geocodificadas": 0, "sem_endereco": 0, "falhas": 0}
 
     try:
-        result = (
-            supabase.table("clinicas")
-            .select("id,nome,endereco,cidade,latitude,longitude")
-            .execute()
-        )
-        clinicas_raw = result.data or []
+        try:
+            result = (
+                supabase.table("clinicas")
+                .select("id,nome,endereco,cidade,latitude,longitude")
+                .execute()
+            )
+            clinicas_raw = result.data or []
+        except Exception:
+            logger.info("Colunas latitude/longitude nao existem, tentando criar...")
+            _add_colunas_geo()
+            result = (
+                supabase.table("clinicas")
+                .select("id,nome,endereco,cidade,latitude,longitude")
+                .execute()
+            )
+            clinicas_raw = result.data or []
     except Exception as e:
         logger.error("Erro ao ler clinicas: %s", e)
         return {"geocodificadas": 0, "sem_endereco": 0, "falhas": 0, "erro": str(e)}

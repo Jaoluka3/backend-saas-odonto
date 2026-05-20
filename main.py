@@ -111,8 +111,16 @@ app.mount("/painel", StaticFiles(directory="static", html=True), name="static")
 
 # v4 - pipeline prospecting
 @app.get("/health")
-def health_check():
+def health():
     return {"status": "Cerebro IA Online e Conectado"}
+
+@app.get("/agentes/diagnostico")
+def diagnostico():
+    import os as _os
+    envs = ["SUPABASE_URL", "SUPABASE_KEY", "DATABASE_URL", "SUPABASE_DB_URL",
+            "GMAIL_EMAIL", "SERPAPI_KEY", "NVIDIA_KEY"]
+    disponiveis = {k: bool(_os.environ.get(k)) for k in envs}
+    return {"success": True, "env": disponiveis}
 
 
 @app.post("/webhook")
