@@ -236,6 +236,26 @@ def rodar_agentes():
         return {"success": False, "error": str(e)}
 
 
+@app.get("/agentes/reset")
+def reset_agentes():
+    """Reseta clinicas contactadas/descartadas com website para qualificado."""
+    if not supabase:
+        return {"success": False, "error": "Sem Supabase"}
+    try:
+        r1 = supabase.table("clinicas").select("id,status,website").eq("status", "contactado").execute()
+        r2 = supabase.table("clinicas").select("id,status,website").eq("status", "descartado").execute()
+        alvo = [c for c in (r1.data or []) + (r2.data or []) if c.get("website")]
+        if not alvo:
+            return {"success": True, "data": {"resetadas": 0}}
+        for c in alvo:
+            supabase.table("clinicas").update({"status": "qualificado", "email": None}).eq("id", c["id"]).execute()
+        logger.info("Reset: %d clinicas para qualificado", len(alvo))
+        return {"success": True, "data": {"resetadas": len(alvo)}}
+    except Exception as e:
+        logger.error("Erro reset: %s", e)
+        return {"success": False, "error": str(e)}
+
+
 @app.get("/agentes/status")
 def status_agentes():
     """Status da pipeline com lock atual, ultima execucao e agendamento."""
