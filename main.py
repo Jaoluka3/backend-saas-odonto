@@ -33,8 +33,7 @@ if missing_optional:
 
 import logging
 from contextlib import asynccontextmanager
-from typing import Optional
-from fastapi import FastAPI, Query, HTTPException, Depends, Header
+from fastapi import FastAPI, Query
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 from supabase_client import supabase
@@ -50,23 +49,6 @@ logging.basicConfig(
     format="%(asctime)s [%(levelname)s] %(message)s",
 )
 logger = logging.getLogger(__name__)
-
-API_TOKEN = os.environ.get("API_TOKEN", "")
-
-
-def _validar_token(
-    authorization: Optional[str] = Header(None, alias="Authorization"),
-) -> None:
-    """Valida token de acesso se API_TOKEN estiver configurado.
-    Se API_TOKEN nao definido, permite acesso irrestrito (dev mode).
-    """
-    if not API_TOKEN:
-        return
-    if not authorization:
-        raise HTTPException(status_code=401, detail="Token de acesso necessario")
-    token = authorization.replace("Bearer ", "", 1).strip()
-    if token != API_TOKEN:
-        raise HTTPException(status_code=403, detail="Token de acesso invalido")
 
 
 class LeadPayload(BaseModel):
@@ -95,7 +77,7 @@ def health_check():
     return {"status": "Cerebro IA Online e Conectado"}
 
 
-@app.post("/lead", dependencies=[Depends(_validar_token)])
+@app.post("/lead")
 def create_lead(lead: LeadPayload):
     """Cria um lead na tabela leads a partir de JSON body."""
     if not supabase:
@@ -160,8 +142,8 @@ def funil_status():
         return {"success": False, "error": str(e)}
 
 
-@app.get("/agentes/rodar", dependencies=[Depends(_validar_token)])
-@app.post("/agentes/rodar", dependencies=[Depends(_validar_token)])
+@app.get("/agentes/rodar")
+@app.post("/agentes/rodar")
 def rodar_agentes():
     """Dispara a pipeline em background e retorna imediatamente.
     Aceita GET (navegador) e POST (curl/programatico)."""
@@ -172,7 +154,7 @@ def rodar_agentes():
         return {"success": False, "error": str(e)}
 
 
-@app.get("/agentes/status", dependencies=[Depends(_validar_token)])
+@app.get("/agentes/status")
 def status_agentes():
     """Status da pipeline com lock atual, ultima execucao e agendamento."""
     return {"success": True, "data": status()}
