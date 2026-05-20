@@ -198,7 +198,7 @@ def rodar() -> int:
         logger.info("Nenhuma clinica qualificada com email para contactar")
         return 0
 
-    MAX_ENVIO = 10
+    MAX_ENVIO = 30
     clinicas = clinicas[:MAX_ENVIO]
     logger.info("Enviando emails para %d clinicas (max %d)", len(clinicas), MAX_ENVIO)
     contactadas = 0

@@ -236,6 +236,18 @@ def rodar_agentes():
         return {"success": False, "error": str(e)}
 
 
+@app.get("/agentes/enviar")
+@app.post("/agentes/enviar")
+def enviar_agentes():
+    """Executa apenas o envio de emails (contato)."""
+    import agente_contato
+    try:
+        r = agente_contato.rodar()
+        return {"success": True, "data": {"enviados": r}}
+    except Exception as e:
+        return {"success": False, "error": str(e)}
+
+
 @app.get("/agentes/reset")
 def reset_agentes():
     """Reseta clinicas contactadas/descartadas com website para qualificado."""
