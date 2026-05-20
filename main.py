@@ -48,7 +48,7 @@ from agente_orquestrador import (
     status,
 )
 from agente_chat import processar_chat, obter_historico
-from geocoder import rodar as geocoder_rodar
+from geocoder import rodar as geocoder_rodar, obter_coordenadas
 from gmail_client import verificar_respostas, contar_respostas
 
 logging.basicConfig(
@@ -302,6 +302,10 @@ def reset_agentes():
         logger.error("Erro reset: %s", e)
         return {"success": False, "error": str(e)}
 
+
+@app.get("/coordenadas")
+def listar_coordenadas():
+    return {"success": True, "data": obter_coordenadas()}
 
 @app.get("/agentes/geocodificar")
 @app.post("/agentes/geocodificar")
