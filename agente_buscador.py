@@ -24,7 +24,7 @@ def _buscar_hiperlocal() -> list:
       - Nenhuma paginacao recursiva (apenas start=0).
       - time.sleep(10) antes da requisicao para respeitar free tier.
       - Se HTTP 429, loga e retorna lista vazia sem derrubar a aplicacao.
-      - Retorna no maximo MAX_LEADS (10) resultados.
+      - Retorna no maximo MAX_LEADS (20) resultados.
     """
     time.sleep(10)  # Rate limiter: respeita free tier (~100 req/mes)
 

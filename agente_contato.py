@@ -1,26 +1,16 @@
 import os
-import re
 import time
 import logging
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from datetime import datetime, timezone
-import requests
 from supabase_client import supabase
 
 logger = logging.getLogger(__name__)
 
 GMAIL_EMAIL = os.environ.get("GMAIL_EMAIL", "")
 GMAIL_APP_PASSWORD = os.environ.get("GMAIL_APP_PASSWORD", "")
-NVIDIA_KEY = os.environ.get("NVIDIA_KEY")
-
-SYSTEM_PROMPT = (
-    "Voce e um vendedor especialista em tecnologia para clinicas odontologicas. "
-    "Escreva uma mensagem curta e persuasiva oferecendo um bot de atendimento "
-    "automatico no Telegram por R$297/mes. Mencione o nome da clinica. "
-    "Maximo 4 linhas. Seja direto e profissional."
-)
 
 TEMPLATE_HTML = """\
 <!DOCTYPE html>
@@ -103,46 +93,6 @@ def enviar_email_smtp(destinatario: str, assunto: str, corpo_html: str, corpo_tx
         return False
 
 
-def gerar_mensagem(nome: str, cidade: str, avaliacao) -> str:
-    if not NVIDIA_KEY:
-        return f"Ola! Oferecemos um bot de atendimento para {nome}. Interessado?"
-
-    avaliacao_str = str(avaliacao) if avaliacao is not None else "N/A"
-
-    try:
-        resp = requests.post(
-            "https://integrate.api.nvidia.com/v1/chat/completions",
-            json={
-                "model": "nvidia/nemotron-3-nano-30b-a3b",
-                "messages": [
-                    {"role": "system", "content": SYSTEM_PROMPT},
-                    {
-                        "role": "user",
-                        "content": (
-                            f"Clinica: {nome}, "
-                            f"Cidade: {cidade}, "
-                            f"Avaliacao: {avaliacao_str}"
-                        ),
-                    },
-                ],
-                "max_tokens": 150,
-                "temperature": 0.7,
-            },
-            headers={
-                "Authorization": f"Bearer {NVIDIA_KEY}",
-                "Content-Type": "application/json",
-            },
-            timeout=15,
-        )
-        if resp.status_code == 200:
-            return resp.json()["choices"][0]["message"]["content"]
-        logger.warning("NVIDIA retornou status %d para %s", resp.status_code, nome)
-    except Exception as e:
-        logger.error("NVIDIA falhou para %s: %s", nome, e)
-
-    return f"Ola! Oferecemos um bot de atendimento para {nome}. Interessado?"
-
-
 def _formatar_avaliacao(valor) -> str:
     if valor is None:
         return "N/A"
@@ -217,18 +167,21 @@ def rodar() -> int:
             else:
                 enviado = True
 
-            supabase.table("clinicas").update({
-                "mensagem_enviada": assunto,
-                "status": "contactado",
-                "data_contato": datetime.now(timezone.utc).isoformat(),
-            }).eq("id", c["id"]).execute()
+            if enviado:
+                supabase.table("clinicas").update({
+                    "mensagem_enviada": assunto,
+                    "status": "contactado",
+                    "data_contato": datetime.now(timezone.utc).isoformat(),
+                }).eq("id", c["id"]).execute()
 
-            registrar_email_db(c["id"], email, assunto, corpo_html)
+                registrar_email_db(c["id"], email, assunto, corpo_html)
 
-            contactadas += 1
-            logger.info("Email processado para %s (%s): %s", nome, email, assunto)
+                contactadas += 1
+                logger.info("Email enviado para %s (%s): %s", nome, email, assunto)
+            else:
+                logger.warning("Email NAO enviado para %s (%s) — SMTP falhou", nome, email)
 
-            time.sleep(5)
+            time.sleep(15)
         except Exception as e:
             logger.error("Erro ao contactar clinica %s: %s", c.get("id"), e)
 

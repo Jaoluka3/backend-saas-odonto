@@ -6,3 +6,5 @@ __pycache__/
 .Python
 env/
 venv/
+reset_clinicas.py
+enviar_agora.py

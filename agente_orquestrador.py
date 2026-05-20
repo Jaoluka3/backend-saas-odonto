@@ -27,7 +27,7 @@ _TIMEOUT_PIPELINE = 1800  # 30 minutos
 
 def rodar_pipeline(run_id: Optional[str] = None) -> dict:
     """Executa a pipeline completa de aquisicao de clientes.
-    Timeout global de 15 minutos para evitar lock preso."""
+    Timeout global de 30 minutos para evitar lock preso."""
     global ultima_execucao, ultimo_resultado
     if run_id is None:
         run_id = str(uuid.uuid4())[:8]

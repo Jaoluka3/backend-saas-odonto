@@ -10,6 +10,8 @@ REQUIRED_ENV_VARS = {
 OPTIONAL_ENV_VARS = {
     "SERPAPI_KEY": "Chave da API SerpAPI (opcional - necessario apenas para busca de clinicas)",
     "NVIDIA_KEY": "Chave da API NVIDIA LLM (opcional - necessario apenas para geracao de mensagens IA)",
+    "GMAIL_EMAIL": "Email Gmail para envio de mensagens (opcional - necessario para SMTP)",
+    "GMAIL_APP_PASSWORD": "App Password do Gmail (opcional - necessario para SMTP)",
 }
 
 missing = [k for k in REQUIRED_ENV_VARS if not os.environ.get(k)]
@@ -106,6 +108,7 @@ app = FastAPI(lifespan=lifespan)
 app.mount("/painel", StaticFiles(directory="static", html=True), name="static")
 
 
+# v4 - pipeline prospecting
 @app.get("/health")
 def health_check():
     return {"status": "Cerebro IA Online e Conectado"}
