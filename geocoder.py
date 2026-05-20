@@ -42,7 +42,7 @@ def geocodificar_endereco(endereco: str, cidade: str = "") -> tuple[float, float
             NOMINATIM_URL,
             params={"q": query, "format": "json", "limit": 1},
             headers=HEADERS,
-            timeout=10,
+            timeout=15,
         )
         if resp.status_code == 200:
             dados = resp.json()
@@ -50,13 +50,19 @@ def geocodificar_endereco(endereco: str, cidade: str = "") -> tuple[float, float
                 lat = float(dados[0]["lat"])
                 lon = float(dados[0]["lon"])
                 return lat, lon
+            else:
+                logger.warning("Nominatim sem resultados: %s", query[:80])
+        else:
+            logger.warning("Nominatim status %s: %s", resp.status_code, query[:80])
+    except requests.exceptions.Timeout:
+        logger.error("Timeout Nominatim: %s", query[:80])
     except Exception as e:
         logger.error("Erro Nominatim para %s: %s", query[:60], e)
 
     return None
 
 
-def rodar(max_por_execucao: int = 30) -> dict:
+def rodar(max_por_execucao: int = 5) -> dict:
     if not supabase:
         logger.warning("supabase nao inicializado")
         return {"geocodificadas": 0, "sem_endereco": 0, "falhas": 0}
