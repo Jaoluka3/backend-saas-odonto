@@ -13,7 +13,7 @@ QUERY_FIXA = "clinica odontologica Betim MG CEP 32673306"
 LL_PARAM = "@-19.9703184,-44.2064950,14z"
 HL_PARAM = "pt-BR"
 GL_PARAM = "br"
-MAX_LEADS = 10
+MAX_LEADS = 20
 
 
 def _buscar_hiperlocal() -> list:
@@ -107,6 +107,7 @@ def rodar() -> int:
         leads.append({
             "nome": nome,
             "telefone": telefone,
+            "email": "",
             "endereco": (r.get("address") or "").strip(),
             "website": (r.get("website") or "").strip(),
             "avaliacao_google": r.get("rating"),

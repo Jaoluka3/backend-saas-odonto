@@ -8,6 +8,7 @@ import schedule
 
 import agente_buscador
 import agente_qualificador
+import agente_email_resolver
 import agente_contato
 import agente_followup
 
@@ -47,6 +48,9 @@ def rodar_pipeline(run_id: Optional[str] = None) -> dict:
         r_qualif = agente_qualificador.rodar()
 
         _verificar_timeout()
+        r_emails = agente_email_resolver.rodar()
+
+        _verificar_timeout()
         r_contato = agente_contato.rodar()
 
         _verificar_timeout()
@@ -59,6 +63,7 @@ def rodar_pipeline(run_id: Optional[str] = None) -> dict:
             "duracao_segundos": duracao,
             "buscador": {"inseridas": r_busca},
             "qualificador": r_qualif,
+            "email_resolver": r_emails,
             "contato": {"contactadas": r_contato},
             "followup": r_follow,
         }
@@ -67,6 +72,9 @@ def rodar_pipeline(run_id: Optional[str] = None) -> dict:
         logger.info("Clinicas encontradas: %d", r_busca)
         logger.info("Qualificadas: %d", r_qualif.get("qualificadas", 0))
         logger.info("Descartadas: %d", r_qualif.get("descartadas", 0))
+        logger.info("Emails resolvidos: %d", r_emails.get("resolvidos", 0))
+        logger.info("Sem website: %d", r_emails.get("sem_website", 0))
+        logger.info("Nao encontrados: %d", r_emails.get("nao_encontrados", 0))
         logger.info("Contactadas: %d", r_contato)
         logger.info("Followups: %d", r_follow.get("followups_enviados", 0))
         logger.info("Inativados: %d", r_follow.get("inativados", 0))
