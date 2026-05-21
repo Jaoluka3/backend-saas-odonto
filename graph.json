@@ -31,6 +31,12 @@
       "file_path": "telebot"
     },
     {
+      "id": "supabase_client",
+      "type": "module",
+      "label": "supabase_client",
+      "file_path": "supabase_client"
+    },
+    {
       "id": "bot_telegram.py:gerar_resposta_ia",
       "type": "function",
       "label": "gerar_resposta_ia",
@@ -73,10 +79,22 @@
       "file_path": "main.py"
     },
     {
+      "id": "contextlib",
+      "type": "module",
+      "label": "contextlib",
+      "file_path": "contextlib"
+    },
+    {
       "id": "fastapi",
       "type": "module",
       "label": "fastapi",
       "file_path": "fastapi"
+    },
+    {
+      "id": "fastapi.staticfiles",
+      "type": "module",
+      "label": "fastapi.staticfiles",
+      "file_path": "fastapi.staticfiles"
     },
     {
       "id": "pydantic",
@@ -85,15 +103,15 @@
       "file_path": "pydantic"
     },
     {
-      "id": "supabase",
+      "id": "agente_orquestrador",
       "type": "module",
-      "label": "supabase",
-      "file_path": "supabase"
+      "label": "agente_orquestrador",
+      "file_path": "agente_orquestrador"
     },
     {
-      "id": "main.py:Lead",
+      "id": "main.py:LeadPayload",
       "type": "class",
-      "label": "Lead",
+      "label": "LeadPayload",
       "file_path": "main.py"
     },
     {
@@ -131,12 +149,6 @@
       "type": "function",
       "label": "status_agentes",
       "file_path": "main.py"
-    },
-    {
-      "id": "agente_orquestrador",
-      "type": "module",
-      "label": "agente_orquestrador",
-      "file_path": "agente_orquestrador"
     },
     {
       "id": "uvicorn",
@@ -451,6 +463,18 @@
       "file_path": "agente_buscador.py"
     },
     {
+      "id": "agente_buscador.py:extrair_cidade",
+      "type": "function",
+      "label": "extrair_cidade",
+      "file_path": "agente_buscador.py"
+    },
+    {
+      "id": "agente_buscador.py:_buscar_com_retry",
+      "type": "function",
+      "label": "_buscar_com_retry",
+      "file_path": "agente_buscador.py"
+    },
+    {
       "id": "agente_buscador.py:rodar",
       "type": "function",
       "label": "rodar",
@@ -499,6 +523,12 @@
       "file_path": "agente_orquestrador.py"
     },
     {
+      "id": "uuid",
+      "type": "module",
+      "label": "uuid",
+      "file_path": "uuid"
+    },
+    {
       "id": "schedule",
       "type": "module",
       "label": "schedule",
@@ -535,9 +565,33 @@
       "file_path": "agente_orquestrador.py"
     },
     {
+      "id": "agente_orquestrador.py:rodar_pipeline_async",
+      "type": "function",
+      "label": "rodar_pipeline_async",
+      "file_path": "agente_orquestrador.py"
+    },
+    {
+      "id": "agente_orquestrador.py:_loop_agendador",
+      "type": "function",
+      "label": "_loop_agendador",
+      "file_path": "agente_orquestrador.py"
+    },
+    {
       "id": "agente_orquestrador.py:iniciar_agendador",
       "type": "function",
       "label": "iniciar_agendador",
+      "file_path": "agente_orquestrador.py"
+    },
+    {
+      "id": "agente_orquestrador.py:parar_agendador",
+      "type": "function",
+      "label": "parar_agendador",
+      "file_path": "agente_orquestrador.py"
+    },
+    {
+      "id": "agente_orquestrador.py:_executar_com_lock",
+      "type": "function",
+      "label": "_executar_com_lock",
       "file_path": "agente_orquestrador.py"
     },
     {
@@ -547,40 +601,268 @@
       "file_path": "agente_qualificador.py"
     },
     {
+      "id": "agente_qualificador.py:_calcular_score",
+      "type": "function",
+      "label": "_calcular_score",
+      "file_path": "agente_qualificador.py"
+    },
+    {
       "id": "agente_qualificador.py:rodar",
       "type": "function",
       "label": "rodar",
       "file_path": "agente_qualificador.py"
     },
     {
-      "id": "teste_buscador.py",
+      "id": "supabase_client.py",
       "type": "module",
-      "label": "teste_buscador.py",
-      "file_path": "teste_buscador.py"
+      "label": "supabase_client.py",
+      "file_path": "supabase_client.py"
     },
     {
-      "id": "teste_qualificador.py",
+      "id": "supabase",
       "type": "module",
-      "label": "teste_qualificador.py",
-      "file_path": "teste_qualificador.py"
+      "label": "supabase",
+      "file_path": "supabase"
     },
     {
-      "id": "teste_contato.py",
+      "id": "dev_agent_eco.py",
       "type": "module",
-      "label": "teste_contato.py",
-      "file_path": "teste_contato.py"
+      "label": "dev_agent_eco.py",
+      "file_path": "dev_agent_eco.py"
     },
     {
-      "id": "teste_followup.py",
-      "type": "module",
-      "label": "teste_followup.py",
-      "file_path": "teste_followup.py"
+      "id": "dev_agent_eco.py:log_event",
+      "type": "function",
+      "label": "log_event",
+      "file_path": "dev_agent_eco.py"
     },
     {
-      "id": "teste_main.py",
+      "id": "dev_agent_eco.py:pensar",
+      "type": "function",
+      "label": "pensar",
+      "file_path": "dev_agent_eco.py"
+    },
+    {
+      "id": "dev_agent_eco.py:parsear_resposta",
+      "type": "function",
+      "label": "parsear_resposta",
+      "file_path": "dev_agent_eco.py"
+    },
+    {
+      "id": "dev_agent_eco.py:executar_comando",
+      "type": "function",
+      "label": "executar_comando",
+      "file_path": "dev_agent_eco.py"
+    },
+    {
+      "id": "dev_agent_eco.py:main",
+      "type": "function",
+      "label": "main",
+      "file_path": "dev_agent_eco.py"
+    },
+    {
+      "id": "windows_worker/scraper_local.py",
       "type": "module",
-      "label": "teste_main.py",
-      "file_path": "teste_main.py"
+      "label": "scraper_local.py",
+      "file_path": "windows_worker/scraper_local.py"
+    },
+    {
+      "id": "random",
+      "type": "module",
+      "label": "random",
+      "file_path": "random"
+    },
+    {
+      "id": "argparse",
+      "type": "module",
+      "label": "argparse",
+      "file_path": "argparse"
+    },
+    {
+      "id": "typing",
+      "type": "module",
+      "label": "typing",
+      "file_path": "typing"
+    },
+    {
+      "id": "windows_worker/scraper_local.py:GoogleMapsScraper",
+      "type": "class",
+      "label": "GoogleMapsScraper",
+      "file_path": "windows_worker/scraper_local.py"
+    },
+    {
+      "id": "windows_worker/scraper_local.py:GoogleMapsScraper.__init__",
+      "type": "method",
+      "label": "__init__",
+      "file_path": "windows_worker/scraper_local.py"
+    },
+    {
+      "id": "windows_worker/scraper_local.py:GoogleMapsScraper._verificar_imports",
+      "type": "method",
+      "label": "_verificar_imports",
+      "file_path": "windows_worker/scraper_local.py"
+    },
+    {
+      "id": "windows_worker/scraper_local.py:GoogleMapsScraper._scroll_feed",
+      "type": "method",
+      "label": "_scroll_feed",
+      "file_path": "windows_worker/scraper_local.py"
+    },
+    {
+      "id": "windows_worker/scraper_local.py:GoogleMapsScraper.buscar_por_cidade",
+      "type": "method",
+      "label": "buscar_por_cidade",
+      "file_path": "windows_worker/scraper_local.py"
+    },
+    {
+      "id": "windows_worker/scraper_local.py:GoogleMapsScraper._extrair_listings",
+      "type": "method",
+      "label": "_extrair_listings",
+      "file_path": "windows_worker/scraper_local.py"
+    },
+    {
+      "id": "windows_worker/scraper_local.py:GoogleMapsScraper._extrair_dados_card",
+      "type": "method",
+      "label": "_extrair_dados_card",
+      "file_path": "windows_worker/scraper_local.py"
+    },
+    {
+      "id": "windows_worker/scraper_local.py:GoogleMapsScraper._normalizar_telefone",
+      "type": "method",
+      "label": "_normalizar_telefone",
+      "file_path": "windows_worker/scraper_local.py"
+    },
+    {
+      "id": "windows_worker/scraper_local.py:GoogleMapsScraper._extrair_telefone_por_regex",
+      "type": "method",
+      "label": "_extrair_telefone_por_regex",
+      "file_path": "windows_worker/scraper_local.py"
+    },
+    {
+      "id": "windows_worker/scraper_local.py:GoogleMapsScraper._salvar_debug_html",
+      "type": "method",
+      "label": "_salvar_debug_html",
+      "file_path": "windows_worker/scraper_local.py"
+    },
+    {
+      "id": "windows_worker/scraper_local.py:GoogleMapsScraper.fechar",
+      "type": "method",
+      "label": "fechar",
+      "file_path": "windows_worker/scraper_local.py"
+    },
+    {
+      "id": "windows_worker/scraper_local.py:SupabaseInjector",
+      "type": "class",
+      "label": "SupabaseInjector",
+      "file_path": "windows_worker/scraper_local.py"
+    },
+    {
+      "id": "windows_worker/scraper_local.py:SupabaseInjector.upsert_batch",
+      "type": "method",
+      "label": "upsert_batch",
+      "file_path": "windows_worker/scraper_local.py"
+    },
+    {
+      "id": "windows_worker/scraper_local.py:rodar",
+      "type": "function",
+      "label": "rodar",
+      "file_path": "windows_worker/scraper_local.py"
+    },
+    {
+      "id": "windows_worker/scraper_local.py:__init__",
+      "type": "function",
+      "label": "__init__",
+      "file_path": "windows_worker/scraper_local.py"
+    },
+    {
+      "id": "windows_worker/scraper_local.py:_verificar_imports",
+      "type": "function",
+      "label": "_verificar_imports",
+      "file_path": "windows_worker/scraper_local.py"
+    },
+    {
+      "id": "windows_worker/scraper_local.py:_scroll_feed",
+      "type": "function",
+      "label": "_scroll_feed",
+      "file_path": "windows_worker/scraper_local.py"
+    },
+    {
+      "id": "windows_worker/scraper_local.py:buscar_por_cidade",
+      "type": "function",
+      "label": "buscar_por_cidade",
+      "file_path": "windows_worker/scraper_local.py"
+    },
+    {
+      "id": "windows_worker/scraper_local.py:_extrair_listings",
+      "type": "function",
+      "label": "_extrair_listings",
+      "file_path": "windows_worker/scraper_local.py"
+    },
+    {
+      "id": "windows_worker/scraper_local.py:_extrair_dados_card",
+      "type": "function",
+      "label": "_extrair_dados_card",
+      "file_path": "windows_worker/scraper_local.py"
+    },
+    {
+      "id": "windows_worker/scraper_local.py:_normalizar_telefone",
+      "type": "function",
+      "label": "_normalizar_telefone",
+      "file_path": "windows_worker/scraper_local.py"
+    },
+    {
+      "id": "windows_worker/scraper_local.py:_extrair_telefone_por_regex",
+      "type": "function",
+      "label": "_extrair_telefone_por_regex",
+      "file_path": "windows_worker/scraper_local.py"
+    },
+    {
+      "id": "windows_worker/scraper_local.py:_salvar_debug_html",
+      "type": "function",
+      "label": "_salvar_debug_html",
+      "file_path": "windows_worker/scraper_local.py"
+    },
+    {
+      "id": "windows_worker/scraper_local.py:fechar",
+      "type": "function",
+      "label": "fechar",
+      "file_path": "windows_worker/scraper_local.py"
+    },
+    {
+      "id": "windows_worker/scraper_local.py:upsert_batch",
+      "type": "function",
+      "label": "upsert_batch",
+      "file_path": "windows_worker/scraper_local.py"
+    },
+    {
+      "id": "playwright.sync_api",
+      "type": "module",
+      "label": "playwright.sync_api",
+      "file_path": "playwright.sync_api"
+    },
+    {
+      "id": "scrapling.fetchers",
+      "type": "module",
+      "label": "scrapling.fetchers",
+      "file_path": "scrapling.fetchers"
+    },
+    {
+      "id": "windows_worker/geocoder.py",
+      "type": "module",
+      "label": "geocoder.py",
+      "file_path": "windows_worker/geocoder.py"
+    },
+    {
+      "id": "windows_worker/geocoder.py:geocodificar_endereco",
+      "type": "function",
+      "label": "geocodificar_endereco",
+      "file_path": "windows_worker/geocoder.py"
+    },
+    {
+      "id": "windows_worker/geocoder.py:rodar",
+      "type": "function",
+      "label": "rodar",
+      "file_path": "windows_worker/geocoder.py"
     }
   ],
   "edges": [
@@ -605,6 +887,12 @@
     {
       "source": "bot_telegram.py",
       "target": "telebot",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "bot_telegram.py",
+      "target": "supabase_client",
       "type": "imports",
       "relation": "imports"
     },
@@ -670,13 +958,31 @@
     },
     {
       "source": "bot_telegram.py:_enviar_lead",
+      "target": "error",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "bot_telegram.py:_enviar_lead",
       "target": "range",
       "type": "calls",
       "relation": "calls"
     },
     {
       "source": "bot_telegram.py:_enviar_lead",
-      "target": "post",
+      "target": "execute",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "bot_telegram.py:_enviar_lead",
+      "target": "insert",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "bot_telegram.py:_enviar_lead",
+      "target": "table",
       "type": "calls",
       "relation": "calls"
     },
@@ -820,7 +1126,19 @@
     },
     {
       "source": "main.py",
+      "target": "contextlib",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "main.py",
       "target": "fastapi",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "main.py",
+      "target": "fastapi.staticfiles",
       "type": "imports",
       "relation": "imports"
     },
@@ -832,19 +1150,19 @@
     },
     {
       "source": "main.py",
-      "target": "supabase",
+      "target": "supabase_client",
       "type": "imports",
       "relation": "imports"
     },
     {
       "source": "main.py",
-      "target": "dotenv",
+      "target": "agente_orquestrador",
       "type": "imports",
       "relation": "imports"
     },
     {
       "source": "main.py",
-      "target": "main.py:Lead",
+      "target": "main.py:LeadPayload",
       "type": "contains",
       "relation": "contains"
     },
@@ -886,13 +1204,13 @@
     },
     {
       "source": "main.py:create_lead",
-      "target": "info",
+      "target": "model_dump",
       "type": "calls",
       "relation": "calls"
     },
     {
       "source": "main.py:create_lead",
-      "target": "error",
+      "target": "info",
       "type": "calls",
       "relation": "calls"
     },
@@ -922,7 +1240,25 @@
     },
     {
       "source": "main.py:listar_clinicas",
+      "target": "Query",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "main.py:listar_clinicas",
+      "target": "Query",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "main.py:listar_clinicas",
       "target": "execute",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "main.py:listar_clinicas",
+      "target": "range",
       "type": "calls",
       "relation": "calls"
     },
@@ -1006,13 +1342,19 @@
     },
     {
       "source": "main.py:rodar_agentes",
-      "target": "rodar_pipeline",
+      "target": "rodar_pipeline_async",
       "type": "calls",
       "relation": "calls"
     },
     {
       "source": "main.py:rodar_agentes",
       "target": "str",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "main.py:rodar_agentes",
+      "target": "get",
       "type": "calls",
       "relation": "calls"
     },
@@ -1036,19 +1378,7 @@
     },
     {
       "source": "main.py",
-      "target": "agente_orquestrador",
-      "type": "imports",
-      "relation": "imports"
-    },
-    {
-      "source": "main.py",
       "target": "uvicorn",
-      "type": "imports",
-      "relation": "imports"
-    },
-    {
-      "source": "main.py",
-      "target": "agente_orquestrador",
       "type": "imports",
       "relation": "imports"
     },
@@ -2368,13 +2698,19 @@
     },
     {
       "source": "agente_buscador.py",
-      "target": "requests",
+      "target": "time",
       "type": "imports",
       "relation": "imports"
     },
     {
       "source": "agente_buscador.py",
-      "target": "supabase",
+      "target": "logging",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "agente_buscador.py",
+      "target": "requests",
       "type": "imports",
       "relation": "imports"
     },
@@ -2386,85 +2722,127 @@
     },
     {
       "source": "agente_buscador.py",
+      "target": "supabase_client",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "agente_buscador.py",
+      "target": "agente_buscador.py:extrair_cidade",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "agente_buscador.py:extrair_cidade",
+      "target": "lower",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_buscador.py:extrair_cidade",
+      "target": "lower",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_buscador.py:extrair_cidade",
+      "target": "split",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_buscador.py",
+      "target": "agente_buscador.py:_buscar_com_retry",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "agente_buscador.py:_buscar_com_retry",
+      "target": "range",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_buscador.py:_buscar_com_retry",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_buscador.py:_buscar_com_retry",
+      "target": "raise_for_status",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_buscador.py:_buscar_com_retry",
+      "target": "json",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_buscador.py:_buscar_com_retry",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_buscador.py:_buscar_com_retry",
+      "target": "extend",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_buscador.py:_buscar_com_retry",
+      "target": "len",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_buscador.py:_buscar_com_retry",
+      "target": "warning",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_buscador.py:_buscar_com_retry",
+      "target": "sleep",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_buscador.py",
       "target": "agente_buscador.py:rodar",
       "type": "contains",
       "relation": "contains"
     },
     {
       "source": "agente_buscador.py:rodar",
-      "target": "print",
+      "target": "error",
       "type": "calls",
       "relation": "calls"
     },
     {
       "source": "agente_buscador.py:rodar",
-      "target": "print",
+      "target": "error",
       "type": "calls",
       "relation": "calls"
     },
     {
       "source": "agente_buscador.py:rodar",
-      "target": "get",
+      "target": "info",
       "type": "calls",
       "relation": "calls"
     },
     {
       "source": "agente_buscador.py:rodar",
-      "target": "json",
+      "target": "_buscar_com_retry",
       "type": "calls",
       "relation": "calls"
     },
     {
       "source": "agente_buscador.py:rodar",
-      "target": "get",
-      "type": "calls",
-      "relation": "calls"
-    },
-    {
-      "source": "agente_buscador.py:rodar",
-      "target": "strip",
-      "type": "calls",
-      "relation": "calls"
-    },
-    {
-      "source": "agente_buscador.py:rodar",
-      "target": "get",
-      "type": "calls",
-      "relation": "calls"
-    },
-    {
-      "source": "agente_buscador.py:rodar",
-      "target": "strip",
-      "type": "calls",
-      "relation": "calls"
-    },
-    {
-      "source": "agente_buscador.py:rodar",
-      "target": "get",
-      "type": "calls",
-      "relation": "calls"
-    },
-    {
-      "source": "agente_buscador.py:rodar",
-      "target": "execute",
-      "type": "calls",
-      "relation": "calls"
-    },
-    {
-      "source": "agente_buscador.py:rodar",
-      "target": "eq",
-      "type": "calls",
-      "relation": "calls"
-    },
-    {
-      "source": "agente_buscador.py:rodar",
-      "target": "select",
-      "type": "calls",
-      "relation": "calls"
-    },
-    {
-      "source": "agente_buscador.py:rodar",
-      "target": "table",
+      "target": "info",
       "type": "calls",
       "relation": "calls"
     },
@@ -2476,13 +2854,91 @@
     },
     {
       "source": "agente_buscador.py:rodar",
+      "target": "extrair_cidade",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_buscador.py:rodar",
+      "target": "strip",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_buscador.py:rodar",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_buscador.py:rodar",
+      "target": "strip",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_buscador.py:rodar",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_buscador.py:rodar",
+      "target": "append",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_buscador.py:rodar",
+      "target": "strip",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_buscador.py:rodar",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_buscador.py:rodar",
+      "target": "strip",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_buscador.py:rodar",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_buscador.py:rodar",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_buscador.py:rodar",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_buscador.py:rodar",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_buscador.py:rodar",
       "target": "execute",
       "type": "calls",
       "relation": "calls"
     },
     {
       "source": "agente_buscador.py:rodar",
-      "target": "insert",
+      "target": "upsert",
       "type": "calls",
       "relation": "calls"
     },
@@ -2494,61 +2950,31 @@
     },
     {
       "source": "agente_buscador.py:rodar",
-      "target": "strip",
+      "target": "error",
       "type": "calls",
       "relation": "calls"
     },
     {
       "source": "agente_buscador.py:rodar",
-      "target": "get",
+      "target": "info",
       "type": "calls",
       "relation": "calls"
     },
     {
       "source": "agente_buscador.py:rodar",
-      "target": "strip",
-      "type": "calls",
-      "relation": "calls"
-    },
-    {
-      "source": "agente_buscador.py:rodar",
-      "target": "get",
-      "type": "calls",
-      "relation": "calls"
-    },
-    {
-      "source": "agente_buscador.py:rodar",
-      "target": "get",
-      "type": "calls",
-      "relation": "calls"
-    },
-    {
-      "source": "agente_buscador.py:rodar",
-      "target": "get",
-      "type": "calls",
-      "relation": "calls"
-    },
-    {
-      "source": "agente_buscador.py:rodar",
-      "target": "print",
-      "type": "calls",
-      "relation": "calls"
-    },
-    {
-      "source": "agente_buscador.py:rodar",
-      "target": "print",
-      "type": "calls",
-      "relation": "calls"
-    },
-    {
-      "source": "agente_buscador.py:rodar",
-      "target": "print",
+      "target": "len",
       "type": "calls",
       "relation": "calls"
     },
     {
       "source": "agente_contato.py",
-      "target": "os",
+      "target": "time",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "agente_contato.py",
+      "target": "logging",
       "type": "imports",
       "relation": "imports"
     },
@@ -2566,13 +2992,19 @@
     },
     {
       "source": "agente_contato.py",
-      "target": "supabase",
+      "target": "dotenv",
       "type": "imports",
       "relation": "imports"
     },
     {
       "source": "agente_contato.py",
-      "target": "dotenv",
+      "target": "supabase_client",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "agente_contato.py",
+      "target": "os",
       "type": "imports",
       "relation": "imports"
     },
@@ -2581,6 +3013,18 @@
       "target": "agente_contato.py:gerar_mensagem",
       "type": "contains",
       "relation": "contains"
+    },
+    {
+      "source": "agente_contato.py:gerar_mensagem",
+      "target": "warning",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_contato.py:gerar_mensagem",
+      "target": "str",
+      "type": "calls",
+      "relation": "calls"
     },
     {
       "source": "agente_contato.py:gerar_mensagem",
@@ -2596,7 +3040,13 @@
     },
     {
       "source": "agente_contato.py:gerar_mensagem",
-      "target": "print",
+      "target": "warning",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_contato.py:gerar_mensagem",
+      "target": "error",
       "type": "calls",
       "relation": "calls"
     },
@@ -2608,7 +3058,7 @@
     },
     {
       "source": "agente_contato.py:rodar",
-      "target": "print",
+      "target": "error",
       "type": "calls",
       "relation": "calls"
     },
@@ -2638,7 +3088,13 @@
     },
     {
       "source": "agente_contato.py:rodar",
-      "target": "print",
+      "target": "error",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_contato.py:rodar",
+      "target": "info",
       "type": "calls",
       "relation": "calls"
     },
@@ -2698,13 +3154,19 @@
     },
     {
       "source": "agente_contato.py:rodar",
-      "target": "print",
+      "target": "info",
       "type": "calls",
       "relation": "calls"
     },
     {
       "source": "agente_contato.py:rodar",
-      "target": "print",
+      "target": "sleep",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_contato.py:rodar",
+      "target": "error",
       "type": "calls",
       "relation": "calls"
     },
@@ -2716,13 +3178,19 @@
     },
     {
       "source": "agente_contato.py:rodar",
-      "target": "print",
+      "target": "info",
       "type": "calls",
       "relation": "calls"
     },
     {
       "source": "agente_followup.py",
-      "target": "os",
+      "target": "time",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "agente_followup.py",
+      "target": "logging",
       "type": "imports",
       "relation": "imports"
     },
@@ -2734,19 +3202,25 @@
     },
     {
       "source": "agente_followup.py",
+      "target": "os",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "agente_followup.py",
       "target": "requests",
       "type": "imports",
       "relation": "imports"
     },
     {
       "source": "agente_followup.py",
-      "target": "supabase",
+      "target": "dotenv",
       "type": "imports",
       "relation": "imports"
     },
     {
       "source": "agente_followup.py",
-      "target": "dotenv",
+      "target": "supabase_client",
       "type": "imports",
       "relation": "imports"
     },
@@ -2770,7 +3244,7 @@
     },
     {
       "source": "agente_followup.py:gerar_followup",
-      "target": "print",
+      "target": "error",
       "type": "calls",
       "relation": "calls"
     },
@@ -2782,7 +3256,7 @@
     },
     {
       "source": "agente_followup.py:rodar",
-      "target": "print",
+      "target": "error",
       "type": "calls",
       "relation": "calls"
     },
@@ -2812,13 +3286,37 @@
     },
     {
       "source": "agente_followup.py:rodar",
-      "target": "print",
+      "target": "error",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_followup.py:rodar",
+      "target": "info",
       "type": "calls",
       "relation": "calls"
     },
     {
       "source": "agente_followup.py:rodar",
       "target": "now",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_followup.py:rodar",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_followup.py:rodar",
+      "target": "warning",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_followup.py:rodar",
+      "target": "get",
       "type": "calls",
       "relation": "calls"
     },
@@ -2860,7 +3358,7 @@
     },
     {
       "source": "agente_followup.py:rodar",
-      "target": "print",
+      "target": "info",
       "type": "calls",
       "relation": "calls"
     },
@@ -2896,7 +3394,13 @@
     },
     {
       "source": "agente_followup.py:rodar",
-      "target": "print",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_followup.py:rodar",
+      "target": "sleep",
       "type": "calls",
       "relation": "calls"
     },
@@ -2932,13 +3436,19 @@
     },
     {
       "source": "agente_followup.py:rodar",
-      "target": "print",
+      "target": "info",
       "type": "calls",
       "relation": "calls"
     },
     {
       "source": "agente_followup.py:rodar",
-      "target": "print",
+      "target": "sleep",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_followup.py:rodar",
+      "target": "error",
       "type": "calls",
       "relation": "calls"
     },
@@ -2950,13 +3460,25 @@
     },
     {
       "source": "agente_followup.py:rodar",
-      "target": "print",
+      "target": "info",
       "type": "calls",
       "relation": "calls"
     },
     {
       "source": "agente_orquestrador.py",
       "target": "time",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "agente_orquestrador.py",
+      "target": "uuid",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "agente_orquestrador.py",
+      "target": "logging",
       "type": "imports",
       "relation": "imports"
     },
@@ -3010,121 +3532,13 @@
     },
     {
       "source": "agente_orquestrador.py:rodar_pipeline",
-      "target": "now",
+      "target": "str",
       "type": "calls",
       "relation": "calls"
     },
     {
       "source": "agente_orquestrador.py:rodar_pipeline",
-      "target": "print",
-      "type": "calls",
-      "relation": "calls"
-    },
-    {
-      "source": "agente_orquestrador.py:rodar_pipeline",
-      "target": "isoformat",
-      "type": "calls",
-      "relation": "calls"
-    },
-    {
-      "source": "agente_orquestrador.py:rodar_pipeline",
-      "target": "rodar",
-      "type": "calls",
-      "relation": "calls"
-    },
-    {
-      "source": "agente_orquestrador.py:rodar_pipeline",
-      "target": "rodar",
-      "type": "calls",
-      "relation": "calls"
-    },
-    {
-      "source": "agente_orquestrador.py:rodar_pipeline",
-      "target": "rodar",
-      "type": "calls",
-      "relation": "calls"
-    },
-    {
-      "source": "agente_orquestrador.py:rodar_pipeline",
-      "target": "rodar",
-      "type": "calls",
-      "relation": "calls"
-    },
-    {
-      "source": "agente_orquestrador.py:rodar_pipeline",
-      "target": "isoformat",
-      "type": "calls",
-      "relation": "calls"
-    },
-    {
-      "source": "agente_orquestrador.py:rodar_pipeline",
-      "target": "print",
-      "type": "calls",
-      "relation": "calls"
-    },
-    {
-      "source": "agente_orquestrador.py:rodar_pipeline",
-      "target": "print",
-      "type": "calls",
-      "relation": "calls"
-    },
-    {
-      "source": "agente_orquestrador.py:rodar_pipeline",
-      "target": "print",
-      "type": "calls",
-      "relation": "calls"
-    },
-    {
-      "source": "agente_orquestrador.py:rodar_pipeline",
-      "target": "get",
-      "type": "calls",
-      "relation": "calls"
-    },
-    {
-      "source": "agente_orquestrador.py:rodar_pipeline",
-      "target": "print",
-      "type": "calls",
-      "relation": "calls"
-    },
-    {
-      "source": "agente_orquestrador.py:rodar_pipeline",
-      "target": "get",
-      "type": "calls",
-      "relation": "calls"
-    },
-    {
-      "source": "agente_orquestrador.py:rodar_pipeline",
-      "target": "print",
-      "type": "calls",
-      "relation": "calls"
-    },
-    {
-      "source": "agente_orquestrador.py:rodar_pipeline",
-      "target": "print",
-      "type": "calls",
-      "relation": "calls"
-    },
-    {
-      "source": "agente_orquestrador.py:rodar_pipeline",
-      "target": "get",
-      "type": "calls",
-      "relation": "calls"
-    },
-    {
-      "source": "agente_orquestrador.py:rodar_pipeline",
-      "target": "print",
-      "type": "calls",
-      "relation": "calls"
-    },
-    {
-      "source": "agente_orquestrador.py:rodar_pipeline",
-      "target": "get",
-      "type": "calls",
-      "relation": "calls"
-    },
-    {
-      "source": "agente_orquestrador.py:rodar_pipeline",
-      "target": "print",
+      "target": "uuid4",
       "type": "calls",
       "relation": "calls"
     },
@@ -3136,13 +3550,133 @@
     },
     {
       "source": "agente_orquestrador.py:rodar_pipeline",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:rodar_pipeline",
       "target": "isoformat",
       "type": "calls",
       "relation": "calls"
     },
     {
       "source": "agente_orquestrador.py:rodar_pipeline",
-      "target": "print",
+      "target": "rodar",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:rodar_pipeline",
+      "target": "rodar",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:rodar_pipeline",
+      "target": "rodar",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:rodar_pipeline",
+      "target": "rodar",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:rodar_pipeline",
+      "target": "isoformat",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:rodar_pipeline",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:rodar_pipeline",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:rodar_pipeline",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:rodar_pipeline",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:rodar_pipeline",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:rodar_pipeline",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:rodar_pipeline",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:rodar_pipeline",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:rodar_pipeline",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:rodar_pipeline",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:rodar_pipeline",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:rodar_pipeline",
+      "target": "now",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:rodar_pipeline",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:rodar_pipeline",
+      "target": "isoformat",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:rodar_pipeline",
+      "target": "error",
       "type": "calls",
       "relation": "calls"
     },
@@ -3154,37 +3688,199 @@
     },
     {
       "source": "agente_orquestrador.py",
+      "target": "agente_orquestrador.py:rodar_pipeline_async",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "agente_orquestrador.py:rodar_pipeline_async",
+      "target": "acquire",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:rodar_pipeline_async",
+      "target": "warning",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:rodar_pipeline_async",
+      "target": "str",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:rodar_pipeline_async",
+      "target": "uuid4",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:rodar_pipeline_async",
+      "target": "rodar_pipeline",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:rodar_pipeline_async",
+      "target": "release",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:rodar_pipeline_async",
+      "target": "Thread",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:rodar_pipeline_async",
+      "target": "start",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:rodar_pipeline_async",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py",
+      "target": "agente_orquestrador.py:_loop_agendador",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "agente_orquestrador.py:_loop_agendador",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:_loop_agendador",
+      "target": "is_set",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:_loop_agendador",
+      "target": "run_pending",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:_loop_agendador",
+      "target": "wait",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py",
       "target": "agente_orquestrador.py:iniciar_agendador",
       "type": "contains",
       "relation": "contains"
     },
     {
       "source": "agente_orquestrador.py:iniciar_agendador",
-      "target": "print",
+      "target": "is_alive",
       "type": "calls",
       "relation": "calls"
     },
     {
       "source": "agente_orquestrador.py:iniciar_agendador",
-      "target": "run_pending",
+      "target": "warning",
       "type": "calls",
       "relation": "calls"
     },
     {
       "source": "agente_orquestrador.py:iniciar_agendador",
-      "target": "sleep",
+      "target": "clear",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:iniciar_agendador",
+      "target": "do",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:iniciar_agendador",
+      "target": "at",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:iniciar_agendador",
+      "target": "every",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:iniciar_agendador",
+      "target": "Thread",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:iniciar_agendador",
+      "target": "start",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:iniciar_agendador",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py",
+      "target": "agente_orquestrador.py:parar_agendador",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "agente_orquestrador.py:parar_agendador",
+      "target": "set",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:parar_agendador",
+      "target": "join",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:parar_agendador",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py",
+      "target": "agente_orquestrador.py:_executar_com_lock",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "agente_orquestrador.py:_executar_com_lock",
+      "target": "rodar_pipeline",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:_executar_com_lock",
+      "target": "release",
       "type": "calls",
       "relation": "calls"
     },
     {
       "source": "agente_qualificador.py",
-      "target": "os",
-      "type": "imports",
-      "relation": "imports"
-    },
-    {
-      "source": "agente_qualificador.py",
-      "target": "supabase",
+      "target": "logging",
       "type": "imports",
       "relation": "imports"
     },
@@ -3196,13 +3892,49 @@
     },
     {
       "source": "agente_qualificador.py",
+      "target": "supabase_client",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "agente_qualificador.py",
+      "target": "agente_qualificador.py:_calcular_score",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "agente_qualificador.py:_calcular_score",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_qualificador.py:_calcular_score",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_qualificador.py:_calcular_score",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_qualificador.py:_calcular_score",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_qualificador.py",
       "target": "agente_qualificador.py:rodar",
       "type": "contains",
       "relation": "contains"
     },
     {
       "source": "agente_qualificador.py:rodar",
-      "target": "print",
+      "target": "error",
       "type": "calls",
       "relation": "calls"
     },
@@ -3232,31 +3964,19 @@
     },
     {
       "source": "agente_qualificador.py:rodar",
-      "target": "print",
+      "target": "error",
       "type": "calls",
       "relation": "calls"
     },
     {
       "source": "agente_qualificador.py:rodar",
-      "target": "get",
+      "target": "info",
       "type": "calls",
       "relation": "calls"
     },
     {
       "source": "agente_qualificador.py:rodar",
-      "target": "get",
-      "type": "calls",
-      "relation": "calls"
-    },
-    {
-      "source": "agente_qualificador.py:rodar",
-      "target": "get",
-      "type": "calls",
-      "relation": "calls"
-    },
-    {
-      "source": "agente_qualificador.py:rodar",
-      "target": "get",
+      "target": "_calcular_score",
       "type": "calls",
       "relation": "calls"
     },
@@ -3286,7 +4006,7 @@
     },
     {
       "source": "agente_qualificador.py:rodar",
-      "target": "print",
+      "target": "error",
       "type": "calls",
       "relation": "calls"
     },
@@ -3298,37 +4018,2653 @@
     },
     {
       "source": "agente_qualificador.py:rodar",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "supabase_client.py",
+      "target": "os",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "supabase_client.py",
+      "target": "logging",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "supabase_client.py",
+      "target": "supabase",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "supabase_client.py",
+      "target": "dotenv",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "dev_agent_eco.py",
+      "target": "sys",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "dev_agent_eco.py",
+      "target": "json",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "dev_agent_eco.py",
+      "target": "subprocess",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "dev_agent_eco.py",
+      "target": "os",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "dev_agent_eco.py",
+      "target": "time",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "dev_agent_eco.py",
+      "target": "dev_agent_eco.py:log_event",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "dev_agent_eco.py:log_event",
+      "target": "makedirs",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "dev_agent_eco.py:log_event",
+      "target": "strftime",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "dev_agent_eco.py:log_event",
+      "target": "open",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "dev_agent_eco.py:log_event",
+      "target": "write",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "dev_agent_eco.py",
+      "target": "dev_agent_eco.py:pensar",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "dev_agent_eco.py:pensar",
+      "target": "log_event",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "dev_agent_eco.py:pensar",
+      "target": "len",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "dev_agent_eco.py:pensar",
       "target": "print",
       "type": "calls",
       "relation": "calls"
     },
     {
-      "source": "teste_buscador.py",
+      "source": "dev_agent_eco.py:pensar",
+      "target": "exit",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "dev_agent_eco.py:pensar",
+      "target": "dumps",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "dev_agent_eco.py:pensar",
+      "target": "run",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "dev_agent_eco.py:pensar",
+      "target": "loads",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "dev_agent_eco.py:pensar",
+      "target": "log_event",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "dev_agent_eco.py:pensar",
+      "target": "len",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "dev_agent_eco.py:pensar",
+      "target": "log_event",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "dev_agent_eco.py:pensar",
+      "target": "log_event",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "dev_agent_eco.py:pensar",
+      "target": "log_event",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "dev_agent_eco.py",
+      "target": "dev_agent_eco.py:parsear_resposta",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "dev_agent_eco.py:parsear_resposta",
+      "target": "split",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "dev_agent_eco.py:parsear_resposta",
+      "target": "len",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "dev_agent_eco.py:parsear_resposta",
+      "target": "strip",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "dev_agent_eco.py:parsear_resposta",
+      "target": "replace",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "dev_agent_eco.py:parsear_resposta",
+      "target": "replace",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "dev_agent_eco.py:parsear_resposta",
+      "target": "strip",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "dev_agent_eco.py:parsear_resposta",
+      "target": "join",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "dev_agent_eco.py:parsear_resposta",
+      "target": "split",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "dev_agent_eco.py",
+      "target": "dev_agent_eco.py:executar_comando",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "dev_agent_eco.py:executar_comando",
+      "target": "log_event",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "dev_agent_eco.py:executar_comando",
+      "target": "run",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "dev_agent_eco.py:executar_comando",
+      "target": "strip",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "dev_agent_eco.py:executar_comando",
+      "target": "strip",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "dev_agent_eco.py:executar_comando",
+      "target": "log_event",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "dev_agent_eco.py:executar_comando",
+      "target": "len",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "dev_agent_eco.py:executar_comando",
+      "target": "len",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "dev_agent_eco.py:executar_comando",
+      "target": "log_event",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "dev_agent_eco.py:executar_comando",
+      "target": "log_event",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "dev_agent_eco.py:executar_comando",
+      "target": "str",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "dev_agent_eco.py",
+      "target": "dev_agent_eco.py:main",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "dev_agent_eco.py:main",
+      "target": "print",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "dev_agent_eco.py:main",
+      "target": "print",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "dev_agent_eco.py:main",
+      "target": "exit",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "dev_agent_eco.py:main",
+      "target": "len",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "dev_agent_eco.py:main",
+      "target": "input",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "dev_agent_eco.py:main",
+      "target": "strip",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "dev_agent_eco.py:main",
+      "target": "print",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "dev_agent_eco.py:main",
+      "target": "exit",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "dev_agent_eco.py:main",
+      "target": "log_event",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "dev_agent_eco.py:main",
+      "target": "log_event",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "dev_agent_eco.py:main",
+      "target": "format",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "dev_agent_eco.py:main",
+      "target": "print",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "dev_agent_eco.py:main",
+      "target": "print",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "dev_agent_eco.py:main",
+      "target": "print",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "dev_agent_eco.py:main",
+      "target": "print",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "dev_agent_eco.py:main",
+      "target": "print",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "dev_agent_eco.py:main",
+      "target": "print",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "dev_agent_eco.py:main",
+      "target": "range",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "dev_agent_eco.py:main",
+      "target": "print",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "dev_agent_eco.py:main",
+      "target": "print",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "dev_agent_eco.py:main",
+      "target": "pensar",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "dev_agent_eco.py:main",
+      "target": "parsear_resposta",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "dev_agent_eco.py:main",
+      "target": "print",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "dev_agent_eco.py:main",
+      "target": "print",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "dev_agent_eco.py:main",
+      "target": "print",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "dev_agent_eco.py:main",
+      "target": "print",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "dev_agent_eco.py:main",
+      "target": "print",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "dev_agent_eco.py:main",
+      "target": "log_event",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "dev_agent_eco.py:main",
+      "target": "append",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "dev_agent_eco.py:main",
+      "target": "append",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "dev_agent_eco.py:main",
+      "target": "executar_comando",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "dev_agent_eco.py:main",
+      "target": "print",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "dev_agent_eco.py:main",
+      "target": "len",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "dev_agent_eco.py:main",
+      "target": "print",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "dev_agent_eco.py:main",
+      "target": "append",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "dev_agent_eco.py:main",
+      "target": "append",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "dev_agent_eco.py:main",
+      "target": "sum",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "dev_agent_eco.py:main",
+      "target": "len",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "dev_agent_eco.py:main",
+      "target": "log_event",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "dev_agent_eco.py:main",
+      "target": "sleep",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "dev_agent_eco.py:main",
+      "target": "print",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "dev_agent_eco.py:main",
+      "target": "log_event",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "dev_agent_eco.py:main",
+      "target": "print",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py",
       "target": "os",
       "type": "imports",
       "relation": "imports"
     },
     {
-      "source": "teste_qualificador.py",
-      "target": "os",
+      "source": "windows_worker/scraper_local.py",
+      "target": "re",
       "type": "imports",
       "relation": "imports"
     },
     {
-      "source": "teste_contato.py",
-      "target": "os",
+      "source": "windows_worker/scraper_local.py",
+      "target": "sys",
       "type": "imports",
       "relation": "imports"
     },
     {
-      "source": "teste_followup.py",
-      "target": "datetime",
+      "source": "windows_worker/scraper_local.py",
+      "target": "time",
       "type": "imports",
       "relation": "imports"
+    },
+    {
+      "source": "windows_worker/scraper_local.py",
+      "target": "json",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "windows_worker/scraper_local.py",
+      "target": "random",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "windows_worker/scraper_local.py",
+      "target": "argparse",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "windows_worker/scraper_local.py",
+      "target": "logging",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "windows_worker/scraper_local.py",
+      "target": "typing",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "windows_worker/scraper_local.py",
+      "target": "dotenv",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "windows_worker/scraper_local.py",
+      "target": "windows_worker/scraper_local.py:GoogleMapsScraper",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper",
+      "target": "windows_worker/scraper_local.py:GoogleMapsScraper.__init__",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper.__init__",
+      "target": "_verificar_imports",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper",
+      "target": "windows_worker/scraper_local.py:GoogleMapsScraper._verificar_imports",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._verificar_imports",
+      "target": "error",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._verificar_imports",
+      "target": "error",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper",
+      "target": "windows_worker/scraper_local.py:GoogleMapsScraper._scroll_feed",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._scroll_feed",
+      "target": "query_selector",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._scroll_feed",
+      "target": "warning",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._scroll_feed",
+      "target": "monotonic",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._scroll_feed",
+      "target": "range",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._scroll_feed",
+      "target": "monotonic",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._scroll_feed",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._scroll_feed",
+      "target": "randint",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._scroll_feed",
+      "target": "randint",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._scroll_feed",
+      "target": "bounding_box",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._scroll_feed",
+      "target": "move",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._scroll_feed",
+      "target": "randint",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._scroll_feed",
+      "target": "randint",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._scroll_feed",
+      "target": "evaluate",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._scroll_feed",
+      "target": "evaluate",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._scroll_feed",
+      "target": "warning",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._scroll_feed",
+      "target": "wait_for_timeout",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._scroll_feed",
+      "target": "wait_for_selector",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._scroll_feed",
+      "target": "evaluate",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._scroll_feed",
+      "target": "evaluate",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._scroll_feed",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._scroll_feed",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._scroll_feed",
+      "target": "min",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper",
+      "target": "windows_worker/scraper_local.py:GoogleMapsScraper.buscar_por_cidade",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper.buscar_por_cidade",
+      "target": "replace",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper.buscar_por_cidade",
+      "target": "replace",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper.buscar_por_cidade",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper.buscar_por_cidade",
+      "target": "range",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper.buscar_por_cidade",
+      "target": "StealthySession",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper.buscar_por_cidade",
+      "target": "fetch",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper.buscar_por_cidade",
+      "target": "_extrair_listings",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper.buscar_por_cidade",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper.buscar_por_cidade",
+      "target": "len",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper.buscar_por_cidade",
+      "target": "error",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper.buscar_por_cidade",
+      "target": "min",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper.buscar_por_cidade",
+      "target": "len",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper.buscar_por_cidade",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper.buscar_por_cidade",
+      "target": "sleep",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper.buscar_por_cidade",
+      "target": "error",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper",
+      "target": "windows_worker/scraper_local.py:GoogleMapsScraper._extrair_listings",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._extrair_listings",
+      "target": "css",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._extrair_listings",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._extrair_listings",
+      "target": "len",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._extrair_listings",
+      "target": "warning",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._extrair_listings",
+      "target": "_salvar_debug_html",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._extrair_listings",
+      "target": "set",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._extrair_listings",
+      "target": "enumerate",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._extrair_listings",
+      "target": "_extrair_dados_card",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._extrair_listings",
+      "target": "strip",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._extrair_listings",
+      "target": "lower",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._extrair_listings",
+      "target": "add",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._extrair_listings",
+      "target": "append",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._extrair_listings",
+      "target": "warning",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._extrair_listings",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._extrair_listings",
+      "target": "len",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._extrair_listings",
+      "target": "len",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper",
+      "target": "windows_worker/scraper_local.py:GoogleMapsScraper._extrair_dados_card",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._extrair_dados_card",
+      "target": "css",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._extrair_dados_card",
+      "target": "strip",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._extrair_dados_card",
+      "target": "css",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._extrair_dados_card",
+      "target": "strip",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._extrair_dados_card",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._extrair_dados_card",
+      "target": "len",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._extrair_dados_card",
+      "target": "css",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._extrair_dados_card",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._extrair_dados_card",
+      "target": "search",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._extrair_dados_card",
+      "target": "float",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._extrair_dados_card",
+      "target": "replace",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._extrair_dados_card",
+      "target": "group",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._extrair_dados_card",
+      "target": "search",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._extrair_dados_card",
+      "target": "int",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._extrair_dados_card",
+      "target": "replace",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._extrair_dados_card",
+      "target": "replace",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._extrair_dados_card",
+      "target": "group",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._extrair_dados_card",
+      "target": "search",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._extrair_dados_card",
+      "target": "int",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._extrair_dados_card",
+      "target": "replace",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._extrair_dados_card",
+      "target": "replace",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._extrair_dados_card",
+      "target": "group",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._extrair_dados_card",
+      "target": "css",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._extrair_dados_card",
+      "target": "strip",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._extrair_dados_card",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._extrair_dados_card",
+      "target": "css",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._extrair_dados_card",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._extrair_dados_card",
+      "target": "removeprefix",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._extrair_dados_card",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._extrair_dados_card",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._extrair_dados_card",
+      "target": "_extrair_telefone_por_regex",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._extrair_dados_card",
+      "target": "_normalizar_telefone",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._extrair_dados_card",
+      "target": "len",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._extrair_dados_card",
+      "target": "css",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._extrair_dados_card",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._extrair_dados_card",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._extrair_dados_card",
+      "target": "lower",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._extrair_dados_card",
+      "target": "lower",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._extrair_dados_card",
+      "target": "strip",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper",
+      "target": "windows_worker/scraper_local.py:GoogleMapsScraper._normalizar_telefone",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._normalizar_telefone",
+      "target": "sub",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper",
+      "target": "windows_worker/scraper_local.py:GoogleMapsScraper._extrair_telefone_por_regex",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._extrair_telefone_por_regex",
+      "target": "compile",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._extrair_telefone_por_regex",
+      "target": "search",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._extrair_telefone_por_regex",
+      "target": "group",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper",
+      "target": "windows_worker/scraper_local.py:GoogleMapsScraper._salvar_debug_html",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._salvar_debug_html",
+      "target": "strftime",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._salvar_debug_html",
+      "target": "open",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._salvar_debug_html",
+      "target": "write",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._salvar_debug_html",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._salvar_debug_html",
+      "target": "len",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._salvar_debug_html",
+      "target": "warning",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper",
+      "target": "windows_worker/scraper_local.py:GoogleMapsScraper.fechar",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper.fechar",
+      "target": "close",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py",
+      "target": "windows_worker/scraper_local.py:SupabaseInjector",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:SupabaseInjector",
+      "target": "windows_worker/scraper_local.py:SupabaseInjector.upsert_batch",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:SupabaseInjector.upsert_batch",
+      "target": "error",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:SupabaseInjector.upsert_batch",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:SupabaseInjector.upsert_batch",
+      "target": "len",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:SupabaseInjector.upsert_batch",
+      "target": "range",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:SupabaseInjector.upsert_batch",
+      "target": "execute",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:SupabaseInjector.upsert_batch",
+      "target": "upsert",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:SupabaseInjector.upsert_batch",
+      "target": "table",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:SupabaseInjector.upsert_batch",
+      "target": "error",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:SupabaseInjector.upsert_batch",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:SupabaseInjector.upsert_batch",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:SupabaseInjector.upsert_batch",
+      "target": "str",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:SupabaseInjector.upsert_batch",
+      "target": "sleep",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:SupabaseInjector.upsert_batch",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:SupabaseInjector.upsert_batch",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py",
+      "target": "windows_worker/scraper_local.py:rodar",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:rodar",
+      "target": "strftime",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:rodar",
+      "target": "monotonic",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:rodar",
+      "target": "GoogleMapsScraper",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:rodar",
+      "target": "buscar_por_cidade",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:rodar",
+      "target": "len",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:rodar",
+      "target": "upsert_batch",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:rodar",
+      "target": "len",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:rodar",
+      "target": "warning",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:rodar",
+      "target": "fechar",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:rodar",
+      "target": "monotonic",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:rodar",
+      "target": "round",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:rodar",
+      "target": "strftime",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:rodar",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:rodar",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:rodar",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:rodar",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py",
+      "target": "supabase",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "windows_worker/scraper_local.py",
+      "target": "windows_worker/scraper_local.py:__init__",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:__init__",
+      "target": "_verificar_imports",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py",
+      "target": "windows_worker/scraper_local.py:_verificar_imports",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_verificar_imports",
+      "target": "error",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_verificar_imports",
+      "target": "error",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py",
+      "target": "windows_worker/scraper_local.py:_scroll_feed",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_scroll_feed",
+      "target": "query_selector",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_scroll_feed",
+      "target": "warning",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_scroll_feed",
+      "target": "monotonic",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_scroll_feed",
+      "target": "range",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_scroll_feed",
+      "target": "monotonic",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_scroll_feed",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_scroll_feed",
+      "target": "randint",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_scroll_feed",
+      "target": "randint",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_scroll_feed",
+      "target": "bounding_box",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_scroll_feed",
+      "target": "move",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_scroll_feed",
+      "target": "randint",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_scroll_feed",
+      "target": "randint",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_scroll_feed",
+      "target": "evaluate",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_scroll_feed",
+      "target": "evaluate",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_scroll_feed",
+      "target": "warning",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_scroll_feed",
+      "target": "wait_for_timeout",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_scroll_feed",
+      "target": "wait_for_selector",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_scroll_feed",
+      "target": "evaluate",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_scroll_feed",
+      "target": "evaluate",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_scroll_feed",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_scroll_feed",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_scroll_feed",
+      "target": "min",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py",
+      "target": "windows_worker/scraper_local.py:buscar_por_cidade",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:buscar_por_cidade",
+      "target": "replace",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:buscar_por_cidade",
+      "target": "replace",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:buscar_por_cidade",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:buscar_por_cidade",
+      "target": "range",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:buscar_por_cidade",
+      "target": "StealthySession",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:buscar_por_cidade",
+      "target": "fetch",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:buscar_por_cidade",
+      "target": "_extrair_listings",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:buscar_por_cidade",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:buscar_por_cidade",
+      "target": "len",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:buscar_por_cidade",
+      "target": "error",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:buscar_por_cidade",
+      "target": "min",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:buscar_por_cidade",
+      "target": "len",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:buscar_por_cidade",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:buscar_por_cidade",
+      "target": "sleep",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:buscar_por_cidade",
+      "target": "error",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py",
+      "target": "windows_worker/scraper_local.py:_extrair_listings",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_extrair_listings",
+      "target": "css",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_extrair_listings",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_extrair_listings",
+      "target": "len",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_extrair_listings",
+      "target": "warning",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_extrair_listings",
+      "target": "_salvar_debug_html",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_extrair_listings",
+      "target": "set",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_extrair_listings",
+      "target": "enumerate",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_extrair_listings",
+      "target": "_extrair_dados_card",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_extrair_listings",
+      "target": "strip",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_extrair_listings",
+      "target": "lower",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_extrair_listings",
+      "target": "add",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_extrair_listings",
+      "target": "append",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_extrair_listings",
+      "target": "warning",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_extrair_listings",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_extrair_listings",
+      "target": "len",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_extrair_listings",
+      "target": "len",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py",
+      "target": "windows_worker/scraper_local.py:_extrair_dados_card",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_extrair_dados_card",
+      "target": "css",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_extrair_dados_card",
+      "target": "strip",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_extrair_dados_card",
+      "target": "css",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_extrair_dados_card",
+      "target": "strip",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_extrair_dados_card",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_extrair_dados_card",
+      "target": "len",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_extrair_dados_card",
+      "target": "css",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_extrair_dados_card",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_extrair_dados_card",
+      "target": "search",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_extrair_dados_card",
+      "target": "float",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_extrair_dados_card",
+      "target": "replace",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_extrair_dados_card",
+      "target": "group",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_extrair_dados_card",
+      "target": "search",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_extrair_dados_card",
+      "target": "int",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_extrair_dados_card",
+      "target": "replace",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_extrair_dados_card",
+      "target": "replace",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_extrair_dados_card",
+      "target": "group",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_extrair_dados_card",
+      "target": "search",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_extrair_dados_card",
+      "target": "int",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_extrair_dados_card",
+      "target": "replace",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_extrair_dados_card",
+      "target": "replace",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_extrair_dados_card",
+      "target": "group",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_extrair_dados_card",
+      "target": "css",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_extrair_dados_card",
+      "target": "strip",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_extrair_dados_card",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_extrair_dados_card",
+      "target": "css",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_extrair_dados_card",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_extrair_dados_card",
+      "target": "removeprefix",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_extrair_dados_card",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_extrair_dados_card",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_extrair_dados_card",
+      "target": "_extrair_telefone_por_regex",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_extrair_dados_card",
+      "target": "_normalizar_telefone",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_extrair_dados_card",
+      "target": "len",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_extrair_dados_card",
+      "target": "css",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_extrair_dados_card",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_extrair_dados_card",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_extrair_dados_card",
+      "target": "lower",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_extrair_dados_card",
+      "target": "lower",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_extrair_dados_card",
+      "target": "strip",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py",
+      "target": "windows_worker/scraper_local.py:_normalizar_telefone",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_normalizar_telefone",
+      "target": "sub",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py",
+      "target": "windows_worker/scraper_local.py:_extrair_telefone_por_regex",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_extrair_telefone_por_regex",
+      "target": "compile",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_extrair_telefone_por_regex",
+      "target": "search",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_extrair_telefone_por_regex",
+      "target": "group",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py",
+      "target": "windows_worker/scraper_local.py:_salvar_debug_html",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_salvar_debug_html",
+      "target": "strftime",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_salvar_debug_html",
+      "target": "open",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_salvar_debug_html",
+      "target": "write",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_salvar_debug_html",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_salvar_debug_html",
+      "target": "len",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_salvar_debug_html",
+      "target": "warning",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py",
+      "target": "windows_worker/scraper_local.py:fechar",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:fechar",
+      "target": "close",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py",
+      "target": "windows_worker/scraper_local.py:upsert_batch",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:upsert_batch",
+      "target": "error",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:upsert_batch",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:upsert_batch",
+      "target": "len",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:upsert_batch",
+      "target": "range",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:upsert_batch",
+      "target": "execute",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:upsert_batch",
+      "target": "upsert",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:upsert_batch",
+      "target": "table",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:upsert_batch",
+      "target": "error",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:upsert_batch",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:upsert_batch",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:upsert_batch",
+      "target": "str",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:upsert_batch",
+      "target": "sleep",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:upsert_batch",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:upsert_batch",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py",
+      "target": "playwright.sync_api",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "windows_worker/scraper_local.py",
+      "target": "scrapling.fetchers",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "windows_worker/scraper_local.py",
+      "target": "scrapling.fetchers",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "windows_worker/geocoder.py",
+      "target": "logging",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "windows_worker/geocoder.py",
+      "target": "time",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "windows_worker/geocoder.py",
+      "target": "requests",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "windows_worker/geocoder.py",
+      "target": "supabase_client",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "windows_worker/geocoder.py",
+      "target": "windows_worker/geocoder.py:geocodificar_endereco",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "windows_worker/geocoder.py:geocodificar_endereco",
+      "target": "len",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/geocoder.py:geocodificar_endereco",
+      "target": "strip",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/geocoder.py:geocodificar_endereco",
+      "target": "strip",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/geocoder.py:geocodificar_endereco",
+      "target": "range",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/geocoder.py:geocodificar_endereco",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/geocoder.py:geocodificar_endereco",
+      "target": "int",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/geocoder.py:geocodificar_endereco",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/geocoder.py:geocodificar_endereco",
+      "target": "warning",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/geocoder.py:geocodificar_endereco",
+      "target": "sleep",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/geocoder.py:geocodificar_endereco",
+      "target": "raise_for_status",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/geocoder.py:geocodificar_endereco",
+      "target": "json",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/geocoder.py:geocodificar_endereco",
+      "target": "float",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/geocoder.py:geocodificar_endereco",
+      "target": "float",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/geocoder.py:geocodificar_endereco",
+      "target": "warning",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/geocoder.py:geocodificar_endereco",
+      "target": "sleep",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/geocoder.py:geocodificar_endereco",
+      "target": "error",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/geocoder.py:geocodificar_endereco",
+      "target": "sleep",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/geocoder.py:geocodificar_endereco",
+      "target": "error",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/geocoder.py",
+      "target": "windows_worker/geocoder.py:rodar",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "windows_worker/geocoder.py:rodar",
+      "target": "error",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/geocoder.py:rodar",
+      "target": "execute",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/geocoder.py:rodar",
+      "target": "limit",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/geocoder.py:rodar",
+      "target": "is_",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/geocoder.py:rodar",
+      "target": "select",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/geocoder.py:rodar",
+      "target": "table",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/geocoder.py:rodar",
+      "target": "error",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/geocoder.py:rodar",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/geocoder.py:rodar",
+      "target": "len",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/geocoder.py:rodar",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/geocoder.py:rodar",
+      "target": "enumerate",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/geocoder.py:rodar",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/geocoder.py:rodar",
+      "target": "len",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/geocoder.py:rodar",
+      "target": "strip",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/geocoder.py:rodar",
+      "target": "debug",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/geocoder.py:rodar",
+      "target": "geocodificar_endereco",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/geocoder.py:rodar",
+      "target": "warning",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/geocoder.py:rodar",
+      "target": "len",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/geocoder.py:rodar",
+      "target": "sleep",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/geocoder.py:rodar",
+      "target": "execute",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/geocoder.py:rodar",
+      "target": "eq",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/geocoder.py:rodar",
+      "target": "update",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/geocoder.py:rodar",
+      "target": "table",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/geocoder.py:rodar",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/geocoder.py:rodar",
+      "target": "len",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/geocoder.py:rodar",
+      "target": "error",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/geocoder.py:rodar",
+      "target": "len",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/geocoder.py:rodar",
+      "target": "sleep",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/geocoder.py:rodar",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/geocoder.py:rodar",
+      "target": "len",
+      "type": "calls",
+      "relation": "calls"
     }
   ],
   "metadata": {
-    "timestamp": "2026-05-16T15:28:23.274824",
+    "timestamp": "2026-05-21T22:25:03.266972",
     "repo": "/root/meu-backend"
   }
 }

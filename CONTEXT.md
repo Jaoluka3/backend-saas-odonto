@@ -1,4 +1,4 @@
-# CONTEXT.md - Dental SaaS
+# CONTEXT.md - Dental SaaS (Alex Bot)
 
 ## Project Overview
 - **Name:** Dental SaaS (Alex bot)
@@ -9,20 +9,322 @@
 ## Stack
 - **Backend:** Python 3.x, FastAPI
 - **Database:** Supabase (PostgreSQL)
-- **AI/LLM:** NVIDIA LLaMA 3.1 (via nvidia.com API)
+- **AI/LLM:** Gemini 2.0 Flash (via Google AI SDK)
 - **Bot:** pyTelegramBotAPI (Telebot)
 - **Deployment:** Render (GitHub auto-deploy)
 - **Knowledge:** Obsidian Vault + Graphify
 
-## Current Status
-- **Last updated:** 19/05/2026
-- **Status:** 3 Critical Issues Fixed (deadlock, obsidian loop, validation)
+## Current Status (May 2026)
+- **Last Sync:** 2026-05-21 22:25:06
+- **Last Sync:** 2026-05-21 16:00:22
+- **Last Sync:** 2026-05-21 14:02:33
+- **Last Sync:** 2026-05-21 11:02:28
+- **Last Sync:** 2026-05-21 10:20:10
+- **Last Sync:** 2026-05-21 10:04:13
+- **Last Sync:** 2026-05-21 09:46:52
+- **Last Sync:** 2026-05-21 01:00:19
+- **Last Sync:** 2026-05-21 00:00:20
+- **Last Sync:** 2026-05-20 23:00:15
+- **Last Sync:** 2026-05-20 22:00:21
+- **Last Sync:** 2026-05-20 21:00:19
+- **Last Sync:** 2026-05-20 20:00:19
+- **Last Sync:** 2026-05-20 19:00:18
+- **Last Sync:** 2026-05-20 18:02:37
+- **Last Sync:** 2026-05-20 17:00:19
+- **Last Sync:** 2026-05-20 16:00:18
+- **Last Sync:** 2026-05-20 15:23:46
+- **Last Sync:** 2026-05-20 15:22:30
+- **Last Sync:** 2026-05-20 06:00:11
+- **Last Sync:** 2026-05-20 05:02:31
+- **Last Sync:** 2026-05-20 03:04:41
+- **Last Sync:** 2026-05-20 02:47:13
+- **Last Sync:** 2026-05-20 02:00:18
+- **Last Sync:** 2026-05-20 00:00:06
+- **Last Sync:** 2026-05-19 23:00:19
+- **Last Sync:** 2026-05-19 22:27:36
+- **Last Sync:** 2026-05-19 22:27:18
+- **Last Sync:** 2026-05-19 22:27:16
+- **Last Sync:** 2026-05-19 22:22:37
+- **Last Sync:** 2026-05-19 22:22:18
+- **Last Sync:** 2026-05-19 22:00:07
+- **Last Sync:** 2026-05-19 21:00:20
+- **Last Sync:** 2026-05-19 20:02:47
+- **Last Sync:** 2026-05-19 19:00:17
+- **Last Sync:** 2026-05-19 18:00:17
+- **Last Sync:** 2026-05-19 17:00:05
+- **Last Sync:** 2026-05-19 16:00:07
+- **Last Sync:** 2026-05-19 15:00:17
+- **Last Sync:** 2026-05-19 14:00:06
+- **Last Sync:** 2026-05-19 13:00:35
+- **Last Sync:** 2026-05-19 12:00:17
+- **Last Sync:** 2026-05-19 11:28:49
+- **Last Sync:** 2026-05-19 06:02:32
+- **Last Sync:** 2026-05-19 04:03:46
+- **Last Sync:** 2026-05-19 03:01:54
+- **Last Sync:** 2026-05-19 02:00:18
+- **Last Sync:** 2026-05-19 01:00:23
+- **Last Sync:** 2026-05-18 23:44:32
+- **Last Sync:** 2026-05-18 20:16:00
+- **Last Sync:** 2026-05-18 18:07:57
+- **Last Sync:** 2026-05-18 16:00:06
+- **Last Sync:** 2026-05-18 11:03:16
+- **Last Sync:** 2026-05-18 10:07:23
+- **Last Sync:** 2026-05-18 08:46:20
+- **Last Sync:** 2026-05-18 00:01:27
+- **Last Sync:** 2026-05-17 23:00:18
+- **Last Sync:** 2026-05-17 22:13:57
+- **Last Sync:** 2026-05-17 22:13:26
+- **Last Sync:** 2026-05-17 17:00:26
+- **Last Sync:** 2026-05-17 15:35:59
+- **Last Sync:** 2026-05-17 15:35:53
+- **Last Sync:** 2026-05-17 15:35:47
+- **Last Sync:** 2026-05-17 15:35:20
+- **Last Sync:** 2026-05-17 15:35:14
+- **Last Sync:** 2026-05-17 15:35:06
+- **Last Sync:** 2026-05-17 15:35:01
+- **Last Sync:** 2026-05-17 15:34:41
+- **Last Sync:** 2026-05-17 15:34:33
+- **Last Sync:** 2026-05-17 15:34:04
+- **Last Sync:** 2026-05-17 15:33:30
+- **Last Sync:** 2026-05-17 15:33:16
+- **Last Sync:** 2026-05-17 15:33:09
+- **Last Sync:** 2026-05-17 15:32:53
+- **Last Sync:** 2026-05-17 15:32:46
+- **Last Sync:** 2026-05-17 15:32:30
+- **Last Sync:** 2026-05-17 15:15:02
+- **Last Sync:** 2026-05-17 12:00:19
+- **Last Sync:** 2026-05-17 11:00:19
+- **Last Sync:** 2026-05-17 10:02:33
+- **Last Sync:** 2026-05-17 09:54:21
+- **Last Sync:** 2026-05-17 09:36:47
+- **Last Sync:** 2026-05-17 09:33:36
+- **Last Sync:** 2026-05-17 09:33:26
+- **Last Sync:** 2026-05-17 09:33:09
+- **Last Sync:** 2026-05-17 09:33:01
+- **Last Sync:** 2026-05-17 09:32:56
+- **Last Sync:** 2026-05-17 09:32:52
+- **Last Sync:** 2026-05-17 09:32:16
+- **Last Sync:** 2026-05-17 09:02:25
+- **Last Sync:** 2026-05-17 08:34:22
+- **Last Sync:** 2026-05-17 08:33:54
+- **Last Sync:** 2026-05-17 08:33:22
+- **Last Sync:** 2026-05-17 08:33:00
+- **Last Sync:** 2026-05-17 08:32:25
+- **Last Sync:** 2026-05-17 08:18:31
+- **Last Sync:** 2026-05-17 06:00:09
+- **Last Sync:** 2026-05-17 05:02:35
+- **Last Sync:** 2026-05-17 04:03:06
+- **Last Sync:** 2026-05-17 03:01:06
+- **Last Sync:** 2026-05-17 02:02:42
+- **Last Sync:** 2026-05-17 01:00:16
+- **Last Sync:** 2026-05-17 00:00:17
+- **Last Sync:** 2026-05-16 23:00:16
+- **Last Sync:** 2026-05-16 22:01:06
+- **Last Sync:** 2026-05-16 19:01:51
+- **Last Sync:** 2026-05-16 17:06:18
+- **Last Sync:** 2026-05-16 16:04:00
+- **Last Sync:** 2026-05-16 15:28:40
+- **Last Sync:** 2026-05-16 15:28:25
+- **Last Sync:** 2026-05-16 15:28:22
+- **Last Sync:** 2026-05-16 15:28:18
+- **Last Sync:** 2026-05-16 15:28:00
+- **Last Sync:** 2026-05-16 15:27:31
+- **Last Sync:** 2026-05-16 15:27:19
+- **Last Sync:** 2026-05-16 15:23:48
+- **Last Sync:** 2026-05-16 15:23:05
+- **Last Sync:** 2026-05-16 15:22:40
+- **Last Sync:** 2026-05-16 15:22:07
+- **Last Sync:** 2026-05-16 15:21:25
+- **Last Sync:** 2026-05-16 15:21:04
+- **Last Sync:** 2026-05-16 15:20:45
+- **Last Sync:** 2026-05-16 15:12:06
+- **Last Sync:** 2026-05-16 15:00:14
+- **Last Sync:** 2026-05-16 13:21:10
+- **Last Sync:** 2026-05-16 10:00:34
+- **Last Sync:** 2026-05-16 09:20:22
+- **Last Sync:** 2026-05-16 06:00:25
+- **Last Sync:** 2026-05-16 04:01:05
+- **Last Sync:** 2026-05-16 03:00:55
+- **Last Sync:** 2026-05-16 02:00:43
+- **Last Sync:** 2026-05-16 01:00:15
+- **Last Sync:** 2026-05-16 00:42:58
+- **Last Sync:** 2026-05-15 19:01:07
+- **Last Sync:** 2026-05-15 18:02:38
+- **Last Sync:** 2026-05-15 17:00:09
+- **Last Sync:** 2026-05-15 16:00:16
+- **Last Sync:** 2026-05-15 15:00:52
+- **Last Sync:** 2026-05-15 14:00:15
+- **Last Sync:** 2026-05-15 13:23:54
+- **Last Sync:** 2026-05-15 06:00:13
+- **Last Sync:** 2026-05-15 05:00:18
+- **Last Sync:** 2026-05-15 04:00:17
+- **Last Sync:** 2026-05-15 03:00:15
+- **Last Sync:** 2026-05-15 02:00:17
+- **Last Sync:** 2026-05-15 01:00:17
+- **Last Sync:** 2026-05-15 00:00:04
+- **Last Sync:** 2026-05-14 23:00:14
+- **Last Sync:** 2026-05-14 22:00:11
+- **Last Sync:** 2026-05-14 21:00:14
+- **Last Sync:** 2026-05-14 20:00:17
+- **Last Sync:** 2026-05-14 19:00:15
+- **Last Sync:** 2026-05-14 18:00:16
+- **Last Sync:** 2026-05-14 17:00:15
+- **Last Sync:** 2026-05-14 16:00:11
+- **Last Sync:** 2026-05-14 11:04:27
+- **Last Sync:** 2026-05-14 09:00:03
+- **Last Sync:** 2026-05-14 08:42:42
+- **Last Sync:** 2026-05-14 02:01:33
+- **Last Sync:** 2026-05-14 01:00:16
+- **Last Sync:** 2026-05-14 00:00:13
+- **Last Sync:** 2026-05-13 23:00:13
+- **Last Sync:** 2026-05-13 16:00:10
+- **Last Sync:** 2026-05-13 11:00:04
+- **Last Sync:** 2026-05-13 10:58:09
+- **Last Sync:** 2026-05-13 09:15:47
+- **Last Sync:** 2026-05-13 06:00:25
+- **Last Sync:** 2026-05-13 05:02:39
+- **Last Sync:** 2026-05-13 04:02:07
+- **Last Sync:** 2026-05-13 03:03:42
+- **Last Sync:** 2026-05-13 02:01:58
+- **Last Sync:** 2026-05-13 01:00:05
+- **Last Sync:** 2026-05-13 00:00:13
+- **Last Sync:** 2026-05-12 23:00:13
+- **Last Sync:** 2026-05-12 22:00:16
+- **Last Sync:** 2026-05-12 16:00:11
+- **Last Sync:** 2026-05-12 15:00:52
+- **Last Sync:** 2026-05-12 09:00:36
+- **Last Sync:** 2026-05-12 08:55:33
+- **Last Sync:** 2026-05-12 05:01:01
+- **Last Sync:** 2026-05-12 04:00:51
+- **Last Sync:** 2026-05-12 03:00:44
+- **Last Sync:** 2026-05-12 02:00:51
+- **Last Sync:** 2026-05-12 01:00:12
+- **Last Sync:** 2026-05-12 00:00:13
+- **Last Sync:** 2026-05-11 23:03:51
+- **Last Sync:** 2026-05-11 22:00:38
+- **Last Sync:** 2026-05-11 19:12:58
+- **Last Sync:** 2026-05-11 16:15:12
+- **Last Sync:** 2026-05-11 15:01:36
+- **Last Sync:** 2026-05-11 13:00:13
+- **Last Sync:** 2026-05-11 09:09:08
+- **Last Sync:** 2026-05-11 01:00:13
+- **Last Sync:** 2026-05-11 00:00:13
+- **Last Sync:** 2026-05-10 23:01:07
+- **Last Sync:** 2026-05-10 21:00:13
+- **Last Sync:** 2026-05-10 20:00:12
+- **Last Sync:** 2026-05-10 19:00:14
+- **Last Sync:** 2026-05-10 18:00:12
+- **Last Sync:** 2026-05-10 17:00:30
+- **Last Sync:** 2026-05-10 16:57:46
+- **Last Sync:** 2026-05-10 16:00:04
+- **Last Sync:** 2026-05-10 15:00:15
+- **Last Sync:** 2026-05-10 14:00:04
+- **Last Sync:** 2026-05-10 13:00:13
+- **Last Sync:** 2026-05-10 12:00:13
+- **Last Sync:** 2026-05-10 11:00:12
+- **Last Sync:** 2026-05-10 10:55:29
+- **Last Sync:** 2026-05-10 06:02:13
+- **Last Sync:** 2026-05-10 05:03:03
+- **Last Sync:** 2026-05-10 04:03:42
+- **Last Sync:** 2026-05-10 03:05:02
+- **Last Sync:** 2026-05-10 02:03:41
+- **Last Sync:** 2026-05-10 01:00:13
+- **Last Sync:** 2026-05-10 00:00:13
+- **Last Sync:** 2026-05-09 23:01:19
+- **Last Sync:** 2026-05-09 22:00:19
+- **Last Sync:** 2026-05-09 17:02:32
+- **Last Sync:** 2026-05-09 16:01:38
+- **Last Sync:** 2026-05-09 15:00:31
+- **Last Sync:** 2026-05-09 09:53:55
+- **Last Sync:** 2026-05-09 09:23:44
+- **Last Sync:** 2026-05-09 09:02:52
+- **Last Sync:** 2026-05-09 08:35:21
+- **Last Sync:** 2026-05-09 06:00:12
+- **Last Sync:** 2026-05-09 05:00:05
+- **Last Sync:** 2026-05-09 04:00:07
+- **Last Sync:** 2026-05-09 03:01:17
+- **Last Sync:** 2026-05-09 02:04:26
+- **Last Sync:** 2026-05-09 01:26:40
+- **Last Sync:** 2026-05-09 01:00:14
+- **Last Sync:** 2026-05-09 00:00:08
+- **Last Sync:** 2026-05-08 23:06:01
+- **Last Sync:** 2026-05-08 20:03:02
+- **Last Sync:** 2026-05-08 19:03:15
+- **Last Sync:** 2026-05-08 16:00:15
+- **Last Sync:** 2026-05-08 10:00:53
+- **Last Sync:** 2026-05-08 09:05:43
+- **Last Sync:** 2026-05-08 08:23:35
+- **Last Sync:** 2026-05-08 06:00:14
+- **Last Sync:** 2026-05-08 03:00:08
+- **Last Sync:** 2026-05-08 02:06:24
+- **Last Sync:** 2026-05-08 01:00:04
+- **Last Sync:** 2026-05-08 00:04:45
+- **Last Sync:** 2026-05-07 23:00:13
+- **Last Sync:** 2026-05-07 19:04:55
+- **Last Sync:** 2026-05-07 17:00:34
+- **Last Sync:** 2026-05-07 16:00:43
+- **Last Sync:** 2026-05-07 09:11:03
+- **Last Sync:** 2026-05-07 06:01:53
+- **Last Sync:** 2026-05-07 03:01:43
+- **Last Sync:** 2026-05-07 02:03:28
+- **Last Sync:** 2026-05-07 01:00:55
+- **Last Sync:** 2026-05-07 00:01:28
+- **Last Sync:** 2026-05-06 23:00:11
+- **Last Sync:** 2026-05-06 22:00:12
+- **Last Sync:** 2026-05-06 21:53:26
+- **Last Sync:** 2026-05-06 20:04:48
+- **Last Sync:** 2026-05-06 19:01:11
+- **Last Sync:** 2026-05-06 18:02:12
+- **Last Sync:** 2026-05-06 17:01:38
+- **Last Sync:** 2026-05-06 16:00:17
+- **Last Sync:** 2026-05-06 15:00:12
+- **Last Sync:** 2026-05-06 14:25:55
+- **Last Sync:** 2026-05-06 14:00:04
+- **Last Sync:** 2026-05-06 13:00:14
+- **Last Sync:** 2026-05-06 12:00:13
+- **Last Sync:** 2026-05-06 11:00:10
+- **Last Sync:** 2026-05-06 10:36:15
+- **Last Sync:** 2026-05-06 06:01:49
+- **Last Sync:** 2026-05-06 03:00:20
+- **Last Sync:** 2026-05-06 02:00:03
+- **Last Sync:** 2026-05-06 01:00:10
+- **Last Sync:** 2026-05-06 00:00:12
+- **Last Sync:** 2026-05-05 23:00:04
+- **Last Sync:** 2026-05-05 22:00:15
+- **Last Sync:** 2026-05-05 21:00:14
+- **Last Sync:** 2026-05-05 18:02:47
+- **Last Sync:** 2026-05-05 18:00:12
+- **Last Sync:** 2026-05-05 17:00:12
+- **Last Sync:** 2026-05-05 16:00:14
+- **Last Sync:** 2026-05-05 15:00:15
+- **Last Sync:** 2026-05-05 14:01:47
+- **Last Sync:** 2026-05-05 13:45:35
+- **Last Sync:** 2026-05-05 13:42:25
+- **Last Sync:** 2026-05-05 13:42:07
+- **Last Sync:** 2026-05-05 13:00:21
+- **Last Sync:** 2026-05-05 12:48:23
+- **Last Sync:** 2026-05-04 23:00:14
+- **Last Sync:** 2026-05-04 21:00:14
+- **Last Sync:** 2026-05-04 20:00:14
+- **Last Sync:** 2026-05-04 19:11:15
+- **Last Sync:** 2026-05-04 16:00:10
+- **Last Sync:** 2026-05-04 15:02:05
+- **Last Sync:** 2026-05-04 15:00:03
+- **Last Sync:** 2026-05-04 14:56:27
+- **Last Sync:** 2026-05-04 13:39:01
 - **Backend:** Deployed and running on Render
 - **Bot Alex:** Online no Telegram
-- **API Health:** `/health` endpoint returns "Cerebro IA Online e Conectado"
+- **API Health:** `/health` endpoint returns "Cérebro IA Online e Conectado"
+- **Vault:** 73 files synced with graphify knowledge graph
+- **Git Status:** 8 commits (clean working tree)
 
-## Known Issues (from post-fix analysis)
+## Known Issues (from CONTEXT.md analysis)
 1. **Hardcoded Fallbacks:** `bot_telegram.py` uses hardcoded fallback response, lacks robust error handling for AI API failures
 2. **Environment Configuration:** `API_URL` defaults to localhost, may fail in production if not set in Render env vars
 3. **Unused AI Keys:** Multiple `OPENROUTER_KEY` variables loaded but not used in failover logic
 4. **Limited Logging:** Minimal production logging; relies on basic `print` statements
+
+## Next Steps (Priorities)
+1. Implement OpenRouter failover when Gemini hits rate limits
+2. Expand agentic capabilities (Scheduling Agent, Treatment FAQ Agent)
+3. Add structured logging for production observability

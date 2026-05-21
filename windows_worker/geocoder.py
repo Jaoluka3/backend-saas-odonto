@@ -8,9 +8,14 @@ NAO depende de arquivos JSON temporarios — 100% Supabase.
 """
 
 import logging
+import os
+import sys
 import time
 import requests
-from supabase_client import supabase
+
+# Garante que o diretorio raiz do projeto esta no path para importar supabase_client
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from supabase_client import supabase  # NOQA
 
 logger = logging.getLogger(__name__)
 
