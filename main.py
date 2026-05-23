@@ -50,6 +50,7 @@ from agente_orquestrador import (
 from agente_chat import processar_chat, obter_historico
 from geocoder import rodar as geocoder_rodar, obter_coordenadas
 from gmail_client import verificar_respostas, contar_respostas
+from agente_leitor_neural import rodar as leitor_rodar, ultima_leitura, ultimo_resultado_leitura
 
 logging.basicConfig(
     level=logging.INFO,
@@ -367,10 +368,25 @@ async def geocodificar(teste: str = ""):
         return {"success": False, "error": str(e)}
 
 
+@app.get("/agentes/ler")
+@app.post("/agentes/ler")
+def ler_respostas_endpoint():
+    """Dispara o leitor neural para classificar respostas de email."""
+    try:
+        resultado = leitor_rodar()
+        return {"success": True, "data": resultado.get("data", {})}
+    except Exception as e:
+        logger.error("Erro no leitor neural: %s", e)
+        return {"success": False, "error": str(e)}
+
+
 @app.get("/agentes/status")
 def status_agentes():
     """Status da pipeline com lock atual, ultima execucao e agendamento."""
-    return {"success": True, "data": status()}
+    base = status()
+    base["ultima_leitura"] = ultima_leitura
+    base["ultimo_resultado_leitura"] = ultimo_resultado_leitura
+    return {"success": True, "data": base}
 
 
 if __name__ == "__main__":

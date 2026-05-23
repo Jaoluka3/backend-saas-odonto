@@ -7,16 +7,22 @@
       "file_path": "bot_telegram.py"
     },
     {
-      "id": "logging",
-      "type": "module",
-      "label": "logging",
-      "file_path": "logging"
-    },
-    {
       "id": "os",
       "type": "module",
       "label": "os",
       "file_path": "os"
+    },
+    {
+      "id": "time",
+      "type": "module",
+      "label": "time",
+      "file_path": "time"
+    },
+    {
+      "id": "logging",
+      "type": "module",
+      "label": "logging",
+      "file_path": "logging"
     },
     {
       "id": "requests",
@@ -37,27 +43,21 @@
       "file_path": "supabase_client"
     },
     {
+      "id": "bot_telegram.py:_load_env",
+      "type": "function",
+      "label": "_load_env",
+      "file_path": "bot_telegram.py"
+    },
+    {
       "id": "bot_telegram.py:gerar_resposta_ia",
       "type": "function",
       "label": "gerar_resposta_ia",
       "file_path": "bot_telegram.py"
     },
     {
-      "id": "bot_telegram.py:_extrair_telefone",
+      "id": "bot_telegram.py:salvar_lead",
       "type": "function",
-      "label": "_extrair_telefone",
-      "file_path": "bot_telegram.py"
-    },
-    {
-      "id": "bot_telegram.py:_enviar_lead",
-      "type": "function",
-      "label": "_enviar_lead",
-      "file_path": "bot_telegram.py"
-    },
-    {
-      "id": "bot_telegram.py:handle_text",
-      "type": "function",
-      "label": "handle_text",
+      "label": "salvar_lead",
       "file_path": "bot_telegram.py"
     },
     {
@@ -67,16 +67,22 @@
       "file_path": "bot_telegram.py"
     },
     {
-      "id": "dotenv",
-      "type": "module",
-      "label": "dotenv",
-      "file_path": "dotenv"
+      "id": "bot_telegram.py:handle_text",
+      "type": "function",
+      "label": "handle_text",
+      "file_path": "bot_telegram.py"
     },
     {
       "id": "main.py",
       "type": "module",
       "label": "main.py",
       "file_path": "main.py"
+    },
+    {
+      "id": "sys",
+      "type": "module",
+      "label": "sys",
+      "file_path": "sys"
     },
     {
       "id": "contextlib",
@@ -103,10 +109,40 @@
       "file_path": "pydantic"
     },
     {
+      "id": "bot_telegram",
+      "type": "module",
+      "label": "bot_telegram",
+      "file_path": "bot_telegram"
+    },
+    {
       "id": "agente_orquestrador",
       "type": "module",
       "label": "agente_orquestrador",
       "file_path": "agente_orquestrador"
+    },
+    {
+      "id": "agente_chat",
+      "type": "module",
+      "label": "agente_chat",
+      "file_path": "agente_chat"
+    },
+    {
+      "id": "geocoder",
+      "type": "module",
+      "label": "geocoder",
+      "file_path": "geocoder"
+    },
+    {
+      "id": "gmail_client",
+      "type": "module",
+      "label": "gmail_client",
+      "file_path": "gmail_client"
+    },
+    {
+      "id": "agente_leitor_neural",
+      "type": "module",
+      "label": "agente_leitor_neural",
+      "file_path": "agente_leitor_neural"
     },
     {
       "id": "main.py:LeadPayload",
@@ -115,9 +151,39 @@
       "file_path": "main.py"
     },
     {
-      "id": "main.py:health_check",
+      "id": "main.py:ChatPayload",
+      "type": "class",
+      "label": "ChatPayload",
+      "file_path": "main.py"
+    },
+    {
+      "id": "main.py:health",
       "type": "function",
-      "label": "health_check",
+      "label": "health",
+      "file_path": "main.py"
+    },
+    {
+      "id": "main.py:diagnostico",
+      "type": "function",
+      "label": "diagnostico",
+      "file_path": "main.py"
+    },
+    {
+      "id": "main.py:chat_handler",
+      "type": "function",
+      "label": "chat_handler",
+      "file_path": "main.py"
+    },
+    {
+      "id": "main.py:chat_historico",
+      "type": "function",
+      "label": "chat_historico",
+      "file_path": "main.py"
+    },
+    {
+      "id": "main.py:gmail_verificar",
+      "type": "function",
+      "label": "gmail_verificar",
       "file_path": "main.py"
     },
     {
@@ -133,6 +199,12 @@
       "file_path": "main.py"
     },
     {
+      "id": "main.py:listar_emails",
+      "type": "function",
+      "label": "listar_emails",
+      "file_path": "main.py"
+    },
+    {
       "id": "main.py:funil_status",
       "type": "function",
       "label": "funil_status",
@@ -145,16 +217,58 @@
       "file_path": "main.py"
     },
     {
+      "id": "main.py:enviar_agentes",
+      "type": "function",
+      "label": "enviar_agentes",
+      "file_path": "main.py"
+    },
+    {
+      "id": "main.py:reset_agentes",
+      "type": "function",
+      "label": "reset_agentes",
+      "file_path": "main.py"
+    },
+    {
+      "id": "main.py:listar_coordenadas",
+      "type": "function",
+      "label": "listar_coordenadas",
+      "file_path": "main.py"
+    },
+    {
+      "id": "main.py:ler_respostas_endpoint",
+      "type": "function",
+      "label": "ler_respostas_endpoint",
+      "file_path": "main.py"
+    },
+    {
       "id": "main.py:status_agentes",
       "type": "function",
       "label": "status_agentes",
       "file_path": "main.py"
     },
     {
+      "id": "agente_contato",
+      "type": "module",
+      "label": "agente_contato",
+      "file_path": "agente_contato"
+    },
+    {
       "id": "uvicorn",
       "type": "module",
       "label": "uvicorn",
       "file_path": "uvicorn"
+    },
+    {
+      "id": "psycopg2",
+      "type": "module",
+      "label": "psycopg2",
+      "file_path": "psycopg2"
+    },
+    {
+      "id": "socket",
+      "type": "module",
+      "label": "socket",
+      "file_path": "socket"
     },
     {
       "id": "export_obsidian.py",
@@ -295,12 +409,6 @@
       "file_path": "watch_sync.py"
     },
     {
-      "id": "time",
-      "type": "module",
-      "label": "time",
-      "file_path": "time"
-    },
-    {
       "id": "subprocess",
       "type": "module",
       "label": "subprocess",
@@ -433,12 +541,6 @@
       "file_path": "log_session.py"
     },
     {
-      "id": "sys",
-      "type": "module",
-      "label": "sys",
-      "file_path": "sys"
-    },
-    {
       "id": "log_session.py:get_git_diff_summary",
       "type": "function",
       "label": "get_git_diff_summary",
@@ -463,15 +565,9 @@
       "file_path": "agente_buscador.py"
     },
     {
-      "id": "agente_buscador.py:extrair_cidade",
+      "id": "agente_buscador.py:_buscar_hiperlocal",
       "type": "function",
-      "label": "extrair_cidade",
-      "file_path": "agente_buscador.py"
-    },
-    {
-      "id": "agente_buscador.py:_buscar_com_retry",
-      "type": "function",
-      "label": "_buscar_com_retry",
+      "label": "_buscar_hiperlocal",
       "file_path": "agente_buscador.py"
     },
     {
@@ -487,9 +583,51 @@
       "file_path": "agente_contato.py"
     },
     {
-      "id": "agente_contato.py:gerar_mensagem",
+      "id": "smtplib",
+      "type": "module",
+      "label": "smtplib",
+      "file_path": "smtplib"
+    },
+    {
+      "id": "email.mime.text",
+      "type": "module",
+      "label": "email.mime.text",
+      "file_path": "email.mime.text"
+    },
+    {
+      "id": "email.mime.multipart",
+      "type": "module",
+      "label": "email.mime.multipart",
+      "file_path": "email.mime.multipart"
+    },
+    {
+      "id": "agente_contato.py:gerar_assunto",
       "type": "function",
-      "label": "gerar_mensagem",
+      "label": "gerar_assunto",
+      "file_path": "agente_contato.py"
+    },
+    {
+      "id": "agente_contato.py:smtp_disponivel",
+      "type": "function",
+      "label": "smtp_disponivel",
+      "file_path": "agente_contato.py"
+    },
+    {
+      "id": "agente_contato.py:enviar_email_smtp",
+      "type": "function",
+      "label": "enviar_email_smtp",
+      "file_path": "agente_contato.py"
+    },
+    {
+      "id": "agente_contato.py:_formatar_avaliacao",
+      "type": "function",
+      "label": "_formatar_avaliacao",
+      "file_path": "agente_contato.py"
+    },
+    {
+      "id": "agente_contato.py:registrar_email_db",
+      "type": "function",
+      "label": "registrar_email_db",
       "file_path": "agente_contato.py"
     },
     {
@@ -502,6 +640,12 @@
       "id": "agente_followup.py",
       "type": "module",
       "label": "agente_followup.py",
+      "file_path": "agente_followup.py"
+    },
+    {
+      "id": "agente_followup.py:_to_utc",
+      "type": "function",
+      "label": "_to_utc",
       "file_path": "agente_followup.py"
     },
     {
@@ -529,6 +673,12 @@
       "file_path": "uuid"
     },
     {
+      "id": "typing",
+      "type": "module",
+      "label": "typing",
+      "file_path": "typing"
+    },
+    {
       "id": "schedule",
       "type": "module",
       "label": "schedule",
@@ -547,10 +697,10 @@
       "file_path": "agente_qualificador"
     },
     {
-      "id": "agente_contato",
+      "id": "agente_email_resolver",
       "type": "module",
-      "label": "agente_contato",
-      "file_path": "agente_contato"
+      "label": "agente_email_resolver",
+      "file_path": "agente_email_resolver"
     },
     {
       "id": "agente_followup",
@@ -568,6 +718,18 @@
       "id": "agente_orquestrador.py:rodar_pipeline_async",
       "type": "function",
       "label": "rodar_pipeline_async",
+      "file_path": "agente_orquestrador.py"
+    },
+    {
+      "id": "agente_orquestrador.py:_rodar_pipeline_agendada",
+      "type": "function",
+      "label": "_rodar_pipeline_agendada",
+      "file_path": "agente_orquestrador.py"
+    },
+    {
+      "id": "agente_orquestrador.py:_rodar_leitor_agendado",
+      "type": "function",
+      "label": "_rodar_leitor_agendado",
       "file_path": "agente_orquestrador.py"
     },
     {
@@ -589,9 +751,21 @@
       "file_path": "agente_orquestrador.py"
     },
     {
+      "id": "agente_orquestrador.py:status",
+      "type": "function",
+      "label": "status",
+      "file_path": "agente_orquestrador.py"
+    },
+    {
       "id": "agente_orquestrador.py:_executar_com_lock",
       "type": "function",
       "label": "_executar_com_lock",
+      "file_path": "agente_orquestrador.py"
+    },
+    {
+      "id": "agente_orquestrador.py:_verificar_timeout",
+      "type": "function",
+      "label": "_verificar_timeout",
       "file_path": "agente_orquestrador.py"
     },
     {
@@ -623,6 +797,12 @@
       "type": "module",
       "label": "supabase",
       "file_path": "supabase"
+    },
+    {
+      "id": "dotenv",
+      "type": "module",
+      "label": "dotenv",
+      "file_path": "dotenv"
     },
     {
       "id": "dev_agent_eco.py",
@@ -661,6 +841,294 @@
       "file_path": "dev_agent_eco.py"
     },
     {
+      "id": "agente_chat.py",
+      "type": "module",
+      "label": "agente_chat.py",
+      "file_path": "agente_chat.py"
+    },
+    {
+      "id": "agente_chat.py:buscar_clinicas",
+      "type": "function",
+      "label": "buscar_clinicas",
+      "file_path": "agente_chat.py"
+    },
+    {
+      "id": "agente_chat.py:_gerar_resposta_nvidia",
+      "type": "function",
+      "label": "_gerar_resposta_nvidia",
+      "file_path": "agente_chat.py"
+    },
+    {
+      "id": "agente_chat.py:_gerar_resposta_fallback",
+      "type": "function",
+      "label": "_gerar_resposta_fallback",
+      "file_path": "agente_chat.py"
+    },
+    {
+      "id": "agente_chat.py:processar_chat",
+      "type": "function",
+      "label": "processar_chat",
+      "file_path": "agente_chat.py"
+    },
+    {
+      "id": "agente_chat.py:obter_historico",
+      "type": "function",
+      "label": "obter_historico",
+      "file_path": "agente_chat.py"
+    },
+    {
+      "id": "agente_email_resolver.py",
+      "type": "module",
+      "label": "agente_email_resolver.py",
+      "file_path": "agente_email_resolver.py"
+    },
+    {
+      "id": "agente_email_resolver.py:_email_valido",
+      "type": "function",
+      "label": "_email_valido",
+      "file_path": "agente_email_resolver.py"
+    },
+    {
+      "id": "agente_email_resolver.py:_extrair_email_html",
+      "type": "function",
+      "label": "_extrair_email_html",
+      "file_path": "agente_email_resolver.py"
+    },
+    {
+      "id": "agente_email_resolver.py:_fetch_url",
+      "type": "function",
+      "label": "_fetch_url",
+      "file_path": "agente_email_resolver.py"
+    },
+    {
+      "id": "agente_email_resolver.py:_normalizar_url",
+      "type": "function",
+      "label": "_normalizar_url",
+      "file_path": "agente_email_resolver.py"
+    },
+    {
+      "id": "agente_email_resolver.py:_resolver_email_site",
+      "type": "function",
+      "label": "_resolver_email_site",
+      "file_path": "agente_email_resolver.py"
+    },
+    {
+      "id": "agente_email_resolver.py:_tentar_aliases",
+      "type": "function",
+      "label": "_tentar_aliases",
+      "file_path": "agente_email_resolver.py"
+    },
+    {
+      "id": "agente_email_resolver.py:rodar",
+      "type": "function",
+      "label": "rodar",
+      "file_path": "agente_email_resolver.py"
+    },
+    {
+      "id": "urllib.parse",
+      "type": "module",
+      "label": "urllib.parse",
+      "file_path": "urllib.parse"
+    },
+    {
+      "id": "geocoder.py",
+      "type": "module",
+      "label": "geocoder.py",
+      "file_path": "geocoder.py"
+    },
+    {
+      "id": "geocoder.py:_add_colunas_se_necessario",
+      "type": "function",
+      "label": "_add_colunas_se_necessario",
+      "file_path": "geocoder.py"
+    },
+    {
+      "id": "geocoder.py:_carregar_coordenadas",
+      "type": "function",
+      "label": "_carregar_coordenadas",
+      "file_path": "geocoder.py"
+    },
+    {
+      "id": "geocoder.py:_salvar_coordenadas",
+      "type": "function",
+      "label": "_salvar_coordenadas",
+      "file_path": "geocoder.py"
+    },
+    {
+      "id": "geocoder.py:obter_coordenadas",
+      "type": "function",
+      "label": "obter_coordenadas",
+      "file_path": "geocoder.py"
+    },
+    {
+      "id": "geocoder.py:geocodificar_endereco",
+      "type": "function",
+      "label": "geocodificar_endereco",
+      "file_path": "geocoder.py"
+    },
+    {
+      "id": "geocoder.py:rodar",
+      "type": "function",
+      "label": "rodar",
+      "file_path": "geocoder.py"
+    },
+    {
+      "id": "gmail_client.py",
+      "type": "module",
+      "label": "gmail_client.py",
+      "file_path": "gmail_client.py"
+    },
+    {
+      "id": "base64",
+      "type": "module",
+      "label": "base64",
+      "file_path": "base64"
+    },
+    {
+      "id": "pickle",
+      "type": "module",
+      "label": "pickle",
+      "file_path": "pickle"
+    },
+    {
+      "id": "gmail_client.py:_autenticar",
+      "type": "function",
+      "label": "_autenticar",
+      "file_path": "gmail_client.py"
+    },
+    {
+      "id": "gmail_client.py:_get_service",
+      "type": "function",
+      "label": "_get_service",
+      "file_path": "gmail_client.py"
+    },
+    {
+      "id": "gmail_client.py:_extrair_corpo",
+      "type": "function",
+      "label": "_extrair_corpo",
+      "file_path": "gmail_client.py"
+    },
+    {
+      "id": "gmail_client.py:_sanitizar_corpo",
+      "type": "function",
+      "label": "_sanitizar_corpo",
+      "file_path": "gmail_client.py"
+    },
+    {
+      "id": "gmail_client.py:buscar_emails",
+      "type": "function",
+      "label": "buscar_emails",
+      "file_path": "gmail_client.py"
+    },
+    {
+      "id": "gmail_client.py:verificar_respostas",
+      "type": "function",
+      "label": "verificar_respostas",
+      "file_path": "gmail_client.py"
+    },
+    {
+      "id": "gmail_client.py:contar_respostas",
+      "type": "function",
+      "label": "contar_respostas",
+      "file_path": "gmail_client.py"
+    },
+    {
+      "id": "google.auth.transport.requests",
+      "type": "module",
+      "label": "google.auth.transport.requests",
+      "file_path": "google.auth.transport.requests"
+    },
+    {
+      "id": "google.oauth2.credentials",
+      "type": "module",
+      "label": "google.oauth2.credentials",
+      "file_path": "google.oauth2.credentials"
+    },
+    {
+      "id": "google_auth_oauthlib.flow",
+      "type": "module",
+      "label": "google_auth_oauthlib.flow",
+      "file_path": "google_auth_oauthlib.flow"
+    },
+    {
+      "id": "googleapiclient.discovery",
+      "type": "module",
+      "label": "googleapiclient.discovery",
+      "file_path": "googleapiclient.discovery"
+    },
+    {
+      "id": "googleapiclient.errors",
+      "type": "module",
+      "label": "googleapiclient.errors",
+      "file_path": "googleapiclient.errors"
+    },
+    {
+      "id": "daemon_smtp_local.py",
+      "type": "module",
+      "label": "daemon_smtp_local.py",
+      "file_path": "daemon_smtp_local.py"
+    },
+    {
+      "id": "daemon_smtp_local.py:_formatar_avaliacao",
+      "type": "function",
+      "label": "_formatar_avaliacao",
+      "file_path": "daemon_smtp_local.py"
+    },
+    {
+      "id": "daemon_smtp_local.py:_enviar_email",
+      "type": "function",
+      "label": "_enviar_email",
+      "file_path": "daemon_smtp_local.py"
+    },
+    {
+      "id": "daemon_smtp_local.py:_processar_ciclo",
+      "type": "function",
+      "label": "_processar_ciclo",
+      "file_path": "daemon_smtp_local.py"
+    },
+    {
+      "id": "daemon_smtp_local.py:main",
+      "type": "function",
+      "label": "main",
+      "file_path": "daemon_smtp_local.py"
+    },
+    {
+      "id": "agente_leitor_neural.py",
+      "type": "module",
+      "label": "agente_leitor_neural.py",
+      "file_path": "agente_leitor_neural.py"
+    },
+    {
+      "id": "agente_leitor_neural.py:_extrair_email",
+      "type": "function",
+      "label": "_extrair_email",
+      "file_path": "agente_leitor_neural.py"
+    },
+    {
+      "id": "agente_leitor_neural.py:_classificar_com_nvidia",
+      "type": "function",
+      "label": "_classificar_com_nvidia",
+      "file_path": "agente_leitor_neural.py"
+    },
+    {
+      "id": "agente_leitor_neural.py:_emparelhar_clinica",
+      "type": "function",
+      "label": "_emparelhar_clinica",
+      "file_path": "agente_leitor_neural.py"
+    },
+    {
+      "id": "agente_leitor_neural.py:_atualizar_status",
+      "type": "function",
+      "label": "_atualizar_status",
+      "file_path": "agente_leitor_neural.py"
+    },
+    {
+      "id": "agente_leitor_neural.py:rodar",
+      "type": "function",
+      "label": "rodar",
+      "file_path": "agente_leitor_neural.py"
+    },
+    {
       "id": "windows_worker/scraper_local.py",
       "type": "module",
       "label": "scraper_local.py",
@@ -677,12 +1145,6 @@
       "type": "module",
       "label": "argparse",
       "file_path": "argparse"
-    },
-    {
-      "id": "typing",
-      "type": "module",
-      "label": "typing",
-      "file_path": "typing"
     },
     {
       "id": "windows_worker/scraper_local.py:GoogleMapsScraper",
@@ -863,18 +1325,222 @@
       "type": "function",
       "label": "rodar",
       "file_path": "windows_worker/geocoder.py"
+    },
+    {
+      "id": "tests/test_leitor_neural.py",
+      "type": "module",
+      "label": "test_leitor_neural.py",
+      "file_path": "tests/test_leitor_neural.py"
+    },
+    {
+      "id": "unittest",
+      "type": "module",
+      "label": "unittest",
+      "file_path": "unittest"
+    },
+    {
+      "id": "unittest.mock",
+      "type": "module",
+      "label": "unittest.mock",
+      "file_path": "unittest.mock"
+    },
+    {
+      "id": "tests/test_leitor_neural.py:TestGmailClient",
+      "type": "class",
+      "label": "TestGmailClient",
+      "file_path": "tests/test_leitor_neural.py"
+    },
+    {
+      "id": "tests/test_leitor_neural.py:TestGmailClient.test_buscar_emails_retorna_corpo",
+      "type": "method",
+      "label": "test_buscar_emails_retorna_corpo",
+      "file_path": "tests/test_leitor_neural.py"
+    },
+    {
+      "id": "tests/test_leitor_neural.py:TestGmailClientSanitize",
+      "type": "class",
+      "label": "TestGmailClientSanitize",
+      "file_path": "tests/test_leitor_neural.py"
+    },
+    {
+      "id": "tests/test_leitor_neural.py:TestGmailClientSanitize.test_sanitizar_colapsa_espacos",
+      "type": "method",
+      "label": "test_sanitizar_colapsa_espacos",
+      "file_path": "tests/test_leitor_neural.py"
+    },
+    {
+      "id": "tests/test_leitor_neural.py:TestGmailClientSanitize.test_sanitizar_trunca_400",
+      "type": "method",
+      "label": "test_sanitizar_trunca_400",
+      "file_path": "tests/test_leitor_neural.py"
+    },
+    {
+      "id": "tests/test_leitor_neural.py:TestGmailClientSanitize.test_sanitizar_vazio",
+      "type": "method",
+      "label": "test_sanitizar_vazio",
+      "file_path": "tests/test_leitor_neural.py"
+    },
+    {
+      "id": "tests/test_leitor_neural.py:TestLeitorNeural",
+      "type": "class",
+      "label": "TestLeitorNeural",
+      "file_path": "tests/test_leitor_neural.py"
+    },
+    {
+      "id": "tests/test_leitor_neural.py:TestLeitorNeural.test_classificar_interesse",
+      "type": "method",
+      "label": "test_classificar_interesse",
+      "file_path": "tests/test_leitor_neural.py"
+    },
+    {
+      "id": "tests/test_leitor_neural.py:TestLeitorNeural.test_classificar_recusou",
+      "type": "method",
+      "label": "test_classificar_recusou",
+      "file_path": "tests/test_leitor_neural.py"
+    },
+    {
+      "id": "tests/test_leitor_neural.py:TestLeitorNeural.test_classificar_automatico",
+      "type": "method",
+      "label": "test_classificar_automatico",
+      "file_path": "tests/test_leitor_neural.py"
+    },
+    {
+      "id": "tests/test_leitor_neural.py:TestLeitorNeural.test_classificar_fallback_json_nao_parseavel",
+      "type": "method",
+      "label": "test_classificar_fallback_json_nao_parseavel",
+      "file_path": "tests/test_leitor_neural.py"
+    },
+    {
+      "id": "tests/test_leitor_neural.py:TestLeitorNeural.test_classificar_sem_key",
+      "type": "method",
+      "label": "test_classificar_sem_key",
+      "file_path": "tests/test_leitor_neural.py"
+    },
+    {
+      "id": "tests/test_leitor_neural.py:TestLeitorNeural.test_classificar_timeout",
+      "type": "method",
+      "label": "test_classificar_timeout",
+      "file_path": "tests/test_leitor_neural.py"
+    },
+    {
+      "id": "tests/test_leitor_neural.py:TestLeitorNeural.test_classificar_status_nao_200",
+      "type": "method",
+      "label": "test_classificar_status_nao_200",
+      "file_path": "tests/test_leitor_neural.py"
+    },
+    {
+      "id": "tests/test_leitor_neural.py:TestLeitorNeural.test_extrair_email_valido",
+      "type": "method",
+      "label": "test_extrair_email_valido",
+      "file_path": "tests/test_leitor_neural.py"
+    },
+    {
+      "id": "tests/test_leitor_neural.py:TestLeitorNeuralIntegracao",
+      "type": "class",
+      "label": "TestLeitorNeuralIntegracao",
+      "file_path": "tests/test_leitor_neural.py"
+    },
+    {
+      "id": "tests/test_leitor_neural.py:TestLeitorNeuralIntegracao.test_rodar_fluxo_completo",
+      "type": "method",
+      "label": "test_rodar_fluxo_completo",
+      "file_path": "tests/test_leitor_neural.py"
+    },
+    {
+      "id": "tests/test_leitor_neural.py:test_buscar_emails_retorna_corpo",
+      "type": "function",
+      "label": "test_buscar_emails_retorna_corpo",
+      "file_path": "tests/test_leitor_neural.py"
+    },
+    {
+      "id": "tests/test_leitor_neural.py:test_sanitizar_colapsa_espacos",
+      "type": "function",
+      "label": "test_sanitizar_colapsa_espacos",
+      "file_path": "tests/test_leitor_neural.py"
+    },
+    {
+      "id": "tests/test_leitor_neural.py:test_sanitizar_trunca_400",
+      "type": "function",
+      "label": "test_sanitizar_trunca_400",
+      "file_path": "tests/test_leitor_neural.py"
+    },
+    {
+      "id": "tests/test_leitor_neural.py:test_sanitizar_vazio",
+      "type": "function",
+      "label": "test_sanitizar_vazio",
+      "file_path": "tests/test_leitor_neural.py"
+    },
+    {
+      "id": "tests/test_leitor_neural.py:test_classificar_interesse",
+      "type": "function",
+      "label": "test_classificar_interesse",
+      "file_path": "tests/test_leitor_neural.py"
+    },
+    {
+      "id": "tests/test_leitor_neural.py:test_classificar_recusou",
+      "type": "function",
+      "label": "test_classificar_recusou",
+      "file_path": "tests/test_leitor_neural.py"
+    },
+    {
+      "id": "tests/test_leitor_neural.py:test_classificar_automatico",
+      "type": "function",
+      "label": "test_classificar_automatico",
+      "file_path": "tests/test_leitor_neural.py"
+    },
+    {
+      "id": "tests/test_leitor_neural.py:test_classificar_fallback_json_nao_parseavel",
+      "type": "function",
+      "label": "test_classificar_fallback_json_nao_parseavel",
+      "file_path": "tests/test_leitor_neural.py"
+    },
+    {
+      "id": "tests/test_leitor_neural.py:test_classificar_sem_key",
+      "type": "function",
+      "label": "test_classificar_sem_key",
+      "file_path": "tests/test_leitor_neural.py"
+    },
+    {
+      "id": "tests/test_leitor_neural.py:test_classificar_timeout",
+      "type": "function",
+      "label": "test_classificar_timeout",
+      "file_path": "tests/test_leitor_neural.py"
+    },
+    {
+      "id": "tests/test_leitor_neural.py:test_classificar_status_nao_200",
+      "type": "function",
+      "label": "test_classificar_status_nao_200",
+      "file_path": "tests/test_leitor_neural.py"
+    },
+    {
+      "id": "tests/test_leitor_neural.py:test_extrair_email_valido",
+      "type": "function",
+      "label": "test_extrair_email_valido",
+      "file_path": "tests/test_leitor_neural.py"
+    },
+    {
+      "id": "tests/test_leitor_neural.py:test_rodar_fluxo_completo",
+      "type": "function",
+      "label": "test_rodar_fluxo_completo",
+      "file_path": "tests/test_leitor_neural.py"
     }
   ],
   "edges": [
     {
       "source": "bot_telegram.py",
-      "target": "logging",
+      "target": "os",
       "type": "imports",
       "relation": "imports"
     },
     {
       "source": "bot_telegram.py",
-      "target": "os",
+      "target": "time",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "bot_telegram.py",
+      "target": "logging",
       "type": "imports",
       "relation": "imports"
     },
@@ -898,6 +1564,60 @@
     },
     {
       "source": "bot_telegram.py",
+      "target": "bot_telegram.py:_load_env",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "bot_telegram.py:_load_env",
+      "target": "exists",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "bot_telegram.py:_load_env",
+      "target": "open",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "bot_telegram.py:_load_env",
+      "target": "strip",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "bot_telegram.py:_load_env",
+      "target": "startswith",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "bot_telegram.py:_load_env",
+      "target": "split",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "bot_telegram.py:_load_env",
+      "target": "strip",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "bot_telegram.py:_load_env",
+      "target": "strip",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "bot_telegram.py:_load_env",
+      "target": "strip",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "bot_telegram.py",
       "target": "bot_telegram.py:gerar_resposta_ia",
       "type": "contains",
       "relation": "contains"
@@ -910,7 +1630,7 @@
     },
     {
       "source": "bot_telegram.py:gerar_resposta_ia",
-      "target": "info",
+      "target": "warning",
       "type": "calls",
       "relation": "calls"
     },
@@ -940,67 +1660,145 @@
     },
     {
       "source": "bot_telegram.py",
-      "target": "bot_telegram.py:_extrair_telefone",
+      "target": "bot_telegram.py:salvar_lead",
       "type": "contains",
       "relation": "contains"
     },
     {
-      "source": "bot_telegram.py:_extrair_telefone",
-      "target": "str",
-      "type": "calls",
-      "relation": "calls"
-    },
-    {
-      "source": "bot_telegram.py",
-      "target": "bot_telegram.py:_enviar_lead",
-      "type": "contains",
-      "relation": "contains"
-    },
-    {
-      "source": "bot_telegram.py:_enviar_lead",
-      "target": "error",
-      "type": "calls",
-      "relation": "calls"
-    },
-    {
-      "source": "bot_telegram.py:_enviar_lead",
+      "source": "bot_telegram.py:salvar_lead",
       "target": "range",
       "type": "calls",
       "relation": "calls"
     },
     {
-      "source": "bot_telegram.py:_enviar_lead",
+      "source": "bot_telegram.py:salvar_lead",
       "target": "execute",
       "type": "calls",
       "relation": "calls"
     },
     {
-      "source": "bot_telegram.py:_enviar_lead",
-      "target": "insert",
+      "source": "bot_telegram.py:salvar_lead",
+      "target": "upsert",
       "type": "calls",
       "relation": "calls"
     },
     {
-      "source": "bot_telegram.py:_enviar_lead",
+      "source": "bot_telegram.py:salvar_lead",
       "target": "table",
       "type": "calls",
       "relation": "calls"
     },
     {
-      "source": "bot_telegram.py:_enviar_lead",
+      "source": "bot_telegram.py:salvar_lead",
+      "target": "str",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "bot_telegram.py:salvar_lead",
       "target": "info",
       "type": "calls",
       "relation": "calls"
     },
     {
-      "source": "bot_telegram.py:_enviar_lead",
-      "target": "warning",
+      "source": "bot_telegram.py:salvar_lead",
+      "target": "error",
       "type": "calls",
       "relation": "calls"
     },
     {
-      "source": "bot_telegram.py:_enviar_lead",
+      "source": "bot_telegram.py:salvar_lead",
+      "target": "sleep",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "bot_telegram.py:salvar_lead",
       "target": "error",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "bot_telegram.py",
+      "target": "bot_telegram.py:handle_contact",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "bot_telegram.py:handle_contact",
+      "target": "strip",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "bot_telegram.py:handle_contact",
+      "target": "execute",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "bot_telegram.py:handle_contact",
+      "target": "upsert",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "bot_telegram.py:handle_contact",
+      "target": "table",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "bot_telegram.py:handle_contact",
+      "target": "execute",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "bot_telegram.py:handle_contact",
+      "target": "eq",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "bot_telegram.py:handle_contact",
+      "target": "delete",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "bot_telegram.py:handle_contact",
+      "target": "table",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "bot_telegram.py:handle_contact",
+      "target": "str",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "bot_telegram.py:handle_contact",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "bot_telegram.py:handle_contact",
+      "target": "error",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "bot_telegram.py:handle_contact",
+      "target": "reply_to",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "bot_telegram.py:handle_contact",
+      "target": "message_handler",
       "type": "calls",
       "relation": "calls"
     },
@@ -1018,19 +1816,13 @@
     },
     {
       "source": "bot_telegram.py:handle_text",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "bot_telegram.py:handle_text",
       "target": "gerar_resposta_ia",
-      "type": "calls",
-      "relation": "calls"
-    },
-    {
-      "source": "bot_telegram.py:handle_text",
-      "target": "upper",
-      "type": "calls",
-      "relation": "calls"
-    },
-    {
-      "source": "bot_telegram.py:handle_text",
-      "target": "lower",
       "type": "calls",
       "relation": "calls"
     },
@@ -1054,7 +1846,13 @@
     },
     {
       "source": "bot_telegram.py:handle_text",
-      "target": "info",
+      "target": "salvar_lead",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "bot_telegram.py:handle_text",
+      "target": "str",
       "type": "calls",
       "relation": "calls"
     },
@@ -1071,56 +1869,20 @@
       "relation": "calls"
     },
     {
-      "source": "bot_telegram.py",
-      "target": "bot_telegram.py:handle_contact",
-      "type": "contains",
-      "relation": "contains"
+      "source": "main.py",
+      "target": "os",
+      "type": "imports",
+      "relation": "imports"
     },
     {
-      "source": "bot_telegram.py:handle_contact",
-      "target": "strip",
-      "type": "calls",
-      "relation": "calls"
-    },
-    {
-      "source": "bot_telegram.py:handle_contact",
-      "target": "_enviar_lead",
-      "type": "calls",
-      "relation": "calls"
-    },
-    {
-      "source": "bot_telegram.py:handle_contact",
-      "target": "reply_to",
-      "type": "calls",
-      "relation": "calls"
-    },
-    {
-      "source": "bot_telegram.py:handle_contact",
-      "target": "info",
-      "type": "calls",
-      "relation": "calls"
-    },
-    {
-      "source": "bot_telegram.py:handle_contact",
-      "target": "message_handler",
-      "type": "calls",
-      "relation": "calls"
-    },
-    {
-      "source": "bot_telegram.py",
-      "target": "dotenv",
+      "source": "main.py",
+      "target": "sys",
       "type": "imports",
       "relation": "imports"
     },
     {
       "source": "main.py",
       "target": "logging",
-      "type": "imports",
-      "relation": "imports"
-    },
-    {
-      "source": "main.py",
-      "target": "os",
       "type": "imports",
       "relation": "imports"
     },
@@ -1156,7 +1918,43 @@
     },
     {
       "source": "main.py",
+      "target": "bot_telegram",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "main.py",
+      "target": "telebot",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "main.py",
       "target": "agente_orquestrador",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "main.py",
+      "target": "agente_chat",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "main.py",
+      "target": "geocoder",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "main.py",
+      "target": "gmail_client",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "main.py",
+      "target": "agente_leitor_neural",
       "type": "imports",
       "relation": "imports"
     },
@@ -1168,12 +1966,138 @@
     },
     {
       "source": "main.py",
-      "target": "main.py:health_check",
+      "target": "main.py:ChatPayload",
       "type": "contains",
       "relation": "contains"
     },
     {
-      "source": "main.py:health_check",
+      "source": "main.py",
+      "target": "main.py:health",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "main.py:health",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "main.py",
+      "target": "main.py:diagnostico",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "main.py:diagnostico",
+      "target": "bool",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "main.py:diagnostico",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "main.py:diagnostico",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "main.py",
+      "target": "main.py:chat_handler",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "main.py:chat_handler",
+      "target": "processar_chat",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "main.py:chat_handler",
+      "target": "error",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "main.py:chat_handler",
+      "target": "str",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "main.py:chat_handler",
+      "target": "post",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "main.py",
+      "target": "main.py:chat_historico",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "main.py:chat_historico",
+      "target": "Query",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "main.py:chat_historico",
+      "target": "obter_historico",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "main.py:chat_historico",
+      "target": "error",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "main.py:chat_historico",
+      "target": "str",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "main.py:chat_historico",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "main.py",
+      "target": "main.py:gmail_verificar",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "main.py:gmail_verificar",
+      "target": "contar_respostas",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "main.py:gmail_verificar",
+      "target": "error",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "main.py:gmail_verificar",
+      "target": "str",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "main.py:gmail_verificar",
       "target": "get",
       "type": "calls",
       "relation": "calls"
@@ -1270,6 +2194,12 @@
     },
     {
       "source": "main.py:listar_clinicas",
+      "target": "neq",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "main.py:listar_clinicas",
       "target": "select",
       "type": "calls",
       "relation": "calls"
@@ -1288,6 +2218,60 @@
     },
     {
       "source": "main.py:listar_clinicas",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "main.py",
+      "target": "main.py:listar_emails",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "main.py:listar_emails",
+      "target": "Query",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "main.py:listar_emails",
+      "target": "execute",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "main.py:listar_emails",
+      "target": "limit",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "main.py:listar_emails",
+      "target": "order",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "main.py:listar_emails",
+      "target": "select",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "main.py:listar_emails",
+      "target": "table",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "main.py:listar_emails",
+      "target": "str",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "main.py:listar_emails",
       "target": "get",
       "type": "calls",
       "relation": "calls"
@@ -1319,6 +2303,24 @@
     {
       "source": "main.py:funil_status",
       "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "main.py:funil_status",
+      "target": "pop",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "main.py:funil_status",
+      "target": "sum",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "main.py:funil_status",
+      "target": "values",
       "type": "calls",
       "relation": "calls"
     },
@@ -1366,9 +2368,225 @@
     },
     {
       "source": "main.py",
+      "target": "main.py:enviar_agentes",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "main.py:enviar_agentes",
+      "target": "rodar",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "main.py:enviar_agentes",
+      "target": "str",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "main.py:enviar_agentes",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "main.py:enviar_agentes",
+      "target": "post",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "main.py",
+      "target": "main.py:reset_agentes",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "main.py:reset_agentes",
+      "target": "execute",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "main.py:reset_agentes",
+      "target": "eq",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "main.py:reset_agentes",
+      "target": "select",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "main.py:reset_agentes",
+      "target": "table",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "main.py:reset_agentes",
+      "target": "execute",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "main.py:reset_agentes",
+      "target": "eq",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "main.py:reset_agentes",
+      "target": "select",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "main.py:reset_agentes",
+      "target": "table",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "main.py:reset_agentes",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "main.py:reset_agentes",
+      "target": "execute",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "main.py:reset_agentes",
+      "target": "eq",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "main.py:reset_agentes",
+      "target": "update",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "main.py:reset_agentes",
+      "target": "table",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "main.py:reset_agentes",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "main.py:reset_agentes",
+      "target": "len",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "main.py:reset_agentes",
+      "target": "len",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "main.py:reset_agentes",
+      "target": "error",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "main.py:reset_agentes",
+      "target": "str",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "main.py:reset_agentes",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "main.py",
+      "target": "main.py:listar_coordenadas",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "main.py:listar_coordenadas",
+      "target": "obter_coordenadas",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "main.py:listar_coordenadas",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "main.py",
+      "target": "main.py:ler_respostas_endpoint",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "main.py:ler_respostas_endpoint",
+      "target": "leitor_rodar",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "main.py:ler_respostas_endpoint",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "main.py:ler_respostas_endpoint",
+      "target": "error",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "main.py:ler_respostas_endpoint",
+      "target": "str",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "main.py:ler_respostas_endpoint",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "main.py:ler_respostas_endpoint",
+      "target": "post",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "main.py",
       "target": "main.py:status_agentes",
       "type": "contains",
       "relation": "contains"
+    },
+    {
+      "source": "main.py:status_agentes",
+      "target": "status",
+      "type": "calls",
+      "relation": "calls"
     },
     {
       "source": "main.py:status_agentes",
@@ -1378,7 +2596,43 @@
     },
     {
       "source": "main.py",
+      "target": "os",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "main.py",
+      "target": "agente_contato",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "main.py",
       "target": "uvicorn",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "main.py",
+      "target": "psycopg2",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "main.py",
+      "target": "socket",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "main.py",
+      "target": "requests",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "main.py",
+      "target": "geocoder",
       "type": "imports",
       "relation": "imports"
     },
@@ -2716,97 +3970,85 @@
     },
     {
       "source": "agente_buscador.py",
-      "target": "dotenv",
-      "type": "imports",
-      "relation": "imports"
-    },
-    {
-      "source": "agente_buscador.py",
       "target": "supabase_client",
       "type": "imports",
       "relation": "imports"
     },
     {
       "source": "agente_buscador.py",
-      "target": "agente_buscador.py:extrair_cidade",
+      "target": "agente_buscador.py:_buscar_hiperlocal",
       "type": "contains",
       "relation": "contains"
     },
     {
-      "source": "agente_buscador.py:extrair_cidade",
-      "target": "lower",
+      "source": "agente_buscador.py:_buscar_hiperlocal",
+      "target": "sleep",
       "type": "calls",
       "relation": "calls"
     },
     {
-      "source": "agente_buscador.py:extrair_cidade",
-      "target": "lower",
-      "type": "calls",
-      "relation": "calls"
-    },
-    {
-      "source": "agente_buscador.py:extrair_cidade",
-      "target": "split",
-      "type": "calls",
-      "relation": "calls"
-    },
-    {
-      "source": "agente_buscador.py",
-      "target": "agente_buscador.py:_buscar_com_retry",
-      "type": "contains",
-      "relation": "contains"
-    },
-    {
-      "source": "agente_buscador.py:_buscar_com_retry",
-      "target": "range",
-      "type": "calls",
-      "relation": "calls"
-    },
-    {
-      "source": "agente_buscador.py:_buscar_com_retry",
+      "source": "agente_buscador.py:_buscar_hiperlocal",
       "target": "get",
       "type": "calls",
       "relation": "calls"
     },
     {
-      "source": "agente_buscador.py:_buscar_com_retry",
+      "source": "agente_buscador.py:_buscar_hiperlocal",
+      "target": "error",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_buscador.py:_buscar_hiperlocal",
       "target": "raise_for_status",
       "type": "calls",
       "relation": "calls"
     },
     {
-      "source": "agente_buscador.py:_buscar_com_retry",
+      "source": "agente_buscador.py:_buscar_hiperlocal",
       "target": "json",
       "type": "calls",
       "relation": "calls"
     },
     {
-      "source": "agente_buscador.py:_buscar_com_retry",
+      "source": "agente_buscador.py:_buscar_hiperlocal",
+      "target": "error",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_buscador.py:_buscar_hiperlocal",
+      "target": "error",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_buscador.py:_buscar_hiperlocal",
+      "target": "error",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_buscador.py:_buscar_hiperlocal",
+      "target": "error",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_buscador.py:_buscar_hiperlocal",
       "target": "get",
       "type": "calls",
       "relation": "calls"
     },
     {
-      "source": "agente_buscador.py:_buscar_com_retry",
-      "target": "extend",
+      "source": "agente_buscador.py:_buscar_hiperlocal",
+      "target": "info",
       "type": "calls",
       "relation": "calls"
     },
     {
-      "source": "agente_buscador.py:_buscar_com_retry",
+      "source": "agente_buscador.py:_buscar_hiperlocal",
       "target": "len",
-      "type": "calls",
-      "relation": "calls"
-    },
-    {
-      "source": "agente_buscador.py:_buscar_com_retry",
-      "target": "warning",
-      "type": "calls",
-      "relation": "calls"
-    },
-    {
-      "source": "agente_buscador.py:_buscar_com_retry",
-      "target": "sleep",
       "type": "calls",
       "relation": "calls"
     },
@@ -2824,19 +4066,13 @@
     },
     {
       "source": "agente_buscador.py:rodar",
-      "target": "error",
-      "type": "calls",
-      "relation": "calls"
-    },
-    {
-      "source": "agente_buscador.py:rodar",
       "target": "info",
       "type": "calls",
       "relation": "calls"
     },
     {
       "source": "agente_buscador.py:rodar",
-      "target": "_buscar_com_retry",
+      "target": "_buscar_hiperlocal",
       "type": "calls",
       "relation": "calls"
     },
@@ -2854,12 +4090,6 @@
     },
     {
       "source": "agente_buscador.py:rodar",
-      "target": "extrair_cidade",
-      "type": "calls",
-      "relation": "calls"
-    },
-    {
-      "source": "agente_buscador.py:rodar",
       "target": "strip",
       "type": "calls",
       "relation": "calls"
@@ -2879,24 +4109,30 @@
     {
       "source": "agente_buscador.py:rodar",
       "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_buscador.py:rodar",
+      "target": "strip",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_buscador.py:rodar",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_buscador.py:rodar",
+      "target": "info",
       "type": "calls",
       "relation": "calls"
     },
     {
       "source": "agente_buscador.py:rodar",
       "target": "append",
-      "type": "calls",
-      "relation": "calls"
-    },
-    {
-      "source": "agente_buscador.py:rodar",
-      "target": "strip",
-      "type": "calls",
-      "relation": "calls"
-    },
-    {
-      "source": "agente_buscador.py:rodar",
-      "target": "get",
       "type": "calls",
       "relation": "calls"
     },
@@ -2950,6 +4186,42 @@
     },
     {
       "source": "agente_buscador.py:rodar",
+      "target": "len",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_buscador.py:rodar",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_buscador.py:rodar",
+      "target": "error",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_buscador.py:rodar",
+      "target": "execute",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_buscador.py:rodar",
+      "target": "upsert",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_buscador.py:rodar",
+      "target": "table",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_buscador.py:rodar",
       "target": "error",
       "type": "calls",
       "relation": "calls"
@@ -2968,6 +4240,12 @@
     },
     {
       "source": "agente_contato.py",
+      "target": "os",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "agente_contato.py",
       "target": "time",
       "type": "imports",
       "relation": "imports"
@@ -2980,19 +4258,25 @@
     },
     {
       "source": "agente_contato.py",
+      "target": "smtplib",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "agente_contato.py",
+      "target": "email.mime.text",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "agente_contato.py",
+      "target": "email.mime.multipart",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "agente_contato.py",
       "target": "datetime",
-      "type": "imports",
-      "relation": "imports"
-    },
-    {
-      "source": "agente_contato.py",
-      "target": "requests",
-      "type": "imports",
-      "relation": "imports"
-    },
-    {
-      "source": "agente_contato.py",
-      "target": "dotenv",
       "type": "imports",
       "relation": "imports"
     },
@@ -3004,48 +4288,186 @@
     },
     {
       "source": "agente_contato.py",
-      "target": "os",
-      "type": "imports",
-      "relation": "imports"
-    },
-    {
-      "source": "agente_contato.py",
-      "target": "agente_contato.py:gerar_mensagem",
+      "target": "agente_contato.py:gerar_assunto",
       "type": "contains",
       "relation": "contains"
     },
     {
-      "source": "agente_contato.py:gerar_mensagem",
+      "source": "agente_contato.py",
+      "target": "agente_contato.py:smtp_disponivel",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "agente_contato.py:smtp_disponivel",
+      "target": "bool",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_contato.py",
+      "target": "agente_contato.py:enviar_email_smtp",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "agente_contato.py:enviar_email_smtp",
+      "target": "smtp_disponivel",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_contato.py:enviar_email_smtp",
+      "target": "error",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_contato.py:enviar_email_smtp",
+      "target": "MIMEMultipart",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_contato.py:enviar_email_smtp",
+      "target": "attach",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_contato.py:enviar_email_smtp",
+      "target": "MIMEText",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_contato.py:enviar_email_smtp",
+      "target": "attach",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_contato.py:enviar_email_smtp",
+      "target": "MIMEText",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_contato.py:enviar_email_smtp",
+      "target": "SMTP_SSL",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_contato.py:enviar_email_smtp",
+      "target": "SMTP",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_contato.py:enviar_email_smtp",
+      "target": "starttls",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_contato.py:enviar_email_smtp",
+      "target": "login",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_contato.py:enviar_email_smtp",
+      "target": "send_message",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_contato.py:enviar_email_smtp",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_contato.py:enviar_email_smtp",
+      "target": "error",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_contato.py:enviar_email_smtp",
       "target": "warning",
       "type": "calls",
       "relation": "calls"
     },
     {
-      "source": "agente_contato.py:gerar_mensagem",
+      "source": "agente_contato.py:enviar_email_smtp",
+      "target": "warning",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_contato.py:enviar_email_smtp",
+      "target": "error",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_contato.py",
+      "target": "agente_contato.py:_formatar_avaliacao",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "agente_contato.py:_formatar_avaliacao",
+      "target": "float",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_contato.py:_formatar_avaliacao",
       "target": "str",
       "type": "calls",
       "relation": "calls"
     },
     {
-      "source": "agente_contato.py:gerar_mensagem",
-      "target": "post",
+      "source": "agente_contato.py",
+      "target": "agente_contato.py:registrar_email_db",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "agente_contato.py:registrar_email_db",
+      "target": "execute",
       "type": "calls",
       "relation": "calls"
     },
     {
-      "source": "agente_contato.py:gerar_mensagem",
-      "target": "json",
+      "source": "agente_contato.py:registrar_email_db",
+      "target": "insert",
       "type": "calls",
       "relation": "calls"
     },
     {
-      "source": "agente_contato.py:gerar_mensagem",
-      "target": "warning",
+      "source": "agente_contato.py:registrar_email_db",
+      "target": "table",
       "type": "calls",
       "relation": "calls"
     },
     {
-      "source": "agente_contato.py:gerar_mensagem",
+      "source": "agente_contato.py:registrar_email_db",
+      "target": "isoformat",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_contato.py:registrar_email_db",
+      "target": "now",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_contato.py:registrar_email_db",
       "target": "error",
       "type": "calls",
       "relation": "calls"
@@ -3059,6 +4481,18 @@
     {
       "source": "agente_contato.py:rodar",
       "target": "error",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_contato.py:rodar",
+      "target": "smtp_disponivel",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_contato.py:rodar",
+      "target": "warning",
       "type": "calls",
       "relation": "calls"
     },
@@ -3088,6 +4522,12 @@
     },
     {
       "source": "agente_contato.py:rodar",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_contato.py:rodar",
       "target": "error",
       "type": "calls",
       "relation": "calls"
@@ -3100,7 +4540,19 @@
     },
     {
       "source": "agente_contato.py:rodar",
-      "target": "gerar_mensagem",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_contato.py:rodar",
+      "target": "len",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_contato.py:rodar",
+      "target": "_formatar_avaliacao",
       "type": "calls",
       "relation": "calls"
     },
@@ -3112,7 +4564,31 @@
     },
     {
       "source": "agente_contato.py:rodar",
-      "target": "get",
+      "target": "gerar_assunto",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_contato.py:rodar",
+      "target": "format",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_contato.py:rodar",
+      "target": "format",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_contato.py:rodar",
+      "target": "smtp_disponivel",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_contato.py:rodar",
+      "target": "enviar_email_smtp",
       "type": "calls",
       "relation": "calls"
     },
@@ -3154,7 +4630,19 @@
     },
     {
       "source": "agente_contato.py:rodar",
+      "target": "registrar_email_db",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_contato.py:rodar",
       "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_contato.py:rodar",
+      "target": "warning",
       "type": "calls",
       "relation": "calls"
     },
@@ -3214,15 +4702,33 @@
     },
     {
       "source": "agente_followup.py",
-      "target": "dotenv",
+      "target": "supabase_client",
       "type": "imports",
       "relation": "imports"
     },
     {
       "source": "agente_followup.py",
-      "target": "supabase_client",
-      "type": "imports",
-      "relation": "imports"
+      "target": "agente_followup.py:_to_utc",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "agente_followup.py:_to_utc",
+      "target": "replace",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_followup.py:_to_utc",
+      "target": "fromisoformat",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_followup.py:_to_utc",
+      "target": "replace",
+      "type": "calls",
+      "relation": "calls"
     },
     {
       "source": "agente_followup.py",
@@ -3322,7 +4828,7 @@
     },
     {
       "source": "agente_followup.py:rodar",
-      "target": "fromisoformat",
+      "target": "_to_utc",
       "type": "calls",
       "relation": "calls"
     },
@@ -3496,6 +5002,12 @@
     },
     {
       "source": "agente_orquestrador.py",
+      "target": "typing",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "agente_orquestrador.py",
       "target": "schedule",
       "type": "imports",
       "relation": "imports"
@@ -3514,13 +5026,25 @@
     },
     {
       "source": "agente_orquestrador.py",
-      "target": "agente_contato",
+      "target": "agente_email_resolver",
       "type": "imports",
       "relation": "imports"
     },
     {
       "source": "agente_orquestrador.py",
       "target": "agente_followup",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "agente_orquestrador.py",
+      "target": "agente_leitor_neural",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "agente_orquestrador.py",
+      "target": "geocoder",
       "type": "imports",
       "relation": "imports"
     },
@@ -3562,7 +5086,31 @@
     },
     {
       "source": "agente_orquestrador.py:rodar_pipeline",
-      "target": "rodar",
+      "target": "int",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:rodar_pipeline",
+      "target": "total_seconds",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:rodar_pipeline",
+      "target": "now",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:rodar_pipeline",
+      "target": "TimeoutError",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:rodar_pipeline",
+      "target": "_verificar_timeout",
       "type": "calls",
       "relation": "calls"
     },
@@ -3574,13 +5122,91 @@
     },
     {
       "source": "agente_orquestrador.py:rodar_pipeline",
-      "target": "rodar",
+      "target": "_verificar_timeout",
       "type": "calls",
       "relation": "calls"
     },
     {
       "source": "agente_orquestrador.py:rodar_pipeline",
       "target": "rodar",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:rodar_pipeline",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:rodar_pipeline",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:rodar_pipeline",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:rodar_pipeline",
+      "target": "error",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:rodar_pipeline",
+      "target": "_verificar_timeout",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:rodar_pipeline",
+      "target": "rodar",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:rodar_pipeline",
+      "target": "_verificar_timeout",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:rodar_pipeline",
+      "target": "rodar",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:rodar_pipeline",
+      "target": "_verificar_timeout",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:rodar_pipeline",
+      "target": "rodar",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:rodar_pipeline",
+      "target": "int",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:rodar_pipeline",
+      "target": "total_seconds",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:rodar_pipeline",
+      "target": "now",
       "type": "calls",
       "relation": "calls"
     },
@@ -3634,6 +5260,24 @@
     },
     {
       "source": "agente_orquestrador.py:rodar_pipeline",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:rodar_pipeline",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:rodar_pipeline",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:rodar_pipeline",
       "target": "info",
       "type": "calls",
       "relation": "calls"
@@ -3658,13 +5302,37 @@
     },
     {
       "source": "agente_orquestrador.py:rodar_pipeline",
-      "target": "now",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:rodar_pipeline",
+      "target": "get",
       "type": "calls",
       "relation": "calls"
     },
     {
       "source": "agente_orquestrador.py:rodar_pipeline",
       "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:rodar_pipeline",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:rodar_pipeline",
+      "target": "isoformat",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:rodar_pipeline",
+      "target": "isoformat",
       "type": "calls",
       "relation": "calls"
     },
@@ -3687,6 +5355,24 @@
       "relation": "calls"
     },
     {
+      "source": "agente_orquestrador.py:rodar_pipeline",
+      "target": "isoformat",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:rodar_pipeline",
+      "target": "isoformat",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:rodar_pipeline",
+      "target": "error",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
       "source": "agente_orquestrador.py",
       "target": "agente_orquestrador.py:rodar_pipeline_async",
       "type": "contains",
@@ -3695,6 +5381,12 @@
     {
       "source": "agente_orquestrador.py:rodar_pipeline_async",
       "target": "acquire",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:rodar_pipeline_async",
+      "target": "error",
       "type": "calls",
       "relation": "calls"
     },
@@ -3718,13 +5410,43 @@
     },
     {
       "source": "agente_orquestrador.py:rodar_pipeline_async",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:rodar_pipeline_async",
       "target": "rodar_pipeline",
       "type": "calls",
       "relation": "calls"
     },
     {
       "source": "agente_orquestrador.py:rodar_pipeline_async",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:rodar_pipeline_async",
+      "target": "error",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:rodar_pipeline_async",
       "target": "release",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:rodar_pipeline_async",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:rodar_pipeline_async",
+      "target": "error",
       "type": "calls",
       "relation": "calls"
     },
@@ -3743,6 +5465,66 @@
     {
       "source": "agente_orquestrador.py:rodar_pipeline_async",
       "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py",
+      "target": "agente_orquestrador.py:_rodar_pipeline_agendada",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "agente_orquestrador.py:_rodar_pipeline_agendada",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:_rodar_pipeline_agendada",
+      "target": "rodar_pipeline_async",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:_rodar_pipeline_agendada",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:_rodar_pipeline_agendada",
+      "target": "error",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py",
+      "target": "agente_orquestrador.py:_rodar_leitor_agendado",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "agente_orquestrador.py:_rodar_leitor_agendado",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:_rodar_leitor_agendado",
+      "target": "rodar",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:_rodar_leitor_agendado",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:_rodar_leitor_agendado",
+      "target": "error",
       "type": "calls",
       "relation": "calls"
     },
@@ -3820,6 +5602,18 @@
     },
     {
       "source": "agente_orquestrador.py:iniciar_agendador",
+      "target": "do",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:iniciar_agendador",
+      "target": "every",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:iniciar_agendador",
       "target": "Thread",
       "type": "calls",
       "relation": "calls"
@@ -3862,13 +5656,43 @@
     },
     {
       "source": "agente_orquestrador.py",
+      "target": "agente_orquestrador.py:status",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "agente_orquestrador.py:status",
+      "target": "locked",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py",
       "target": "agente_orquestrador.py:_executar_com_lock",
       "type": "contains",
       "relation": "contains"
     },
     {
       "source": "agente_orquestrador.py:_executar_com_lock",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:_executar_com_lock",
       "target": "rodar_pipeline",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:_executar_com_lock",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:_executar_com_lock",
+      "target": "error",
       "type": "calls",
       "relation": "calls"
     },
@@ -3879,14 +5703,50 @@
       "relation": "calls"
     },
     {
-      "source": "agente_qualificador.py",
-      "target": "logging",
-      "type": "imports",
-      "relation": "imports"
+      "source": "agente_orquestrador.py:_executar_com_lock",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:_executar_com_lock",
+      "target": "error",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py",
+      "target": "agente_orquestrador.py:_verificar_timeout",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "agente_orquestrador.py:_verificar_timeout",
+      "target": "int",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:_verificar_timeout",
+      "target": "total_seconds",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:_verificar_timeout",
+      "target": "now",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_orquestrador.py:_verificar_timeout",
+      "target": "TimeoutError",
+      "type": "calls",
+      "relation": "calls"
     },
     {
       "source": "agente_qualificador.py",
-      "target": "dotenv",
+      "target": "logging",
       "type": "imports",
       "relation": "imports"
     },
@@ -3916,6 +5776,12 @@
     },
     {
       "source": "agente_qualificador.py:_calcular_score",
+      "target": "float",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_qualificador.py:_calcular_score",
       "target": "get",
       "type": "calls",
       "relation": "calls"
@@ -3923,6 +5789,12 @@
     {
       "source": "agente_qualificador.py:_calcular_score",
       "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_qualificador.py:_calcular_score",
+      "target": "int",
       "type": "calls",
       "relation": "calls"
     },
@@ -4031,6 +5903,12 @@
     {
       "source": "supabase_client.py",
       "target": "logging",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "supabase_client.py",
+      "target": "typing",
       "type": "imports",
       "relation": "imports"
     },
@@ -4569,6 +6447,3066 @@
       "relation": "calls"
     },
     {
+      "source": "agente_chat.py",
+      "target": "os",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "agente_chat.py",
+      "target": "time",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "agente_chat.py",
+      "target": "logging",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "agente_chat.py",
+      "target": "requests",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "agente_chat.py",
+      "target": "typing",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "agente_chat.py",
+      "target": "supabase_client",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "agente_chat.py",
+      "target": "agente_chat.py:buscar_clinicas",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "agente_chat.py:buscar_clinicas",
+      "target": "time",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:buscar_clinicas",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:buscar_clinicas",
+      "target": "warning",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:buscar_clinicas",
+      "target": "execute",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:buscar_clinicas",
+      "target": "limit",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:buscar_clinicas",
+      "target": "order",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:buscar_clinicas",
+      "target": "or_",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:buscar_clinicas",
+      "target": "neq",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:buscar_clinicas",
+      "target": "select",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:buscar_clinicas",
+      "target": "table",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:buscar_clinicas",
+      "target": "error",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:buscar_clinicas",
+      "target": "append",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:buscar_clinicas",
+      "target": "strip",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:buscar_clinicas",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:buscar_clinicas",
+      "target": "strip",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:buscar_clinicas",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:buscar_clinicas",
+      "target": "strip",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:buscar_clinicas",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:buscar_clinicas",
+      "target": "strip",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:buscar_clinicas",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:buscar_clinicas",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:buscar_clinicas",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:buscar_clinicas",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:buscar_clinicas",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:buscar_clinicas",
+      "target": "strip",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:buscar_clinicas",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:buscar_clinicas",
+      "target": "strip",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:buscar_clinicas",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:buscar_clinicas",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:buscar_clinicas",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:buscar_clinicas",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:buscar_clinicas",
+      "target": "len",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py",
+      "target": "agente_chat.py:_gerar_resposta_nvidia",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "agente_chat.py:_gerar_resposta_nvidia",
+      "target": "post",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:_gerar_resposta_nvidia",
+      "target": "json",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:_gerar_resposta_nvidia",
+      "target": "error",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:_gerar_resposta_nvidia",
+      "target": "error",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py",
+      "target": "agente_chat.py:_gerar_resposta_fallback",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "agente_chat.py:_gerar_resposta_fallback",
+      "target": "lower",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:_gerar_resposta_fallback",
+      "target": "any",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:_gerar_resposta_fallback",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:_gerar_resposta_fallback",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:_gerar_resposta_fallback",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:_gerar_resposta_fallback",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:_gerar_resposta_fallback",
+      "target": "round",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:_gerar_resposta_fallback",
+      "target": "sum",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:_gerar_resposta_fallback",
+      "target": "len",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:_gerar_resposta_fallback",
+      "target": "len",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:_gerar_resposta_fallback",
+      "target": "len",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:_gerar_resposta_fallback",
+      "target": "len",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:_gerar_resposta_fallback",
+      "target": "len",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:_gerar_resposta_fallback",
+      "target": "append",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:_gerar_resposta_fallback",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:_gerar_resposta_fallback",
+      "target": "sorted",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:_gerar_resposta_fallback",
+      "target": "append",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:_gerar_resposta_fallback",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:_gerar_resposta_fallback",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:_gerar_resposta_fallback",
+      "target": "append",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:_gerar_resposta_fallback",
+      "target": "append",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:_gerar_resposta_fallback",
+      "target": "append",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:_gerar_resposta_fallback",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:_gerar_resposta_fallback",
+      "target": "append",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:_gerar_resposta_fallback",
+      "target": "append",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:_gerar_resposta_fallback",
+      "target": "len",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:_gerar_resposta_fallback",
+      "target": "append",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:_gerar_resposta_fallback",
+      "target": "join",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py",
+      "target": "agente_chat.py:processar_chat",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "agente_chat.py:processar_chat",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:processar_chat",
+      "target": "buscar_clinicas",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:processar_chat",
+      "target": "len",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:processar_chat",
+      "target": "enumerate",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:processar_chat",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:processar_chat",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:processar_chat",
+      "target": "_gerar_resposta_nvidia",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:processar_chat",
+      "target": "_gerar_resposta_fallback",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:processar_chat",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:processar_chat",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:processar_chat",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:processar_chat",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:processar_chat",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:processar_chat",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:processar_chat",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:processar_chat",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:processar_chat",
+      "target": "execute",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:processar_chat",
+      "target": "upsert",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:processar_chat",
+      "target": "table",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:processar_chat",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:processar_chat",
+      "target": "len",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:processar_chat",
+      "target": "error",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:processar_chat",
+      "target": "execute",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:processar_chat",
+      "target": "insert",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:processar_chat",
+      "target": "table",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:processar_chat",
+      "target": "len",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:processar_chat",
+      "target": "error",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:processar_chat",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:processar_chat",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:processar_chat",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:processar_chat",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:processar_chat",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:processar_chat",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:processar_chat",
+      "target": "len",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py",
+      "target": "agente_chat.py:obter_historico",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "agente_chat.py:obter_historico",
+      "target": "execute",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:obter_historico",
+      "target": "limit",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:obter_historico",
+      "target": "order",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:obter_historico",
+      "target": "select",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:obter_historico",
+      "target": "table",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_chat.py:obter_historico",
+      "target": "error",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_email_resolver.py",
+      "target": "os",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "agente_email_resolver.py",
+      "target": "re",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "agente_email_resolver.py",
+      "target": "time",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "agente_email_resolver.py",
+      "target": "logging",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "agente_email_resolver.py",
+      "target": "requests",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "agente_email_resolver.py",
+      "target": "supabase_client",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "agente_email_resolver.py",
+      "target": "agente_email_resolver.py:_email_valido",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "agente_email_resolver.py:_email_valido",
+      "target": "lower",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_email_resolver.py:_email_valido",
+      "target": "split",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_email_resolver.py:_email_valido",
+      "target": "lower",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_email_resolver.py:_email_valido",
+      "target": "split",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_email_resolver.py:_email_valido",
+      "target": "any",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_email_resolver.py:_email_valido",
+      "target": "endswith",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_email_resolver.py",
+      "target": "agente_email_resolver.py:_extrair_email_html",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "agente_email_resolver.py:_extrair_email_html",
+      "target": "findall",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_email_resolver.py:_extrair_email_html",
+      "target": "lower",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_email_resolver.py:_extrair_email_html",
+      "target": "strip",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_email_resolver.py:_extrair_email_html",
+      "target": "_email_valido",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_email_resolver.py",
+      "target": "agente_email_resolver.py:_fetch_url",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "agente_email_resolver.py:_fetch_url",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_email_resolver.py",
+      "target": "agente_email_resolver.py:_normalizar_url",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "agente_email_resolver.py:_normalizar_url",
+      "target": "strip",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_email_resolver.py:_normalizar_url",
+      "target": "startswith",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_email_resolver.py:_normalizar_url",
+      "target": "rstrip",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_email_resolver.py",
+      "target": "agente_email_resolver.py:_resolver_email_site",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "agente_email_resolver.py:_resolver_email_site",
+      "target": "_normalizar_url",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_email_resolver.py:_resolver_email_site",
+      "target": "time",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_email_resolver.py:_resolver_email_site",
+      "target": "_fetch_url",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_email_resolver.py:_resolver_email_site",
+      "target": "_extrair_email_html",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_email_resolver.py:_resolver_email_site",
+      "target": "time",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_email_resolver.py:_resolver_email_site",
+      "target": "urlparse",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_email_resolver.py:_resolver_email_site",
+      "target": "_fetch_url",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_email_resolver.py:_resolver_email_site",
+      "target": "_extrair_email_html",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_email_resolver.py:_resolver_email_site",
+      "target": "time",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_email_resolver.py:_resolver_email_site",
+      "target": "findall",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_email_resolver.py:_resolver_email_site",
+      "target": "startswith",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_email_resolver.py:_resolver_email_site",
+      "target": "startswith",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_email_resolver.py:_resolver_email_site",
+      "target": "rstrip",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_email_resolver.py:_resolver_email_site",
+      "target": "lstrip",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_email_resolver.py:_resolver_email_site",
+      "target": "_fetch_url",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_email_resolver.py:_resolver_email_site",
+      "target": "_extrair_email_html",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_email_resolver.py:_resolver_email_site",
+      "target": "time",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_email_resolver.py:_resolver_email_site",
+      "target": "_tentar_aliases",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_email_resolver.py:_resolver_email_site",
+      "target": "time",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_email_resolver.py:_resolver_email_site",
+      "target": "time",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_email_resolver.py",
+      "target": "agente_email_resolver.py:_tentar_aliases",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "agente_email_resolver.py:_tentar_aliases",
+      "target": "lower",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_email_resolver.py:_tentar_aliases",
+      "target": "urlparse",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_email_resolver.py:_tentar_aliases",
+      "target": "startswith",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_email_resolver.py:_tentar_aliases",
+      "target": "_email_valido",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_email_resolver.py",
+      "target": "agente_email_resolver.py:rodar",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "agente_email_resolver.py:rodar",
+      "target": "error",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_email_resolver.py:rodar",
+      "target": "execute",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_email_resolver.py:rodar",
+      "target": "eq",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_email_resolver.py:rodar",
+      "target": "select",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_email_resolver.py:rodar",
+      "target": "table",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_email_resolver.py:rodar",
+      "target": "error",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_email_resolver.py:rodar",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_email_resolver.py:rodar",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_email_resolver.py:rodar",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_email_resolver.py:rodar",
+      "target": "len",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_email_resolver.py:rodar",
+      "target": "strip",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_email_resolver.py:rodar",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_email_resolver.py:rodar",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_email_resolver.py:rodar",
+      "target": "_resolver_email_site",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_email_resolver.py:rodar",
+      "target": "execute",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_email_resolver.py:rodar",
+      "target": "eq",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_email_resolver.py:rodar",
+      "target": "update",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_email_resolver.py:rodar",
+      "target": "table",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_email_resolver.py:rodar",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_email_resolver.py:rodar",
+      "target": "error",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_email_resolver.py:rodar",
+      "target": "sleep",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_email_resolver.py:rodar",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_email_resolver.py",
+      "target": "urllib.parse",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "agente_email_resolver.py",
+      "target": "urllib.parse",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "geocoder.py",
+      "target": "os",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "geocoder.py",
+      "target": "json",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "geocoder.py",
+      "target": "time",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "geocoder.py",
+      "target": "logging",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "geocoder.py",
+      "target": "requests",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "geocoder.py",
+      "target": "supabase_client",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "geocoder.py",
+      "target": "geocoder.py:_add_colunas_se_necessario",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "geocoder.py:_add_colunas_se_necessario",
+      "target": "execute",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "geocoder.py:_add_colunas_se_necessario",
+      "target": "limit",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "geocoder.py:_add_colunas_se_necessario",
+      "target": "select",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "geocoder.py:_add_colunas_se_necessario",
+      "target": "table",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "geocoder.py:_add_colunas_se_necessario",
+      "target": "append",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "geocoder.py:_add_colunas_se_necessario",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "geocoder.py:_add_colunas_se_necessario",
+      "target": "connect",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "geocoder.py:_add_colunas_se_necessario",
+      "target": "cursor",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "geocoder.py:_add_colunas_se_necessario",
+      "target": "execute",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "geocoder.py:_add_colunas_se_necessario",
+      "target": "commit",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "geocoder.py:_add_colunas_se_necessario",
+      "target": "close",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "geocoder.py:_add_colunas_se_necessario",
+      "target": "close",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "geocoder.py:_add_colunas_se_necessario",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "geocoder.py:_add_colunas_se_necessario",
+      "target": "warning",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "geocoder.py:_add_colunas_se_necessario",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "geocoder.py",
+      "target": "geocoder.py:_carregar_coordenadas",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "geocoder.py:_carregar_coordenadas",
+      "target": "exists",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "geocoder.py:_carregar_coordenadas",
+      "target": "open",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "geocoder.py:_carregar_coordenadas",
+      "target": "load",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "geocoder.py",
+      "target": "geocoder.py:_salvar_coordenadas",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "geocoder.py:_salvar_coordenadas",
+      "target": "open",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "geocoder.py:_salvar_coordenadas",
+      "target": "dump",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "geocoder.py",
+      "target": "geocoder.py:obter_coordenadas",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "geocoder.py:obter_coordenadas",
+      "target": "_carregar_coordenadas",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "geocoder.py",
+      "target": "geocoder.py:geocodificar_endereco",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "geocoder.py:geocodificar_endereco",
+      "target": "strip",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "geocoder.py:geocodificar_endereco",
+      "target": "split",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "geocoder.py:geocodificar_endereco",
+      "target": "sub",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "geocoder.py:geocodificar_endereco",
+      "target": "sub",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "geocoder.py:geocodificar_endereco",
+      "target": "strip",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "geocoder.py:geocodificar_endereco",
+      "target": "range",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "geocoder.py:geocodificar_endereco",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "geocoder.py:geocodificar_endereco",
+      "target": "json",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "geocoder.py:geocodificar_endereco",
+      "target": "float",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "geocoder.py:geocodificar_endereco",
+      "target": "float",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "geocoder.py:geocodificar_endereco",
+      "target": "warning",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "geocoder.py:geocodificar_endereco",
+      "target": "sleep",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "geocoder.py:geocodificar_endereco",
+      "target": "error",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "geocoder.py:geocodificar_endereco",
+      "target": "error",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "geocoder.py",
+      "target": "geocoder.py:rodar",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "geocoder.py:rodar",
+      "target": "warning",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "geocoder.py:rodar",
+      "target": "execute",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "geocoder.py:rodar",
+      "target": "neq",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "geocoder.py:rodar",
+      "target": "select",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "geocoder.py:rodar",
+      "target": "table",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "geocoder.py:rodar",
+      "target": "warning",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "geocoder.py:rodar",
+      "target": "execute",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "geocoder.py:rodar",
+      "target": "select",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "geocoder.py:rodar",
+      "target": "table",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "geocoder.py:rodar",
+      "target": "error",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "geocoder.py:rodar",
+      "target": "str",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "geocoder.py:rodar",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "geocoder.py:rodar",
+      "target": "len",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "geocoder.py:rodar",
+      "target": "_carregar_coordenadas",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "geocoder.py:rodar",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "geocoder.py:rodar",
+      "target": "str",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "geocoder.py:rodar",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "geocoder.py:rodar",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "geocoder.py:rodar",
+      "target": "len",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "geocoder.py:rodar",
+      "target": "strip",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "geocoder.py:rodar",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "geocoder.py:rodar",
+      "target": "strip",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "geocoder.py:rodar",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "geocoder.py:rodar",
+      "target": "geocodificar_endereco",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "geocoder.py:rodar",
+      "target": "str",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "geocoder.py:rodar",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "geocoder.py:rodar",
+      "target": "error",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "geocoder.py:rodar",
+      "target": "sleep",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "geocoder.py:rodar",
+      "target": "_salvar_coordenadas",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "geocoder.py:rodar",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "geocoder.py",
+      "target": "re",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "geocoder.py",
+      "target": "psycopg2",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "gmail_client.py",
+      "target": "base64",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "gmail_client.py",
+      "target": "os",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "gmail_client.py",
+      "target": "pickle",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "gmail_client.py",
+      "target": "re",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "gmail_client.py",
+      "target": "logging",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "gmail_client.py",
+      "target": "gmail_client.py:_autenticar",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "gmail_client.py:_autenticar",
+      "target": "exists",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "gmail_client.py:_autenticar",
+      "target": "open",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "gmail_client.py:_autenticar",
+      "target": "load",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "gmail_client.py:_autenticar",
+      "target": "error",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "gmail_client.py:_autenticar",
+      "target": "refresh",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "gmail_client.py:_autenticar",
+      "target": "Request",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "gmail_client.py:_autenticar",
+      "target": "error",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "gmail_client.py:_autenticar",
+      "target": "exists",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "gmail_client.py:_autenticar",
+      "target": "from_client_secrets_file",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "gmail_client.py:_autenticar",
+      "target": "run_local_server",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "gmail_client.py:_autenticar",
+      "target": "error",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "gmail_client.py:_autenticar",
+      "target": "open",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "gmail_client.py:_autenticar",
+      "target": "dump",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "gmail_client.py",
+      "target": "gmail_client.py:_get_service",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "gmail_client.py:_get_service",
+      "target": "_autenticar",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "gmail_client.py:_get_service",
+      "target": "build",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "gmail_client.py",
+      "target": "gmail_client.py:_extrair_corpo",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "gmail_client.py:_extrair_corpo",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "gmail_client.py:_extrair_corpo",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "gmail_client.py:_extrair_corpo",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "gmail_client.py:_extrair_corpo",
+      "target": "decode",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "gmail_client.py:_extrair_corpo",
+      "target": "urlsafe_b64decode",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "gmail_client.py:_extrair_corpo",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "gmail_client.py:_extrair_corpo",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "gmail_client.py:_extrair_corpo",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "gmail_client.py:_extrair_corpo",
+      "target": "decode",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "gmail_client.py:_extrair_corpo",
+      "target": "urlsafe_b64decode",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "gmail_client.py",
+      "target": "gmail_client.py:_sanitizar_corpo",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "gmail_client.py:_sanitizar_corpo",
+      "target": "strip",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "gmail_client.py:_sanitizar_corpo",
+      "target": "sub",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "gmail_client.py",
+      "target": "gmail_client.py:buscar_emails",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "gmail_client.py:buscar_emails",
+      "target": "_get_service",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "gmail_client.py:buscar_emails",
+      "target": "warning",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "gmail_client.py:buscar_emails",
+      "target": "execute",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "gmail_client.py:buscar_emails",
+      "target": "list",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "gmail_client.py:buscar_emails",
+      "target": "messages",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "gmail_client.py:buscar_emails",
+      "target": "users",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "gmail_client.py:buscar_emails",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "gmail_client.py:buscar_emails",
+      "target": "execute",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "gmail_client.py:buscar_emails",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "gmail_client.py:buscar_emails",
+      "target": "messages",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "gmail_client.py:buscar_emails",
+      "target": "users",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "gmail_client.py:buscar_emails",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "gmail_client.py:buscar_emails",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "gmail_client.py:buscar_emails",
+      "target": "_extrair_corpo",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "gmail_client.py:buscar_emails",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "gmail_client.py:buscar_emails",
+      "target": "_sanitizar_corpo",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "gmail_client.py:buscar_emails",
+      "target": "append",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "gmail_client.py:buscar_emails",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "gmail_client.py:buscar_emails",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "gmail_client.py:buscar_emails",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "gmail_client.py:buscar_emails",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "gmail_client.py:buscar_emails",
+      "target": "error",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "gmail_client.py",
+      "target": "gmail_client.py:verificar_respostas",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "gmail_client.py:verificar_respostas",
+      "target": "buscar_emails",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "gmail_client.py",
+      "target": "gmail_client.py:contar_respostas",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "gmail_client.py:contar_respostas",
+      "target": "verificar_respostas",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "gmail_client.py:contar_respostas",
+      "target": "len",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "gmail_client.py",
+      "target": "google.auth.transport.requests",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "gmail_client.py",
+      "target": "google.oauth2.credentials",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "gmail_client.py",
+      "target": "google_auth_oauthlib.flow",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "gmail_client.py",
+      "target": "googleapiclient.discovery",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "gmail_client.py",
+      "target": "googleapiclient.errors",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "daemon_smtp_local.py",
+      "target": "os",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "daemon_smtp_local.py",
+      "target": "time",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "daemon_smtp_local.py",
+      "target": "logging",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "daemon_smtp_local.py",
+      "target": "smtplib",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "daemon_smtp_local.py",
+      "target": "datetime",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "daemon_smtp_local.py",
+      "target": "email.mime.text",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "daemon_smtp_local.py",
+      "target": "email.mime.multipart",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "daemon_smtp_local.py",
+      "target": "dotenv",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "daemon_smtp_local.py",
+      "target": "daemon_smtp_local.py:_formatar_avaliacao",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "daemon_smtp_local.py:_formatar_avaliacao",
+      "target": "float",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "daemon_smtp_local.py:_formatar_avaliacao",
+      "target": "str",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "daemon_smtp_local.py",
+      "target": "daemon_smtp_local.py:_enviar_email",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "daemon_smtp_local.py:_enviar_email",
+      "target": "all",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "daemon_smtp_local.py:_enviar_email",
+      "target": "error",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "daemon_smtp_local.py:_enviar_email",
+      "target": "MIMEMultipart",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "daemon_smtp_local.py:_enviar_email",
+      "target": "attach",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "daemon_smtp_local.py:_enviar_email",
+      "target": "MIMEText",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "daemon_smtp_local.py:_enviar_email",
+      "target": "attach",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "daemon_smtp_local.py:_enviar_email",
+      "target": "MIMEText",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "daemon_smtp_local.py:_enviar_email",
+      "target": "SMTP_SSL",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "daemon_smtp_local.py:_enviar_email",
+      "target": "SMTP",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "daemon_smtp_local.py:_enviar_email",
+      "target": "ehlo",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "daemon_smtp_local.py:_enviar_email",
+      "target": "starttls",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "daemon_smtp_local.py:_enviar_email",
+      "target": "ehlo",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "daemon_smtp_local.py:_enviar_email",
+      "target": "login",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "daemon_smtp_local.py:_enviar_email",
+      "target": "send_message",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "daemon_smtp_local.py:_enviar_email",
+      "target": "quit",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "daemon_smtp_local.py:_enviar_email",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "daemon_smtp_local.py:_enviar_email",
+      "target": "error",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "daemon_smtp_local.py:_enviar_email",
+      "target": "warning",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "daemon_smtp_local.py:_enviar_email",
+      "target": "error",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "daemon_smtp_local.py",
+      "target": "daemon_smtp_local.py:_processar_ciclo",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "daemon_smtp_local.py:_processar_ciclo",
+      "target": "error",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "daemon_smtp_local.py:_processar_ciclo",
+      "target": "execute",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "daemon_smtp_local.py:_processar_ciclo",
+      "target": "limit",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "daemon_smtp_local.py:_processar_ciclo",
+      "target": "is_",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "daemon_smtp_local.py:_processar_ciclo",
+      "target": "eq",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "daemon_smtp_local.py:_processar_ciclo",
+      "target": "select",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "daemon_smtp_local.py:_processar_ciclo",
+      "target": "table",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "daemon_smtp_local.py:_processar_ciclo",
+      "target": "error",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "daemon_smtp_local.py:_processar_ciclo",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "daemon_smtp_local.py:_processar_ciclo",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "daemon_smtp_local.py:_processar_ciclo",
+      "target": "_formatar_avaliacao",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "daemon_smtp_local.py:_processar_ciclo",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "daemon_smtp_local.py:_processar_ciclo",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "daemon_smtp_local.py:_processar_ciclo",
+      "target": "warning",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "daemon_smtp_local.py:_processar_ciclo",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "daemon_smtp_local.py:_processar_ciclo",
+      "target": "format",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "daemon_smtp_local.py:_processar_ciclo",
+      "target": "format",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "daemon_smtp_local.py:_processar_ciclo",
+      "target": "_enviar_email",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "daemon_smtp_local.py:_processar_ciclo",
+      "target": "isoformat",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "daemon_smtp_local.py:_processar_ciclo",
+      "target": "utcnow",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "daemon_smtp_local.py:_processar_ciclo",
+      "target": "execute",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "daemon_smtp_local.py:_processar_ciclo",
+      "target": "eq",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "daemon_smtp_local.py:_processar_ciclo",
+      "target": "update",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "daemon_smtp_local.py:_processar_ciclo",
+      "target": "table",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "daemon_smtp_local.py:_processar_ciclo",
+      "target": "execute",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "daemon_smtp_local.py:_processar_ciclo",
+      "target": "insert",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "daemon_smtp_local.py:_processar_ciclo",
+      "target": "table",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "daemon_smtp_local.py:_processar_ciclo",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "daemon_smtp_local.py:_processar_ciclo",
+      "target": "error",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "daemon_smtp_local.py:_processar_ciclo",
+      "target": "exception",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "daemon_smtp_local.py:_processar_ciclo",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "daemon_smtp_local.py",
+      "target": "daemon_smtp_local.py:main",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "daemon_smtp_local.py:main",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "daemon_smtp_local.py:main",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "daemon_smtp_local.py:main",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "daemon_smtp_local.py:main",
+      "target": "_processar_ciclo",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "daemon_smtp_local.py:main",
+      "target": "exception",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "daemon_smtp_local.py:main",
+      "target": "sleep",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "daemon_smtp_local.py",
+      "target": "supabase_client",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "agente_leitor_neural.py",
+      "target": "json",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "agente_leitor_neural.py",
+      "target": "logging",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "agente_leitor_neural.py",
+      "target": "os",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "agente_leitor_neural.py",
+      "target": "re",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "agente_leitor_neural.py",
+      "target": "time",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "agente_leitor_neural.py",
+      "target": "datetime",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "agente_leitor_neural.py",
+      "target": "typing",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "agente_leitor_neural.py",
+      "target": "requests",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "agente_leitor_neural.py",
+      "target": "supabase_client",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "agente_leitor_neural.py",
+      "target": "gmail_client",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "agente_leitor_neural.py",
+      "target": "agente_leitor_neural.py:_extrair_email",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "agente_leitor_neural.py:_extrair_email",
+      "target": "search",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_leitor_neural.py:_extrair_email",
+      "target": "lower",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_leitor_neural.py:_extrair_email",
+      "target": "group",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_leitor_neural.py",
+      "target": "agente_leitor_neural.py:_classificar_com_nvidia",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "agente_leitor_neural.py:_classificar_com_nvidia",
+      "target": "warning",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_leitor_neural.py:_classificar_com_nvidia",
+      "target": "post",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_leitor_neural.py:_classificar_com_nvidia",
+      "target": "error",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_leitor_neural.py:_classificar_com_nvidia",
+      "target": "json",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_leitor_neural.py:_classificar_com_nvidia",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_leitor_neural.py:_classificar_com_nvidia",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_leitor_neural.py:_classificar_com_nvidia",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_leitor_neural.py:_classificar_com_nvidia",
+      "target": "strip",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_leitor_neural.py:_classificar_com_nvidia",
+      "target": "startswith",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_leitor_neural.py:_classificar_com_nvidia",
+      "target": "sub",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_leitor_neural.py:_classificar_com_nvidia",
+      "target": "replace",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_leitor_neural.py:_classificar_com_nvidia",
+      "target": "loads",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_leitor_neural.py:_classificar_com_nvidia",
+      "target": "search",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_leitor_neural.py:_classificar_com_nvidia",
+      "target": "loads",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_leitor_neural.py:_classificar_com_nvidia",
+      "target": "group",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_leitor_neural.py:_classificar_com_nvidia",
+      "target": "warning",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_leitor_neural.py:_classificar_com_nvidia",
+      "target": "warning",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_leitor_neural.py:_classificar_com_nvidia",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_leitor_neural.py:_classificar_com_nvidia",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_leitor_neural.py:_classificar_com_nvidia",
+      "target": "float",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_leitor_neural.py:_classificar_com_nvidia",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_leitor_neural.py:_classificar_com_nvidia",
+      "target": "isinstance",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_leitor_neural.py:_classificar_com_nvidia",
+      "target": "str",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_leitor_neural.py:_classificar_com_nvidia",
+      "target": "warning",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_leitor_neural.py:_classificar_com_nvidia",
+      "target": "error",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_leitor_neural.py",
+      "target": "agente_leitor_neural.py:_emparelhar_clinica",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "agente_leitor_neural.py:_emparelhar_clinica",
+      "target": "execute",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_leitor_neural.py:_emparelhar_clinica",
+      "target": "limit",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_leitor_neural.py:_emparelhar_clinica",
+      "target": "eq",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_leitor_neural.py:_emparelhar_clinica",
+      "target": "eq",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_leitor_neural.py:_emparelhar_clinica",
+      "target": "select",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_leitor_neural.py:_emparelhar_clinica",
+      "target": "table",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_leitor_neural.py:_emparelhar_clinica",
+      "target": "len",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_leitor_neural.py:_emparelhar_clinica",
+      "target": "error",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_leitor_neural.py",
+      "target": "agente_leitor_neural.py:_atualizar_status",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "agente_leitor_neural.py:_atualizar_status",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_leitor_neural.py:_atualizar_status",
+      "target": "execute",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_leitor_neural.py:_atualizar_status",
+      "target": "eq",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_leitor_neural.py:_atualizar_status",
+      "target": "update",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_leitor_neural.py:_atualizar_status",
+      "target": "table",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_leitor_neural.py:_atualizar_status",
+      "target": "isoformat",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_leitor_neural.py:_atualizar_status",
+      "target": "now",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_leitor_neural.py:_atualizar_status",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_leitor_neural.py:_atualizar_status",
+      "target": "execute",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_leitor_neural.py:_atualizar_status",
+      "target": "eq",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_leitor_neural.py:_atualizar_status",
+      "target": "update",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_leitor_neural.py:_atualizar_status",
+      "target": "table",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_leitor_neural.py:_atualizar_status",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_leitor_neural.py:_atualizar_status",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_leitor_neural.py:_atualizar_status",
+      "target": "error",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_leitor_neural.py",
+      "target": "agente_leitor_neural.py:rodar",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "agente_leitor_neural.py:rodar",
+      "target": "now",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_leitor_neural.py:rodar",
+      "target": "error",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_leitor_neural.py:rodar",
+      "target": "buscar_emails",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_leitor_neural.py:rodar",
+      "target": "error",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_leitor_neural.py:rodar",
+      "target": "str",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_leitor_neural.py:rodar",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_leitor_neural.py:rodar",
+      "target": "isoformat",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_leitor_neural.py:rodar",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_leitor_neural.py:rodar",
+      "target": "len",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_leitor_neural.py:rodar",
+      "target": "_extrair_email",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_leitor_neural.py:rodar",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_leitor_neural.py:rodar",
+      "target": "_extrair_email",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_leitor_neural.py:rodar",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_leitor_neural.py:rodar",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_leitor_neural.py:rodar",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_leitor_neural.py:rodar",
+      "target": "debug",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_leitor_neural.py:rodar",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_leitor_neural.py:rodar",
+      "target": "_emparelhar_clinica",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_leitor_neural.py:rodar",
+      "target": "debug",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_leitor_neural.py:rodar",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_leitor_neural.py:rodar",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_leitor_neural.py:rodar",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_leitor_neural.py:rodar",
+      "target": "_classificar_com_nvidia",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_leitor_neural.py:rodar",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_leitor_neural.py:rodar",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_leitor_neural.py:rodar",
+      "target": "_atualizar_status",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_leitor_neural.py:rodar",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_leitor_neural.py:rodar",
+      "target": "exception",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_leitor_neural.py:rodar",
+      "target": "append",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_leitor_neural.py:rodar",
+      "target": "round",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_leitor_neural.py:rodar",
+      "target": "total_seconds",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_leitor_neural.py:rodar",
+      "target": "now",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_leitor_neural.py:rodar",
+      "target": "info",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_leitor_neural.py:rodar",
+      "target": "len",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "agente_leitor_neural.py:rodar",
+      "target": "isoformat",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
       "source": "windows_worker/scraper_local.py",
       "target": "os",
       "type": "imports",
@@ -4624,7 +9562,7 @@
     },
     {
       "source": "windows_worker/scraper_local.py",
-      "target": "dotenv",
+      "target": "supabase_client",
       "type": "imports",
       "relation": "imports"
     },
@@ -4798,6 +9736,12 @@
     },
     {
       "source": "windows_worker/scraper_local.py:GoogleMapsScraper._scroll_feed",
+      "target": "dir",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._scroll_feed",
       "target": "min",
       "type": "calls",
       "relation": "calls"
@@ -4949,6 +9893,30 @@
     {
       "source": "windows_worker/scraper_local.py:GoogleMapsScraper._extrair_listings",
       "target": "_extrair_dados_card",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._extrair_listings",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._extrair_listings",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._extrair_listings",
+      "target": "strip",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:GoogleMapsScraper._extrair_listings",
+      "target": "lower",
       "type": "calls",
       "relation": "calls"
     },
@@ -5530,12 +10498,6 @@
     },
     {
       "source": "windows_worker/scraper_local.py",
-      "target": "supabase",
-      "type": "imports",
-      "relation": "imports"
-    },
-    {
-      "source": "windows_worker/scraper_local.py",
       "target": "windows_worker/scraper_local.py:__init__",
       "type": "contains",
       "relation": "contains"
@@ -5698,6 +10660,12 @@
     },
     {
       "source": "windows_worker/scraper_local.py:_scroll_feed",
+      "target": "dir",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_scroll_feed",
       "target": "min",
       "type": "calls",
       "relation": "calls"
@@ -5849,6 +10817,30 @@
     {
       "source": "windows_worker/scraper_local.py:_extrair_listings",
       "target": "_extrair_dados_card",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_extrair_listings",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_extrair_listings",
+      "target": "get",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_extrair_listings",
+      "target": "strip",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "windows_worker/scraper_local.py:_extrair_listings",
+      "target": "lower",
       "type": "calls",
       "relation": "calls"
     },
@@ -6346,6 +11338,18 @@
     },
     {
       "source": "windows_worker/geocoder.py",
+      "target": "os",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "windows_worker/geocoder.py",
+      "target": "sys",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "windows_worker/geocoder.py",
       "target": "time",
       "type": "imports",
       "relation": "imports"
@@ -6661,10 +11665,1198 @@
       "target": "len",
       "type": "calls",
       "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py",
+      "target": "os",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "tests/test_leitor_neural.py",
+      "target": "sys",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "tests/test_leitor_neural.py",
+      "target": "unittest",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "tests/test_leitor_neural.py",
+      "target": "unittest.mock",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "tests/test_leitor_neural.py",
+      "target": "gmail_client",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "tests/test_leitor_neural.py",
+      "target": "agente_leitor_neural",
+      "type": "imports",
+      "relation": "imports"
+    },
+    {
+      "source": "tests/test_leitor_neural.py",
+      "target": "tests/test_leitor_neural.py:TestGmailClient",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestGmailClient",
+      "target": "tests/test_leitor_neural.py:TestGmailClient.test_buscar_emails_retorna_corpo",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestGmailClient.test_buscar_emails_retorna_corpo",
+      "target": "MagicMock",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestGmailClient.test_buscar_emails_retorna_corpo",
+      "target": "MagicMock",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestGmailClient.test_buscar_emails_retorna_corpo",
+      "target": "messages",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestGmailClient.test_buscar_emails_retorna_corpo",
+      "target": "users",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestGmailClient.test_buscar_emails_retorna_corpo",
+      "target": "MagicMock",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestGmailClient.test_buscar_emails_retorna_corpo",
+      "target": "messages",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestGmailClient.test_buscar_emails_retorna_corpo",
+      "target": "users",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestGmailClient.test_buscar_emails_retorna_corpo",
+      "target": "MagicMock",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestGmailClient.test_buscar_emails_retorna_corpo",
+      "target": "buscar_emails",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestGmailClient.test_buscar_emails_retorna_corpo",
+      "target": "assertEqual",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestGmailClient.test_buscar_emails_retorna_corpo",
+      "target": "len",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestGmailClient.test_buscar_emails_retorna_corpo",
+      "target": "assertIn",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestGmailClient.test_buscar_emails_retorna_corpo",
+      "target": "assertTrue",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestGmailClient.test_buscar_emails_retorna_corpo",
+      "target": "len",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestGmailClient.test_buscar_emails_retorna_corpo",
+      "target": "assertLessEqual",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestGmailClient.test_buscar_emails_retorna_corpo",
+      "target": "len",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py",
+      "target": "tests/test_leitor_neural.py:TestGmailClientSanitize",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestGmailClientSanitize",
+      "target": "tests/test_leitor_neural.py:TestGmailClientSanitize.test_sanitizar_colapsa_espacos",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestGmailClientSanitize.test_sanitizar_colapsa_espacos",
+      "target": "_sanitizar_corpo",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestGmailClientSanitize.test_sanitizar_colapsa_espacos",
+      "target": "assertNotIn",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestGmailClientSanitize.test_sanitizar_colapsa_espacos",
+      "target": "assertNotIn",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestGmailClientSanitize.test_sanitizar_colapsa_espacos",
+      "target": "assertNotIn",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestGmailClientSanitize",
+      "target": "tests/test_leitor_neural.py:TestGmailClientSanitize.test_sanitizar_trunca_400",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestGmailClientSanitize.test_sanitizar_trunca_400",
+      "target": "_sanitizar_corpo",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestGmailClientSanitize.test_sanitizar_trunca_400",
+      "target": "assertEqual",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestGmailClientSanitize.test_sanitizar_trunca_400",
+      "target": "len",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestGmailClientSanitize",
+      "target": "tests/test_leitor_neural.py:TestGmailClientSanitize.test_sanitizar_vazio",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestGmailClientSanitize.test_sanitizar_vazio",
+      "target": "assertEqual",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestGmailClientSanitize.test_sanitizar_vazio",
+      "target": "_sanitizar_corpo",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestGmailClientSanitize.test_sanitizar_vazio",
+      "target": "assertEqual",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestGmailClientSanitize.test_sanitizar_vazio",
+      "target": "_sanitizar_corpo",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py",
+      "target": "tests/test_leitor_neural.py:TestLeitorNeural",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestLeitorNeural",
+      "target": "tests/test_leitor_neural.py:TestLeitorNeural.test_classificar_interesse",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestLeitorNeural.test_classificar_interesse",
+      "target": "object",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestLeitorNeural.test_classificar_interesse",
+      "target": "MagicMock",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestLeitorNeural.test_classificar_interesse",
+      "target": "_classificar_com_nvidia",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestLeitorNeural.test_classificar_interesse",
+      "target": "assertEqual",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestLeitorNeural.test_classificar_interesse",
+      "target": "assertGreater",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestLeitorNeural.test_classificar_interesse",
+      "target": "assertIn",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestLeitorNeural",
+      "target": "tests/test_leitor_neural.py:TestLeitorNeural.test_classificar_recusou",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestLeitorNeural.test_classificar_recusou",
+      "target": "object",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestLeitorNeural.test_classificar_recusou",
+      "target": "MagicMock",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestLeitorNeural.test_classificar_recusou",
+      "target": "_classificar_com_nvidia",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestLeitorNeural.test_classificar_recusou",
+      "target": "assertEqual",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestLeitorNeural",
+      "target": "tests/test_leitor_neural.py:TestLeitorNeural.test_classificar_automatico",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestLeitorNeural.test_classificar_automatico",
+      "target": "object",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestLeitorNeural.test_classificar_automatico",
+      "target": "MagicMock",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestLeitorNeural.test_classificar_automatico",
+      "target": "_classificar_com_nvidia",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestLeitorNeural.test_classificar_automatico",
+      "target": "assertEqual",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestLeitorNeural",
+      "target": "tests/test_leitor_neural.py:TestLeitorNeural.test_classificar_fallback_json_nao_parseavel",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestLeitorNeural.test_classificar_fallback_json_nao_parseavel",
+      "target": "object",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestLeitorNeural.test_classificar_fallback_json_nao_parseavel",
+      "target": "MagicMock",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestLeitorNeural.test_classificar_fallback_json_nao_parseavel",
+      "target": "_classificar_com_nvidia",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestLeitorNeural.test_classificar_fallback_json_nao_parseavel",
+      "target": "assertEqual",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestLeitorNeural",
+      "target": "tests/test_leitor_neural.py:TestLeitorNeural.test_classificar_sem_key",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestLeitorNeural.test_classificar_sem_key",
+      "target": "object",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestLeitorNeural.test_classificar_sem_key",
+      "target": "_classificar_com_nvidia",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestLeitorNeural.test_classificar_sem_key",
+      "target": "assertEqual",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestLeitorNeural.test_classificar_sem_key",
+      "target": "assertEqual",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestLeitorNeural",
+      "target": "tests/test_leitor_neural.py:TestLeitorNeural.test_classificar_timeout",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestLeitorNeural.test_classificar_timeout",
+      "target": "object",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestLeitorNeural.test_classificar_timeout",
+      "target": "Timeout",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestLeitorNeural.test_classificar_timeout",
+      "target": "_classificar_com_nvidia",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestLeitorNeural.test_classificar_timeout",
+      "target": "assertEqual",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestLeitorNeural.test_classificar_timeout",
+      "target": "assertEqual",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestLeitorNeural",
+      "target": "tests/test_leitor_neural.py:TestLeitorNeural.test_classificar_status_nao_200",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestLeitorNeural.test_classificar_status_nao_200",
+      "target": "object",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestLeitorNeural.test_classificar_status_nao_200",
+      "target": "MagicMock",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestLeitorNeural.test_classificar_status_nao_200",
+      "target": "ValueError",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestLeitorNeural.test_classificar_status_nao_200",
+      "target": "_classificar_com_nvidia",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestLeitorNeural.test_classificar_status_nao_200",
+      "target": "assertEqual",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestLeitorNeural",
+      "target": "tests/test_leitor_neural.py:TestLeitorNeural.test_extrair_email_valido",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestLeitorNeural.test_extrair_email_valido",
+      "target": "assertEqual",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestLeitorNeural.test_extrair_email_valido",
+      "target": "_extrair_email",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestLeitorNeural.test_extrair_email_valido",
+      "target": "assertEqual",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestLeitorNeural.test_extrair_email_valido",
+      "target": "_extrair_email",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py",
+      "target": "tests/test_leitor_neural.py:TestLeitorNeuralIntegracao",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestLeitorNeuralIntegracao",
+      "target": "tests/test_leitor_neural.py:TestLeitorNeuralIntegracao.test_rodar_fluxo_completo",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestLeitorNeuralIntegracao.test_rodar_fluxo_completo",
+      "target": "object",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestLeitorNeuralIntegracao.test_rodar_fluxo_completo",
+      "target": "object",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestLeitorNeuralIntegracao.test_rodar_fluxo_completo",
+      "target": "object",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestLeitorNeuralIntegracao.test_rodar_fluxo_completo",
+      "target": "MagicMock",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestLeitorNeuralIntegracao.test_rodar_fluxo_completo",
+      "target": "MagicMock",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestLeitorNeuralIntegracao.test_rodar_fluxo_completo",
+      "target": "limit",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestLeitorNeuralIntegracao.test_rodar_fluxo_completo",
+      "target": "eq",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestLeitorNeuralIntegracao.test_rodar_fluxo_completo",
+      "target": "eq",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestLeitorNeuralIntegracao.test_rodar_fluxo_completo",
+      "target": "select",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestLeitorNeuralIntegracao.test_rodar_fluxo_completo",
+      "target": "table",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestLeitorNeuralIntegracao.test_rodar_fluxo_completo",
+      "target": "rodar",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestLeitorNeuralIntegracao.test_rodar_fluxo_completo",
+      "target": "assertTrue",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestLeitorNeuralIntegracao.test_rodar_fluxo_completo",
+      "target": "assertEqual",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestLeitorNeuralIntegracao.test_rodar_fluxo_completo",
+      "target": "assertEqual",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestLeitorNeuralIntegracao.test_rodar_fluxo_completo",
+      "target": "assert_called",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestLeitorNeuralIntegracao.test_rodar_fluxo_completo",
+      "target": "eq",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestLeitorNeuralIntegracao.test_rodar_fluxo_completo",
+      "target": "update",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:TestLeitorNeuralIntegracao.test_rodar_fluxo_completo",
+      "target": "table",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py",
+      "target": "tests/test_leitor_neural.py:test_buscar_emails_retorna_corpo",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:test_buscar_emails_retorna_corpo",
+      "target": "MagicMock",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:test_buscar_emails_retorna_corpo",
+      "target": "MagicMock",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:test_buscar_emails_retorna_corpo",
+      "target": "messages",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:test_buscar_emails_retorna_corpo",
+      "target": "users",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:test_buscar_emails_retorna_corpo",
+      "target": "MagicMock",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:test_buscar_emails_retorna_corpo",
+      "target": "messages",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:test_buscar_emails_retorna_corpo",
+      "target": "users",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:test_buscar_emails_retorna_corpo",
+      "target": "MagicMock",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:test_buscar_emails_retorna_corpo",
+      "target": "buscar_emails",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:test_buscar_emails_retorna_corpo",
+      "target": "assertEqual",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:test_buscar_emails_retorna_corpo",
+      "target": "len",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:test_buscar_emails_retorna_corpo",
+      "target": "assertIn",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:test_buscar_emails_retorna_corpo",
+      "target": "assertTrue",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:test_buscar_emails_retorna_corpo",
+      "target": "len",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:test_buscar_emails_retorna_corpo",
+      "target": "assertLessEqual",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:test_buscar_emails_retorna_corpo",
+      "target": "len",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py",
+      "target": "tests/test_leitor_neural.py:test_sanitizar_colapsa_espacos",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:test_sanitizar_colapsa_espacos",
+      "target": "_sanitizar_corpo",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:test_sanitizar_colapsa_espacos",
+      "target": "assertNotIn",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:test_sanitizar_colapsa_espacos",
+      "target": "assertNotIn",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:test_sanitizar_colapsa_espacos",
+      "target": "assertNotIn",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py",
+      "target": "tests/test_leitor_neural.py:test_sanitizar_trunca_400",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:test_sanitizar_trunca_400",
+      "target": "_sanitizar_corpo",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:test_sanitizar_trunca_400",
+      "target": "assertEqual",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:test_sanitizar_trunca_400",
+      "target": "len",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py",
+      "target": "tests/test_leitor_neural.py:test_sanitizar_vazio",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:test_sanitizar_vazio",
+      "target": "assertEqual",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:test_sanitizar_vazio",
+      "target": "_sanitizar_corpo",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:test_sanitizar_vazio",
+      "target": "assertEqual",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:test_sanitizar_vazio",
+      "target": "_sanitizar_corpo",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py",
+      "target": "tests/test_leitor_neural.py:test_classificar_interesse",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:test_classificar_interesse",
+      "target": "object",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:test_classificar_interesse",
+      "target": "MagicMock",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:test_classificar_interesse",
+      "target": "_classificar_com_nvidia",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:test_classificar_interesse",
+      "target": "assertEqual",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:test_classificar_interesse",
+      "target": "assertGreater",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:test_classificar_interesse",
+      "target": "assertIn",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py",
+      "target": "tests/test_leitor_neural.py:test_classificar_recusou",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:test_classificar_recusou",
+      "target": "object",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:test_classificar_recusou",
+      "target": "MagicMock",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:test_classificar_recusou",
+      "target": "_classificar_com_nvidia",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:test_classificar_recusou",
+      "target": "assertEqual",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py",
+      "target": "tests/test_leitor_neural.py:test_classificar_automatico",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:test_classificar_automatico",
+      "target": "object",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:test_classificar_automatico",
+      "target": "MagicMock",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:test_classificar_automatico",
+      "target": "_classificar_com_nvidia",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:test_classificar_automatico",
+      "target": "assertEqual",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py",
+      "target": "tests/test_leitor_neural.py:test_classificar_fallback_json_nao_parseavel",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:test_classificar_fallback_json_nao_parseavel",
+      "target": "object",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:test_classificar_fallback_json_nao_parseavel",
+      "target": "MagicMock",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:test_classificar_fallback_json_nao_parseavel",
+      "target": "_classificar_com_nvidia",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:test_classificar_fallback_json_nao_parseavel",
+      "target": "assertEqual",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py",
+      "target": "tests/test_leitor_neural.py:test_classificar_sem_key",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:test_classificar_sem_key",
+      "target": "object",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:test_classificar_sem_key",
+      "target": "_classificar_com_nvidia",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:test_classificar_sem_key",
+      "target": "assertEqual",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:test_classificar_sem_key",
+      "target": "assertEqual",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py",
+      "target": "tests/test_leitor_neural.py:test_classificar_timeout",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:test_classificar_timeout",
+      "target": "object",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:test_classificar_timeout",
+      "target": "Timeout",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:test_classificar_timeout",
+      "target": "_classificar_com_nvidia",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:test_classificar_timeout",
+      "target": "assertEqual",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:test_classificar_timeout",
+      "target": "assertEqual",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py",
+      "target": "tests/test_leitor_neural.py:test_classificar_status_nao_200",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:test_classificar_status_nao_200",
+      "target": "object",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:test_classificar_status_nao_200",
+      "target": "MagicMock",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:test_classificar_status_nao_200",
+      "target": "ValueError",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:test_classificar_status_nao_200",
+      "target": "_classificar_com_nvidia",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:test_classificar_status_nao_200",
+      "target": "assertEqual",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py",
+      "target": "tests/test_leitor_neural.py:test_extrair_email_valido",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:test_extrair_email_valido",
+      "target": "assertEqual",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:test_extrair_email_valido",
+      "target": "_extrair_email",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:test_extrair_email_valido",
+      "target": "assertEqual",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:test_extrair_email_valido",
+      "target": "_extrair_email",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py",
+      "target": "tests/test_leitor_neural.py:test_rodar_fluxo_completo",
+      "type": "contains",
+      "relation": "contains"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:test_rodar_fluxo_completo",
+      "target": "object",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:test_rodar_fluxo_completo",
+      "target": "object",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:test_rodar_fluxo_completo",
+      "target": "object",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:test_rodar_fluxo_completo",
+      "target": "MagicMock",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:test_rodar_fluxo_completo",
+      "target": "MagicMock",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:test_rodar_fluxo_completo",
+      "target": "limit",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:test_rodar_fluxo_completo",
+      "target": "eq",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:test_rodar_fluxo_completo",
+      "target": "eq",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:test_rodar_fluxo_completo",
+      "target": "select",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:test_rodar_fluxo_completo",
+      "target": "table",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:test_rodar_fluxo_completo",
+      "target": "rodar",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:test_rodar_fluxo_completo",
+      "target": "assertTrue",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:test_rodar_fluxo_completo",
+      "target": "assertEqual",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:test_rodar_fluxo_completo",
+      "target": "assertEqual",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:test_rodar_fluxo_completo",
+      "target": "assert_called",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:test_rodar_fluxo_completo",
+      "target": "eq",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:test_rodar_fluxo_completo",
+      "target": "update",
+      "type": "calls",
+      "relation": "calls"
+    },
+    {
+      "source": "tests/test_leitor_neural.py:test_rodar_fluxo_completo",
+      "target": "table",
+      "type": "calls",
+      "relation": "calls"
     }
   ],
   "metadata": {
-    "timestamp": "2026-05-21T22:25:03.266972",
+    "timestamp": "2026-05-23T09:09:19.669435",
     "repo": "/root/meu-backend"
   }
 }

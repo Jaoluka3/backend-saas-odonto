@@ -1,5 +1,7 @@
+import base64
 import os
 import pickle
+import re
 import logging
 
 logger = logging.getLogger(__name__)
@@ -61,6 +63,35 @@ def _get_service():
     return build("gmail", "v1", credentials=creds)
 
 
+def _extrair_corpo(payload: dict) -> str:
+    corpo = ""
+    if "parts" in payload:
+        for part in payload["parts"]:
+            if part.get("mimeType") == "text/plain":
+                body_data = part.get("body", {}).get("data", "")
+                if body_data:
+                    try:
+                        corpo = base64.urlsafe_b64decode(body_data).decode("utf-8", errors="ignore")
+                    except Exception:
+                        corpo = ""
+                break
+    elif payload.get("mimeType") == "text/plain":
+        body_data = payload.get("body", {}).get("data", "")
+        if body_data:
+            try:
+                corpo = base64.urlsafe_b64decode(body_data).decode("utf-8", errors="ignore")
+            except Exception:
+                corpo = ""
+    return corpo
+
+
+def _sanitizar_corpo(texto: str, max_chars: int = 400) -> str:
+    if not texto:
+        return ""
+    texto = re.sub(r"\s+", " ", texto).strip()
+    return texto[:max_chars]
+
+
 def buscar_emails(query: str = "", max_results: int = 10) -> list:
     if not GOOGLE_AVAILABLE:
         return []
@@ -82,16 +113,19 @@ def buscar_emails(query: str = "", max_results: int = 10) -> list:
             detalhe = (
                 service.users()
                 .messages()
-                .get(userId="me", id=msg["id"], format="metadata")
+                .get(userId="me", id=msg["id"], format="full")
                 .execute()
             )
             headers = {h["name"]: h["value"] for h in detalhe.get("payload", {}).get("headers", [])}
+            corpo_bruto = _extrair_corpo(detalhe.get("payload", {}))
+            corpo = _sanitizar_corpo(corpo_bruto)
             emails.append({
                 "id": msg["id"],
                 "remetente": headers.get("From", ""),
                 "destinatario": headers.get("To", ""),
                 "assunto": headers.get("Subject", ""),
                 "data": headers.get("Date", ""),
+                "corpo": corpo,
             })
         return emails
     except Exception as e:

@@ -9,8 +9,8 @@ import schedule
 import agente_buscador
 import agente_qualificador
 import agente_email_resolver
-import agente_contato
 import agente_followup
+import agente_leitor_neural
 import geocoder
 
 logger = logging.getLogger(__name__)
@@ -59,9 +59,6 @@ def rodar_pipeline(run_id: Optional[str] = None) -> dict:
         r_emails = agente_email_resolver.rodar()
 
         _verificar_timeout()
-        r_contato = agente_contato.rodar()
-
-        _verificar_timeout()
         r_follow = agente_followup.rodar()
 
         duracao = int((datetime.now() - inicio).total_seconds())
@@ -72,7 +69,7 @@ def rodar_pipeline(run_id: Optional[str] = None) -> dict:
             "buscador": {"inseridas": r_busca},
             "qualificador": r_qualif,
             "email_resolver": r_emails,
-            "contato": {"contactadas": r_contato},
+            "contato": "Delegado ao Daemon Local",
             "followup": r_follow,
         }
 
@@ -83,7 +80,6 @@ def rodar_pipeline(run_id: Optional[str] = None) -> dict:
         logger.info("Emails resolvidos: %d", r_emails.get("resolvidos", 0))
         logger.info("Sem website: %d", r_emails.get("sem_website", 0))
         logger.info("Nao encontrados: %d", r_emails.get("nao_encontrados", 0))
-        logger.info("Contactadas: %d", r_contato)
         logger.info("Followups: %d", r_follow.get("followups_enviados", 0))
         logger.info("Inativados: %d", r_follow.get("inativados", 0))
         logger.info("Duracao: %ds", duracao)
@@ -161,6 +157,16 @@ def _rodar_pipeline_agendada():
         logger.error("Pipeline agendada falhou: %s", resultado)
 
 
+def _rodar_leitor_agendado():
+    """Wrapper para o scheduler executar o leitor neural."""
+    logger.info("Disparo agendado do leitor neural")
+    try:
+        resultado = agente_leitor_neural.rodar()
+        logger.info("Leitor neural agendado concluido: %s", resultado)
+    except Exception as e:
+        logger.error("Leitor neural agendado falhou: %s", e)
+
+
 def _loop_agendador():
     """Loop do scheduler que roda em thread separada."""
     logger.info("Agendador iniciado. Proxima execucao: %s", proxima_execucao)
@@ -179,6 +185,7 @@ def iniciar_agendador():
     # Garante que o job seja registrado apenas uma vez
     schedule.clear()
     schedule.every().day.at("09:00").do(_rodar_pipeline_agendada)
+    schedule.every(30).minutes.do(_rodar_leitor_agendado)
     _scheduler_thread = threading.Thread(target=_loop_agendador, daemon=True)
     _scheduler_thread.start()
     logger.info("Agendador iniciado em thread separada")
