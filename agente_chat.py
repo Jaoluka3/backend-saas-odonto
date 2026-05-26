@@ -35,12 +35,10 @@ def buscar_clinicas(forcar: bool = False) -> list:
             supabase.table("clinicas")
             .select("*")
             .neq("status", "inativo")
-            .or_("cidade.ilike.%Betim%,endereco.ilike.%Betim%")
             .order("score", desc=True, nullsfirst=False)
             .limit(50)
             .execute()
         )
-        clinicas_raw = result.data or []
     except Exception as e:
         logger.error(f"Erro ao ler clinicas do banco: {e}")
         return []
