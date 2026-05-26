@@ -389,6 +389,10 @@ def status_agentes():
     return {"success": True, "data": base}
 
 
+# Include debug endpoints
+from debug_endpoints import include_debug_router
+include_debug_router(app)
+
 if __name__ == "__main__":
     import uvicorn
 
